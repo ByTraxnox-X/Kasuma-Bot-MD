@@ -1,0 +1,234 @@
+[
+    {
+        "question": "¿Cuántos meses tienen 28 días?",
+        "response": "Todos"
+    },
+    {
+        "question": "¿Qué palabra del diccionario se escribe incorrectamente?",
+        "response": "Incorrectamente"
+    },
+    {
+        "question": "Húmedo por dentro, con pelos por fuera. Comienza por la C. ¿De qué se trata?",
+        "response": "Un coco"
+    },
+    {
+        "question": "David y Fabián están jugando al ajedrez. Llevan 5 partidas, pero ambos han ganado 3. ¿Cómo es posible?",
+        "response": "Porque juegan con más personas"
+    },
+    {
+        "question": "¿Cuántos 9 hay entre el 1 y el 100?",
+        "response": "20"
+    },
+    {
+        "question": "Son dos abanicos que están todo el día sin parar, pero cuando te duermas se paran y quietos se quedarán",
+        "response": "Las pestañas"
+    },
+    {
+        "question": "Oro parece, plata no es y el que no lo adivine un tonto es",
+        "response": "Un platano"
+    },
+    {
+        "question": "Círculo bien redondo al que si le pegas, das un brinco del susto",
+        "response": "Un tambor"
+    },
+    {
+        "question": "Un caballo blanco entró en el Mar Negro. ¿Cómo salió?",
+        "response": "Salió mojado"
+    },
+    {
+        "question": "Si un tren eléctrico va de Norte a Sur, ¿hacia qué lado echará el humo?",
+        "response": "Es eléctrico, no echa humo"
+    },
+    {
+        "question": "Tiene 4 letras, empieza por C y termina por O y esta en la parte trasera",
+        "response": "El codo"
+    },
+    {
+        "question": "Se estrella un avión y mueren todos, justo en la frontera entre España y Portugal ¿A qué Hospital tienen que llevar a los supervivientes?",
+        "response": "No hay supervivientes"
+    },
+    {
+        "question": "Este banco está ocupado por un padre y por un hijo, el padre se llama Juan y el hijo ya te lo he dicho",
+        "response": "Esteban"
+    },
+    {
+        "question": "Algunos meses tienen 31 días, otros solo 30. ¿Cuantos tienen 28 días?",
+        "response": "Todos"
+    },
+    {
+        "question": "¿Qué es lo que puedes encontrar una vez en un minutos, dos veces en un momento y ninguna vez cien años",
+        "response": "La letra M"
+    },
+    {
+        "question": "¿Qué llanta no gira a la derecha?",
+        "response": "Las llanta de respuesto"
+    },
+    {
+        "question": "La gente me compra para comer pero nunca me come ¿qué soy?",
+        "response": "Un plato"
+    },
+    {
+        "question": "Matamos y alentamos, tu decides si somos un venenos o un dulce. ¿qué somos?",
+        "response": "Las palabras"
+    },
+    {
+        "question": "¿Con qué manos es mejor revolver el caldo?",
+        "response": "Es mejor usar una cuchara"
+    },
+    {
+        "question": "¿Quién se moja mientras seca?",
+        "response": "La toalla"
+    },
+    {
+        "question": "Cuántos mas le quitas, mas grande se vuelve. ¿Qué es?",
+        "response": "Un foso"
+    },
+    {
+        "question": "¿Qué palabra es p_ta?",
+        "response": "Pata"
+    },
+    {
+        "question": "Tengo un par, van colgando y al caminar se van desplazando ¿qué son?",
+        "response": "Los brazos"
+    },
+    {
+        "question": "¿Qué es largo y le cuelga a los hombres por delante?",
+        "response": "La corbata"
+    },
+    {
+        "question": "¿Cuál es el juguete más egoísta?",
+        "response": "El Yo-Yo"
+    },
+    {
+        "question": "¿Qué hace una persona corriendo rápidamente alrededor de la universidad?",
+        "response": "Su carrera universitaria"
+    },
+    {
+        "question": "No son flores, pero tienes plantas y olores ¿qué es?",
+        "response": "Los pies"
+    },
+    {
+        "question": "No lo puedes ver, pero no puedes vivir sin él. ¿Qué es?",
+        "response": "El aire"
+    },
+    {
+        "question": "¿Qué siempre sube y nunca baja?",
+        "response": "Tu edad"
+    },
+    {
+        "question": "Es un lugar en el que estás seguro, pero no puedes quedarte mucho tiempo. ¿Dónde estás?",
+        "response": "En un sueño"
+    },
+    {
+        "question": "Tiene ciudades, pero no tiene casas. Tiene selvas, pero no tiene árboles. ¿Qué es?",
+        "response": "Un mapa"
+    },
+    {
+        "question": "¿Qué tiene ojos pero no puede ver?",
+        "response": "Un billete"
+    },
+    {
+        "question": "Es pequeño como una nuez, pero puede sostener una montaña entera. ¿Qué es?",
+        "response": "Un agujero"
+    },
+    {
+        "question": "Si lo nombras, lo rompes. ¿Qué es?",
+        "response": "El silencio"
+    },
+    {
+        "question": "Lo puedes tocar, pero no puedes verlo. Lo puedes escuchar, pero no puede hablar. ¿Qué es?",
+        "response": "El viento"
+    },
+    {
+        "question": "Tiene llaves pero no abre puertas. ¿Qué es?",
+        "response": "Un teclado"
+    },
+    {
+        "question": "Tiene patas, pero no puede caminar. ¿Qué es?",
+        "response": "Una mesa"
+    },
+    {
+        "question": "Tiene hojas, pero no es un árbol. ¿Qué es?",
+        "response": "Un libro"
+    },
+    {
+        "question": "Es un camino que nunca termina. ¿Qué es?",
+        "response": "El infinito"
+    },
+    {
+        "question": "Lo puedes atrapar, pero no lo puedes sostener por mucho tiempo. ¿Qué es?",
+        "response": "Un resfriado"
+    },
+    {
+        "question": "Tiene dientes pero no puede morder. ¿Qué es?",
+        "response": "Un peine"
+    },
+    {
+        "question": "Es un instrumento que se toca sin usar las manos. ¿Qué es?",
+        "response": "Un piano"
+    },
+    {
+        "question": "Es un lugar donde todos han estado, pero nadie ha regresado. ¿Dónde es?",
+        "response": "El futuro"
+    },
+    {
+        "question": "Es un animal que se encuentra en el inicio de 'lo mejor' y al final de 'lo peor'. ¿Qué es?",
+        "response": "La letra 'o'"
+    },
+    {
+        "question": "Es un objeto que tiene agujeros pero aún puede sostener agua. ¿Qué es?",
+        "response": "Una esponja"
+    },
+    {
+        "question": "Puedes agarrarlo por la cola, pero también puede morderte. ¿Qué es?",
+        "response": "Un ratón"
+    },
+    {
+        "question": "Es un animal que siempre está en el pasado. ¿Qué es?",
+        "response": "La historia"
+    },
+    {
+        "question": "Lo encuentras en un rincón y muerde a las personas pero no hace daño. ¿Qué es?",
+        "response": "Un sello"
+    },
+    {
+        "question": "¿Qué es tan frágil que se rompe al nombrarlo?",
+        "response": "El silencio"
+    },
+    {
+        "question": "¿Qué es grande como una casa, silencioso como un ratón, pero siempre está presente?",
+        "response": "La sombra"
+    },
+    {
+        "question": "Si tienes una caja que contiene un reloj que se detiene cuando lo miras, ¿cómo puedes saber la hora?",
+        "response": "Mirar la hora en otro reloj"
+    },
+    {
+        "question": "¿Qué tiene llaves pero no puede abrir cerraduras?",
+        "response": "Un piano"
+    },
+    {
+        "question": "Si lanzas una moneda al aire, ¿qué probabilidad hay de que caiga cara arriba?",
+        "response": "50% (mitad del tiempo)"
+    },
+    {
+        "question": "Si un avión se estrella en la frontera entre Estados Unidos y Canadá, ¿dónde entierras a los sobrevivientes?",
+        "response": "No necesitas enterrar a los sobrevivientes."
+    },
+    {
+        "question": "Si estás corriendo en una carrera y adelantas al segundo corredor, ¿en qué posición quedas?",
+        "response": "En segundo lugar."
+    },
+    {
+        "question": "¿Qué tiene un corazón que no late?",
+        "response": "Un arte."
+    },
+    {
+        "question": "Es pequeño como un ratón, pero puede llenar una habitación entera. ¿Qué es?",
+        "response": "La oscuridad."
+    },
+    {
+        "question": "Tengo ciudades pero no edificios, bosques pero no árboles y ríos pero no agua. ¿Qué soy?",
+        "response": "Un mapa."
+    }
+]
