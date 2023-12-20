@@ -11,15 +11,16 @@ const handler = async (m, { conn, args }) => {
     const data = await response.json();
 
     if (data.status && data.message && data.message.videos && data.message.videos.length >= 2) {
-      const firstVideo = data.message.videos[0];
-      const secondVideo = data.message.videos[1];
+      const videos = data.message.videos;
+      const selectedVideos = videos.slice(0, Math.ceil(videos.length / 2));
 
-      m.reply(`Descargando el primer video...`);
-      await conn.sendFile(m.chat, firstVideo.play, 'video1.mp4', `*Título:* ${firstVideo.title}\n*Duración:* ${firstVideo.duration}s`, m);
+      for (let i = 0; i < selectedVideos.length; i++) {
+        const video = selectedVideos[i];
 
+        const message = `*Título:* ${video.title}\n*Duración:* ${video.duration}s\n\n`;
 
-      m.reply(`Descargando el segundo video...`);
-      await conn.sendFile(m.chat, secondVideo.play, 'video2.mp4', `*Título:* ${secondVideo.title}\n*Duración:* ${secondVideo.duration}s`, m);
+        await conn.sendMessage(m.chat, `${message}${video.play}`, 'video/mp4', { quoted: m });
+      }
     } else {
       throw 'No se encontraron resultados de búsqueda en TikTok.';
     }
