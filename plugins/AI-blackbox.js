@@ -13,13 +13,15 @@ const handler = async (m, { conn, text }) => {
     const data = await response.json();
 
     if (data.status && data.message) {
+
       const respuestaApi = data.message;
+
       conn.reply(m.chat, respuestaApi, m);
     } else {
       throw 'No se pudo obtener una respuesta válida';
     }
   } catch (error) {
-    throw `Ocurrió un error`;
+    throw `Ocurrió un error: ${error}`;
   }
 };
 

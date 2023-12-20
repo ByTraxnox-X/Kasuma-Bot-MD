@@ -8,7 +8,7 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `https://visionaryapi.boxmine.xyz/api/bard?text=${encodeURIComponent(text)}`;
+    const apiUrl = `${apivisionary}/api/bard?text=${encodeURIComponent(text)}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
