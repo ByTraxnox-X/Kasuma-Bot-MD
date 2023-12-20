@@ -25,8 +25,8 @@ const handler = async (m, { conn, text }) => {
   }
 };
 
-handler.help = ['aimath'];
+handler.help = ['math'];
 handler.tags = ['ai'];
-handler.command = /^aimath$/i;
+handler.command = /^math$/i;
 
 export default handler;
