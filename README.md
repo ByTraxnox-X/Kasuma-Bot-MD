@@ -38,7 +38,8 @@ $ npm start
 
 3. Elegir el metodo de conexion:
 
- 1 - qr  2 - Codigo de 8 digitos
+ 1 - qr  
+ 2 - Codigo de 8 digitos
 
 4. Si usted elegio el QR:
 
