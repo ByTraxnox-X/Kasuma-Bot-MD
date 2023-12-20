@@ -4,7 +4,7 @@ let Handler = async (m, { conn, text }) => {
   if (!text) throw 'Ingrese el nombre de la pelicula a buscar'
 
   try {
-    let res = await fetch(`https://api.popcat.xyz/imdb?q=${encodeURIComponent(text)}`)
+    let res = await fetch(`${apivisionary}/api/movie?text=${encodeURIComponent(text)}`)
 
     if (!res.ok) {
       throw new Error(`Conexion fallida`)
