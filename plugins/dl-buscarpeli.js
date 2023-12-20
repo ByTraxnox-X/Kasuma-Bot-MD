@@ -1,53 +1,57 @@
 import fetch from 'node-fetch';
 
-let Handler = async (m, { conn, text }) => {
-  if (!text) throw 'Ingrese el nombre de la pelicula a buscar'
+const handler = async (m, { conn, text }) => {
+  if (!text) {
+    throw 'Ingrese el nombre de la película a buscar';
+  }
 
   try {
-    let res = await fetch(`${apivisionary}/api/movie?text=${encodeURIComponent(text)}`)
+    const apiUrl = `${apivisionary}/api/movie?text=${encodeURIComponent(text)}`;
+    const response = await fetch(apiUrl);
 
-    if (!res.ok) {
-      throw new Error(`Conexion fallida`)
+    if (!response.ok) {
+      throw new Error('Conexión fallida');
     }
 
-    let json = await res.json()
+    const data = await response.json();
 
-    console.log('JSON response:', json)
+    console.log('JSON response:', data);
 
-    let ratings = json.ratings.map(rating => `*${rating.source}:* ${rating.value}`).join('\n')
-    let movieInfo = `\t\t*${json.title}*
+    const ratings = data.ratings.map(rating => `*${rating.source}:* ${rating.value}`).join('\n');
+    const movieInfo = `\t\t*${data.title}*
 
-*Año:* ${json.year}
-*Clasificación:* ${json.rated}
-*Fecha de lanzamiento:* ${json.released}
-*Duración:* ${json.runtime}
-*Géneros:* ${json.genres}
-*Director:* ${json.director}
-*Guionista:* ${json.writer}
-*Actores:* ${json.actors}
-*Argumento:* ${json.plot}
-*Idiomas:* ${json.languages}
-*País:* ${json.country}
-*Premios:* ${json.awards}
-*Metascore:* ${json.metascore}
-*Calificación:* ${json.rating}
-*Votos:* ${json.votes}
-*ID de IMDB:* ${json.imdbid}
-*Tipo:* ${json.type}
-*DVD:* ${json.dvd}
-*Taquilla:* ${json.boxoffice}
-*Producción:* ${json.production}
-*Sitio web:* ${json.website}
-*Calificaciones:*${ratings}`
+*Año:* ${data.year}
+*Clasificación:* ${data.rated}
+*Fecha de lanzamiento:* ${data.released}
+*Duración:* ${data.runtime}
+*Géneros:* ${data.genres}
+*Director:* ${data.director}
+*Guionista:* ${data.writer}
+*Actores:* ${data.actors}
+*Argumento:* ${data.plot}
+*Idiomas:* ${data.languages}
+*País:* ${data.country}
+*Premios:* ${data.awards}
+*Metascore:* ${data.metascore}
+*Calificación:* ${data.rating}
+*Votos:* ${data.votes}
+*ID de IMDB:* ${data.imdbid}
+*Tipo:* ${data.type}
+*DVD:* ${data.dvd}
+*Taquilla:* ${data.boxoffice}
+*Producción:* ${data.production}
+*Sitio web:* ${data.website}
+*Calificaciones:*${ratings}`;
 
-    await conn.sendFile(m.chat, json.poster, 'poster.jpg', movieInfo, m);
+    await conn.sendFile(m.chat, data.poster, 'poster.jpg', movieInfo, m);
   } catch (error) {
     console.error(error);
+    throw `Ocurrió un error: ${error.message}`;
   }
 };
 
-Handler.help = ['buscarpeli'];
-Handler.tags = ['dl'];
-Handler.command = /^(buscarpeli|movie)$/i;
+handler.help = ['buscarpeli'];
+handler.tags = ['dl'];
+handler.command = /^(buscarpeli|movie)$/i;
 
-export default Handler;
+export default handler;
