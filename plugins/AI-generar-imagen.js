@@ -22,8 +22,8 @@ const handler = async (m, { conn, text }) => {
   }
 };
 
-handler.help = ['aigenera'];
+handler.help = ['generaimagen'];
 handler.tags = ['ai'];
-handler.command = /^aigenera$/i;
+handler.command = /^generaimagen$/i;
 
 export default handler;
