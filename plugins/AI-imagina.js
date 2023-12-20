@@ -16,7 +16,7 @@ const handler = async (m, { conn, text }) => {
       const imagenes = data.message.aiImageData.slice(0, 2).map((item) => item.images[0].url);
 
       imagenes.forEach((imagen, index) => {
-        conn.sendFile(m.chat, imagen, `imagen${index + 1}.png`, `Imagen ${index + 1}`, m);
+        conn.sendFile(m.chat, imagen, `imagen.png`, ``, m);
       });
     } else {
       throw 'No se pudo obtener una respuesta válida';
