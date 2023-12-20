@@ -5,7 +5,7 @@ if (!args[0]) throw `Ingrese un enlace de twitter`
           m.react(rwait)    
           try {
           let { SD, HD, desc, thumb, audio } = await fg.twitter(args[0])
-          let te = `\t\t*${desc}*
+          let te = `*${desc}*
 `
 m.react(done)
 conn.sendFile(m.chat, HD, 'twitter.mp4', te, m)
