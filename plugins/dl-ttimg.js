@@ -6,19 +6,19 @@ let handler = async (m, { conn, text: tiktok }) => {
     }
 
     try {
-        const apiURL = `https://api.fgmods.xyz/api/downloader/tiktok2?url=${tiktok}&apikey=${tiktokkey}`;
-        const response = await axios.get(apiURL);
+        const apiUrl = `${apivisionary}/api/ttimg?url=` + encodeURIComponent(tiktok);
+        const response = await axios.get(apiUrl);
         const responseData = response.data;
 
         m.react(rwait);
 
-        if (responseData.status && responseData.result) {
-            const result = responseData.result;
+        if (responseData.status && responseData.data) {
+            const result = responseData.data;
 
-            if (result.images && result.images.length > 0) {
-                for (const image of result.images) {
+            if (result.length > 0) {
+                for (const image of result) {
                     m.react(done);
-                    await conn.sendMessage(m.chat, { image: { url: image.url } }, m);
+                    await conn.sendMessage(m.chat, { image: { url: image } }, m);
                 }
             } else {
                 throw 'No se encontraron imágenes para este TikTok.';

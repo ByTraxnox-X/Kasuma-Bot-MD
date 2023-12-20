@@ -8,7 +8,7 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `https://vihangayt.me/tools/mathssolve?q=${encodeURIComponent(text)}`;
+    const apiUrl = `${apivisionary}/api/math?text=${encodeURIComponent(text)}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 

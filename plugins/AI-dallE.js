@@ -14,7 +14,7 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
   } catch {
       console.log('Error');
   try {
-    const tiores3 = await fetch(`https://vihangayt.me/tools/lexicaart?q=${text}`);
+    const tiores3 = await fetch(`${apivisionary}/api/Lexicaart?text=${text}`);
     const json3 = await tiores3.json();
     await conn.sendMessage(m.chat, {image: {url: json3.data[0].images[0].url}}, {quoted: m});
   } catch {
