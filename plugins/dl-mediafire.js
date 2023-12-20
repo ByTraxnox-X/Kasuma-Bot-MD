@@ -1,7 +1,7 @@
 
 import fetch from 'node-fetch'
 import { mediafiredl } from '@bochilteam/scraper'
-import fg from 'api-dylux'
+//import fg from 'api-dylux'
 let free = 300 // limite de descarga
 let prem = 500 //si su servidor tienes menos de 2GB baja el límite
 let handler = async (m, { conn, args, text, usedPrefix, command, isOwner, isPrems }) => {
@@ -12,7 +12,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command, isOwner, isPrem
     
     let limit = isPrems || isOwner ? prem : free
 	let u = /https?:\/\//.test(args[0]) ? args[0] : 'https://' + args[0]
-    let ss = await (await fetch(global.API('nrtm', '/api/ssweb', { delay: 1000, url: u }))).buffer()
+   // let ss = await (await fetch(global.API('nrtm', '/api/ssweb', { delay: 1000, url: u }))).buffer()
     try {
     let res = await mediafiredl(args[0])
     let { url, url2, filename, ext, aploud, filesize, filesizeH } = res
@@ -25,7 +25,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command, isOwner, isPrem
 *Subido:* ${aploud}
 ${isLimit ? `\nEl archivo supera el límite de descarga *+${free} MB*\nPásate a premium para poder descargar archivos más de *${prem} MB*` : ''} 
 `.trim()
-    await conn.sendFile(m.chat, ss, 'ssweb.png', caption, m)  
+    //await conn.sendFile(m.chat, ss, 'ssweb.png', caption, m)  
     m.react(done)
     if(!isLimit) await conn.sendFile(m.chat, url, filename, '', m, null, { mimetype: ext, asDocument: true })
     m.react(done)
