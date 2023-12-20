@@ -14,7 +14,7 @@ const handler = async (m, { conn, text }) => {
 
     if (data.status && data.message) {
       const imagen = data.message;
-      conn.sendFile(m.chat, imagen, 'imagen.jpg', 'Aquí está la imagen que generé para ti:', m);
+      conn.sendFile(m.chat, imagen, 'imagen.jpg', '', m);
     } else {
       throw 'No se pudo obtener una respuesta válida';
     }
