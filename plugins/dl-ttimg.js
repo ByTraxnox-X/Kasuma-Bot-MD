@@ -16,7 +16,7 @@ let handler = async (m, { conn, text: tiktok }) => {
         if (responseData.data && responseData.data.length > 0) {
             for (const imageUrl of responseData.data) {
                 const imageBuffer = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-                const imageName = 'image.jpg';
+                const imageName = 'image.jpg';  // Puedes ajustar el nombre del archivo según tus necesidades
 
                 m.react(done);
                 await conn.sendMessage(m.chat, { buffer: imageBuffer.data, filename: imageName, mimetype: 'image/jpeg' }, m);
