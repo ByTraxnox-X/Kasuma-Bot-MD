@@ -24,7 +24,7 @@ const handler = async (m, { conn, args }) => {
         resultMessage += message;
       }
 
-      conn.sendMessage(m.chat, resultMessage, 'text', { quoted: m });
+      conn.sendMessage(m.chat, resultMessage, '', { quoted: m });
     } else {
       throw 'No se encontraron resultados de búsqueda en TikTok.';
     }
