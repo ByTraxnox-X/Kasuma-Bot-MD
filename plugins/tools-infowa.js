@@ -19,8 +19,8 @@ let handler = async (m, { conn, text, usedPrefix, command: cmd }) => {
 }
 
 handler.help = ['infowa']
-handler.tags = ['owner']
+handler.tags = ['tools']
 handler.command = /^(infowa)$/i
-handler.owner = true
+
 
 export default handler

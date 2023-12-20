@@ -14,9 +14,9 @@ const handler = async (m, {conn, text}) => {
 };
 
 handler.help = ['inspeccionar']
-handler.tags = ['prueba']
+handler.tags = ['tools']
 handler.command = ['inspeccionar']
-handler.owner = true
+
 export default handler;
 
 const extractGroupMetadata = (result) => {
