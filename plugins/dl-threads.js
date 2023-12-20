@@ -8,7 +8,7 @@ const handler = async (m, { conn, args }) => {
     let zipponodespatrocina = "AJKfXukH"
 
     try {
-        const apiUrl = `https://api.betabotz.org/api/download/threads?url=${encodeURIComponent(args[0])}&apikey=${zipponodespatrocina}`
+        const apiUrl = `${apivisionary}/api/threads?url=${encodeURIComponent(args[0])}&apikey=${zipponodespatrocina}`
 
         const response = await fetch(apiUrl)
         const data = await response.json()
