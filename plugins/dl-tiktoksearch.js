@@ -20,11 +20,12 @@ const handler = async (m, { conn, args }) => {
       for (let i = 0; i < selectedVideos.length; i++) {
         const video = selectedVideos[i];
 
-        const message = `*Nickname:* ${video.author.nickname}\n*Play Count:* ${video.play_count}\n*Comment Count:* ${video.comment_count}\n*Share Count:* ${video.share_count}\n\n`;
+        const nickname = video.user ? video.user.nickname : 'N/A';
+        const message = `*Nickname:* ${nickname}\n*Play Count:* ${video.play_count}\n*Comment Count:* ${video.comment_count}\n*Share Count:* ${video.share_count}\n\n`;
         resultMessage += message;
       }
 
-      conn.sendMessage(m.chat, resultMessage, '', { quoted: m });
+      conn.sendMessage(m.chat, resultMessage, 'text', { quoted: m });
     } else {
       throw 'No se encontraron resultados de búsqueda en TikTok.';
     }
