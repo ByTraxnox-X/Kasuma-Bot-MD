@@ -12,18 +12,12 @@ let handler = async (m, { conn, text: tiktok }) => {
 
         m.react(rwait);
 
-        if (responseData.status && responseData.data) {
-            const result = responseData.data;
-
-            if (result.length > 0) {
-                const images = result.map(image => ({ image: { url: image } }));
-                m.react(done);
-                await conn.sendMessage(m.chat, images, m);
-            } else {
-                throw 'No se encontraron imágenes para este TikTok.';
-            }
+        if (responseData.data && responseData.data.length > 0) {
+            const images = responseData.data.map(url => ({ image: { url } }));
+            m.react(done);
+            await conn.sendMessage(m.chat, images, m);
         } else {
-            throw 'No se pudieron obtener datos del TikTok.';
+            throw 'No se encontraron imágenes para este TikTok.';
         }
     } catch (error) {
         throw `Error al obtener imágenes del TikTok: ${error}`;
