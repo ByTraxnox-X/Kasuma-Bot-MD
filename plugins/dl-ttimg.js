@@ -6,7 +6,7 @@ let handler = async (m, { conn, text: tiktok }) => {
     }
 
     try {
-        const apiUrl = `${apivisionary}/api/ttimg?url=` + encodeURIComponent(tiktok);
+        const apiUrl = `${apivisionary}/api/ttimg?url=` + (tiktok);
         const response = await axios.get(apiUrl);
         const responseData = response.data;
 
