@@ -20,7 +20,7 @@ const handler = async (m, { conn, args }) => {
       for (let i = 0; i < selectedVideos.length; i++) {
         const video = selectedVideos[i];
 
-        const nickname = video.user ? video.user.nickname : 'N/A';
+        const nickname = video.user && video.user.nickname ? video.user.nickname : 'N/A';
         const message = `*Nickname:* ${nickname}\n*Play Count:* ${video.play_count}\n*Comment Count:* ${video.comment_count}\n*Share Count:* ${video.share_count}\n\n`;
         resultMessage += message;
       }
