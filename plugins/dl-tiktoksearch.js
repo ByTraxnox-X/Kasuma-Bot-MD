@@ -13,7 +13,7 @@ const handler = async (m, { conn, args }) => {
 
     if (data.status && data.message && data.message.videos && data.message.videos.length >= 2) {
       const videos = data.message.videos;
-      const selectedVideos = videos.slice(0, Math.min(10, videos.length));
+      const selectedVideos = videos.slice(0, 10);
 
       let resultMessage = '';
 
