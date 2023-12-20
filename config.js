@@ -39,7 +39,6 @@ global.wayt = ''
 global.wapyp = ''
 global.fglog = 'https://i.imgur.com/mWHCPIe.jpg'
 global.numero = ['']
-global.canal = ""
 global.wait = 'Cargando'
 global.rwait = '⌛'
 global.dmoji = '🤭'
