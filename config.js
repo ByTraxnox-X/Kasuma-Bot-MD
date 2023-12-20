@@ -13,7 +13,7 @@ global.prems = ['', '', '']
 global.APIs = { // API Prefix
   // name: 'https://website'
   xteam: 'https://api.xteam.xyz',
-  ApiSebastian: 'https://visionaryapi.boxmine.xyz/',
+  ApiSebastian: 'https://visionaryapi.boxmine.xyz',
   nrtm: 'https://fg-nrtm.ddns.net',
   bg: 'http://bochil.ddns.net',
   fgmods: 'https://api.fgmods.xyz'
