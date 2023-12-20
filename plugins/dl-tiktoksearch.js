@@ -14,13 +14,16 @@ const handler = async (m, { conn, args }) => {
       const videos = data.message.videos;
       const selectedVideos = videos.slice(0, Math.ceil(videos.length / 2));
 
+      let resultMessage = '';
+
       for (let i = 0; i < selectedVideos.length; i++) {
         const video = selectedVideos[i];
 
-        const message = `*Título:* ${video.title}\n*Duración:* ${video.duration}s\n\n`;
-
-        await conn.sendMessage(m.chat, `${message}${video.play}`, 'video/mp4', { quoted: m });
+        const message = `*Título:* ${video.title}\n*Duración:* ${video.duration}s\n*URL:* ${video.play}\n\n`;
+        resultMessage += message;
       }
+
+      conn.sendMessage(m.chat, resultMessage, 'text', { quoted: m });
     } else {
       throw 'No se encontraron resultados de búsqueda en TikTok.';
     }
