@@ -1,4 +1,3 @@
-require('events').EventEmitter.defaultMaxListeners = 15;
 import axios from 'axios';
 
 let handler = async (m, { conn, text: tiktok }) => {
@@ -7,22 +6,25 @@ let handler = async (m, { conn, text: tiktok }) => {
     }
 
     try {
-        const apiUrl = `${apivisionary}/api/ttimg?url=` + (tiktok);
-        const response = await axios.get(apiUrl);
+        const apiURL = `https://api.fgmods.xyz/api/downloader/tiktok2?url=${tiktok}&apikey=${tiktokkey}`;
+        const response = await axios.get(apiURL);
         const responseData = response.data;
 
         m.react(rwait);
 
-        if (responseData.data && responseData.data.length > 0) {
-            for (const imageUrl of responseData.data) {
-                const imageBuffer = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-                const imageName = 'image.jpg';  // Puedes ajustar el nombre del archivo según tus necesidades
+        if (responseData.status && responseData.result) {
+            const result = responseData.result;
 
-                m.react(done);
-                await conn.sendMessage(m.chat, { buffer: imageBuffer.data, filename: imageName, mimetype: 'image/jpeg' }, m);
+            if (result.images && result.images.length > 0) {
+                for (const image of result.images) {
+                    m.react(done);
+                    await conn.sendMessage(m.chat, { image: { url: image.url } }, m);
+                }
+            } else {
+                throw 'No se encontraron imágenes para este TikTok.';
             }
         } else {
-            throw 'No se encontraron imágenes para este TikTok.';
+            throw 'No se pudieron obtener datos del TikTok.';
         }
     } catch (error) {
         throw `Error al obtener imágenes del TikTok: ${error}`;
