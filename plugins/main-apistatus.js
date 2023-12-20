@@ -15,7 +15,7 @@ const handler = async (m, { conn }) => {
 
       const mensaje = `\t\t*Estado de la API:*
       
-*API:* https://api-sebastian.zipponodes.xyz   
+*API:* https://visionaryapi.boxmine.xyz   
 *Uptime:* ${uptime}
 *Latencia:* ${latencia}
 *Total de Solicitudes:* ${totalRequests}
