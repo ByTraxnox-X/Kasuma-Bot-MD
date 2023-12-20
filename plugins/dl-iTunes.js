@@ -39,8 +39,8 @@ let songInfo =
   }
 };
 
-handler.help = ['applemusic'];
+handler.help = ['itunes'];
 handler.tags = ['dl'];
-handler.command = /^(applemusic)$/i;
+handler.command = /^(itunes)$/i;
 
 export default handler;
