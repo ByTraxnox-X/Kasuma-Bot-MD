@@ -8,12 +8,12 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `${apivisionary}/api/bard?text=${encodeURIComponent(text)}`;
+    const apiUrl = `${apivisionary}/api/bing?text=${encodeURIComponent(text)}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    if (data.status && data.result) {
-      const respuestaApi = JSON.parse(data.result).result;
+    if (data.status && data.message) {
+      const respuestaApi = data.message;
 
       conn.reply(m.chat, respuestaApi, m);
     } else {
@@ -24,8 +24,8 @@ const handler = async (m, { conn, text }) => {
   }
 };
 
-handler.help = ['aibard'];
+handler.help = ['bingchat'];
 handler.tags = ['ai'];
-handler.command = /^aibard$/i;
+handler.command = /^bingchat$/i;
 
 export default handler;
