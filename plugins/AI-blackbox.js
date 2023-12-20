@@ -8,13 +8,12 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `${apivisionary}/api/blackbox?text=${encodeURIComponent(text)}`;
+    const apiUrl = `https://vihangayt.me/tools/blackbox?q=${encodeURIComponent(text)}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    if (data.status && data.message) {
-
-      const respuestaApi = data.message;
+    if (data.status && data.data) {
+      const respuestaApi = data.data;
 
       conn.reply(m.chat, respuestaApi, m);
     } else {
@@ -25,8 +24,8 @@ const handler = async (m, { conn, text }) => {
   }
 };
 
-handler.help = ['aiblackbox'];
+handler.help = ['blackbox'];
 handler.tags = ['ai'];
-handler.command = /^aiblackbox$/i;
+handler.command = /^blackbox$/i;
 
 export default handler;
