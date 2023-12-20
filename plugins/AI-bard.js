@@ -1,4 +1,4 @@
-import googleTranslate from '@vitalets/google-translate-api';
+import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text }) => {
   if (!text) {
@@ -14,9 +14,7 @@ const handler = async (m, { conn, text }) => {
 
     if (data.status && data.result) {
       const respuestaApi = data.result;
-      const translatedText = await googleTranslate(respuestaApi, { to: 'es' });
-
-      conn.reply(m.chat, translatedText.text, m);
+      conn.reply(m.chat, respuestaApi, m);
     } else {
       throw 'No se pudo obtener una respuesta válida';
     }
