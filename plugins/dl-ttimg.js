@@ -16,10 +16,9 @@ let handler = async (m, { conn, text: tiktok }) => {
             const result = responseData.data;
 
             if (result.length > 0) {
-                for (const image of result) {
-                    m.react(done);
-                    await conn.sendMessage(m.chat, { image: { url: image } }, m);
-                }
+                const images = result.map(image => ({ image: { url: image } }));
+                m.react(done);
+                await conn.sendMessage(m.chat, images, m);
             } else {
                 throw 'No se encontraron imágenes para este TikTok.';
             }
