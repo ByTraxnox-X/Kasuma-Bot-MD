@@ -119,7 +119,7 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
   }}
  }}
 };
-handler.help = ['wavoz']
+handler.help = ['chatgptvoz']
 handler.tags = ['ai']
 handler.command = /^(openaivoz|chatgptvoz|iavoz|robotvoz|openai2voz|chatgpt2voz|ia2voz|robot2voz|wavoz|wavoz|wavos|ai_voz|ai_voce)$/i;
 export default handler;
