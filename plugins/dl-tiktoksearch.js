@@ -8,18 +8,19 @@ const handler = async (m, { conn, args }) => {
   try {
     const apiUrl = `${apivisionary}/api/tiktoksearch?text=${encodeURIComponent(args[0])}`;
     const response = await fetch(apiUrl);
+
     const data = await response.json();
 
     if (data.status && data.message && data.message.videos && data.message.videos.length >= 2) {
       const videos = data.message.videos;
-      const selectedVideos = videos.slice(0, Math.ceil(videos.length / 2));
+      const selectedVideos = videos.slice(0, Math.min(10, videos.length));
 
       let resultMessage = '';
 
       for (let i = 0; i < selectedVideos.length; i++) {
         const video = selectedVideos[i];
 
-        const message = `*Título:* ${video.title}\n*Duración:* ${video.duration}s\n*URL:* ${video.play}\n\n`;
+        const message = `*Nickname:* ${video.author.nickname}\n*Play Count:* ${video.play_count}\n*Comment Count:* ${video.comment_count}\n*Share Count:* ${video.share_count}\n\n`;
         resultMessage += message;
       }
 
