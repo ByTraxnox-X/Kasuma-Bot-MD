@@ -4,7 +4,7 @@ let handler = async(m, {text}) => {
     if (!text) throw 'Por favor ingrese el nombre de la cancion a buscar'
 
     try {
-        let rest = await fetch(`https://api-sebastian.zipponodes.xyz/api/spotifysearch?text=${encodeURIComponent(text)}`)
+        let rest = await fetch(`${apivisionary}/api/spotifysearch?text=${encodeURIComponent(text)}`)
 
         if(!rest.ok) {
             throw new Error (`Error`)

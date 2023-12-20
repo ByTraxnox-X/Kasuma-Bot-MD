@@ -10,7 +10,7 @@ const configuration = new Configuration({organization: global.openai_org_id, api
 const openaiii = new OpenAIApi(configuration);
 const idioma = 'es'
 
-const sistema1 = `Actuaras como un Bot de WhatsApp el cual fue creado por Sebastian, tu seras WaBot.`;
+const sistema1 = `Actuaras como un Bot de WhatsApp el cual fue creado por Sebastian, tu seras KasumaBot.`;
 const handler = async (m, {conn, text, usedPrefix, command}) => {
   if (usedPrefix == 'a' || usedPrefix == 'A') return;
   if (!text) throw `ingrese la pedicion`;

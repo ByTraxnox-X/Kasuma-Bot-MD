@@ -6,7 +6,7 @@ const handler = async (m, { conn, args }) => {
             throw `Por favor, ingresa el username de un usuario de TikTok.`;
         }
 
-        const apiUrl = `https://api-sebastian.zipponodes.xyz/api/tiktokstalk?username=${args[0]}`;
+        const apiUrl = `${apivisionary}/api/tiktokstalk?username=${args[0]}`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();

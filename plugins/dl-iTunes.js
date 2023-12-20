@@ -4,7 +4,7 @@ let handler = async (m, { conn, text }) => {
   if (!text) throw 'Ingrese el nombre de la cancion';
 
   try {
-    let res = await fetch(`https://api-sebastian.zipponodes.xyz/api/itunes?text=${encodeURIComponent(text)}`);
+    let res = await fetch(`${apivisionary}/api/itunes?text=${encodeURIComponent(text)}`);
 
     if (!res.ok) {
       throw new Error(`Error`);

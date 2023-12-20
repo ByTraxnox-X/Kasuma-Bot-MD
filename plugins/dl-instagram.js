@@ -6,7 +6,7 @@ const handler = async (m, { conn, args }) => {
     }
 
     try {
-        const apiUrl = `https://api-sebastian.zipponodes.xyz/api/v1/igdl?url=${encodeURIComponent(args[0])}`;
+        const apiUrl = `${apivisionary}/api/v1/igdl?url=${encodeURIComponent(args[0])}`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();

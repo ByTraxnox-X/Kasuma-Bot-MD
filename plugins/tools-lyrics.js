@@ -8,7 +8,7 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `https://api-sebastian.zipponodes.xyz/api/lyrics?text=${text}`;
+    const apiUrl = `${apivisionary}/api/lyrics?text=${text}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 

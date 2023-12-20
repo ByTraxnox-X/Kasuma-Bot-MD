@@ -27,6 +27,7 @@ global.APIKeys = { // APIKey Here
 
 //KEYS
 global.tiktokkey = ['GIf4o4qJ']
+global.apivisionary = ["https://visionaryapi.boxmine.xyz"]
 
 // Sticker WM
 global.packname = 'Kasuma-Bot'

@@ -3,7 +3,7 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
   if (!text) throw `Ingrese una  peticion`;
     await conn.sendMessage(m.chat, {text: 'Realizando...'}, {quoted: m});
   try {
-    const tiores1 = await fetch(`https://api-sebastian.zipponodes.xyz/api/imagine?text=${text}`);
+    const tiores1 = await fetch(`${apivisionary}/api/imagine?text=${text}`);
     const json1 = await tiores1.json();
     await conn.sendMessage(m.chat, {image: {url: json1.data}}, {quoted: m});
   } catch {  
