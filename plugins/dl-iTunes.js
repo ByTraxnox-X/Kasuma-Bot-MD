@@ -38,8 +38,8 @@ let handler = async (m, { conn, text }) => {
   }
 };
 
-handler.help = ['itunes'];
+handler.help = ['applemusic'];
 handler.tags = ['dl'];
-handler.command = /^(itunes)$/i;
+handler.command = /^(applemusic)$/i;
 
 export default handler;
