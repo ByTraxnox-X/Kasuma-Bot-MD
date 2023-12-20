@@ -19,7 +19,7 @@ Por MediaFire
 [Termux](https://www.mediafire.com/file/w0y0wkgrwl6sxtl/com.termux_118.apk/file) 
 
 Por Mega
-[Termux](https://mega.nz/file/8ms2wSxZ) 
+[Termux](https://mega.nz/file/8ms2wSxZ#jVRHw31hJiZTMZjd09vEFLrfjmlOK7EybnU9bqLn-yg) 
 
 ### INSTALACION EN TERMUX
 1. 
