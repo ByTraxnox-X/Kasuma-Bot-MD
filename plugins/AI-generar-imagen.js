@@ -1,9 +1,10 @@
 import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text }) => {
-    if (!text) {
-        throw 'Por favor, proporciona un texto';
-      }
+  if (!text) {
+    throw 'Por favor, proporciona un texto';
+  }
+
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
@@ -11,9 +12,9 @@ const handler = async (m, { conn, text }) => {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    if (data.status && data.data) {
-      const imagen = data.data;
-      conn.sendFile(m.chat, imagen, 'imagen.jpg', '', m);
+    if (data.status && data.message) {
+      const imagen = data.message;
+      conn.sendFile(m.chat, imagen, 'imagen.jpg', 'Aquí está la imagen que generé para ti:', m);
     } else {
       throw 'No se pudo obtener una respuesta válida';
     }
