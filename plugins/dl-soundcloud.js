@@ -27,7 +27,7 @@ const handler = async (m, {conn, text}) => {
   }
 };
 
-handler.help = ['cover <cancion>']
+handler.help = ['soundcloud <cancion>']
 handler.tags = ['dl']
 handler.command = /^(soundcloud|cover)$/i;
 export default handler;
