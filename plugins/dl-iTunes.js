@@ -1,10 +1,10 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text }) => {
-  if (!text) throw 'Ingrese el nombre de la cancion';
+  if (!text) throw 'Ingrese el nombre de la canción';
 
   try {
-    let res = await fetch(`${apivisionary}/api/itunes?text=${encodeURIComponent(text)}`);
+    let res = await fetch(`https://visionaryapi.boxmine.xyz/api/itunes?text=${encodeURIComponent(text)}`);
 
     if (!res.ok) {
       throw new Error(`Error`);
@@ -13,23 +13,22 @@ let handler = async (m, { conn, text }) => {
     let json = await res.json();
 
     console.log('JSON response:', json);
-    m.react(rwait)
+    m.react(rwait);
 
-let songInfo = 
-`\t\t*${json.name}*
+    let songInfo = 
+      `\t\t*${json.message.name}*\n\n` +
+      `*Nombre:* ${json.message.name}\n` +
+      `*Artista:* ${json.message.artist}\n` +
+      `*Álbum:* ${json.message.album}\n` +
+      `*Fecha de lanzamiento:* ${json.message.release_date}\n` +
+      `*Precio:* ${json.message.price}\n` +
+      `*Duración:* ${json.message.length}\n` +
+      `*Género:* ${json.message.genre}\n` +
+      `*Enlace:* ${json.message.url}`;
 
-*Nombre:* ${json.name}
-*Artista:* ${json.artist}
-*Album:* ${json.album}
-*Fecha de lanzamiento:* ${json.release_date}
-*Precio:* ${json.price}
-*Duracion:* ${json.length}
-*Genero:* ${json.genre}
-*Enlace:* ${json.url}`;
-
-    if (json.thumbnail) {
-      m.react(done)
-      await conn.sendFile(m.chat, json.thumbnail, 'thumbnail.jpg', songInfo, m);
+    if (json.message.thumbnail) {
+      m.react(done);
+      await conn.sendFile(m.chat, json.message.thumbnail, 'thumbnail.jpg', songInfo, m);
     } else {
       m.reply(songInfo);
     }
