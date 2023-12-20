@@ -12,14 +12,17 @@ const handler = async (m, { conn, text }) => {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    if (data.status && data.data && data.data.aiImageData && data.data.aiImageData.length > 0) {
-      const primeraImagen = data.data.aiImageData[0].images[0].url;
-      conn.sendFile(m.chat, primeraImagen, 'imagen.png', '', m);
+    if (data.status && data.message && data.message.aiImageData && data.message.aiImageData.length >= 2) {
+      const imagenes = data.message.aiImageData.slice(0, 2).map((item) => item.images[0].url);
+
+      imagenes.forEach((imagen, index) => {
+        conn.sendFile(m.chat, imagen, `imagen${index + 1}.png`, `Imagen ${index + 1}`, m);
+      });
     } else {
       throw 'No se pudo obtener una respuesta válida';
     }
   } catch (error) {
-    throw `Ocurrió un error`;
+    throw `Ocurrió un error: ${error}`;
   }
 };
 
