@@ -10,8 +10,9 @@ let handler = async (m, { conn, text }) => {
   m.reply('Se transmitió a todos los chats :)')
 }
 handler.help = ['comunicado']
-handler.tags = ['prueba']
+handler.tags = ['owner']
 handler.command = /^(comunicado|bc)$/i
+
 handler.owner = true
 
 

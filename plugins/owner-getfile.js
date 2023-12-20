@@ -47,7 +47,7 @@ ${usedPrefix + command} main-menu
   }
 };
 handler.help = ['getplugin']
-handler.tags = ['prueba']
+handler.tags = ['owner']
 handler.command = ['getplugin']
 handler.owner = true
 

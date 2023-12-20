@@ -9,7 +9,7 @@ const handler = async (m, {command, usedPrefix, text}) => {
   m.reply(`agregado correctamente como '${text}'\nusa ${usedPrefix}ver${which} ${text} para acceder a el`);
 };
 handler.help = ['au', 'msg', 'video', 'audio', 'img', 'sticker'].map((v) => 'agregar' + v + ' command');
-handler.tags = ['prueba'];
+handler.tags = ['owner'];
 handler.command = /^agregar(au|msg|video|audio|img|sticker)$/;
 handler.owner = true
 

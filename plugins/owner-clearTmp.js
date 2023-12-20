@@ -29,6 +29,7 @@ let handler = async (m, { conn, __dirname, args }) => {
 handler.help = ['cleartmp'];
 handler.tags = ['owner'];
 handler.command = /^(cleartmp)$/i;
+
 handler.rowner = true;
 
 export default handler;

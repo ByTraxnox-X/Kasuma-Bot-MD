@@ -12,7 +12,7 @@ let handler = async (m, { text }) => {
 
 
 handler.help = ['cmd'].map(v => 'del' + v + ' <text>')
-handler.tags = ['prueba']
+handler.tags = ['owner']
 handler.command = ['delcmd']
 handler.owner = true
 

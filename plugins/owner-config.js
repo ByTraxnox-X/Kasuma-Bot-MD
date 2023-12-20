@@ -5,7 +5,7 @@ const handler = async (m, { conn }) => {
   return await conn.sendMessage(m.chat, {document: sesi, mimetype: 'application/json', fileName: 'config.json'}, {quoted: m});
 };
 handler.help = ['config'];
-handler.tags = ['prueba'];
+handler.tags = ['owner'];
 handler.command = /^(config)$/i;
 handler.owner = true
 

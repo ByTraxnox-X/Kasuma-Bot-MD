@@ -8,7 +8,7 @@ ${Object.keys(msgs).map((v) => '' + v).join('\n')}
 `.trim());
 };
 handler.help = ['au', 'msg', 'video', 'audio', 'img', 'sticker'].map((v) => 'lista' + v);
-handler.tags = ['prueba'];
+handler.tags = ['owner'];
 handler.command = /^lista(au|msg|video|audio|img|sticker)$/;
 handler.owner = true
 

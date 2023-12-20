@@ -19,7 +19,7 @@ function _0x31ac(_0x16c31d, _0x391554) {
     throw _0x2359c0(0x1bf)+(_0x33d1e6+_0x480711)+'*';
   }
 }; handler.help = ['cambiarft']
-handler.tags = ['prueba']
+handler.tags = ['owner']
 handler.command = /^cambiarft$/i
 handler.owner = true
  handler[_0x34771d(0x1c0)]=!![]; 

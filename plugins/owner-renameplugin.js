@@ -23,7 +23,7 @@ ${usedPrefix + command} banco-depositar | banco-dep`;
   conn.reply(m.chat, `Exitoso "plugins/${from}.js" a "plugins/${to}.js"`, m);
 };
 handler.help = ["renameplugin"].map((_) => _ + " nombre antiguo | nombre nuevo");
-handler.tags = ["prueba"];
+handler.tags = ["owner"];
 handler.command = /^(r(ename(file)?|f)|renameplugin)$/i;
 handler.owner = true
 

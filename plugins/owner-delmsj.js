@@ -7,7 +7,7 @@ const handler = async (m, {command, usedPrefix, text}) => {
   m.reply(`se elimino con exito  '${text}'`);
 };
 handler.help = ['au', 'msg', 'video', 'audio', 'img', 'sticker'].map((v) => 'eliminar' + v + ' command');
-handler.tags = ['prueba'];
+handler.tags = ['owner'];
 handler.command = /^eliminar(au|msg|video|audio|img|sticker)$/;
 handler.owner = true
 

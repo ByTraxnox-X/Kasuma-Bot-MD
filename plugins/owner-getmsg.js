@@ -7,7 +7,7 @@ const handler = async (m, {conn, command, usedPrefix, text}) => {
   await _m.copyNForward(m.chat, true);
 };
 handler.help = ['au', 'msg', 'video', 'audio', 'img', 'sticker'].map((v) => 'ver' + v + ' <text>');
-handler.tags = ['prueba'];
+handler.tags = ['owner'];
 handler.command = /^ver(au|msg|video|audio|img|sticker)$/;
 handler.owner = true
 

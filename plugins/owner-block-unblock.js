@@ -26,4 +26,5 @@ handler.help = ['block/unblock (@user)']
 handler.tags = ['owner']
 handler.command = /^(block|unblock)$/i;
 handler.rowner = true
+
 export default handler

@@ -21,7 +21,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
 
 
 handler.help = ['cmd'].map(v => 'set' + v + ' <txt>')
-handler.tags = ['prueba']
+handler.tags = ['owner']
 handler.command = ['setcmd']
 handler.owner = true
 

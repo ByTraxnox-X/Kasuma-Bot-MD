@@ -7,7 +7,7 @@ ${txt}
 `.trim());
 };
 handler.help = ['listagrupos'];
-handler.tags = ['prueba'];
+handler.tags = ['owner'];
 handler.command = /^(listagrupos)$/i;
 handler.owner = true
 

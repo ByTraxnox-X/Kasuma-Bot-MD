@@ -23,7 +23,7 @@ const handler = async (m, { conn, text, args, usedPrefix, command }) => {
 
 
 handler.help = ['nuevomod', 'eliminarmod',]
-handler.tags = ['prueba'];
+handler.tags = ['owner'];
 handler.command = /^(nuevomod|eliminarmod)$/i;
 handler.owner = true
 

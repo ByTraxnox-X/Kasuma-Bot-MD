@@ -20,7 +20,7 @@ conn.reply(m.chat, `el plugin *"${args[0]}.js"* se elimino con exito`, m)
     
 }
 handler.help = ['deleteplugin <nombre>']
-handler.tags = ['prueba']
+handler.tags = ['owner']
 handler.command = /^(deleteplugin|dp|deleteplu)$/i
 handler.owner = true
 

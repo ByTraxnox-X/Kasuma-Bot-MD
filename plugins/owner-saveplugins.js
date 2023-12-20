@@ -8,7 +8,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
     m.reply(`Guardado en ${ruta}`)
 }
 handler.help = ['saveplugin'].map(v => v + ' nombre')
-handler.tags = ['prueba']
+handler.tags = ['owner']
 handler.command = ["saveplugin"]
 handler.owner = true
 handler.owner = true

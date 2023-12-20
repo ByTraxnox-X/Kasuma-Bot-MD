@@ -65,7 +65,8 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
   }
       
   handler.help = handler.command = ['cambiarbiografia', 'cambiarmensaje', 'cambiarnombre']
-  handler.tags = ['prueba']
+  handler.tags = ['owner']
+  
   handler.owner = true
   
   export default handler

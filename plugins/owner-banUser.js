@@ -17,6 +17,7 @@ BANEADO
 handler.help = ['banbot @user']
 handler.tags = ['owner']
 handler.command = /^banbot$/i
+
 handler.rowner = true
 
 export default handler

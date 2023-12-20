@@ -15,7 +15,8 @@ await conn.sendMessage(m.sender, {document: creds, mimetype: 'application/json',
 await m.reply(`error`)
 console.log(`error`)
 console.log(e)}}
-
+handler.help = ['backup']
+handler.tags = ['owner']
 handler.command = /^(backup|respaldo|copia)$/i
 handler.owner = true
 

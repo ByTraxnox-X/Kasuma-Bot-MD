@@ -6,6 +6,7 @@ let handler = async (m) => {
 handler.help = ['usuarios']
 handler.tags = ['owner']
 handler.command = /^(usuarios)$/i
+
 handler.owner = true
 export default handler
 

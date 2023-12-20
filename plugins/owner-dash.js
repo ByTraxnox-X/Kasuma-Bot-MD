@@ -12,8 +12,9 @@ const handler = async (m, {conn}) => {
   m.reply(`Dashboard *${conn.user.name}*\n\n${txt}`);
 };
 handler.help = ['infocommand'];
-handler.tags = ['prueba'];
+handler.tags = ['owner'];
 handler.command = /^infocommand$/i;
+
 handler.owner = true
 
 export default handler;
