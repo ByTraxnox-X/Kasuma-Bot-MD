@@ -3,7 +3,6 @@
 ***
 ### Información
 - Bot con conexion mediante QR y Codigo de 8 digitos.
-- Puede cambiar a la última versión de baileys editando el package.json 
 
 ### API FREE
 -  [VisionaryAPI](https://visionaryapi.boxmine.xyz/)
