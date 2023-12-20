@@ -35,10 +35,6 @@ const defaultMenu = {
 𝗨𝘀𝘂𝗮𝗿𝗶𝗼𝘀: %totalreg
 𝗧𝗶𝗲𝗺𝗽𝗼 𝗮𝗰𝘁𝗶𝘃𝗼: %muptime
 
-WaBot ofrece los mejores servicios para tus grupos de scrims, teams, clanes, grupos de amigos, universidad, y familia.
-Si te interesa usa el comando "!dueño" para contactar a mi creador.
-
-
 
 𝗟𝗜𝗦𝗧𝗔 𝗗𝗘 𝗠𝗘𝗡𝗨𝗦
 `.trimStart(),
