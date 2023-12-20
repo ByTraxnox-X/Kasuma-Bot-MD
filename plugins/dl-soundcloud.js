@@ -16,9 +16,9 @@ const handler = async (m, {conn, text}) => {
     const res2 = await fetch(`https://api.akuari.my.id/downloader/scdl?link=${permalinkUrl}`);
     const json = await res2.json();
     const shortUrl = await (await fetch(`https://tinyurl.com/api-create.php?url=${json.link}`)).text();
-    const soundcloudt = `\t\t*${json.title}
+    const soundcloudt = `*${json.title}*
     
-    *URL: ${shortUrl}`;
+    *URL:* ${shortUrl}`;
     await conn.sendFile(m.chat, json.thumb, '', soundcloudt, m);
     m.react(done)
     await conn.sendMessage(m.chat, {audio: {url: json.link}, fileName: `${json.title}.mp3`, mimetype: 'audio/mpeg'}, {quoted: m});
