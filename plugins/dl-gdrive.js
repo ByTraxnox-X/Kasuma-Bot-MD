@@ -6,7 +6,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 	m.react(rwait) 
 	try {
 	let res = await fg.GDriveDl(args[0])
-	 await m.reply(`\t\t*${res.fileName}*
+	 await m.reply(`*${res.fileName}*
 	 
 *Tamaño:* ${res.fileSize}
 *tipo:* ${res.mimetype}`)
