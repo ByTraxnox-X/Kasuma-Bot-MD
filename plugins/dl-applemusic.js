@@ -5,7 +5,7 @@ const handler = async (m, { text, conn }) => {
 
   try {
     const encodedText = encodeURIComponent(text);
-    const res = await fetch(`${apivisionary}/api/applemusic?url=https://music.apple.com/us/album/${encodedText}?i=${encodedText}&uo=4`);
+    const res = await fetch(`${apivisionary}/api/applemusic?url=${text}`);
     const data = await res.json();
 
     const { name, duration_ms, image, url } = data.data;
