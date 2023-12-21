@@ -31,8 +31,8 @@ const handler = async (m, { text, conn }) => {
   }
 };
 
-handler.help = ['applemusicdownload'];
+handler.help = ['appledownload'];
 handler.tags = ['dl'];
-handler.command = /^(applemusicdownload)$/i;
+handler.command = /^(appledownload)$/i;
 
 export default handler;
