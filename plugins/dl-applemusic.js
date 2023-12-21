@@ -4,7 +4,7 @@ const handler = async (m, { text, conn }) => {
     if (!text) throw `Ingrese el nombre de la canción.`;
 
     try {
-        const encodedText = encodeURIComponent(text);
+
         const res = await fetch(`${apivisionary}/api/applemusic?url=${text}`);
         const data = await res.json();
 
