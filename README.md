@@ -70,11 +70,11 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 
 ## BOXMINE
 
-En BoxMine el bot estara activo 24/7, si desea instalarlo aqui, vea el tutorial de abajo.
+En BoxMine el bot estara activo 24/7, si desea instalarlo aqui, vea el tutorial de abajo para crearse una cuenta.
 
 ---------
-* Tutorial [`Tutorial`]()
-* Create una cuenta  [`Crear Cuenta`](https://dash.boxmineworld.com/register?ref=oMCNv8cX)
+* Tutorial [`Como crearse una cuenta`](https://www.youtube.com/watch?v=ZAwBLuNmIlI)
+* Create una cuenta  [`Tutorial de instalacion`]()
 
 
 
