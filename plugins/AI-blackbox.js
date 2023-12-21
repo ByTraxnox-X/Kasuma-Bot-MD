@@ -8,12 +8,12 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `https://vihangayt.me/tools/blackbox?q=${encodeURIComponent(text)}`;
+    const apiUrl = `https://visionaryapi.boxmine.xyz/api/blackbox?text=${encodeURIComponent(text)}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    if (data.status && data.data) {
-      const respuestaApi = data.data;
+    if (data.status && data.message) {
+      const respuestaApi = data.message;
 
       conn.reply(m.chat, respuestaApi, m);
     } else {
