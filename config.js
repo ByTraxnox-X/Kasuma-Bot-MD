@@ -35,7 +35,7 @@ global.author = 'Kasuma-Bot 1.0'
 global.waig = 'Sígueme en Instagram\nhttps://www.instagram.com/traxnox/\n'
 global.wagp = 'https://chat.whatsapp.com/EkYXUIw7AY4A8wPPghGPCs'
 global.wagit = 'https://github.com/ByTraxnox-X/KasumaBot-MD'
-global.wayt = ''
+global.wayt = 'https://youtube.com/@by_traxnox'
 global.wapyp = 'https://paypal.me/txpaying?country.x=CO&locale.x=es_XC'
 global.fglog = 'https://i.imgur.com/mWHCPIe.jpg'
 global.numero = ['593995668111']
