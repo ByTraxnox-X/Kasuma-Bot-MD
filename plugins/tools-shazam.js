@@ -18,14 +18,13 @@ const handler = async (m) => {
     const {code, msg} = res.status;
     if (code !== 0) throw msg;
     const {title, artists, album, genres, release_date} = res.metadata.music[0];
-    const txt = `
-Resultados
+    const txt = `*Resultados*
 
-Titulo: ${title}
-Artista: ${artists !== undefined ? artists.map((v) => v.name).join(', ') : 'No encontrado'}
-Album: ${album.name || 'No encontrado'}
-Genero: ${genres !== undefined ? genres.map((v) => v.name).join(', ') : 'No encontrado'}
-Fecha de lanzamiento: ${release_date || 'No encontrado'}
+*Titulo:* ${title}
+*Artista:* ${artists !== undefined ? artists.map((v) => v.name).join(', ') : 'No encontrado'}
+*Album:* ${album.name || 'No encontrado'}
+*Genero:* ${genres !== undefined ? genres.map((v) => v.name).join(', ') : 'No encontrado'}
+*Fecha de lanzamiento:* ${release_date || 'No encontrado'}
 `.trim();
     fs.unlinkSync(`./tmp/${m.sender}.${ext}`);
     m.reply(txt);
