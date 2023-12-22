@@ -7,6 +7,9 @@
 ### API FREE
 -  [VisionaryAPI](https://visionaryapi.boxmine.xyz/)
 
+### CUENTAS OFICIALES
+-  [CUENTAS OFICIALES](https://solo.to/kasuma)
+
 ###
 Si desea probar el bot antes de instalarlo, hagalo aqui.
 
