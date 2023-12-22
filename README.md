@@ -10,7 +10,7 @@
 ###
 Si desea probar el bot antes de instalarlo, hagalo aqui.
 
-[![WhatsApp](https://img.shields.io/badge/KasumaBot-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)]() 
+[![WhatsApp](https://img.shields.io/badge/KasumaBot-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](wa.me/573215683772) 
 
 
 ### Version de Termux
