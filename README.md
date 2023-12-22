@@ -73,8 +73,8 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 En BoxMine el bot estara activo 24/7, si desea instalarlo aqui, vea el tutorial de abajo para crearse una cuenta.
 
 ---------
-* Tutorial [`Como crearse una cuenta`](https://www.youtube.com/watch?v=ZAwBLuNmIlI)
-* Create una cuenta  [`Tutorial de instalacion`]()
+* Create una cuenta [`Como crearse una cuenta`](https://www.youtube.com/watch?v=ZAwBLuNmIlI)
+* Tutorial  [`Tutorial de instalacion`]()
 
 
 
