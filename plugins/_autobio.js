@@ -12,7 +12,7 @@ handler.all = async function (m) {
     }) * 86400000
   }
   let muptime = clockString(_muptime)
-  let bio = `\nWABOT OFICIAL, #LOS DEMAS BOTS ESTAN zzz...`
+  let bio = `\nKASUMA BOT`
   await this.updateProfileStatus(bio).catch(_ => _)
   setting.status = new Date() * 1
 

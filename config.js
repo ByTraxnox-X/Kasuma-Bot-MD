@@ -33,12 +33,12 @@ global.apivisionary = ["https://visionaryapi.boxmine.xyz"]
 global.packname = 'Kasuma-Bot'
 global.author = 'Kasuma-Bot 1.0'
 global.waig = 'Sígueme en Instagram\nhttps://www.instagram.com/traxnox/\n'
-global.wagp = ''
+global.wagp = 'https://chat.whatsapp.com/EkYXUIw7AY4A8wPPghGPCs'
 global.wagit = 'https://github.com/ByTraxnox-X/KasumaBot-MD'
 global.wayt = ''
-global.wapyp = ''
+global.wapyp = 'https://paypal.me/txpaying?country.x=CO&locale.x=es_XC'
 global.fglog = 'https://i.imgur.com/mWHCPIe.jpg'
-global.numero = ['']
+global.numero = ['593995668111']
 global.wait = 'Cargando'
 global.rwait = '⌛'
 global.dmoji = '🤭'
