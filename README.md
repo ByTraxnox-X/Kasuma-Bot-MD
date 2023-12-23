@@ -19,11 +19,11 @@
   - Spotify Search
   - Download Threads
   - Download Spotify
-  - TicTacToe
-  - BuscaMinas
-  - Adivinanzas
-  - Adivina el numero
-  - Adivina la palabra
+  - TicTacToe Game
+  - BuscaMinas Game
+  - Adivinanzas Game
+  - Adivina el numero Game
+  - Adivina la palabra Game
   
 
 ### API FREE
