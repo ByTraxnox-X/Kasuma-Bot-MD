@@ -7,7 +7,7 @@
 ### JUEGOS RESALTADOS
   - TicTacToe
   - BuscaMinas
-  - Adivina
+  - Adivinanzas
   - Adivina el numero
   - Adivina la palabra
 
