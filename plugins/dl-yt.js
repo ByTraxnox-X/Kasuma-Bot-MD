@@ -61,7 +61,7 @@ if (enviando) return;
        }
     }
 
-    const dataMessage = `\t\t*${data.resultado.title}*
+    const dataMessage = `*${data.resultado.title}*
 
 *Canal:* ${data.resultado.channel}
 *URL:* ${data.resultado.url}

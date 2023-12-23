@@ -13,7 +13,7 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
       additionalText = 'audio';
     } 
     m.react(rwait)
-    const texto1 = `\t\t*${yt_play[0].title}*
+    const texto1 = `*${yt_play[0].title}*
 
 
 *Publicado:* ${yt_play[0].ago}

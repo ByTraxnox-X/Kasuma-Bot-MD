@@ -18,7 +18,7 @@ const handler = async (m, { conn, text }) => {
     console.log('JSON response:', data);
 
     const ratings = data.ratings.map(rating => `*${rating.source}:* ${rating.value}`).join('\n');
-    const movieInfo = `\t\t*${data.title}*
+    const movieInfo = `*${data.title}*
 
 *Año:* ${data.year}
 *Clasificación:* ${data.rated}

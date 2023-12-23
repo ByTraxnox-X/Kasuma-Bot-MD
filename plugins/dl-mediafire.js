@@ -37,7 +37,7 @@ ${isLimit ? `\nEl archivo supera el límite de descarga *+${free} MB*\nPásate a
      let { url, url2, filename, ext, upload_date, filesize, filesizeB } = res
     let isLimit = limit * 1024 < filesizeB
     m.react(rwait)
-    let caption = `\t\t*${filename}*
+    let caption = `*${filename}*
     
 *Tamaño:* ${filesize}
 *Extension:* ${ext}

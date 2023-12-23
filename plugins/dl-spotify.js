@@ -13,7 +13,7 @@ const handler = async (m, { conn, text }) => {
     const info = await infos.json();
     const spty = info.spty.resultado;
     const img = await (await fetch(`${spty.thumbnail}`)).buffer();
-    let spotifyi = `\t\t*${spty.title}*\n\n`
+    let spotifyi = `*${spty.title}*\n\n`
     spotifyi += `*Artista:* ${spty.artist}\n`
     spotifyi += `*Album:* ${spty.album}\n`
     spotifyi += `*Publicado:* ${spty.year}\n\n`

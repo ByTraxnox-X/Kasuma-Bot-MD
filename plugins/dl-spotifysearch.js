@@ -18,7 +18,7 @@ let handler = async(m, {text}) => {
 
         let tracks = json.spty.resultado.slice(0,2)
 
-       let response =  "\t*Resultados*\n\n"
+       let response =  "*Resultados*\n\n"
 
        tracks.forEach((track, index) => {
 

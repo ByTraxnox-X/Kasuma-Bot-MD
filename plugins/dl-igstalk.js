@@ -13,7 +13,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
         if (data.status && data.resultado) {
             const resultado = data.resultado;
             m.react(rwait)
-            const te = `\t\t*${resultado.name}*
+            const te = `*${resultado.name}*
             
 *Username:* ${resultado.username}
 *Seguidores:* ${resultado.followersH}

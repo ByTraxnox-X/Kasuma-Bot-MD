@@ -15,7 +15,7 @@ const handler = async (m, { conn, args }) => {
             const user = data.resultado;
             m.react(rwait)
 
-            let userInfo = `\t\t*${user.username}*
+            let userInfo = `*${user.username}*
 
 *Nombre:* ${user.nickname || 'No proporcionado'}
 *Seguidores:* ${user.followers}

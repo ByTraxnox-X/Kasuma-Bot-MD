@@ -16,7 +16,7 @@ let handler = async (m, { conn, text }) => {
     m.react(rwait);
 
     let songInfo = 
-      `\t\t*${json.message.name}*\n\n` +
+      `*${json.message.name}*\n\n` +
       `*Nombre:* ${json.message.name}\n` +
       `*Artista:* ${json.message.artist}\n` +
       `*Álbum:* ${json.message.album}\n` +

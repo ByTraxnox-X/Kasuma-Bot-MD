@@ -15,8 +15,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
         try {
             let xn = await fg.xnxxdl(text)
             conn.sendFile(m.chat, xn.result.files.high, xn.result.title + '.mp4', `
-
-            
+      
 *Título*: ${xn.result.title}
 *Duración:* ${xn.result.duration}
 *Calidad:* ${xn.result.quality}

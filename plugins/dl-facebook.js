@@ -6,7 +6,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     m.react(rwait)
    try {
     let result = await fg.fbdl(args[0]);
-    let tex = `\t\t*${result.title}*
+    let tex = `*${result.title}*
 `;
     m.react(done)
     conn.sendFile(m.chat, result.videoUrl, 'fb.mp4', tex, m);
