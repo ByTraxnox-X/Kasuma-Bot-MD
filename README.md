@@ -4,22 +4,20 @@
 ### INFORMACION
 - Bot con conexion mediante QR y Codigo de 8 digitos.
 
-### JUEGOS RESALTADOS
+### COMANDOS RESALTADOS
+  - Bard AI
+  - ChatGPT AI
+  - BingChat AI
+  - BlackBox AI
+  - DALL-E AI
+  - PhotoLeap AI
+  - Imagine AI
+  - Math AI
   - TicTacToe
   - BuscaMinas
   - Adivinanzas
   - Adivina el numero
   - Adivina la palabra
-
-### INTELIGENCIAS ARTIFICIALES RESALTADAS
-  - Bard AI
-  - ChatGPT 
-  - BingChat
-  - BlackBox
-  - DALL-E
-  - PhotoLeap
-  - Imagine
-  - Math AI
   
 
 ### API FREE
