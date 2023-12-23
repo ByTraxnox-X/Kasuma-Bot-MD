@@ -3,6 +3,7 @@
 ***
 ### INFORMACION
 - Bot con conexion mediante QR y Codigo de 8 digitos.
+- Bot con API propia
 
 ### COMANDOS RESALTADOS
   - Bard AI
