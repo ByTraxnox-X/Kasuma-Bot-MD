@@ -13,7 +13,7 @@ global.prems = ['', '', '']
 global.APIs = { // API Prefix
   // name: 'https://website'
   xteam: 'https://api.xteam.xyz',
-  ApiSebastian: 'https://kasumaapi.boxmine.xyz',
+  ApiSebastian: 'https://visionaryapi.boxmine.xyz',
   nrtm: 'https://fg-nrtm.ddns.net',
   bg: 'http://bochil.ddns.net',
   fgmods: 'https://api.fgmods.xyz'
@@ -27,7 +27,7 @@ global.APIKeys = { // APIKey Here
 
 //KEYS
 global.tiktokkey = ['GIf4o4qJ']
-global.apivisionary = ["https://kasumaapi.boxmine.xyz"]
+global.apivisionary = ["https://visionaryapi.boxmine.xyz"]
 
 // Sticker WM
 global.packname = 'Kasuma-Bot'
