@@ -13,6 +13,12 @@
   - PhotoLeap AI
   - Imagine AI
   - Math AI
+  - iTunes Search
+  - Movie Info Search
+  - Movie Search
+  - Spotify Search
+  - Download Threads
+  - Download Spotify
   - TicTacToe
   - BuscaMinas
   - Adivinanzas
