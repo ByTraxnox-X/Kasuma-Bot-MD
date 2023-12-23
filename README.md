@@ -4,6 +4,24 @@
 ### INFORMACION
 - Bot con conexion mediante QR y Codigo de 8 digitos.
 
+### JUEGOS RESALTADOS
+  - TicTacToe
+  - BuscaMinas
+  - Adivina
+  - Adivina el numero
+  - Adivina la palabra
+
+### INTELIGENCIAS ARTIFICIALES RESALTADAS
+  - Bard AI
+  - ChatGPT 
+  - BingChat
+  - BlackBox
+  - DALL-E
+  - PhotoLeap
+  - Imagine
+  - Math AI
+  
+
 ### API FREE
 -  [VisionaryAPI](https://visionaryapi.boxmine.xyz/)
 
