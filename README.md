@@ -1,7 +1,7 @@
 <h3 align="center">WHATSAPP BOT</h3>
 
 ***
-### Información
+### INFORMACION
 - Bot con conexion mediante QR y Codigo de 8 digitos.
 
 ### API FREE
