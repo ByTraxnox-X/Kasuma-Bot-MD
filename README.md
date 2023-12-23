@@ -16,7 +16,7 @@ Si desea probar el bot antes de instalarlo, hagalo aqui.
 [![WhatsApp](https://img.shields.io/badge/KasumaBot-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](wa.me/573215683772) 
 
 
-### Version de Termux
+### VERSION DE TERMUX
 
 Por MediaFire
 [Termux](https://www.mediafire.com/file/w0y0wkgrwl6sxtl/com.termux_118.apk/file) 
