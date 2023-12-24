@@ -82,7 +82,7 @@ Si por alguna razon usted no pudo conectar con el codigo qr o codigo de 8 digito
 
 ---------
 
-### EN CASO DE DETENERSE
+### EN CASO DE DETENERSE EN TERMUX
 1. 
 ```sh
 ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
