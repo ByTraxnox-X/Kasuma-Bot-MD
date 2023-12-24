@@ -94,7 +94,7 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 ---------
 
 
-## BOXMINE
+## BOXMINE HOST
 
 En BoxMine el bot estara activo 24/7, si desea instalarlo aqui, vea el tutorial de abajo para crearse una cuenta.
 
