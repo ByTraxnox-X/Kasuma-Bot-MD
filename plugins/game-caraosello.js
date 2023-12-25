@@ -24,7 +24,7 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
        else who = m.sender;
        let name = conn.getName(who);
        let dolares = global.db.data.users[m.sender].exp += 2;
-       m.reply(`Ganaste ${name} Elegiste: ${text}\nResultado: ${pvjuegocs}\nPremio: ${[dolares].getRandom()} $`);
+       m.reply(`\tGanaste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Premio:* ${[dolares].getRandom()} $`);
    } else if (text == 'cara') {
        if (pvjuegocs == 'cara') {
            let who;
@@ -32,14 +32,14 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
            else who = m.sender;
            let name = conn.getName(who);
            let dolares = global.db.data.users[m.sender].exp += 2;
-           m.reply(`Ganaste ${name} Elegiste: ${text}\nResultado: ${pvjuegocs}\nPremio: ${[dolares].getRandom()} $`);
+           m.reply(`\tGanaste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Premio:* ${[dolares].getRandom()} $`);
        } else {
            let who;
            if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender;
            else who = m.sender;
            let name = conn.getName(who);
            let dolares = global.db.data.users[m.sender].exp -= 300;
-           m.reply(`Perdiste ${name} Elegiste: ${text}\nResultado: ${pvjuegocs}\nPerdiste: ${[dolares].getRandom()} $`);
+           m.reply(`\tPerdiste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Perdiste:* ${[dolares].getRandom()} $`);
        }
    } else if (text == 'cruz') {
        if (pvjuegocs == 'cruz') {
@@ -48,14 +48,14 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
            else who = m.sender;
            let name = conn.getName(who);
            let dolares = global.db.data.users[m.sender].exp += 100;
-           m.reply(`Ganaste ${name} Elegiste: ${text}\nResultado: ${pvjuegocs}\nPremio: ${[dolares].getRandom()} $`);
+           m.reply(`\tGanaste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Premio:* ${[dolares].getRandom()} $`);
        } else {
            let who;
            if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender;
            else who = m.sender;
            let name = conn.getName(who);
            let dolares = global.db.data.users[m.sender].exp -= 300;
-           m.reply(`Perdiste ${name} Elegiste: ${text}\nResultado: ${pvjuegocs}\nPerdiste: ${[dolares].getRandom()} $`);
+           m.reply(`\tPerdiste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Perdiste:* ${[dolares].getRandom()} $`);
        }
    }
 
