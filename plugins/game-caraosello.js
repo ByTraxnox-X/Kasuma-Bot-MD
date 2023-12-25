@@ -16,12 +16,12 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
        // Si el usuario acierta
        let ganancia = Math.floor(Math.random() * 101);
        global.db.data.users[m.sender].dolares += ganancia;
-       m.reply(`\tGanaste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Premio:* ${ganancia} $`);
+       m.reply(`\tGanaste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Premio:*+ ${ganancia} $`);
    } else {
        // Si el usuario no acierta
        let perdida = Math.floor(Math.random() * 101);
        global.db.data.users[m.sender].dolares -= perdida;
-       m.reply(`\tPerdiste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Perdiste:* ${perdida} $`);
+       m.reply(`\tPerdiste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Perdiste:*- ${perdida} $`);
    }
 
    global.db.data.users[m.sender].wait = new Date() * 1;
