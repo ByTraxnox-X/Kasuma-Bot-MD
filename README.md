@@ -49,23 +49,41 @@ Por Mega
 
 ### INSTALACION EN TERMUX
 1. 
-      pkg upgrade -y && pkg update -y
-    
-      pkg install git -y
-    
-      pkg install nodejs -y
-    
-      pkg install ffmpeg -y
-    
-      pkg install imagemagick -y
-    
-      git clone https://github.com/ByTraxnox-X/Kasuma-Bot-MD
-    
-      cd Kasuma-Bot-MD
-    
-      npm i 
-    
-      npm start
+```sh
+pkg upgrade -y && pkg update -y
+```
+
+```sh
+pkg install git -y
+```
+
+```sh
+pkg install nodejs -y
+```
+
+```sh
+pkg install ffmpeg -y
+```
+
+```sh
+pkg install imagemagick -y
+```
+
+```sh
+git clone https://github.com/ByTraxnox-X/Kasuma-Bot-MD
+```
+
+```sh
+cd Kasuma-Bot-MD
+```
+
+```sh
+npm i 
+```
+
+```sh
+npm start
+```
   
 2. Esperar a que se inicie el bot...
 
