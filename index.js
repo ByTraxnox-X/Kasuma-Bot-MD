@@ -9,6 +9,12 @@ import cfonts from 'cfonts';
 import { createInterface } from 'readline'
 import yargs from 'yargs'
 
+
+
+
+const keep_alive = require('./keep_alive.js')
+
+
 // https://stackoverflow.com/a/50052194
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const require = createRequire(__dirname) // Bring in the ability to create the 'require' method
