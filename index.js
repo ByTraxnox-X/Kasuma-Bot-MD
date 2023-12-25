@@ -12,7 +12,6 @@ import yargs from 'yargs'
 
 
 
-const keep_alive = require('./keep_alive.js')
 
 
 // https://stackoverflow.com/a/50052194
