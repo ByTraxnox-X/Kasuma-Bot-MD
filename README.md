@@ -25,7 +25,7 @@
   - Adivinanzas Game
   - Adivina el numero Game
   - Adivina la palabra Game
-  
+  - Cara o cruz Game
 
 ### API FREE
 -  [VisionaryAPI](https://visionaryapi.boxmine.xyz/)
