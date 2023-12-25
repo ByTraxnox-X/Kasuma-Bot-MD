@@ -98,7 +98,7 @@ m.reply(`Perdistes ${name} Elijistes: ${text}\nResultado: ${pvjuegocs}\nPerdiste
 global.db.data.users[m.sender].wait = new Date * 1
 }}
 handler.help = ['suerte']
-handler.tags = ['games']
+handler.tags = ['game']
 handler.command = ['suerte', 'gm'] 
 export default handler
 
