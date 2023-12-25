@@ -1,7 +1,7 @@
 let handler = async (m, { conn, text, command, usedPrefix, args }) => {
    const pp = './src/caraosello.jpg';
    let time = global.db.data.users[m.sender].wait + 40000;
-   let textos = `CARA O SELLO\n\nPuedes Usar El Comando Usando\n\n${usedPrefix + command} cara\n${usedPrefix + command} cruz`;
+   let textos = `\t*CARA O SELLO*\n\nPuedes Jugar usando los comandos:\n\n${usedPrefix + command} cara\n${usedPrefix + command} cruz`;
 
    if (args[0] && ['cara', 'cruz'].includes(args[0].toLowerCase())) {
        text = args[0].toLowerCase();
