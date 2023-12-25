@@ -40,14 +40,14 @@ const handler = async (m, {
       try {
         const eml = await get_mails(conn.dropmail[id][2]);
         const teks = eml[0].map((v, index) => {
-          return `*EMAIL ${index + 1} *
-*De* : ${v.fromAddr}
-*Para* : ${v.toAddr}
+          return `*EMAIL ${index + 1}*
+*De: ${v.fromAddr}
+*Para: ${v.toAddr}
 
-*Mensaje* : ${v.text}
-*Tamaño* : ${formatSize(v.rawSize)}
-*Encabezamiento* : ${v.headerSubject}
-*Download* : ${v.downloadUrl}
+*Mensaje:* ${v.text}
+*Tamaño:* ${formatSize(v.rawSize)}
+*Encabezamiento:* ${v.headerSubject}
+*Download:* ${v.downloadUrl}
    `.trim();
         }).filter((v) => v).join('\n\n\n\n');
         await m.reply(teks || '*VACÍO*' + '\n\nEjemplo *' + usedPrefix + command + ' eliminar* Para eliminar correos electrónicos');
