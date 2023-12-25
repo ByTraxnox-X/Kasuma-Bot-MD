@@ -126,7 +126,9 @@ npm start
 ### ACTIVAR EN REPLIT
 [Crear Servidor en Replit](https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD) 
 
-1. 
+1. Click "Import from GitHub
+
+2. 
 ```sh
 yarn
 ```
@@ -137,7 +139,7 @@ npm install
 node index.js
 ```
 
-    Y solo te queda vincular.
+    Y solo te queda vincular con WhatsApp.
 
 ---------
 
