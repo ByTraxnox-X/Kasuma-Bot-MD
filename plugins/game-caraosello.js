@@ -5,14 +5,14 @@ let textos = `CARA O SELLO\n\nPuedes Usar El Comando Usando\n\n${usedPrefix + co
 if (!args[0]) return await conn.sendMessage(m.chat, { image: { url: pp }, caption: textos, quoted: m })
 var pvjuegocs = Math.random()
 if (pvjuegocs < 0.50) {//34
-  /*  pvjuegocs = 'cara'
+   pvjuegocs = 'cara'
 } else if (pvjuegocs > 0.50){//34
 pvjuegocs = 'cruz' 
 }
 if (text == pvjuegocs) {
 let who
-if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender*/
-else who = m.sender 
+if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+else who = m.sender
 let name = conn.getName(who) 
 let dolares = global.db.data.users[m.sender].exp += 2
 m.reply(`Ganastes ${name} Elijistes: ${text}\nResultado: ${pvjuegocs}\nPremio: ${[dolares].getRandom()} $`)
