@@ -126,9 +126,9 @@ npm start
 ### ACTIVAR EN REPLIT
 [Crear Servidor en Replit](https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD) 
 
-1. Click "Import from GitHub
+  1. Click "Import from GitHub
 
-2. 
+2. Ingresar estos comandos en una pestaña "Shell"
 ```sh
 yarn
 ```
