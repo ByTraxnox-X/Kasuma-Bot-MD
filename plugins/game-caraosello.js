@@ -10,21 +10,18 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
        return; 
    }
 
-   var pvjuegocs = Math.random();
-   if (pvjuegocs < 0.50) {
-       pvjuegocs = 'cara';
-   } else {
-       pvjuegocs = 'cruz';
-   }
+   var pvjuegocs = Math.random() < 0.50 ? 'cara' : 'cruz';
 
-   let ganancia = Math.floor(Math.random() * 201) - 100;
-
-   if (ganancia < 0) {
-       global.db.data.users[m.sender].dolares += ganancia;
-       m.reply(`\tPerdiste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Perdiste:* ${ganancia} $`);
-   } else {
+   if (text == pvjuegocs) {
+       // Si el usuario acierta
+       let ganancia = Math.floor(Math.random() * 101);
        global.db.data.users[m.sender].dolares += ganancia;
        m.reply(`\tGanaste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Premio:* ${ganancia} $`);
+   } else {
+       // Si el usuario no acierta
+       let perdida = Math.floor(Math.random() * 101);
+       global.db.data.users[m.sender].dolares -= perdida;
+       m.reply(`\tPerdiste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Perdiste:* ${perdida} $`);
    }
 
    global.db.data.users[m.sender].wait = new Date() * 1;
@@ -33,5 +30,4 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
 handler.help = ['suerte'];
 handler.tags = ['game'];
 handler.command = ['suerte', 'gm'];
-
 export default handler;
