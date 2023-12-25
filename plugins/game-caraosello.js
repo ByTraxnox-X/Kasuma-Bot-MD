@@ -3,7 +3,7 @@ let pp = 'https://ibb.co/RCKtJjR'
 const pp = './src/caraosello.jpg';
 let time = global.db.data.users[m.sender].wait + 40000
 let textos = `CARA O SELLO\n\nPuedes Usar El Comando Usando\n\n${usedPrefix + command} cara\n${usedPrefix + command} cruz`
-if (!args[0]) return await conn.sendMessage(m.chat, { image: { url: pp }, caption: textos, quoted: m })
+//if (!args[0]) return await conn.sendMessage(m.chat, { image: { url: pp }, caption: textos, quoted: m })
 var pvjuegocs = Math.random()
 if (pvjuegocs < 0.50) {//34
    pvjuegocs = 'cara'
