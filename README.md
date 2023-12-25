@@ -93,6 +93,18 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 
 ---------
 
+### ACTIVAR EN REPLIT
+1. 
+```sh
+[Crear Servidor en Replit](https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD) 
+> yarn
+> npm install
+> node index.js
+```
+
+    Y solo te queda vincular.
+
+---------
 
 ## BOXMINE HOST
 
