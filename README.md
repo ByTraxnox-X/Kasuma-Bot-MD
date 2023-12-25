@@ -89,8 +89,8 @@ npm start
 
 3. Elegir el metodo de conexion:
     
-     1 - qr  
-     2 - Codigo de 8 digitos
+           1 - qr  
+           2 - Codigo de 8 digitos
 
 4. Si usted elegio el QR:
 
@@ -110,10 +110,15 @@ Si por alguna razon usted no pudo conectar con el codigo qr o codigo de 8 digito
 ### EN CASO DE DETENERSE EN TERMUX
 1. 
 ```sh
-ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
-> cd 
-> cd Kasuma-Bot-MD
-> npm start
+cd 
+```
+
+```sh
+cd Kasuma-Bot-MD
+```
+
+```sh
+npm start
 ```
 
 ---------
@@ -123,9 +128,13 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 
 1. 
 ```sh
-> yarn
-> npm install
-> node index.js
+yarn
+```
+```sh
+npm install
+```
+```sh
+node index.js
 ```
 
     Y solo te queda vincular.
