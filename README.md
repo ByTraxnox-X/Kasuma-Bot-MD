@@ -49,31 +49,38 @@ Por Mega
 
 ### INSTALACION EN TERMUX
 1. 
-```sh
-$ pkg upgrade -y && pkg update -y
-$ pkg install git -y
-$ pkg install nodejs -y
-$ pkg install ffmpeg -y
-$ pkg install imagemagick -y
-$ git clone https://github.com/ByTraxnox-X/Kasuma-Bot-MD
-$ cd Kasuma-Bot-MD
-$ npm i 
-$ npm start
-```
+  pkg upgrade -y && pkg update -y
+
+  pkg install git -y
+
+  pkg install nodejs -y
+
+  pkg install ffmpeg -y
+
+  pkg install imagemagick -y
+
+  git clone https://github.com/ByTraxnox-X/Kasuma-Bot-MD
+
+  cd Kasuma-Bot-MD
+
+  npm i 
+
+  npm start
+  
 2. Esperar a que se inicie el bot...
 
 3. Elegir el metodo de conexion:
     
-         1 - qr  
-         2 - Codigo de 8 digitos
+  1 - qr  
+  2 - Codigo de 8 digitos
 
 4. Si usted elegio el QR:
 
-         Escanea el código QR desde el segundo dispositivo. (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo)
+  Escanea el código QR desde el segundo dispositivo. (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo)
 
 4. Si usted elegio el Codigo de 8 digitos:
 
-          Copia el codigo de 8 digitos (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo > vincular con numero telefonico)
+  Copia el codigo de 8 digitos (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo > vincular con numero telefonico)
 
 
 
