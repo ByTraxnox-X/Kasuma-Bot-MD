@@ -94,9 +94,10 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 ---------
 
 ### ACTIVAR EN REPLIT
+[Crear Servidor en Replit](https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD) 
+
 1. 
 ```sh
-[Crear Servidor en Replit](https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD) 
 > yarn
 > npm install
 > node index.js
