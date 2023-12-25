@@ -6,7 +6,6 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
    if (args[0] && ['cara', 'cruz'].includes(args[0].toLowerCase())) {
        text = args[0].toLowerCase();
    } else {
-
        conn.sendMessage(m.chat, { image: { url: pp }, caption: textos, mentions: [m.sender] }, { quoted: m });
        return; 
    }
@@ -23,7 +22,7 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
        if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender;
        else who = m.sender;
        let name = conn.getName(who);
-       let dolares = global.db.data.users[m.sender].dolares += 2;
+       let dolares = global.db.data.users[m.sender].dolares += Math.floor(Math.random() * 101); // Premio entre 0 y 100 dólares
        m.reply(`\tGanaste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Premio:* ${[dolares].getRandom()} $`);
    } else if (text == 'cara') {
        if (pvjuegocs == 'cara') {
@@ -31,7 +30,7 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
            if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender;
            else who = m.sender;
            let name = conn.getName(who);
-           let dolares = global.db.data.users[m.sender].dolares += 2;
+           let dolares = global.db.data.users[m.sender].dolares += Math.floor(Math.random() * 101);
            m.reply(`\tGanaste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Premio:* ${[dolares].getRandom()} $`);
        } else {
            let who;
@@ -47,7 +46,7 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
            if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender;
            else who = m.sender;
            let name = conn.getName(who);
-           let dolares = global.db.data.users[m.sender].dolares += 100;
+           let dolares = global.db.data.users[m.sender].dolares += Math.floor(Math.random() * 101);
            m.reply(`\tGanaste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Premio:* ${[dolares].getRandom()} $`);
        } else {
            let who;
