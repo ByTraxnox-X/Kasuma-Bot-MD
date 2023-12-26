@@ -35,9 +35,9 @@ recuerda responder con el nombre completo del presunto culpable.
     ]
 }
 
-handler.help = ['acertijo']
+handler.help = ['caso']
 handler.tags = ['game']
-handler.command = /^(acertijo|acert|pregunta|adivinanza|tekateki)$/i
+handler.command = /^(caso|casopoliciaco|casocriminal|casoinvestigar|investigarcaso)$/i
 handler.register = true
 
 export default handler
