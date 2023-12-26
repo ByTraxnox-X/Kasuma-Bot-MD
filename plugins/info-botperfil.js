@@ -4,7 +4,7 @@ import { join } from 'path'
 
 let handler = async function (m, { conn, __dirname }) {
         const System = global.db.data.settings[conn.user.jid] || {};
-        if (System.System = false) {
+        if (System.System = true) {
             throw 'Al parecer los archivos no coinciden con nuestro sistema, Si usted ha tomado este comando, y quiere hacerlo funcionar, comuniquese con mis desarrolladores en: https://solo.to/kasuma'
           }
 
