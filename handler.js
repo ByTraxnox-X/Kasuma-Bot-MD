@@ -540,7 +540,7 @@ export async function participantsUpdate({ id, participants, action }) {
         case 'promote':
             text = (chat.sPromote || this.spromote || conn.spromote || '@user ahora es administrador')
         case 'demote':
-            let pp = await this.profilePictureUrl(participants[0], 'image').catch(_ => 'https://i.imgur.com/mWHCPIe.jpg') 
+            let pp = await this.profilePictureUrl(participants[0], 'image').catch(_ => './src/avatar_contact.png') 
             if (!text)
                 text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ya no es administrador')
             text = text.replace('@user', '@' + participants[0].split('@')[0])
