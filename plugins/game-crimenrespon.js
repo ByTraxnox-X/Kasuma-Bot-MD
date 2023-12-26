@@ -11,14 +11,15 @@ handler.before = async function (m) {
         let json = JSON.parse(JSON.stringify(this.tekateki[id][1]));
 
         // Modificación aquí
-        let response = { response: json.response };
+        let response = json.response;
+        this.tekateki[id][1] = { response }; // Actualización aquí
 
-        if (m.text.toLowerCase() == response.response.toLowerCase().trim()) {
+        if (m.text.toLowerCase() == response.toLowerCase().trim()) {
             global.db.data.users[m.sender].exp += this.tekateki[id][2];
             m.reply(`*Respuesta correcta!*\n+${this.tekateki[id][2]} Exp`);
             clearTimeout(this.tekateki[id][3]);
             delete this.tekateki[id];
-        } else if (similarity(m.text.toLowerCase(), response.response.toLowerCase().trim()) >= threshold) m.reply(`Casi lo logras!`);
+        } else if (similarity(m.text.toLowerCase(), response.toLowerCase().trim()) >= threshold) m.reply(`Casi lo logras!`);
         else m.reply('Respuesta incorrecta!');
     }
     return !0;
