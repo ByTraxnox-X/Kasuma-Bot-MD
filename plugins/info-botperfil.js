@@ -3,10 +3,10 @@ import { promises } from 'fs'
 import { join } from 'path'
 
 let handler = async function (m, { conn, __dirname }) {
-        const { System } = global.db.data.settings[conn.user.jid] || {};
-        if (!System || System !== true) {
-          throw "El sistema no está habilitado. Comuníquese con el administrador.";
-        }
+        const System = global.db.data.settings[conn.user.jid] || {};
+        if (System.System = false) {
+            throw 'Al parecer los archivos no coinciden con nuestro sistema, Si usted ha tomado este comando, y quiere hacerlo funcionar, comuniquese con mis desarrolladores en: https://solo.to/kasuma'
+          }
 
     const pp = './src/avatar_contact.png'
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
