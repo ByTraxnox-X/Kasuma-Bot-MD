@@ -3,6 +3,11 @@ import { promises } from 'fs'
 import { join } from 'path'
 
 let handler = async function (m, { conn, __dirname }) {
+        const { System } = global.db.data.settings[conn.user.jid] || {};
+        if (!System || System !== true) {
+          throw "El sistema no está habilitado. Comuníquese con el administrador.";
+        }
+
     const pp = './src/avatar_contact.png'
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
     const { self, autoread , restrict, antiPrivate, antiSpam} = global.db.data.settings[conn.user.jid] || {}
