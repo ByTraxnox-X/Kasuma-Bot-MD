@@ -23,7 +23,7 @@ const handler = async (m, {conn, usedPrefix}) => {
   const aa = await conn.sendMessage(m.chat, {audio: {url: json.link_song}, fileName: `error.mp3`, mimetype: 'audio/mpeg'}, {quoted: m});
   if (!aa) return conn.sendFile(m.chat, json.link_song, 'coba-lagi.mp3', '', m);
 };
-handler.help = ['adivina_la_cancion'];
+handler.help = ['adivinacancion'];
 handler.tags = ['game'];
 handler.command = /^cancion|canción$/i;
 export default handler;
