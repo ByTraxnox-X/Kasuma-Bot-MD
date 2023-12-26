@@ -23,7 +23,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 *Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
 *Bono:* +${poin} Exp
 
-Recuerda responder con el nombre completo!
+Recuerda responder con el nombre completo del presunto culpable!
 `.trim()
     conn.tekateki[id] = [
        await conn.reply(m.chat, caption, m),
