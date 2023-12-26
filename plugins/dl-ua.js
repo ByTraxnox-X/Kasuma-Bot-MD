@@ -6,7 +6,7 @@ const handler = async (m, { conn, args }) => {
 
 
 const k = Math.floor(Math.random() * 70);
-const vn = `${au}/sound/sound${k}.mp3`;
+const vn = `${audiorandom}/sound/sound${k}.mp3`;
 conn.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted : m})}
 
 
