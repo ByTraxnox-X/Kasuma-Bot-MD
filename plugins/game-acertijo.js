@@ -1,7 +1,7 @@
 import fs from 'fs'
 
-let timeout = 70000
-let poin = 1000
+let timeout = 30000
+let poin = 500
 
 let handler = async (m, { conn, usedPrefix }) => {
     conn.tekateki = conn.tekateki ? conn.tekateki : {}
@@ -14,7 +14,8 @@ let handler = async (m, { conn, usedPrefix }) => {
     let json = tekateki[Math.floor(Math.random() * tekateki.length)]
     let _clue = json.response
     let clue = _clue.replace(/[A-Za-z]/g, '_')
-    let caption = `*${json.question}*
+    let caption = `
+ⷮ *${json.question}*
 
 *Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
 *Bono:* +${poin} Exp
@@ -31,7 +32,6 @@ let handler = async (m, { conn, usedPrefix }) => {
 
 handler.help = ['acertijo']
 handler.tags = ['game']
-handler.command = /^(acertijo|acert|pregunta|adivinanza|tekateki)$/i
-handler.register = true
+handler.command = /^(acertijo|acert|adivinanza|tekateki)$/i
 
 export default handler
