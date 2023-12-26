@@ -1,23 +1,28 @@
 import fs from 'fs'
 
-let timeout = 70000
-let poin = 1000
+let timeout = 180000
+let poin = 10000
 
 let handler = async (m, { conn, usedPrefix }) => {
     conn.tekateki = conn.tekateki ? conn.tekateki : {}
     let id = m.chat
     if (id in conn.tekateki) {
-        conn.reply(m.chat, 'Todavía hay acertijos sin responder en este chat', conn.tekateki[id][0])
+        conn.reply(m.chat, 'Todavía hay juegos sin responder en este chat', conn.tekateki[id][0])
         throw false
     }
-    let tekateki = JSON.parse(fs.readFileSync(`./src/game/acertijo.json`))
+    let tekateki = JSON.parse(fs.readFileSync(`./src/game/casos.json`))
     let json = tekateki[Math.floor(Math.random() * tekateki.length)]
     let _clue = json.response
     let clue = _clue.replace(/[A-Za-z]/g, '_')
-    let caption = `*${json.question}*
+    let caption = `*${json.caso}*
+
+*Sospechosos:*
+${json.sospechosos}\n
 
 *Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
 *Bono:* +${poin} Exp
+
+Recuerda contestar con el nombre completo!
 `.trim()
     conn.tekateki[id] = [
        await conn.reply(m.chat, caption, m),
@@ -29,9 +34,9 @@ let handler = async (m, { conn, usedPrefix }) => {
     ]
 }
 
-handler.help = ['acertijo']
+handler.help = ['casocriminal']
 handler.tags = ['game']
-handler.command = /^(acertijo|acert|pregunta|adivinanza|tekateki)$/i
+handler.command = /^(caso|casocriminal|casopoliciaco|casoinvestigar)$/i
 handler.register = true
 
 export default handler
