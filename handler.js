@@ -171,7 +171,6 @@ export async function handler(chatUpdate) {
                 if (!('restrict' in settings)) settings.restrict = false
                 if (!('antiPrivate' in settings)) settings.antiPrivate = false
                 if (!('antiSpam' in settings)) settings.antiSpam = false 
-                if (!('System' in settings)) settings.System = true 
                 if (!('status' in settings)) settings.status = 0
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
@@ -179,7 +178,6 @@ export async function handler(chatUpdate) {
                 antiPrivate: false,
                 restrict: false, 
                 antiSpam: false,
-                System: true,
                 status: 0
             }
         } catch (e) {
