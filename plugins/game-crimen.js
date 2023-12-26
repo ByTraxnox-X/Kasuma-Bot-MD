@@ -17,7 +17,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let caption = `*${json.caso}*
 
 *Sospechosos:*
-*${json.Sospechosos}*
+${json.Sospechosos}
 
 
 *Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
