@@ -53,7 +53,11 @@ Por Mega
 
 [Tutorial](https://youtu.be/IOzudtyN87U?si=spflnObmfSHXnVa5) 
 
-1. 
+1. Para prevenir algún error de comandos, ponga uno por uno.
+```sh
+termux-change-repo
+```
+
 ```sh
 pkg upgrade -y && pkg update -y
 ```
