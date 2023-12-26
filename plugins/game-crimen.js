@@ -24,15 +24,16 @@ ${json.sospechosos}\n
 
 Recuerda contestar con el nombre completo!
 `.trim()
-    conn.tekateki[id] = [
-       await conn.reply(m.chat, caption, m),
-        json, poin,
-        setTimeout(async () => {
-            if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!\n*Respuesta:* ${json.response}`, conn.tekateki[id][0])
-            delete conn.tekateki[id]
-        }, timeout)
-    ]
-}
+conn.tekateki[id] = [
+    await conn.reply(m.chat, caption, m),
+    { response: json.response },
+    json, poin,
+    setTimeout(async () => {
+        if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!\n*Respuesta:* ${json.response}`, conn.tekateki[id][0]);
+        delete conn.tekateki[id];
+    }, timeout)
+];
+};
 
 handler.help = ['casocriminal']
 handler.tags = ['game']
