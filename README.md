@@ -50,6 +50,9 @@ Por Mega
 [Termux](https://mega.nz/file/8ms2wSxZ#jVRHw31hJiZTMZjd09vEFLrfjmlOK7EybnU9bqLn-yg) 
 
 ### INSTALACION EN TERMUX
+
+[Tutorial](https://youtu.be/IOzudtyN87U?si=spflnObmfSHXnVa5) 
+
 1. 
 ```sh
 pkg upgrade -y && pkg update -y
