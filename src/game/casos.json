@@ -1,7 +1,10 @@
 [
     {
-        "question": "En la antigua Mansión Argent, una de las propiedades más imponentes del país, el aristócrata Sir Reginald Argent es encontrado muerto en su estudio. La mansión, conocida por sus oscuros pasadizos y leyendas de tragedias familiares, alberga un secreto que podría arrojar luz sobre el asesinato. Sin testigos, sin evidencia directa, los detectives se enfrentan a un enigma que se remonta a generaciones atrás.",
-        "Sospechosos":"*Lady Isabella Argent:* La esposa de Sir Reginald, cuya aparente calma oculta un pasado tumultuoso lleno de secretos familiares.\n\n*Lord Archibald Argent:* El hermano menor, conocido por sus desacuerdos con Sir Reginald sobre la gestión de la mansión y la fortuna familiar.\n\n*Miss Genevieve Evergreen:* La tutora de los hijos Argent, con una conexión personal con la familia que va más allá de su papel oficial.\n\n*Mr. Winston Thorne:* El abogado de la familia Argent, con acceso a información financiera delicada y posibles motivos relacionados con disputas legales.",
-        "response": ["Lord Archibald Argent", "Lady Isabella Argent"]
+        "caso": "En la antigua Mansión Argent, una de las propiedades más imponentes del país, el aristócrata Sir Reginald Argent es encontrado muerto en su estudio. La mansión, conocida por sus oscuros pasadizos y leyendas de tragedias familiares, alberga un secreto que podría arrojar luz sobre el asesinato. Sin testigos, sin evidencia directa, los detectives se enfrentan a un enigma que se remonta a generaciones atrás.",
+        "Sospechosos": "*Lady Isabella Argent:* La esposa de Sir Reginald, cuya aparente calma oculta un pasado tumultuoso lleno de secretos familiares.\n\n*Lord Archibald Argent:* El hermano menor, conocido por sus desacuerdos con Sir Reginald sobre la gestión de la mansión y la fortuna familiar.\n\n*Miss Genevieve Evergreen:* La tutora de los hijos Argent, con una conexión personal con la familia que va más allá de su papel oficial.\n\n*Mr. Winston Thorne:* El abogado de la familia Argent, con acceso a información financiera delicada y posibles motivos relacionados con disputas legales.",
+        "response": [
+            "Lord Archibald Argent",
+            "Lady Isabella Argent"
+        ]
     }
 ]
