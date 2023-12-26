@@ -11,7 +11,7 @@ conn.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 
 
 
 
-handler.help = ['au'];
+handler.help = ['ua'];
 handler.tags = ['dl'];
 handler.command = ['audiorandom'];
 
