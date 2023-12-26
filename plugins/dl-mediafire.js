@@ -12,7 +12,6 @@ let handler = async (m, { conn, args, text, usedPrefix, command, isOwner, isPrem
     
     let limit = isPrems || isOwner ? prem : free
 	let u = /https?:\/\//.test(args[0]) ? args[0] : 'https://' + args[0]
-   // let ss = await (await fetch(global.API('nrtm', '/api/ssweb', { delay: 1000, url: u }))).buffer()
     try {
     let res = await mediafiredl(args[0])
     let { url, url2, filename, ext, aploud, filesize, filesizeH } = res

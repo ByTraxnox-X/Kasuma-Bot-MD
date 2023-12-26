@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 async function convertCurrency(fromCurrency, toCurrency, amount) {
   const apiKey = 'b012d0c9ad74993201acdec1'; 
 
-  const apiUrl = `https://api.exchangerate-api.com/v4/latest/${fromCurrency}`;
+  const apiUrl = `${apiconversion}/v4/latest/${fromCurrency}`;
 
   try {
     const response = await fetch(apiUrl);
@@ -29,7 +29,7 @@ let handler = async (m, { text }) => {
     m.reply(result);
   } else {
     m.reply('Utiliza el formato correcto: *MonedaDeOrigen* *MonedaDeDestino* Cantidad');
-    m.reply('*Ingrese a:* https://www.easymarkets.com/int/es/learn-centre/discover-trading/currency-acronyms-and-abbreviations/ para conocer los *formatos de monedas*')
+    m.reply(`*Ingrese a:* ${conversiondocs} para conocer los *formatos de monedas*`)
   }
 }
 

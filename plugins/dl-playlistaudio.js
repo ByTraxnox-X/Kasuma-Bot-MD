@@ -73,7 +73,7 @@ const handler = async (m, {text, conn, args, usedPrefix, command}) => {
     await conn.sendMessage(m.chat, {text: '', edit: key}, {quoted: m});
   } catch {
     try {
-      const lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytaudio2?apikey=${spotifykey}&url=${youtubeLink}`);
+      const lolhuman = await fetch(`${lolhuman}/api/ytaudio2?apikey=${spotifykey}&url=${youtubeLink}`);
       const lolh = await lolhuman.json();
       const n = lolh.result.title || 'error';
       m.react(done)

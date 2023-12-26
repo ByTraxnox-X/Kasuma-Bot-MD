@@ -41,17 +41,17 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
           await conn.sendFile(m.chat, dl_url, ttl + '.mp3', null, m, false, {mimetype: 'audio/mpeg'});
         } catch {
           try {
-            const dataRE = await fetch(`https://api.akuari.my.id/downloader/youtube?link=${yt_play[0].url}`);
+            const dataRE = await fetch(`${akuari}/downloader/youtube?link=${yt_play[0].url}`);
             const dataRET = await dataRE.json();
             conn.sendMessage(m.chat, {audio: {url: dataRET.mp3[1].url}, fileName: yt_play[0].title + '.mp3', mimetype: 'audio/mpeg'}, {quoted: m});
           } catch {
             try {
-              const humanLol = await fetch(`https://api.lolhuman.xyz/api/ytplay?apikey=${spotifykey}&query=${yt_play[0].title}`);
+              const humanLol = await fetch(`${lolhuman}/api/ytplay?apikey=${spotifykey}&query=${yt_play[0].title}`);
               const humanRET = await humanLol.json();
               conn.sendMessage(m.chat, {audio: {url: humanRET.result.audio.link}, fileName: yt_play[0].title + '.mp3', mimetype: 'audio/mpeg'}, {quoted: m});
             } catch {
               try {
-                const lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytaudio2?apikey=${spotifykey}&url=${yt_play[0].url}`);
+                const lolhuman = await fetch(`${lolhuman}/api/ytaudio2?apikey=${spotifykey}&url=${yt_play[0].url}`);
                 const lolh = await lolhuman.json();
                 const n = lolh.result.title || 'error';
                 await conn.sendMessage(m.chat, {audio: {url: lolh.result.link}, fileName: `${n}.mp3`, mimetype: 'audio/mpeg'}, {quoted: m});

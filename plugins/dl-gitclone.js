@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     m.react(rwait)
     let [_, user, repo] = args[0].match(regex) || []
     repo = repo.replace(/.git$/, '')
-    let url = `https://api.github.com/repos/${user}/${repo}/zipball`
+    let url = `${githubapi}/${user}/${repo}/zipball`
     let filename = (await fetch(url, { method: 'HEAD' })).headers.get('content-disposition').match(/attachment; filename=(.*)/)[1]
   
     m.reply(`*Espere, enviando repositorio..*`)

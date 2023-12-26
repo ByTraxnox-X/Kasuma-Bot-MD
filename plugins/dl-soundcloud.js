@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 const handler = async (m, {conn, text}) => {
   if (!text) throw `ingrese el nombre de la cancion`;
   try {
-    const res = await fetch(`https://api-v2.soundcloud.com/search/tracks?q=${text}&client_id=iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX`);
+    const res = await fetch(`${soundcloud}/search/tracks?q=${text}&client_id=${soundcloudID}`);
     const json2 = await res.json();
     let permalinkUrl;
     if (json2.collection.length > 0) {
@@ -13,9 +13,9 @@ const handler = async (m, {conn, text}) => {
       permalinkUrl = await json2.collection[0].permalink_url;
     }
     m.react(rwait)
-    const res2 = await fetch(`https://api.akuari.my.id/downloader/scdl?link=${permalinkUrl}`);
+    const res2 = await fetch(`${akuari}/downloader/scdl?link=${permalinkUrl}`);
     const json = await res2.json();
-    const shortUrl = await (await fetch(`https://tinyurl.com/api-create.php?url=${json.link}`)).text();
+    const shortUrl = await (await fetch(`${tunyurl}/api-create.php?url=${json.link}`)).text();
     const soundcloudt = `*${json.title}*
     
     *URL:* ${shortUrl}`;

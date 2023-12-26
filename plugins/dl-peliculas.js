@@ -50,7 +50,7 @@ resultSearch.push({ title: title, link: link })})
 return resultSearch }
 
 async function searchP(query, numberPage = 1) { 
-const $ = await safeLoad(`https://pelisplushd.cx/search/`, {
+const $ = await safeLoad(`${peliplus}`, {
 params: { s: query, page: numberPage }})
 const resultSearch = []
 $("a[class^='Posters']").each((_, e) => {

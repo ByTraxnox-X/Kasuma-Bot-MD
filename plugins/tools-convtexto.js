@@ -10,7 +10,7 @@ const handler = async (m, {conn}) => {
   if (/image/.test(mime)) {
 
     const url = await webp2png(await q.download());
-    const res = await fetch(API('https://api.ocr.space', '/parse/imageurl', {apikey: '8e65f273cd88957', url}));
+    const res = await fetch(API(`${apiocr}`, '/parse/imageurl', {apikey: `${apiketocr}`, url}));
     if (res.status !== 200) throw res.statusText;
 
     const json = await res.json();

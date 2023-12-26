@@ -12,7 +12,7 @@ if (enviando) return;
   try {
     const apiUrls = [
       `${apivisionary}/api/ytplay?text=${text}`,
-      `https://api-brunosobrino.onrender.com/api/ytplay?text=${text}`
+      `${api2}/api/ytplay?text=${text}`
     ];
 
     for (const url of apiUrls) {
@@ -44,12 +44,12 @@ if (enviando) return;
       } catch {
           try {
             if (command === 'youtubeaudio') {
-              apiUrl = `https://api-brunosobrino.onrender.com/api/v1/ytmp3?url=${data.resultado.url}`;
+              apiUrl = `${api2}/api/v1/ytmp3?url=${data.resultado.url}`;
               mimeType = 'audio/mpeg';
               fileName = 'error.mp3';
               buff = await conn.getFile(apiUrl);
             } else if (command === 'youtubevideo') {
-              apiUrl = `https://api-brunosobrino.onrender.com/api/v1/ytmp4?url=${data.resultado.url}`;
+              apiUrl = `${api2}/api/v1/ytmp4?url=${data.resultado.url}`;
               mimeType = 'video/mp4';
               fileName = 'error.mp4';
               buff = await conn.getFile(apiUrl);

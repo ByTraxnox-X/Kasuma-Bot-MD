@@ -88,7 +88,7 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
       enviando = false
     } catch {
       try {
-        const lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytvideo2?apikey=${spotifykey}&url=${youtubeLink}`);
+        const lolhuman = await fetch(`${lolhuman}/api/ytvideo2?apikey=${spotifykey}&url=${youtubeLink}`);
         const lolh = await lolhuman.json();
         const n = lolh.result.title || 'error';
         const n2 = lolh.result.link;

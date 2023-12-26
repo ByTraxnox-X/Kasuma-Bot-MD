@@ -11,7 +11,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     
     m.react(rwait)
     if (text.includes('http://') || text.includes('https://')) {
-        if (!text.includes('xnxx.com')) return m.reply(`Ingrese un link de *xnxx.com*`)
+        if (!text.includes(`${xnxx}`)) return m.reply(`Ingrese un link de *xnxx.com*`)
         try {
             let xn = await fg.xnxxdl(text)
             conn.sendFile(m.chat, xn.result.files.high, xn.result.title + '.mp4', `
