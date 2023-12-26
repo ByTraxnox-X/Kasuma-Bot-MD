@@ -10,6 +10,8 @@
   - ChatGPT AI
   - BingChat AI
   - BlackBox AI
+  - Llama AI
+  - Gemini AI
   - DALL-E AI
   - PhotoLeap AI
   - Imagine AI
