@@ -28,7 +28,7 @@ let handler = async (m, { conn, usedPrefix, args }) => {
                      width: towidth,
               },
        }
-       let compres = await conn.resize(link, towidth - 0, toheight - 0)
+       let compres = await conn.SendMessage(link, towidth - 0, toheight - 0)
        let linkcompres = await (isMedia ? uploadImage : uploadImage)(compres)
 
        conn.sendFile(m.chat, compres, null, `*Resolucion anterior:*\n
