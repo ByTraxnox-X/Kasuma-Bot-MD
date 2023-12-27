@@ -4,7 +4,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let mime = (q.msg || q).mimetype || ''
 
     if (!m.quoted)
-        throw `Responda a el Video o Audio que desea convertir`
+        throw `Responda a el Video o Audio que desea convertir a documento.`
 
     if (!text) throw `Ingrese el nombre que desea colocar al documento`
     if (!/audio|video/.test(mime)) throw `Responda al video o audio que desea convertir a documento`
@@ -13,7 +13,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     if (!media) throw 'Error al descargar medio'
 
-    m.reply(`${rwait}`)
+    m.reply(`${wait}`)
 
     if (/video/.test(mime)) {
 

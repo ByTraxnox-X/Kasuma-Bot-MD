@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 let handler = async (m, { conn, text }) => {
   if (!text) throw 'Please provide a word to search for.';
 
-  const url = `${diccionario}/v0/define?term=${encodeURIComponent(text)}`;
+  const url = `${diccionarioapi}/v0/define?term=${encodeURIComponent(text)}`;
 
   const response = await fetch(url);
   const json = await response.json();
