@@ -77,6 +77,11 @@ delete this.suit[room.id]}}
 return !0
 }
 handler.exp = 0
+
+handler.help = ['suitpvp'];
+handler.tags = ['game'];
+handler.command = /^suitpvp$/i;
+
 export default handler
 function random(arr) {
 return arr[Math.floor(Math.random() * arr.length)]}
