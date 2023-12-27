@@ -102,26 +102,15 @@ npm i
 2. Elegir el metodo de conexion:
     
            npm start qr  
-
            npm start code
 
 3. Esperar a que se inicie el bot...
 
-
-4. Elegir el metodo de conexion:
-    
-           1 - qr  
-
-           2 - Codigo de 8 digitos
-
 * Si usted elegio el QR:
-
 
            Escanea el código QR desde el segundo dispositivo. (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo)
 
-
 * Si usted elegio el Codigo de 8 digitos:
-
 
             Copia el codigo de 8 digitos (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo > vincular con numero telefonico)
 
