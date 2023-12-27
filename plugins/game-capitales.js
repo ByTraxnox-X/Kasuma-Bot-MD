@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-let timeout = 15000
+let timeout = 30000
 let poin = 1000
 
 let handler = async (m, { conn, usedPrefix }) => {
@@ -15,7 +15,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let _clue = json.response
     let clue = _clue.replace(/[A-Za-z]/g, '_')
     let caption = `
-ⷮ *${json.pais}*
+ⷮ *Pais:* ${json.pais}
 
 *Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
 *Bono:* +${poin} Exp
