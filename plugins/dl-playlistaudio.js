@@ -24,10 +24,10 @@ const handler = async (m, {text, conn, args, usedPrefix, command}) => {
             throw `No se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.length}`;
           }
         } else {
-          throw `Use el comando de la siguiente manera${usedPrefix + command} <numero>, y busca una playlist con ${usedPrefix}playlist <texto>`;
+          throw `Use el comando de la siguiente manera ${usedPrefix + command} <numero>, y para buscar una playlist con ${usedPrefix}playlist <texto>`;
         }
       } else {
-        throw `Use el comando de la siguiente manera${usedPrefix + command} <numero>, y busca una playlist con ${usedPrefix}playlist <texto>`;
+        throw `Use el comando de la siguiente manera ${usedPrefix + command} <numero>, y para buscar una playlist con ${usedPrefix}playlist <texto>`;
       }
     }
   }
