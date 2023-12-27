@@ -25,8 +25,25 @@ global.APIKeys = { // APIKey Here
   'https://api.fgmods.xyz': 'Rex6QGQI'
 }
 
-//KEYS
+//APIS
 global.tiktokkey = ['GIf4o4qJ']
+global.soundcloudID = ["iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX"]
+global.apikeyocr = ["8e65f273cd88957"]
+global.apivisionary = ["https://visionaryapi.boxmine.xyz"]
+global.githubapi = ["https://api.github.com/repos"]
+global.drop = ["https://dropmail.me"]
+global.dropmail = ["https://dropmail.me/api/graphql/web-test-wgq6m5i?query=mutation%20%7BintroduceSession%20%7Bid%2C%20expiresAt%2C%20addresses%20%7Baddress%7D%7D%7D"]
+global.apiocr = ["https://api.ocr.space"]
+global.rutacrimen = ["./src/game/casos.json"]
+global.api2 = ["https://api-brunosobrino.onrender.com"]
+global.soundcloud = ["https://api-v2.soundcloud.com"]
+global.lolhuman = ["https://api.lolhuman.xyz"]
+global.akuari = ["https://api.akuari.my.id"]
+global.xnxx = ["xnxx.com"]
+global.tunyurl = ["https://tinyurl.com"]
+global.peliplus = ["https://pelisplushd.cx/search/"]
+global.apiconversion = ["https://api.exchangerate-api.com"]
+global.conversiondocs = ["https://www.easymarkets.com/int/es/learn-centre/discover-trading/currency-acronyms-and-abbreviations/"]
 
 // Sticker WM
 global.packname = 'Kasuma-Bot'
