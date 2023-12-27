@@ -27,6 +27,7 @@
   - Adivinanzas Game
   - Adivina el numero Game
   - Adivina la palabra Game
+  - Adivina la capital de un pais Game
   - Cara o cruz Game
 
 ### API FREE
