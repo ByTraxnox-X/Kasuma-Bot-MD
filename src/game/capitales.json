@@ -1,0 +1,554 @@
+[
+    {
+        "pais": "Afganistán",
+        "response": "Kabul"
+    },
+    {
+        "pais": "Albania",
+        "response": "Tirana"
+    },
+    {
+        "pais": "Argelia",
+        "response": "Argel"
+    },
+    {
+        "pais": "Andorra",
+        "response": "Andorra la Vella"
+    },
+    {
+        "pais": "Angola",
+        "response": "Luanda"
+    },
+    {
+        "pais": "Argentina",
+        "response": "Buenos Aires"
+    },
+    {
+        "pais": "Armenia",
+        "response": "Ereván"
+    },
+    {
+        "pais": "Australia",
+        "response": "Canberra"
+    },
+    {
+        "pais": "Austria",
+        "response": "Viena"
+    },
+    {
+        "pais": "Azerbaiyán",
+        "response": "Bakú"
+    },
+    {
+        "pais": "Bahamas",
+        "response": "Nasáu"
+    },
+    {
+        "pais": "Bahrein",
+        "response": "Manama"
+    },
+    {
+        "pais": "Bangladés",
+        "response": "Daca"
+    },
+    {
+        "pais": "Barbados",
+        "response": "Bridgetown"
+    },
+    {
+        "pais": "Bielorrusia",
+        "response": "Minsk"
+    },
+    {
+        "pais": "Bélgica",
+        "response": "Bruselas"
+    },
+    {
+        "pais": "Belice",
+        "response": "Belice"
+    },
+    {
+        "pais": "Benín",
+        "response": "Porto Novo"
+    },
+    {
+        "pais": "Bhután",
+        "response": "Timbu"
+    },
+    {
+        "pais": "Bolivia",
+        "response": "Sucre"
+    },
+    {
+        "pais": "Bosnia y Herzegovina",
+        "response": "Sarajevo"
+    },
+    {
+        "pais": "Botsuana",
+        "response": "Gaborone"
+    },
+    {
+        "pais": "Brasil",
+        "response": "Brasilia"
+    },
+    {
+        "pais": "Brunéi",
+        "response": "Bandar Seri Begawan"
+    },
+    {
+        "pais": "Bulgaria",
+        "response": "Sofía"
+    },
+    {
+        "pais": "Burkina Faso",
+        "response": "Uagadugú"
+    },
+    {
+        "pais": "Burundi",
+        "response": "Buyumbura"
+    },
+    {
+        "pais": "Cabo Verde",
+        "response": "Praia"
+    },
+    {
+        "pais": "Camboya",
+        "response": "Nom Pen"
+    },
+    {
+        "pais": "Camerún",
+        "response": "Yaundé"
+    },
+    {
+        "pais": "Canadá",
+        "response": "Ottawa"
+    },
+    {
+        "pais": "Chad",
+        "response": "Yamena"
+    },
+    {
+        "pais": "Chile",
+        "response": "Santiago"
+    },
+    {
+        "pais": "China",
+        "response": "Pekín"
+    },
+    {
+        "pais": "Chipre",
+        "response": "Nicosia"
+    },
+    {
+        "pais": "Colombia",
+        "response": "Bogotá"
+    },
+    {
+        "pais": "Comoras",
+        "response": "Moroni"
+    },
+    {
+        "pais": "Corea del Norte",
+        "response": "Pionyang"
+    },
+    {
+        "pais": "Corea del Sur",
+        "response": "Seúl"
+    },
+    {
+        "pais": "Costa de Marfil",
+        "response": "Yamusukro"
+    },
+    {
+        "pais": "Costa Rica",
+        "response": "San José"
+    },
+    {
+        "pais": "Croacia",
+        "response": "Zagreb"
+    },
+    {
+        "pais": "Cuba",
+        "response": "La Habana"
+    },
+    {
+        "pais": "Dinamarca",
+        "response": "Copenhague"
+    },
+    {
+        "pais": "Dominica",
+        "response": "Roseau"
+    },
+    {
+        "pais": "Ecuador",
+        "response": "Quito"
+    },
+    {
+        "pais": "Egipto",
+        "response": "El Cairo"
+    },
+    {
+        "pais": "El Salvador",
+        "response": "San Salvador"
+    },
+    {
+        "pais": "Emiratos Árabes Unidos",
+        "response": "Abu Dabi"
+    },
+    {
+        "pais": "Eritrea",
+        "response": "Asmara"
+    },
+    {
+        "pais": "Eslovaquia",
+        "response": "Bratislava"
+    },
+    {
+        "pais": "Eslovenia",
+        "response": "Liubliana"
+    },
+    {
+        "pais": "España",
+        "response": "Madrid"
+    },
+    {
+        "pais": "Estados Unidos",
+        "response": "Washington D.C."
+    },
+    {
+        "pais": "Estonia",
+        "response": "Tallin"
+    },
+    {
+        "pais": "Etiopía",
+        "response": "Adís Abeba"
+    },
+    {
+        "pais": "Filipinas",
+        "response": "Manila"
+    },
+    {
+        "pais": "Finlandia",
+        "response": "Helsinki"
+    },
+    {
+        "pais": "Fiyi",
+        "response": "Suva"
+    },
+    {
+        "pais": "Francia",
+        "response": "París"
+    },
+    {
+        "pais": "Gabón",
+        "response": "Libreville"
+    },
+    {
+        "pais": "Gambia",
+        "response": "Banjul"
+    },
+    {
+        "pais": "Georgia",
+        "response": "Tiflis"
+    },
+    {
+        "pais": "Ghana",
+        "response": "Acra"
+    },
+    {
+        "pais": "Grecia",
+        "response": "Atenas"
+    },
+    {
+        "pais": "Granada",
+        "response": "Saint George's"
+    },
+    {
+        "pais": "Guatemala",
+        "response": "Ciudad de Guatemala"
+    },
+    {
+        "pais": "Guinea",
+        "response": "Conakri"
+    },
+    {
+        "pais": "Guinea Ecuatorial",
+        "response": "Malabo"
+    },
+    {
+        "pais": "Guinea-Bisáu",
+        "response": "Bisáu"
+    },
+    {
+        "pais": "Guyana",
+        "response": "Georgetown"
+    },
+    {
+        "pais": "Haití",
+        "response": "Puerto Príncipe"
+    },
+    {
+        "pais": "Honduras",
+        "response": "Tegucigalpa"
+    },
+    {
+        "pais": "Hungría",
+        "response": "Budapest"
+    },
+    {
+        "pais": "India",
+        "response": "Nueva Delhi"
+    },
+    {
+        "pais": "Indonesia",
+        "response": "Yakarta"
+    },
+    {
+        "pais": "Irak",
+        "response": "Bagdad"
+    },
+    {
+        "pais": "Irán",
+        "response": "Teherán"
+    },
+    {
+        "pais": "Irlanda",
+        "response": "Dublín"
+    },
+    {
+        "pais": "Islandia",
+        "response": "Reikiavik"
+    },
+    {
+        "pais": "Islas Marshall",
+        "response": "Majuro"
+    },
+    {
+        "pais": "Islas Salomón",
+        "response": "Honiara"
+    },
+    {
+        "pais": "Israel",
+        "response": "Jerusalén"
+    },
+    {
+        "pais": "Italia",
+        "response": "Roma"
+    },
+    {
+        "pais": "Jamaica",
+        "response": "Kingston"
+    },
+    {
+        "pais": "Japón",
+        "response": "Tokio"
+    },
+    {
+        "pais": "Jordania",
+        "response": "Amán"
+    },
+    {
+        "pais": "Kazajistán",
+        "response": "Nur-Sultán"
+    },
+    {
+        "pais": "Kenia",
+        "response": "Nairobi"
+    },
+    {
+        "pais": "Kirguistán",
+        "response": "Biskek"
+    },
+    {
+        "pais": "Kiribati",
+        "response": "Tarawa"
+    },
+    {
+        "pais": "Kuwait",
+        "response": "Kuwait"
+    },
+    {
+        "pais": "Laos",
+        "response": "Vientián"
+    },
+    {
+        "pais": "Lesoto",
+        "response": "Maseru"
+    },
+    {
+        "pais": "Letonia",
+        "response": "Riga"
+    },
+    {
+        "pais": "Líbano",
+        "response": "Beirut"
+    },
+    {
+        "pais": "Liberia",
+        "response": "Monrovia"
+    },
+    {
+        "pais": "Libia",
+        "response": "Trípoli"
+    },
+    {
+        "pais": "Liechtenstein",
+        "response": "Vaduz"
+    },
+    {
+        "pais": "Lituania",
+        "response": "Vilna"
+    },
+    {
+        "pais": "Luxemburgo",
+        "response": "Luxemburgo"
+    },
+    {
+        "pais": "Macedonia del Norte",
+        "response": "Skopie"
+    },
+    {
+        "pais": "Madagascar",
+        "response": "Antananarivo"
+    },
+    {
+        "pais": "Malasia",
+        "response": "Kuala Lumpur"
+    },
+    {
+        "pais": "Malaui",
+        "response": "Lilongüe"
+    },
+    {
+        "pais": "Maldivas",
+        "response": "Malé"
+    },
+    {
+        "pais": "Malí",
+        "response": "Bamako"
+    },
+    {
+        "pais": "Malta",
+        "response": "La Valeta"
+    },
+    {
+        "pais": "Marruecos",
+        "response": "Rabat"
+    },
+    {
+        "pais": "Mauricio",
+        "response": "Port Louis"
+    },
+    {
+        "pais": "Mauritania",
+        "response": "Nuakchot"
+    },
+    {
+        "pais": "México",
+        "response": "Ciudad de México"
+    },
+    {
+        "pais": "Micronesia",
+        "response": "Palikir"
+    },
+    {
+        "pais": "Moldavia",
+        "response": "Chisináu"
+    },
+    {
+        "pais": "Mónaco",
+        "response": "Mónaco"
+    },
+    {
+        "pais": "Mongolia",
+        "response": "Ulán Bator"
+    },
+    {
+        "pais": "Montenegro",
+        "response": "Podgorica"
+    },
+    {
+        "pais": "Mozambique",
+        "response": "Maputo"
+    },
+    {
+        "pais": "Namibia",
+        "response": "Windhoek"
+    },
+    {
+        "pais": "Nauru",
+        "response": "Yaren"
+    },
+    {
+        "pais": "Nepal",
+        "response": "Katmandú"
+    },
+    {
+        "pais": "Nicaragua",
+        "response": "Managua"
+    },
+    {
+        "pais": "Níger",
+        "response": "Niamey"
+    },
+    {
+        "pais": "Nigeria",
+        "response": "Abuya"
+    },
+    {
+        "pais": "Noruega",
+        "response": "Oslo"
+    },
+    {
+        "pais": "Nueva Zelanda",
+        "response": "Wellington"
+    },
+    {
+        "pais": "Omán",
+        "response": "Mascate"
+    },
+    {
+        "pais": "Países Bajos",
+        "response": "Ámsterdam"
+    },
+    {
+        "pais": "Pakistán",
+        "response": "Islamabad"
+    },
+    {
+        "pais": "Palaos",
+        "response": "Ngerulmud"
+    },
+    {
+        "pais": "Panamá",
+        "response": "Ciudad de Panamá"
+    },
+    {
+        "pais": "Papúa Nueva Guinea",
+        "response": "Puerto Moresby"
+    },
+    {
+        "pais": "Paraguay",
+        "response": "Asunción"
+    },
+    {
+        "pais": "Perú",
+        "response": "Lima"
+    },
+    {
+        "pais": "Polonia",
+        "response": "Varsovia"
+    },
+    {
+        "pais": "Portugal",
+        "response": "Lisboa"
+    },
+    {
+        "pais": "Qatar",
+        "response": "Doha"
+    },
+    {
+        "pais": "Reino Unido",
+        "response": "Londres"
+    }
+]
