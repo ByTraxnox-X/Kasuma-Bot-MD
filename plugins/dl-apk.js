@@ -5,7 +5,7 @@ const handler = async (m, {conn, usedPrefix: prefix, command, text}) => {
     m.react(rwait)
     const searchA = await search(text);
     const data5 = await download(searchA[0].id);
-    let response = `\t\t*${data5.name}*
+    let response = `\n\n*${data5.name}*
 
 *Package:* ${data5.package}
 *Ultima Actualizacion:* ${data5.lastup}
