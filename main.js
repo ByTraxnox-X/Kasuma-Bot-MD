@@ -99,9 +99,9 @@ let opcion
 if (!fs.existsSync(`./${authFile}/creds.json`) && !methodCodeQR && !methodCode) {
 while (true) {
 opcion = await question(`'${chalk.blueBright('')} ${chalk.bold.greenBright('Ingrese el metodo de conexion')}
-${chalk.blueBright('┊')} ${chalk.bold.greenBright('1- Codigo QR')}'
-${chalk.blueBright('┊')} ${chalk.bold.greenBright('2- Codigo de emparejamiento')}
-┊ ${chalk.blueBright('┊')} ${chalk.bold.greenBright('Por favor responda con solo numeros y eliga una de las 2 opciones.')}`)
+${chalk.blueBright('')} ${chalk.bold.greenBright('1- Codigo QR')}'
+${chalk.blueBright('')} ${chalk.bold.greenBright('2- Codigo de emparejamiento')}
+${chalk.blueBright('')} ${chalk.bold.greenBright('Por favor responda con solo numeros y eliga una de las 2 opciones.')}`)
 if (opcion === '1' || opcion === '2') {
 break
 } else {
