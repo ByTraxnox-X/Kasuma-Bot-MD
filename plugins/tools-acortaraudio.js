@@ -13,9 +13,11 @@ let handler = async (m, { conn, usedPrefix, command, args, text }) => {
 
 	conn.sendMessage(m.chat, { audio: { url: data.files[0].url }, seconds: `${text}`, ptt: true, mimetype: 'audio/mpeg', fileName: `error.mp3` }, { quoted: m })
 }
+
+handler.help = ['acortaraudio *<segundos>*']
 handler.tags = ['tools']
-handler.help = ['timevn *<segundos>*']
-handler.command = /^(timevn)$/i
+handler.command = /^(acortaraudio)$/i
+
 export default handler
 
 async function uploadFile(path) {
