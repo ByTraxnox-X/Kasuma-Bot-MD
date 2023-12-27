@@ -46,9 +46,11 @@ Si desea probar el bot antes de instalarlo, hagalo aqui.
 ### VERSION DE TERMUX
 
 Por MediaFire
+
 [Termux](https://www.mediafire.com/file/w0y0wkgrwl6sxtl/com.termux_118.apk/file) 
 
 Por Mega
+
 [Termux](https://mega.nz/file/8ms2wSxZ#jVRHw31hJiZTMZjd09vEFLrfjmlOK7EybnU9bqLn-yg) 
 
 ### INSTALACION EN TERMUX
@@ -56,6 +58,7 @@ Por Mega
 [Tutorial](https://youtu.be/IOzudtyN87U?si=spflnObmfSHXnVa5) 
 
 1. Para prevenir algún error de comandos, ponga uno por uno.
+
 ```sh
 termux-change-repo
 ```
@@ -91,27 +94,34 @@ cd Kasuma-Bot-MD
 ```sh
 npm i 
 ```
+
+*  Si elijes el "npm start qr" el bot iniciara automaticamente con una vinculacion mediante un QR
+
+*  Si elijes el "npm start code" el bot iniciara automaticamente con una vinculacion mediante un codigo de emparejamiento
+
 2. Elegir el metodo de conexion:
     
            npm start qr  
+
            npm start code
 
-*  Si elejiste el "npm start qr" el bot iniciara automaticamente con una vinculacion mediante un QR
-
-*  Si elejiste el "npm start code" el bot iniciara automaticamente con una vinculacion mediante un codigo de emparejamiento
-
 3. Esperar a que se inicie el bot...
+
 
 4. Elegir el metodo de conexion:
     
            1 - qr  
+
            2 - Codigo de 8 digitos
 
 * Si usted elegio el QR:
 
+
            Escanea el código QR desde el segundo dispositivo. (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo)
 
+
 * Si usted elegio el Codigo de 8 digitos:
+
 
             Copia el codigo de 8 digitos (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo > vincular con numero telefonico)
 
