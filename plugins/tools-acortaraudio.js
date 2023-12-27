@@ -21,7 +21,7 @@ export default handler
 async function uploadFile(path) {
 	let form = new FormData()
 	form.append('files[]', fs.createReadStream(path))
-	let res = await (await fetch(`${dimensionar}`, {
+	let res = await (await fetch(`https://uguu.se/upload.php`, {
 		method: 'post',
 		headers: {
 			...form.getHeaders()
