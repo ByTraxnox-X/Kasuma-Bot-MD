@@ -93,10 +93,11 @@ npm i
 ```
 2. Elegir el metodo de conexion:
     
-           1 - npm start qr  
-           2 - npm start code
+           npm start qr  
+           npm start code
 
 *  Si elejiste el "npm start qr" el bot iniciara automaticamente con una vinculacion mediante un QR
+
 *  Si elejiste el "npm start code" el bot iniciara automaticamente con una vinculacion mediante un codigo de emparejamiento
 
 3. Esperar a que se inicie el bot...
