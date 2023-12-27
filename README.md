@@ -91,23 +91,26 @@ cd Kasuma-Bot-MD
 ```sh
 npm i 
 ```
+2. Elegir el metodo de conexion:
+    
+           1 - npm start qr  
+           2 - npm start code
 
-```sh
-npm start
-```
-  
-2. Esperar a que se inicie el bot...
+*  Si elejiste el "npm start qr" el bot iniciara automaticamente con una vinculacion mediante un QR
+*  Si elejiste el "npm start code" el bot iniciara automaticamente con una vinculacion mediante un codigo de emparejamiento
 
-3. Elegir el metodo de conexion:
+3. Esperar a que se inicie el bot...
+
+4. Elegir el metodo de conexion:
     
            1 - qr  
            2 - Codigo de 8 digitos
 
-4. Si usted elegio el QR:
+* Si usted elegio el QR:
 
            Escanea el código QR desde el segundo dispositivo. (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo)
 
-4. Si usted elegio el Codigo de 8 digitos:
+* Si usted elegio el Codigo de 8 digitos:
 
             Copia el codigo de 8 digitos (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo > vincular con numero telefonico)
 
