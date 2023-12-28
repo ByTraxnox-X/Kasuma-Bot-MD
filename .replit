@@ -1,0 +1,2 @@
+language= "nodejs"
+run= "yarn && npm install && node index.js"
