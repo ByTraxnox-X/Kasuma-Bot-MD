@@ -41,14 +41,19 @@ let handleUserResponse = async (m, conn, userOption) => {
     let result = userOption === 1 ? currentChallenge.resultOption1 : currentChallenge.resultOption2;
     let userAnswer = m.text.toLowerCase().trim();
     let correctAnswer = result.response.toLowerCase().trim();
-    points += result.points || 0;
-    level += 1;
-    await conn.reply(m.chat, `Resultado: ${result}\n\nTu puntuación actual: ${points}\nTu nivel actual: ${level}`, reply);
+    points += result.points || 0; 
+    level += 1; 
+    if (userAnswer === correctAnswer) {
+        global.db.data.users[m.sender].exp += points;
+        await conn.reply(m.chat, `*Respuesta correcta!*\n+${points} Exp`, m);
+    } else if (similarity(userAnswer, correctAnswer) >= threshold) {
+        await conn.reply(m.chat, `Casi lo logras!`, m);
+    } else {
+        await conn.reply(m.chat, 'Respuesta incorrecta!', m);
+    }
     delete conn.rpg[m.chat];
     startNextChallenge(m, conn, level);
 };
-
-
 
 let startNextChallenge = async (m, conn, level) => {
     let challenges = JSON.parse(fs.readFileSync("./src/game/challenges.json"));
