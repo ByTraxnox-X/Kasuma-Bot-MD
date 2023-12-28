@@ -17,30 +17,30 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     if (text == astro) {
       global.db.data.users[m.sender].exp += 100
-        m.reply(`*Empate*\n\nTú: ${text}\nWaBot: ${astro}\n\nPuntos (±)100 XP`)
+        m.reply(`*Empate*\n\nTú: ${text}\nBot: ${astro}\n\nPuntos (±)100 XP`)
     } else if (text == 'piedra') {
         if (astro == 'tijera') {
             global.db.data.users[m.sender].exp += 300
-            m.reply(`*Ganaste*\n\nTú : ${text}\nWaBot: ${astro}\n\n Puntos *+${poin} XP*`)
+            m.reply(`*Ganaste*\n\nTú : ${text}\nBot: ${astro}\n\n Puntos *+${poin} XP*`)
         } else {
           global.db.data.users[m.sender].exp -= 300
-            m.reply(`*Perdiste*\n\nTú : ${text}\nWaBot: ${astro}\n\n Puntos *-${poin} XP*`)
+            m.reply(`*Perdiste*\n\nTú : ${text}\nBot: ${astro}\n\n Puntos *-${poin} XP*`)
         }
     } else if (text == 'tijera') {
         if (astro == 'papel') {
             global.db.data.users[m.sender].exp += 300
-            m.reply(`*Ganaste*\n\nTú : ${text}\nWaBot: ${astro}\n\n Puntos *+${poin} XP*`)
+            m.reply(`*Ganaste*\n\nTú : ${text}\nBot: ${astro}\n\n Puntos *+${poin} XP*`)
         } else {
           global.db.data.users[m.sender].exp -= 300
-            m.reply(`*Perdiste*\n\nTú : ${text}\nWaBot: ${astro}\n\nPuntos *-${poin} XP*`)
+            m.reply(`*Perdiste*\n\nTú : ${text}\nBot: ${astro}\n\nPuntos *-${poin} XP*`)
         }
     } else if (text == 'papel') {
         if (astro == 'piedra') {
             global.db.data.users[m.sender].exp += 300
-            m.reply(`*Ganaste*\n\nTú : ${text}\nWaBot: ${astro}\n\n Puntos *+${poin} XP*`)
+            m.reply(`*Ganaste*\n\nTú : ${text}\nBot: ${astro}\n\n Puntos *+${poin} XP*`)
         } else {
           global.db.data.users[m.sender].exp -= 300
-            m.reply(`*Perdiste*\n\nTú : ${text}\nWaBot: ${astro}\n\nPuntos *-${poin} XP*`)
+            m.reply(`*Perdiste*\n\nTú : ${text}\nBot: ${astro}\n\nPuntos *-${poin} XP*`)
         }
     } else {
         throw reseqv
