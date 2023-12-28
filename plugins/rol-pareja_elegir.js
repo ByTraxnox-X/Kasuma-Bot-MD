@@ -51,35 +51,36 @@ if(user === conn.user.jid) return await conn.reply(m.chat, `El bot no puede ser 
 if (typeof global.db.data.users[user] == "undefined") return await conn.reply(m.chat, `La persona que etiqueto no esta en mi base de datos`, m,  m)
 
 	
-let pacar = global.db.data.users[user].pasangan
-let spac = global.db.data.users[m.sender].pasangan
+let pacar = global.db.data.users[user].pareja
+let spac = global.db.data.users[m.sender].pareja
 let yo = conn.getName(m.sender)
 let tu = conn.getName(who)
 
-if(global.db.data.users[m.sender].pasangan != "" && global.db.data.users[global.db.data.users[m.sender].pasangan].pasangan == m.sender && global.db.data.users[m.sender].pasangan != user){
-await conn.reply(m.chat, `Eres infiel, pero si ya estas en una relación con *${await conn.getName(spac)}*\n\no ya quieres terminar la relación con ella?\nSi quieres terminarla escriba *${usedPrefix}terminar @tag* Para que pueda terminar ustedes la relación *${await conn.getName(user)}*`,  m, { contextInfo: { mentionedJid: [m.sender, who, user, global.db.data.users[m.sender].pasangan]}}) 
+if(global.db.data.users[m.sender].pareja != "" && global.db.data.users[global.db.data.users[m.sender].pareja].pareja == m.sender && global.db.data.users[m.sender].pareja != user){
+await conn.reply(m.chat, `Eres infiel, pero si ya estas en una relación con *${await conn.getName(spac)}*\n\no ya quieres terminar la relación con ella?\nSi quieres terminarla escriba *${usedPrefix}terminar @tag* Para que pueda terminar ustedes la relación *${await conn.getName(user)}*`,  m, { contextInfo: { mentionedJid: [m.sender, who, user, global.db.data.users[m.sender].pareja]}}) 
 
-}else if(global.db.data.users[user].pasangan != ""){
+}else if(global.db.data.users[user].pareja != ""){
 	
 if (pacar){
-if (m.sender == pacar && global.db.data.users[m.sender].pasangan == user) return conn.reply(m.chat, `ya estas saliendo ${spac.split('@')[0]}`, m , { contextInfo: { mentionedJid: [spac]}})
-conn.reply(m.chat, `No puedes porque *${await conn.getName(user)}* Y ${await conn.getName(pacar)} estan en una relación\nBusque a otra persona para que sea tu pareja`, m , { contextInfo: { mentionedJid: [m.sender, global.db.data.users[m.sender].pasangan]}})
+if (m.sender == pacar && global.db.data.users[m.sender].pareja == user) return conn.reply(m.chat, `ya estas saliendo ${spac.split('@')[0]}`, m , { contextInfo: { mentionedJid: [spac]}})
+conn.reply(m.chat, `No puedes porque *${await conn.getName(user)}* Y ${await conn.getName(pacar)} estan en una relación\nBusque a otra persona para que sea tu pareja`, m , { contextInfo: { mentionedJid: [m.sender, global.db.data.users[m.sender].pareja]}})
 }else{
 	
-global.db.data.users[m.sender].pasangan = user
+global.db.data.users[m.sender].pareja = user
 conn.reply(m.chat, `${await ktnmbk.getRandom()}\n\nAcabas de invitar @${user.split('@')[0]}\n\n¡Por favor espere una respuesta!`, m , { contextInfo: { mentionedJid: [user]}})
 }	
 	
-}else if (global.db.data.users[user].pasangan == m.sender){
-global.db.data.users[m.sender].pasangan = user
+}else if (global.db.data.users[user].pareja == m.sender){
+global.db.data.users[m.sender].pareja = user
 conn.reply(m.chat, `Felicitaciones, oficialmente están saliendo @${user.split('@')[0]}\n\nQue dure para siempre y siempre sea feliz`, m , { contextInfo: { mentionedJid: [user]}})
 }else {
 	
-global.db.data.users[m.sender].pasangan = user
+global.db.data.users[m.sender].pareja = user
 await conn.reply(m.chat, `*_${await ktnmbk.getRandom()}_*\n\n*@${toUser}* Se esta declarando!!! 😳\nPor favor*@${who.split`@`[0]}* Responde a la declaración\n\n *_Si quieres una relación con el escriba:_*\n* ${usedPrefix}aceptar @${toUser}*\n\n*_De no querer una Relacion escriba:_*\n* ${usedPrefix}rechazar @${toUser}*\n\n${wm}`, m, { contextInfo: { mentionedJid: [ who, m.sender, user ]}})
 }}}
 
-
+handler.help = ['eligirpareja'];
+handler.tags = ['rol'];
 handler.command = /^(futurarelacion|elegirpareja)$/i
 handler.group = true
 
