@@ -7,7 +7,10 @@
 
 
 <p align="center"> 
-### ATAJOS
+ATAJOS
+</p> 
+
+<p align="center">
 
 | CONTENIDO | DESCRIPCIÓN | LINK |
 |------|-------------|-------|
@@ -17,6 +20,7 @@
 | **INSTALACION EN REPLIT** | ***INSTALACIÓN MANUAL*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-replit) |
 | **INSTALACION EN RENDER** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD/tree/main?tab=readme-ov-file#actviar-en-render) |
 | **INSTALACION EN BOXMINE** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#boxmine-host) |
+
 </p> 
 
 
