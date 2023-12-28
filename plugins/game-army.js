@@ -21,7 +21,7 @@ let handler = async (m, { conn }) => {
   console.log('Input:', input);
 
   if (input === 'iniciarguerra') {
-    console.log('Iniciando guerra...'); 
+    console.log('Iniciando guerra...');
     if (!warSessions.has(userId)) {
       console.log('Usuario no registrado en la guerra.');
       conn.reply(m.chat, '*Primero, únete a un equipo con !guerra join a o !guerra join b.*', m);
@@ -31,8 +31,8 @@ let handler = async (m, { conn }) => {
     const team = teamAssignments.get(userId);
     const enemyTeam = team === 'a' ? 'b' : 'a';
 
-    const userArmy = createArmy(5, 8); // Ejército del usuario con 5 unidades de fuerza 8
-    const enemyArmy = createArmy(5, 7); // Ejército enemigo con 5 unidades de fuerza 7
+    const userArmy = createArmy(5, 8);
+    const enemyArmy = createArmy(5, 7);
 
     warSessions.set(userId, { team, userArmy, enemyTeam, enemyArmy });
 
@@ -43,7 +43,7 @@ let handler = async (m, { conn }) => {
     console.log('Intento unirse a la guerra...');
     const team = input.split(' ')[2];
     if (team === 'a' || team === 'b') {
-      joinTeam(userId, team, conn);
+      joinTeam(userId, team, conn, m);
       conn.reply(m.chat, `*Te has unido al equipo ${team.toUpperCase()}.*`, m);
     } else {
       conn.reply(m.chat, '*Por favor, únete a un equipo válido: A o B.*', m);
@@ -51,8 +51,7 @@ let handler = async (m, { conn }) => {
   }
 };
 
-// Función para unirse al equipo
-function joinTeam(userId, team, conn) {
+function joinTeam(userId, team, conn, m) {
   if (!warSessions.has(userId)) {
     warSessions.set(userId, { team });
     teamAssignments.set(userId, team);
