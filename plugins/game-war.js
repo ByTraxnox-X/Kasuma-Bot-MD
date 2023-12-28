@@ -39,7 +39,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
   // JOIN
   if (args[0] == "join"){
     
-    if (global.db.data.users[m.sender].dolares < 39) return m.reply("*Su dinero debe ser al menos Rp. 40 para jugar este juego.*")
+    if (global.db.data.users[m.sender].dolares < 0) return m.reply("*Su dinero debe ser al menos Rp. 0 para jugar este juego.*")
 
     if (!(m.chat in conn.war)) {
       conn.war2[m.chat] = {"war" : false, "turn" : 0, "time" : 0, "dolares" : 0}
