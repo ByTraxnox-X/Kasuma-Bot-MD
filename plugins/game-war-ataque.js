@@ -122,7 +122,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
           conn.war[m.chat][l].turn == false
         }
       }
-      await sleep(3000)
+   //   await sleep(3000)
       conn.reply(m.chat,`*doblar @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} atacar (Tiempo 90 segundos)*\n\n.war player = estadísticas del jugador\n.attack @tag = ataca a tu oponente`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
       cekAFK(conn.war2[m.chat].turn)
     }
@@ -170,7 +170,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
             conn.war[m.chat][i].hp -= pointAttacker * 500
             conn.war[m.chat][conn.war2[m.chat].turn].turn = true
             conn.reply(m.chat,`*@${attacker.split('@')[0]} ataque @${target.split('@')[0]} hasta que su vida se reduce ${pointAttacker * 500} (sobrante HP: ${conn.war[m.chat][i].hp})*\n\n*@${attacker.split('@')[0]} [${pointAttacker*10}%] - [${pointTarget*10}%] @${target.split('@')[0]}*\n*El nivel influye mucho en el éxito.*`,m,{contextInfo : {mentionedJid : [attacker, target]}})
-            await sleep(2000)
+            //await sleep(2000)
             if (conn.war[m.chat][i].hp <= 0) conn.reply(m.chat,`*@${target.split(`@`)[0]} ya murio en batalla.*`,m, {contextInfo : {mentionedJid : [target]}})
             success = true
           }
@@ -288,7 +288,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
         }
       }
     }
-    await sleep(2000)
+    //await sleep(2000)
     conn.reply(m.chat,`*doblar @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} atacar (Tiempo 90 segundos)*\n\n.war player = estadísticas del jugador\n.attack @tag = ataca a tu oponente`,m, {contextInfo : {mentionedJid: [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
     cekAFK(conn.war2[m.chat].turn)
   }else {
@@ -346,7 +346,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
         }
       }
     }
-    await sleep(2000)
+  //  await sleep(2000)
     conn.reply(m.chat,`*doblar @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} atacar (Tiempo 90 segundos)*\n\n.war player = estadísticas del jugador\n.attack @tag = ataca a tu oponente`,m, {contextInfo : {mentionedJid: [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
     cekAFK(conn.war2[m.chat].turn)
   }
