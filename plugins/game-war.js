@@ -7,7 +7,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
 [1] Warzone es un juego de guerra con sistema de ataque por turnos o turnos para atacar
 [2] El juego puede comenzar con 1v1 hasta 5v5.
 [3] El capital de guerra es el botín de guerra si tu equipo gana.
-[4] Cada jugador obtendrá 5000 HP (puntos de salud)
+[4] Cada jugador obtendrá 7000 HP (puntos de salud)
 [5] El éxito de un ataque depende de tu nivel y del nivel del enemigo al que estás atacando.
 [6] La posibilidad de atacar es de 40 segundos, más de eso se considera AFK (reducción de 2500 HP)
 [7] Un equipo ganará si el equipo contrario lo pierde todo (HP <= 0) y se queda con el botín de guerra.
@@ -39,7 +39,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
   // JOIN
   if (args[0] == "join"){
     
-    if (global.db.data.users[m.sender].dolares < 10) return m.reply("*Su dinero debe ser al menos Rp. 10 para jugar este juego.*")
+    if (global.db.data.users[m.sender].dolares < 39) return m.reply("*Su dinero debe ser al menos Rp. 40 para jugar este juego.*")
 
     if (!(m.chat in conn.war)) {
       conn.war2[m.chat] = {"war" : false, "turn" : 0, "time" : 0, "dolares" : 0}
@@ -71,13 +71,13 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
 
       if (args[1]){
         if (args[1].toLowerCase() == "a"){
-          if (conn.war2[m.chat].dolares == 0) return conn.reply(m.chat,`*Ayuda @${conn.war[m.chat][0].user.split('@')[0]} establecer la capital inicial de la guerra (Minimo Rp. 1.000.000)*\n\n.war dolares 1000000`,m, {contextInfo : {mentionedJid : [conn.war[m.chat][0].user]}})
+          if (conn.war2[m.chat].dolares == 0) return conn.reply(m.chat,`*Ayuda @${conn.war[m.chat][0].user.split('@')[0]} establecer la capital inicial de la guerra (Minimo Rp. 100)*\n\n.war dolares 100`,m, {contextInfo : {mentionedJid : [conn.war[m.chat][0].user]}})
           return m.reply('a')
           if (global.db.data.users[m.sender].dolares < conn.war2[m.chat].dolares) return m.reply(`*Tu dinero es minimo Rp. ${conn.war2[m.chat].dolares.toLocaleString()} para jugar este juego.*`)
           for (let i = 1 ; i < 5 ; i++) {
             if (conn.war[m.chat][i].user == ""){
               let exp = global.db.data.users[m.sender].exp
-              conn.war[m.chat][i] = {"user" : m.sender, "hp" : 5000, "lvl" : global.db.data.users[m.sender].level, "turn" : false}
+              conn.war[m.chat][i] = {"user" : m.sender, "hp" : 7000, "lvl" : global.db.data.users[m.sender].level, "turn" : false}
               let total = 0
               for (let i = 0 ; i < 10 ; i++) {
                 if (conn.war[m.chat][i].user == ""){
@@ -88,12 +88,12 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
             }
           } 
         }else if (args[1].toLowerCase() == "b"){
-          if (conn.war2[m.chat].dolares == 0) return conn.reply(m.chat,`*Ayuda @${conn.war[m.chat][0].user.split('@')[0]} establecer el capital inicial de la guerra (mínimo Rp. 1000000)*\n\n.war dolares 1000000`,m, {contextInfo : {mentionedJid : [conn.war[m.chat][0].user]}})
+          if (conn.war2[m.chat].dolares == 0) return conn.reply(m.chat,`*Ayuda @${conn.war[m.chat][0].user.split('@')[0]} establecer el capital inicial de la guerra (mínimo Rp. 100)*\n\n.war dolares 100`,m, {contextInfo : {mentionedJid : [conn.war[m.chat][0].user]}})
           if (global.db.data.users[m.sender].dolares < conn.war2[m.chat].dolares) return m.reply(`*Tu dinero es minimo Rp. ${conn.war2[m.chat].dolares.toLocaleString()} para jugar este juego.*`)
           for (let i = 5 ; i < 10 ; i++) {
             if (conn.war[m.chat][i].user == ""){
               let exp = global.db.data.users[m.sender].exp
-              conn.war[m.chat][i] = {"user" : m.sender, "hp" : 5000, "lvl" : global.db.data.users[m.sender].level, "turn" : false}
+              conn.war[m.chat][i] = {"user" : m.sender, "hp" : 7000, "lvl" : global.db.data.users[m.sender].level, "turn" : false}
               let total = 0
               for (let i = 0 ; i < 10 ; i++) {
                 if (conn.war[m.chat][i].user == ""){
