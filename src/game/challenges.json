@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "situation": "Te encuentras en un bosque oscuro. A tu izquierda, ves un sendero estrecho. A tu derecha, escuchas ruidos extraños.",
+      "option1": "Tomar el sendero izquierdo.",
+      "option2": "Investigar los ruidos a la derecha.",
+      "resultOption1": "Descubres un tesoro escondido. Ganas 500 puntos.",
+      "resultOption2": "Te enfrentas a un monstruo. Pierdes 200 puntos.",
+      "points": 500
+    },
+    {
+      "id": 2,
+      "situation": "Llegas a una ciudad misteriosa. En el centro, hay una fuente brillante. A tu alrededor, ves edificios antiguos.",
+      "option1": "Beber del agua de la fuente.",
+      "option2": "Explorar los edificios antiguos.",
+      "resultOption1": "El agua de la fuente te da poderes mágicos. Ganas 700 puntos.",
+      "resultOption2": "Encuentras un artefacto antiguo. Ganas 600 puntos.",
+      "points": 700
+    }
+  ]
+  
