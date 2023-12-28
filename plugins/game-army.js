@@ -10,9 +10,9 @@ function attackEnemy(army, enemyArmy) {
   const enemyIndex = Math.floor(Math.random() * enemyArmy.length);
 
   if (enemyArmy[enemyIndex] > attackPower) {
-    army.pop();
+    army.pop(); // Si el ataque del enemigo es más fuerte, perdemos una unidad
   } else {
-    enemyArmy.splice(enemyIndex, 1);
+    enemyArmy.splice(enemyIndex, 1); // Si nuestro ataque es más fuerte, eliminamos una unidad del enemigo
   }
 }
 
@@ -40,21 +40,23 @@ let handler = async (m, { conn }) => {
     const team = teamAssignments.get(userId);
     const enemyTeam = team === 'a' ? 'b' : 'a';
 
-    const userArmy = createArmy(5, 8);
-    const enemyArmy = createArmy(5, 7);
+    const userArmy = createArmy(5, 8); // Ejército del usuario con 5 unidades de fuerza 8
+    const enemyArmy = createArmy(5, 7); // Ejército enemigo con 5 unidades de fuerza 7
 
     warSessions.set(userId, { team, userArmy, enemyTeam, enemyArmy });
 
     conn.reply(m.chat, '*¡Prepárate para la batalla!*', m);
 
     printBattleStatus(conn, m, team, userArmy, enemyArmy);
-  } else if (input.startsWith('join')) {
-    const team = input.split(' ')[1];
-    if (team === 'a' || team === 'b') {
+  } else {
+    const match = input.match(/^(guerra) (join) (a|b)$/i);
+
+    if (match) {
+      const team = match[3];
       joinTeam(userId, team);
       conn.reply(m.chat, `*Te has unido al equipo ${team.toUpperCase()}.*`, m);
     } else {
-      conn.reply(m.chat, '*Por favor, únete a un equipo válido: A o B.*', m);
+      conn.reply(m.chat, '*Comando no reconocido. Usa !guerra join a o !guerra join b para unirte a un equipo.*', m);
     }
   }
 };
