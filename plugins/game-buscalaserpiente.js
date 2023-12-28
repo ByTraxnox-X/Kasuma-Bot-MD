@@ -10,7 +10,7 @@ function createBoard(rows, cols, initialValue = 0) {
 
 function placeSnake(board) {
   const y = Math.floor(Math.random() * board[0].length);
-  board[0][y] = 'S';
+  board[0][y] = '🐍';
 }
 
 function printHiddenBoard(conn, m, revealedBoard) {
@@ -43,11 +43,11 @@ async function findSnake(conn, m, y, userId) {
     userSession.revealedBoard[0][y] = true;
     printRevealedBoard(conn, m, userSession.revealedBoard, userSession.gameBoard);
     conn.reply(m.chat, '*¡Encontraste la serpiente! ¡Has ganado!*', m);
-    gameSessions.delete(userId); 
+    gameSessions.delete(userId);
   } else {
     userSession.revealedBoard[0][y] = true;
     printRevealedBoard(conn, m, userSession.revealedBoard, userSession.gameBoard);
-    
+
     userSession.attempts--;
 
     if (userSession.attempts === 0) {
@@ -60,22 +60,22 @@ async function findSnake(conn, m, y, userId) {
 }
 
 let handler = async (m, { conn }) => {
-    const userId = m.sender;
-    if (gameSessions.has(userId)) {
-      conn.reply(m.chat, '*Ya tienes un juego en curso.* Completa o cancela el juego actual antes de iniciar uno nuevo.', m);
-      return;
-    }
-    const numCols = 4;
-  
-    const userGameBoard = createBoard(1, numCols);
-    const userRevealedBoard = createBoard(1, numCols, false);
-  
-    placeSnake(userGameBoard);
-    gameSessions.set(userId, { gameBoard: userGameBoard, revealedBoard: userRevealedBoard, attempts: 2 });
-  
-    const userSession = gameSessions.get(userId);
-    printHiddenBoard(conn, m, userSession.revealedBoard);
-  };
+  const userId = m.sender;
+  if (gameSessions.has(userId)) {
+    conn.reply(m.chat, '*Ya tienes un juego en curso.* Completa o cancela el juego actual antes de iniciar uno nuevo.', m);
+    return;
+  }
+  const numCols = 4;
+
+  const userGameBoard = createBoard(1, numCols);
+  const userRevealedBoard = createBoard(1, numCols, false);
+
+  placeSnake(userGameBoard);
+  gameSessions.set(userId, { gameBoard: userGameBoard, revealedBoard: userRevealedBoard, attempts: 2 });
+
+  const userSession = gameSessions.get(userId);
+  printHiddenBoard(conn, m, userSession.revealedBoard);
+};
 
 handler.help = ['buscarserpiente'];
 handler.tags = ['game'];
