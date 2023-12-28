@@ -14,7 +14,7 @@ function placeTesoro(board) {
 }
 
 function printHiddenBoard(conn, m, revealedBoard) {
-  let result = '*Caza el tesoro*\n\nPara jugar elije la casilla que quieras destapar, ejemplo: 2';
+  let result = '*Caza el tesoro*\n\nPara jugar elije la casilla que quieras destapar, ejemplo: 2\n';
   for (let i = 0; i < revealedBoard.length; i++) {
     for (let j = 0; j < revealedBoard[i].length; j++) {
       result += revealedBoard[i][j] ? '⬛ ' : '⬜ ';
@@ -25,7 +25,7 @@ function printHiddenBoard(conn, m, revealedBoard) {
 }
 
 function printRevealedBoard(conn, m, revealedBoard, gameBoard) {
-  let result = '*Caza el tesoro*\n\nPara jugar elije la casilla que quieras destapar, ejemplo: 2';
+  let result = '*Caza el tesoro*\n\nPara jugar elije la casilla que quieras destapar, ejemplo: 2\n';
   for (let i = 0; i < revealedBoard.length; i++) {
     for (let j = 0; j < revealedBoard[i].length; j++) {
       result += revealedBoard[i][j] ? gameBoard[i][j] + ' ' : '⬜ ';
