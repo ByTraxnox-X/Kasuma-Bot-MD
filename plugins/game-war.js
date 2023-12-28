@@ -7,7 +7,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
 [1] Warzone es un juego de guerra con sistema de ataque por turnos o turnos para atacar
 [2] El juego puede comenzar con 1v1 hasta 5v5.
 [3] El capital de guerra es el botín de guerra si tu equipo gana.
-[4] Cada jugador obtendrá 7000 HP (puntos de salud)
+[4] Cada jugador obtendrá 4000 HP (puntos de salud)
 [5] El éxito de un ataque depende de tu nivel y del nivel del enemigo al que estás atacando.
 [6] La posibilidad de atacar es de 40 segundos, más de eso se considera AFK (reducción de 2500 HP)
 [7] Un equipo ganará si el equipo contrario lo pierde todo (HP <= 0) y se queda con el botín de guerra.
@@ -45,7 +45,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
       conn.war2[m.chat] = {"war" : false, "turn" : 0, "time" : 0, "dolares" : 0}
       conn.war[m.chat] = []
       let exp = global.db.data.users[m.sender].exp
-      conn.war[m.chat][0] = {"user": m.sender, "hp": 5000, "lvl": global.db.data.users[m.sender].level, "turn" : false}
+      conn.war[m.chat][0] = {"user": m.sender, "hp": 4000, "lvl": global.db.data.users[m.sender].level, "turn" : false}
       for (let i=1;i<10;i++){
         conn.war[m.chat][i] = {"user": "", "hp" : 0, "lvl" : 0, "turn" : false}
       }
@@ -77,7 +77,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
           for (let i = 1 ; i < 5 ; i++) {
             if (conn.war[m.chat][i].user == ""){
               let exp = global.db.data.users[m.sender].exp
-              conn.war[m.chat][i] = {"user" : m.sender, "hp" : 7000, "lvl" : global.db.data.users[m.sender].level, "turn" : false}
+              conn.war[m.chat][i] = {"user" : m.sender, "hp" : 4000, "lvl" : global.db.data.users[m.sender].level, "turn" : false}
               let total = 0
               for (let i = 0 ; i < 10 ; i++) {
                 if (conn.war[m.chat][i].user == ""){
@@ -93,7 +93,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
           for (let i = 5 ; i < 10 ; i++) {
             if (conn.war[m.chat][i].user == ""){
               let exp = global.db.data.users[m.sender].exp
-              conn.war[m.chat][i] = {"user" : m.sender, "hp" : 7000, "lvl" : global.db.data.users[m.sender].level, "turn" : false}
+              conn.war[m.chat][i] = {"user" : m.sender, "hp" : 4000, "lvl" : global.db.data.users[m.sender].level, "turn" : false}
               let total = 0
               for (let i = 0 ; i < 10 ; i++) {
                 if (conn.war[m.chat][i].user == ""){
