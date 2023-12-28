@@ -13,8 +13,7 @@ await conn.reply(m.chat, `Parece Que*${await conn.getName(persona)}* No a acepta
 global.db.data.users[m.sender].pareja = ""
 }
 
-handler.help = ['mipareja'];
-handler.tags = ['rol'];
+
 handler.command = /^(sinceridad|mipareja|miamor|minovio|minovia|mylove)$/i
 handler.group = true
 export default handler
