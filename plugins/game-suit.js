@@ -21,7 +21,7 @@ Por favor @${m.mentionedJid[0].split`@`[0]}
 `.trim()
   let footer = `Tipo "aceptar/ok/gas" para empezar el traje\nKetik "rechazar/no puedo/más tarde" negarse`
   conn.suit[id] = {
-    chat: await conn.sendMessage(m.chat, caption caption2, m),
+    chat: await conn.sendMessage(m.chat, /*caption caption2,*/ m),
     conn.reply(m.chat, `Aceptar "ok" Rechazar "tolak"`, m)
    /* id: id,
     p: m.sender,
