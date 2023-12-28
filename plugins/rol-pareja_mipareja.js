@@ -1,4 +1,4 @@
-let handler = async (m, { conn, usedPrefix }) => { // @${global.db.data.users[m.sender].pareja.split('@')[0]}
+let handler = async (m, { conn, usedPrefix }) => {  @${global.db.data.users[m.sender].pareja.split('@')[0]}
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let usuario = conn.getName(who)
 let persona = global.db.data.users[m.sender].pareja
