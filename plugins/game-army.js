@@ -48,15 +48,13 @@ let handler = async (m, { conn }) => {
     conn.reply(m.chat, '*¡Prepárate para la batalla!*', m);
 
     printBattleStatus(conn, m, team, userArmy, enemyArmy);
-  } else {
-    const match = input.match(/^(guerra) (join) (a|b)$/i);
-
-    if (match) {
-      const team = match[3];
+  } else if (input.startsWith('join')) {
+    const team = input.split(' ')[1];
+    if (team === 'a' || team === 'b') {
       joinTeam(userId, team);
       conn.reply(m.chat, `*Te has unido al equipo ${team.toUpperCase()}.*`, m);
     } else {
-      conn.reply(m.chat, '*Comando no reconocido. Usa !guerra join a o !guerra join b para unirte a un equipo.*', m);
+      conn.reply(m.chat, '*Por favor, únete a un equipo válido: A o B.*', m);
     }
   }
 };
