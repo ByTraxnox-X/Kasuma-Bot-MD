@@ -40,8 +40,7 @@ return await conn.reply(m.chat, `Felicidades!!! *${tu}*\nAhora Ustedes Estan En 
 
 }}}
 
-handler.help = ['aceptar'];
-handler.tags = ['rol'];
+
 handler.command = /^(aceptar|acepto|accept)$/i
 handler.group = true
 export default handler
