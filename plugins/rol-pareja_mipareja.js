@@ -3,7 +3,7 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
 let usuario = conn.getName(who)
 let persona = global.db.data.users[m.sender].pareja
 
-if (global.db.data.users[m.sender].pareja == "") return await conn.reply(m.chat, `*${usuario}* No Tienes Pareja\n\n*_Si quiere tener una pareja use el comando ${usedPrefix}pareja etiquetando a alguien._*\n\n${wm}`, m,  m)
+if (global.db.data.users[m.sender].pareja == "") return await conn.reply(m.chat, `*${usuario}* No Tienes Pareja\n\n*_Si quiere tener una pareja use el comando ${usedPrefix}pareja etiquetando a alguien._*`, m,  m)
 
   
 if (global.db.data.users[m.sender].pareja == m.sender) return await conn.reply(m.chat, `*${usuario}* Estas En Una Relación Con *${await conn.getName(persona)}*`, m, m, {contextInfo: { mentionedJid: [ m.sender, who ] }})
