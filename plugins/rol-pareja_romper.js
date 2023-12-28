@@ -22,8 +22,7 @@ beb.pasangan = ""
 await conn.reply(m.chat, `Usted *${name}* No tiene pareja`, m,  m)    
 }}
 
-handler.help = ['romper'];
-handler.tags = ['rol'];
+
 handler.command = /^(cortar|romper|finish|terminar)$/i
 handler.group = true
 
