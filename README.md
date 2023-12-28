@@ -5,6 +5,8 @@
 - Bot con conexion mediante QR y Codigo de 8 digitos.
 - Bot con API propia
 
+***
+
 ### ATAJOS
 
 | CONTENIDO | DESCRIPCIÓN | LINK |
@@ -16,22 +18,24 @@
 | **INSTALACION EN BOXMINE** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#boxmine-host) |
 | **INCIO EN TERMUX** | ***EN CASO DE DETENERSE*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#en-caso-de-detenerse-en-termux) |
 
-
+***
 
 ### API FREE
 -  [VisionaryAPI](https://visionaryapi.boxmine.xyz/)
 
+***
 
 ### CUENTAS OFICIALES
 -  [CUENTAS OFICIALES](https://solo.to/kasuma)
 
+***
 
 ###
 Si desea probar el bot antes de instalarlo, hagalo aqui.
 
 [![WhatsApp](https://img.shields.io/badge/KasumaBot-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://api.whatsapp.com/send/?phone=573215683772&text&type=phone_number&app_absent=0) 
 
-
+***
 
 ### ACTIVAR EN REPLIT
 <a target="_blank" href="https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD"><img alt="Run on Replit" src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg" height="50px"></a>
@@ -50,23 +54,24 @@ node index.js
 ```
 
 3. Vincular con WhatsApp
----------
+
+***
 
 ## ACTVIAR EN RENDER
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FByTraxnox-X%2FKasuma-Bot-MD)
----------
+
+***
 
 ## BOXMINE HOST
 
 En BoxMine el bot estara activo 24/7, si desea instalarlo aqui, vea el tutorial de abajo para crearse una cuenta.
 
----------
 * Create una cuenta [`Como crearse una cuenta`](https://www.youtube.com/watch?v=ZAwBLuNmIlI)
 * Tutorial  [`Tutorial de instalacion`]()
 
-
 <a href="https://boxmineworld.com"><img src="https://i.imgur.com/allAyd4.png" height="125px"></a>
----------
+
+***
 
 ### VERSION DE TERMUX
 
@@ -77,6 +82,8 @@ Por MediaFire
 Por Mega
 
 [Termux](https://mega.nz/file/8ms2wSxZ#jVRHw31hJiZTMZjd09vEFLrfjmlOK7EybnU9bqLn-yg) 
+
+***
 
 ### INSTALACION EN TERMUX
 
@@ -144,7 +151,7 @@ npm i
 
 Si por alguna razon usted no pudo conectar con el codigo qr o codigo de 8 digitos, elimine la carpeta "sessions" y intente de nuevo.
 
----------
+***
 
 ### EN CASO DE DETENERSE EN TERMUX
 1. 
