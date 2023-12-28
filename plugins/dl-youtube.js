@@ -41,7 +41,7 @@ const handler = async (m, { text }) => {
   }
 };
 
-handler.help = ['ytplay'];
+handler.help = ['youtube'];
 handler.tags = ['dl'];
-handler.command = /^(ytplay)$/i;
+handler.command = /^(youtube)$/i;
 export default handler;
