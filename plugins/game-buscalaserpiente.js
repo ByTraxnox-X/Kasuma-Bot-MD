@@ -43,12 +43,19 @@ async function findSnake(conn, m, y, userId) {
     userSession.revealedBoard[0][y] = true;
     printRevealedBoard(conn, m, userSession.revealedBoard, userSession.gameBoard);
     conn.reply(m.chat, '¡Encontraste la serpiente! ¡Has ganado!', m);
-    gameSessions.delete(userId);
+    gameSessions.delete(userId); 
   } else {
     userSession.revealedBoard[0][y] = true;
     printRevealedBoard(conn, m, userSession.revealedBoard, userSession.gameBoard);
-    conn.reply(m.chat, 'No encontraste la serpiente. ¡Inténtalo de nuevo!', m);
-    gameSessions.delete(userId);
+    
+    userSession.attempts--;
+
+    if (userSession.attempts === 0) {
+      conn.reply(m.chat, 'No encontraste la serpiente. Se han agotado tus intentos. ¡Juego terminado!', m);
+      gameSessions.delete(userId);
+    } else {
+      conn.reply(m.chat, `No encontraste la serpiente. Te quedan ${userSession.attempts} intentos. ¡Inténtalo de nuevo!`, m);
+    }
   }
 }
 
@@ -59,21 +66,14 @@ let handler = async (m, { conn }) => {
   if (!gameSessions.has(userId)) {
 
     const numCols = 4;
-
-
     const userGameBoard = createBoard(1, numCols);
     const userRevealedBoard = createBoard(1, numCols, false);
-
-
     placeSnake(userGameBoard);
 
-
-    gameSessions.set(userId, { gameBoard: userGameBoard, revealedBoard: userRevealedBoard });
+    gameSessions.set(userId, { gameBoard: userGameBoard, revealedBoard: userRevealedBoard, attempts: 2 });
   }
 
-
   const userSession = gameSessions.get(userId);
-
 
   printHiddenBoard(conn, m, userSession.revealedBoard);
 };
@@ -83,7 +83,6 @@ handler.tags = ['game'];
 handler.command = /^(buscarserpiente)$/i;
 
 handler.before = async (m, { conn }) => {
-
   const userId = m.sender;
   const input = m.text.trim();
   const userSession = gameSessions.get(userId);
@@ -91,7 +90,6 @@ handler.before = async (m, { conn }) => {
   if (/^\d+$/i.test(input)) {
     const y = parseInt(input) - 1;
     if (y >= 0 && y < userSession.gameBoard[0].length) {
-
       findSnake(conn, m, y, userId);
     } else {
       conn.reply(m.chat, 'Posición inválida. Debes ingresar un número dentro del rango del tablero.', m);
