@@ -2,5 +2,5 @@ services:
   - type: web
     name: KasumaBot 
     env: docker
-    region: Singapore
+    region: Oregon (US West)
     plan: free
