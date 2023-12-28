@@ -8,13 +8,15 @@ function createBoard(rows, cols, initialValue = 0) {
   return board;
 }
 
-function placeSnake(board) {
-  const y = Math.floor(Math.random() * board[0].length);
-  board[0][y] = '🐍';
+function placeSnakes(board) {
+  for (let i = 0; i < 2; i++) {
+    const y = Math.floor(Math.random() * board[0].length);
+    board[0][y] = '🐍';
+  }
 }
 
 function printHiddenBoard(conn, m, revealedBoard) {
-  let result = '*Juego de Búsqueda de Serpiente*\n\n';
+  let result = '*Búsqueda de Serpiente*\n\n';
   for (let i = 0; i < revealedBoard.length; i++) {
     for (let j = 0; j < revealedBoard[i].length; j++) {
       result += revealedBoard[i][j] ? '⬛ ' : '⬜ ';
@@ -25,7 +27,7 @@ function printHiddenBoard(conn, m, revealedBoard) {
 }
 
 function printRevealedBoard(conn, m, revealedBoard, gameBoard) {
-  let result = '*Juego de Búsqueda de Serpiente*\n\n';
+  let result = '*Búsqueda de Serpiente*\n\n';
   for (let i = 0; i < revealedBoard.length; i++) {
     for (let j = 0; j < revealedBoard[i].length; j++) {
       result += revealedBoard[i][j] ? gameBoard[i][j] + ' ' : '⬜ ';
@@ -39,11 +41,10 @@ async function findSnake(conn, m, y, userId) {
   const userSession = gameSessions.get(userId);
   if (userSession.revealedBoard[0][y]) {
     conn.reply(m.chat, 'Ya has buscado en esta posición.', m);
-  } else if (userSession.gameBoard[0][y] === 'S') {
+  } else if (userSession.gameBoard[0][y] === '🐍') {
     userSession.revealedBoard[0][y] = true;
     printRevealedBoard(conn, m, userSession.revealedBoard, userSession.gameBoard);
-    conn.reply(m.chat, '¡Encontraste la serpiente! ¡Has ganado!', m);
-    gameSessions.delete(userId); 
+    conn.reply(m.chat, '¡Encontraste una serpiente! ¡Sigue buscando para encontrar la otra!', m);
   } else {
     userSession.revealedBoard[0][y] = true;
     printRevealedBoard(conn, m, userSession.revealedBoard, userSession.gameBoard);
@@ -68,7 +69,7 @@ let handler = async (m, { conn }) => {
     const numCols = 4;
     const userGameBoard = createBoard(1, numCols);
     const userRevealedBoard = createBoard(1, numCols, false);
-    placeSnake(userGameBoard);
+    placeSnakes(userGameBoard);
 
     gameSessions.set(userId, { gameBoard: userGameBoard, revealedBoard: userRevealedBoard, attempts: 2 });
   }
