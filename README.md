@@ -29,6 +29,7 @@
   - Adivina la palabra Game
   - Adivina el culpable Game
   - Adivina la capital de un pais Game
+  - Busca la serpiente Game
   - Cara o cruz Game
 
 ### API FREE
