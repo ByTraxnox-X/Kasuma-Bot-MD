@@ -87,7 +87,7 @@ export async function handler(chatUpdate) {
                     exp: 0,
                     diamond: 10,
                     dolares: 40,
-                  //  pasangan: '',
+                    pareja: '',
                     bank: 0,
                     lastclaim: 0,
                     registered: false,
