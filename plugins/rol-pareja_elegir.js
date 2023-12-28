@@ -79,8 +79,7 @@ global.db.data.users[m.sender].pasangan = user
 await conn.reply(m.chat, `*_${await ktnmbk.getRandom()}_*\n\n*@${toUser}* Se esta declarando!!! 😳\nPor favor*@${who.split`@`[0]}* Responde a la declaración\n\n *_Si quieres una relación con el escriba:_*\n* ${usedPrefix}aceptar @${toUser}*\n\n*_De no querer una Relacion escriba:_*\n* ${usedPrefix}rechazar @${toUser}*\n\n${wm}`, m, { contextInfo: { mentionedJid: [ who, m.sender, user ]}})
 }}}
 
-handler.help = ['eligirpareja'];
-handler.tags = ['rol'];
+
 handler.command = /^(futurarelacion|elegirpareja)$/i
 handler.group = true
 
