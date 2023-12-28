@@ -34,7 +34,7 @@ Si desea probar el bot antes de instalarlo, hagalo aqui.
 
 
 ### ACTIVAR EN REPLIT
-<a target="_blank" href="https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD"><img alt="Run on Replit" src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg" height="70px"></a>
+<a target="_blank" href="https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD"><img alt="Run on Replit" src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg" height="50px"></a>
 
 [![](https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg)](https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD)
 
