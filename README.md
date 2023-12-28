@@ -5,32 +5,15 @@
 - Bot con conexion mediante QR y Codigo de 8 digitos.
 - Bot con API propia
 
-### COMANDOS RESALTADOS
-  - Bard AI
-  - ChatGPT AI
-  - BingChat AI
-  - BlackBox AI
-  - Llama AI
-  - Gemini AI
-  - DALL-E AI
-  - PhotoLeap AI
-  - Imagine AI
-  - Math AI
-  - iTunes Search
-  - Movie Info Search
-  - Movie Search
-  - Spotify Search
-  - Download Threads
-  - Download Spotify
-  - TicTacToe Game
-  - BuscaMinas Game
-  - Adivinanzas Game
-  - Adivina el numero Game
-  - Adivina la palabra Game
-  - Adivina el culpable Game
-  - Adivina la capital de un pais Game
-  - Busca el tesoro Game
-  - Cara o cruz Game
+
+| CONTENIDO | DESCRIPCIÓN | LINK |
+|------|-------------|-------|
+| **VERSION DE TERMUX** | ***DONWLOAD TERMUX*** |[ver](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#version-de-termux) |
+| **INSTALACION EN TERMUX** | ***INSTALACION MANUAL*** |[ver](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#instalacion-en-termux) |
+| **INSTALACION EN REPLIT** | ***INSTALACIÓN MANUAL*** |[ver](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-replit) |
+| **INSTALACION EN RENDER** | ***INSTALACION AUTOMATICA*** |[ver]() |
+| **INSTALACION EN BOXMINE** | ***INSTALACION MANUAL*** |[ver](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#boxmine-host) |
+
 
 ### API FREE
 -  [VisionaryAPI](https://visionaryapi.boxmine.xyz/)
@@ -143,7 +126,7 @@ npm start
 ### ACTIVAR EN REPLIT
 [Crear Servidor en Replit](https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD) 
 
-  1. Click "Import from GitHub
+  1. Click "Import from GitHub"
 
 2. Ingresar estos comandos en una pestaña "Shell"
 ```sh
