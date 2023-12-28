@@ -21,20 +21,20 @@ Por favor @${m.mentionedJid[0].split`@`[0]}
 `.trim()
   let footer = `Tipo "aceptar/ok/gas" para empezar el traje\nKetik "rechazar/no puedo/más tarde" negarse`
   conn.suit[id] = {
-    chat: await conn.sendMessage(m.chat, /*caption caption2,*/ m),
-    conn.reply(m.chat, `Aceptar "ok" Rechazar "tolak"`, m)
+   // chat: await conn.sendMessage(m.chat, /*caption caption2,*/ m),
+    //conn.reply(m.chat, `Aceptar "ok" Rechazar "tolak"`, m)
    /* id: id,
     p: m.sender,
     p2: m.mentionedJid[0],
     status: 'wait',*/
     
     
-    waktu: setTimeout(() => {
+ //   waktu: setTimeout(() => 
       if (conn.suit[id]) conn.reply(m.chat, `_Se acabó el tiempo del traje_`, m)
       delete conn.suit[id]
     }, timeout), poin, poin_lose, poin_bot, timeout
   }
-}
+
 handler.tags = ['game']
 handler.help = ['suitpvp', 'suit']
 handler.command = /^suit(pvp)?$/i
