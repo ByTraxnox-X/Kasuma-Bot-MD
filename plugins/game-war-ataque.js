@@ -1,4 +1,4 @@
-let handler = async (m, { conn, usedPrefix, args, command }) => {
+/*let handler = async (m, { conn, usedPrefix, args, command }) => {
   conn.war = conn.war ? conn.war : {}
   conn.war2 = conn.war2 ? conn.war2 : {}
   function sleep(ms) {
@@ -370,4 +370,4 @@ function getRandom(min,max){
   min = Math.ceil(min)
   max = Math.floor(max)
   return Math.floor(Math.random()*(max-min+1)) + min
-}
+}*/

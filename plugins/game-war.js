@@ -1,4 +1,4 @@
-let handler = async (m, { conn, usedPrefix, args, command }) => {
+/*let handler = async (m, { conn, usedPrefix, args, command }) => {
   conn.war = conn.war ? conn.war : {}
   conn.war2 = conn.war2 ? conn.war2 : {}
 
@@ -195,4 +195,4 @@ handler.help = ['war']
 handler.tags = ['game']
 handler.command = /^(war)$/i
 handler.group = true
-export default handler
+export default handler*/
