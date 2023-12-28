@@ -39,12 +39,15 @@ let handleUserResponse = async (m, conn, userOption) => {
         return;
     }
     let result = userOption === 1 ? currentChallenge.resultOption1 : currentChallenge.resultOption2;
+    let userAnswer = m.text.toLowerCase().trim();
+    let correctAnswer = result.response.toLowerCase().trim();
     points += result.points || 0;
     level += 1;
     await conn.reply(m.chat, `Resultado: ${result}\n\nTu puntuación actual: ${points}\nTu nivel actual: ${level}`, reply);
     delete conn.rpg[m.chat];
     startNextChallenge(m, conn, level);
 };
+
 
 
 let startNextChallenge = async (m, conn, level) => {
