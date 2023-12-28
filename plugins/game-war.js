@@ -25,7 +25,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
     if(m.sender == conn.war[m.chat][0].user){
       if (args[1] != "undefined" && !isNaN(args[1])){
         args[1] = parseInt(args[1])
-        if (args[1] < 100) return m.reply('*Mínimo RP: 100*')
+        if (args[1] < 10) return m.reply('*Mínimo RP: 10*')
         conn.war2[m.chat].dolares = args[1]
         return m.reply("*Capital de guerra establecida con éxito de RP. " + Number(args[1]).toLocaleString() + "*")
       }else {
