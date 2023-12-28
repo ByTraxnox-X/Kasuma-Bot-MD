@@ -12,8 +12,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 *Bono:* +${currentChallenge.points || defaultPoints} Exp
 
      *Elige una opción:*
-     1. ${currentChallenge.option1}
-     2. ${currentChallenge.option2}
+1. ${currentChallenge.option1}
+2. ${currentChallenge.option2}
     `.trim();
 
     conn.rpg = conn.rpg || {};
@@ -34,13 +34,18 @@ let handler = async (m, { conn, usedPrefix }) => {
 let handleUserResponse = async (m, conn, userOption) => {
     if (!conn.rpg[m.chat]) return;
     let [reply, currentChallenge, points, level, timeoutID] = conn.rpg[m.chat];
+    if (userOption !== 1 && userOption !== 2) {
+        await conn.reply(m.chat, 'Elige una opción válida (1 o 2).', m);
+        return;
+    }
     let result = userOption === 1 ? currentChallenge.resultOption1 : currentChallenge.resultOption2;
-    points += result.points || 0; 
+    points += result.points || 0;
     level += 1;
     await conn.reply(m.chat, `Resultado: ${result}\n\nTu puntuación actual: ${points}\nTu nivel actual: ${level}`, reply);
     delete conn.rpg[m.chat];
     startNextChallenge(m, conn, level);
 };
+
 
 let startNextChallenge = async (m, conn, level) => {
     let challenges = JSON.parse(fs.readFileSync("./src/game/challenges.json"));
@@ -55,8 +60,8 @@ let startNextChallenge = async (m, conn, level) => {
 *Bono:* +${nextChallenge.points || defaultPoints} Exp
 
     *Elige una opción:*
-    1. ${nextChallenge.option1}
-    2. ${nextChallenge.option2}
+1. ${nextChallenge.option1}
+2. ${nextChallenge.option2}
         `.trim();
 
         conn.rpg[m.chat] = [
