@@ -7,9 +7,9 @@ if (global.db.data.users[m.sender].pareja == "") return await conn.reply(m.chat,
 
   
 if (global.db.data.users[m.sender].pareja == m.sender) return await conn.reply(m.chat, `*${usuario}* Estas En Una Relación Con *${await conn.getName(persona)}*`, m, m, {contextInfo: { mentionedJid: [ m.sender, who ] }})
-
+/*
 await conn.reply(m.chat, `Parece Que*${await conn.getName(persona)}* No a aceptado ni rechazado tu propuesta de estas ambos en una relación\n\n*_Vista la situación se anulará este pendiente_*\n\n${wm}`, m, m, {contextInfo: { mentionedJid: [ persona, m.sender ] }})
-
+*/
 global.db.data.users[m.sender].pareja = ""
 }
 
