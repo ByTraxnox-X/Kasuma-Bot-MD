@@ -2,8 +2,8 @@
 
 ***
 ### INFORMACION
-- Bot con conexion mediante QR y Codigo de 8 digitos.
-- Bot con API propia
+- BOT CON VINCULACION MEDIANTE QR Y CODIGO DE EMPAREJAMIENTO
+- BOT CON API PROPIA
 
 ***
 
@@ -21,7 +21,7 @@
 ***
 
 ### API FREE
--  [VisionaryAPI](https://visionaryapi.boxmine.xyz/)
+-  [VISIONARY API](https://visionaryapi.boxmine.xyz/)
 
 ***
 
@@ -31,9 +31,9 @@
 ***
 
 ###
-Si desea probar el bot antes de instalarlo, hagalo aqui.
+SI DESEA PROPAR EL BOT ANTES DE INSTALAR, CLICK ABAJO.
 
-[![WhatsApp](https://img.shields.io/badge/KasumaBot-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://api.whatsapp.com/send/?phone=573215683772&text&type=phone_number&app_absent=0) 
+[![WHATSAPP](https://img.shields.io/badge/KasumaBot-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://api.whatsapp.com/send/?phone=573215683772&text&type=phone_number&app_absent=0) 
 
 ***
 
@@ -53,12 +53,12 @@ npm install
 node index.js
 ```
 
-3. Vincular con WhatsApp
+3. VINCULAR CON WHATSAPP
 
 ***
 
 ## ACTVIAR EN RENDER
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FByTraxnox-X%2FKasuma-Bot-MD)
+[![DEPLOY TO RENDER](https://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FByTraxnox-X%2FKasuma-Bot-MD)
 
 ***
 
@@ -66,8 +66,8 @@ node index.js
 
 En BoxMine el bot estara activo 24/7, si desea instalarlo aqui, vea el tutorial de abajo para crearse una cuenta.
 
-* Create una cuenta [`Como crearse una cuenta`](https://www.youtube.com/watch?v=ZAwBLuNmIlI)
-* Tutorial  [`Tutorial de instalacion`]()
+* Create una cuenta [`COMO CREARSE UNA CUENTA`](https://www.youtube.com/watch?v=ZAwBLuNmIlI)
+* Tutorial  [`TUTORIAL DE INSTALACION`]()
 
 <a href="https://boxmineworld.com"><img src="https://i.imgur.com/allAyd4.png" height="125px"></a>
 
@@ -75,19 +75,19 @@ En BoxMine el bot estara activo 24/7, si desea instalarlo aqui, vea el tutorial 
 
 ### VERSION DE TERMUX
 
-Por MediaFire
+DESCARGA POR MEDIAFIRE
 
-[Termux](https://www.mediafire.com/file/w0y0wkgrwl6sxtl/com.termux_118.apk/file) 
+[TERMUX](https://www.mediafire.com/file/w0y0wkgrwl6sxtl/com.termux_118.apk/file) 
 
-Por Mega
+DESCARGA POR MEGA 
 
-[Termux](https://mega.nz/file/8ms2wSxZ#jVRHw31hJiZTMZjd09vEFLrfjmlOK7EybnU9bqLn-yg) 
+[TERMUX](https://mega.nz/file/8ms2wSxZ#jVRHw31hJiZTMZjd09vEFLrfjmlOK7EybnU9bqLn-yg) 
 
 ***
 
 ### INSTALACION EN TERMUX
 
-[Tutorial](https://youtu.be/IOzudtyN87U?si=spflnObmfSHXnVa5) 
+[TUTORIAL](https://youtu.be/IOzudtyN87U?si=spflnObmfSHXnVa5) 
 
 1. Para prevenir algún error de comandos, ponga uno por uno.
 
@@ -149,7 +149,7 @@ npm i
           Copia el codigo de 8 digitos (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo > vincular con numero telefonico)
 
 
-Si por alguna razon usted no pudo conectar con el codigo qr o codigo de 8 digitos, elimine la carpeta "sessions" y intente de nuevo.
+SI POR ALGUNA RAZON NO PUEDE CONECTARSE, ELIMINE LA CARPETA "SESSION" Y INTENTE DE NUEVO.
 
 ***
 
