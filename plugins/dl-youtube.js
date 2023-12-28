@@ -1,41 +1,52 @@
-import fetch from 'node-fetch';
 
-const handler = async (m, { text }) => {
-  if (!text || !/^youtube\s/i.test(text)) {
-    throw `El comando debe comenzar con "youtube". Por ejemplo: youtube [texto de búsqueda] [audio/video]`;
+let handler = async(m, { conn, text, usedPrefix, command }) => {
+    if (command == 'youtubeaudio') {
+        if (!text) throw `Por favor, ingresa el texto de búsqueda. Ejemplo: !youtubeaudio [texto de búsqueda]`;
+
+        const [, searchText] = text.match(/^!youtubeaudio\s+(.+)$/i);
+      
+        if (!searchText) throw 'Por favor, especifica el texto de búsqueda después de !youtubeaudio';
+      
+        const encodedText = encodeURIComponent(searchText);
+        const res = await fetch(`https://visionaryapi.boxmine.xyz/api/ytplay?text=${encodedText}`);
+        const data = await res.json();
+      
+        if (!data.resultado) throw 'No se encontraron resultados para la búsqueda de YouTube.';
+      
+        const { title, channel, description, seconds, download } = data.resultado;
+        const fileBuffer = await (await fetch(download.audio)).buffer();
+        const infoMessage = `*${title}*\n\n*Canal:* ${channel}\n*Descripción:* ${description}\n*Duración:* ${seconds} segundos`;
+      
+        await conn.sendMessage(m.chat, { text: infoMessage.trim() }, { quoted: m });
+        await conn.sendMessage(m.chat, { audio: fileBuffer, fileName: `${title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m });
+      };
+
+      if (command == 'youtubevideo') {
+        if (!text) throw `Por favor, ingresa el texto de búsqueda. Ejemplo: !youtubevideo [texto de búsqueda]`;
+
+        const [, searchText] = text.match(/^!youtubevideo\s+(.+)$/i);
+      
+        if (!searchText) throw 'Por favor, especifica el texto de búsqueda después de !youtubevideo';
+      
+        const encodedText = encodeURIComponent(searchText);
+        const res = await fetch(`https://visionaryapi.boxmine.xyz/api/ytplay?text=${encodedText}`);
+        const data = await res.json();
+      
+        if (!data.resultado) throw 'No se encontraron resultados para la búsqueda de YouTube.';
+      
+        const { title, channel, description, seconds, download } = data.resultado;
+        const fileBuffer = await (await fetch(download.video)).buffer();
+      
+        const infoMessage = `*${title}*\n\n*Canal:* ${channel}\n*Descripción:* ${description}\n*Duración:* ${seconds} segundos`;
+
+        await conn.sendMessage(m.chat, { text: infoMessage.trim() }, { quoted: m });
+        await conn.sendMessage(m.chat, { video: fileBuffer, fileName: `${title}.mp4`, mimetype: 'video/mp4' }, { quoted: m });
+      };
   }
+      
+  handler.help = handler.command = ['youtubeaudio', 'youtubevideo']
+  handler.tags = ['dl']
 
-  const [, searchText, fileType] = text.match(/^youtube\s+(.+?)(?:\s+(audio|video))?$/i);
-
-  if (!searchText) {
-    throw 'Por favor, especifica el texto de búsqueda después de "youtube".';
-  }
-  if (!fileType) {
-    throw 'Por favor, especifica si quieres "audio" o "video" después de la búsqueda.';
-  }
-  const encodedText = encodeURIComponent(searchText);
-  const res = await fetch(`https://visionaryapi.boxmine.xyz/api/ytplay?text=${encodedText}`);
-  const data = await res.json();
-
-  if (!data.resultado) {
-    throw 'No se encontraron resultados para la búsqueda de YouTube.';
-  }
-
-  const { title, channel, description, seconds, download } = data.resultado;
-
-  const fileTypeLower = fileType.toLowerCase();
-
-  const fileURL = fileTypeLower === 'audio' ? download.audio : download.video;
-  const fileBuffer = await (await fetch(fileURL)).buffer();
-
-  const infoMessage = `*${title}*\n\n*Canal:* ${channel}\n*Descripción:* ${description}\n*Duración:* ${seconds} segundos`;
-
-  await conn.sendMessage(m.chat, { text: infoMessage.trim() }, { quoted: m });
+  handler.owner = true
   
-  await conn.sendMessage(m.chat, { [fileTypeLower]: fileBuffer, fileName: `${title}.${fileTypeLower === 'audio' ? 'mp3' : 'mp4'}`, mimetype: fileTypeLower === 'audio' ? 'audio/mpeg' : 'video/mp4' }, { quoted: m });
-};
-
-handler.help = ['youtube'];
-handler.tags = ['dl'];
-handler.command = /^(youtube)$/i;
-export default handler;
+  export default handler
