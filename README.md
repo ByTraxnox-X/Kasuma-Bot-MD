@@ -37,21 +37,7 @@ Si desea probar el bot antes de instalarlo, hagalo aqui.
 <a target="_blank" href="https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD"><img alt="Run on Replit" src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg"></a>
 
   1. Click "Import from GitHub"
-
-2. Ingresar estos comandos en una pestaña "Shell"
-```sh
-yarn
-```
-```sh
-npm install
-```
-```sh
-node index.js
-```
-
-    Y solo te queda vincular con WhatsApp.
-
----------
+  2. Espera que inicie y escaneas el qr
 
 ## ACTVIAR EN RENDER
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FByTraxnox-X%2FKasuma-Bot-MD)
