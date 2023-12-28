@@ -11,6 +11,17 @@ function joinTeam(userId, team, conn, m) {
   }
 }
 
+function startWar(userId, conn, m) {
+  if (!warSessions.has(userId)) {
+    conn.reply(m.chat, '*Primero, únete a un equipo con !guerra join a o !guerra join b.*', m);
+    return;
+  }
+
+  const team = teamAssignments.get(userId);
+  conn.reply(m.chat, `*¡La guerra ha comenzado para el equipo ${team.toUpperCase()}!*`, m);
+  // Aquí puedes agregar más lógica de inicio de la guerra si es necesario
+}
+
 let handler = async (m, { conn }) => {
   const userId = m.sender;
   const input = m.text.trim().toLowerCase();
@@ -25,6 +36,9 @@ let handler = async (m, { conn }) => {
     } else {
       conn.reply(m.chat, '*Por favor, únete a un equipo válido: A o B.*', m);
     }
+  } else if (input === 'iniciarguerra') {
+    console.log('Iniciando guerra...');
+    startWar(userId, conn, m);
   }
 };
 
