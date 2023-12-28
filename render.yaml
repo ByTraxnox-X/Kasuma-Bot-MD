@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: KasumaBot
+    env: docker
+    region: America 
+    plan: free
