@@ -29,11 +29,11 @@ Por favor @${m.mentionedJid[0].split`@`[0]}
     status: 'wait',*/
     
     
- //   waktu: setTimeout(() => 
+ /*  waktu: setTimeout(() => 
       if (conn.suit[id]) conn.reply(m.chat, `_Se acabó el tiempo del traje_`, m)
       delete conn.suit[id]
     }, timeout), poin, poin_lose, poin_bot, timeout
-  }
+  }*/
 
 handler.tags = ['game']
 handler.help = ['suitpvp', 'suit']
