@@ -46,8 +46,7 @@ return await conn.reply(m.chat, `Lamentablemente *${yo}* Se ha negado a estar en
 
 }}}
 
-handler.help = ['rechazar'];
-handler.tags = ['rol'];
+
 handler.command = /^(rechazar|cancelar|decline)$/i
 handler.group = true
 export default handler
