@@ -55,7 +55,9 @@ node index.js
 
 ---------
 
-
+## ACTVIAR EN RENDER
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FByTraxnox-X%2FKasuma-Bot-MD)
+---------
 
 ## BOXMINE HOST
 
@@ -69,7 +71,6 @@ En BoxMine el bot estara activo 24/7, si desea instalarlo aqui, vea el tutorial 
 <a href="https://boxmineworld.com"><img src="https://i.imgur.com/allAyd4.png" height="125px"></a>
 ---------
 
-
 ### VERSION DE TERMUX
 
 Por MediaFire
@@ -79,8 +80,6 @@ Por MediaFire
 Por Mega
 
 [Termux](https://mega.nz/file/8ms2wSxZ#jVRHw31hJiZTMZjd09vEFLrfjmlOK7EybnU9bqLn-yg) 
-
-
 
 ### INSTALACION EN TERMUX
 
@@ -146,12 +145,9 @@ npm i
           Copia el codigo de 8 digitos (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo > vincular con numero telefonico)
 
 
-
-
 Si por alguna razon usted no pudo conectar con el codigo qr o codigo de 8 digitos, elimine la carpeta "sessions" y intente de nuevo.
 
 ---------
-
 
 ### EN CASO DE DETENERSE EN TERMUX
 1. 
