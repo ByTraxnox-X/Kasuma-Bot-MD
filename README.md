@@ -5,12 +5,7 @@
 - Bot con conexion mediante QR y Codigo de 8 digitos.
 - Bot con API propia
 
-
-<p align="center"> 
-ATAJOS
-</p> 
-
-<p align="center">
+### ATAJOS
 
 | CONTENIDO | DESCRIPCIÓN | LINK |
 |------|-------------|-------|
@@ -18,10 +13,9 @@ ATAJOS
 | **INSTALACION EN TERMUX** | ***INSTALACION MANUAL*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#instalacion-en-termux) |
 | **INCIO EN TERMUX** | ***EN CASO DE DETENERSE*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#en-caso-de-detenerse-en-termux) |
 | **INSTALACION EN REPLIT** | ***INSTALACIÓN MANUAL*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-replit) |
-| **INSTALACION EN RENDER** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD/tree/main?tab=readme-ov-file#actviar-en-render) |
+| **INSTALACION EN RENDER** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#actviar-en-render) |
 | **INSTALACION EN BOXMINE** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#boxmine-host) |
 
-</p> 
 
 
 ### API FREE
