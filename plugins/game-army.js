@@ -48,8 +48,8 @@ let handler = async (m, { conn }) => {
     conn.reply(m.chat, '*¡Prepárate para la batalla!*', m);
 
     printBattleStatus(conn, m, team, userArmy, enemyArmy);
-  } else if (input.startsWith('join')) {
-    const team = input.split(' ')[1];
+  } else if (input.startsWith('guerra join')) {
+    const team = input.split(' ')[2];
     if (team === 'a' || team === 'b') {
       joinTeam(userId, team);
       conn.reply(m.chat, `*Te has unido al equipo ${team.toUpperCase()}.*`, m);
