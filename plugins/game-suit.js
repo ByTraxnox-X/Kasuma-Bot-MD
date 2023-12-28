@@ -36,7 +36,7 @@ Por favor @${m.mentionedJid[0].split`@`[0]}
   }
 }
 handler.tags = ['game']
-handler.help = ['suitpvp', 'suit'].map(v => v + ' @tag')
+handler.help = ['suitpvp', 'suit']
 handler.command = /^suit(pvp)?$/i
 
 handler.group = true
