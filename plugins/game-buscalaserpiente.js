@@ -44,7 +44,6 @@ async function findSnake(conn, m, y, userId) {
   } else if (userSession.gameBoard[0][y] === '🐍') {
     userSession.revealedBoard[0][y] = true;
     printRevealedBoard(conn, m, userSession.revealedBoard, userSession.gameBoard);
-    conn.reply(m.chat, '¡Encontraste una serpiente! ¡Sigue buscando para encontrar la otra!', m);
   } else {
     userSession.revealedBoard[0][y] = true;
     printRevealedBoard(conn, m, userSession.revealedBoard, userSession.gameBoard);
