@@ -15,21 +15,21 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
 *❏  COMANDOS*
 *${usedPrefix + command} join A/B* = Unete al juego
 *${usedPrefix + command} left* = salir del juego
-*${usedPrefix + command} money 10xx* = apostar dinero
+*${usedPrefix + command} dolares 10xx* = apostar dinero
 *${usedPrefix + command} player* = juego de jugador
 *${usedPrefix + command} start* = empezar juego`)
 
 
-  if (args[0] == "money"){
+  if (args[0] == "dolares"){
     if (!(m.chat in conn.war)) return m.reply(`*Primero cree una sala (escriba .war join)*`)
     if(m.sender == conn.war[m.chat][0].user){
       if (args[1] != "undefined" && !isNaN(args[1])){
         args[1] = parseInt(args[1])
-        if (args[1] < 1000) return m.reply('*Mínimo RP: 1.000*')
-        conn.war2[m.chat].money = args[1]
+        if (args[1] < 100) return m.reply('*Mínimo RP: 100*')
+        conn.war2[m.chat].dolares = args[1]
         return m.reply("*Capital de guerra establecida con éxito de RP. " + Number(args[1]).toLocaleString() + "*")
       }else {
-        return m.reply("*Introduce el capital de la apuesta de guerra en forma de números (No se pueden utilizar puntos)*\n\n.war money 100000")
+        return m.reply("*Introduce el capital de la apuesta de guerra en forma de números (No se pueden utilizar puntos)*\n\n.war dolares 10000")
       }
     }else {
       return conn.reply(m.chat,`*Solo @${conn.war[m.chat][0].user.split('@')[0]} como un creador de habitaciones que puede reemplazar el capital de guerra inicial*`,m, {contextInfo : {mentionedJid : [conn.war[m.chat][0].user]}})
@@ -39,10 +39,10 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
   // JOIN
   if (args[0] == "join"){
     
-    if (global.db.data.users[m.sender].money < 1000) return m.reply("*Su dinero es al menos Rp. 1000 para jugar este juego.*")
+    if (global.db.data.users[m.sender].dolares < 100) return m.reply("*Su dinero debe ser al menos Rp. 100 para jugar este juego.*")
 
     if (!(m.chat in conn.war)) {
-      conn.war2[m.chat] = {"war" : false, "turn" : 0, "time" : 0, "money" : 0}
+      conn.war2[m.chat] = {"war" : false, "turn" : 0, "time" : 0, "dolares" : 0}
       conn.war[m.chat] = []
       let exp = global.db.data.users[m.sender].exp
       conn.war[m.chat][0] = {"user": m.sender, "hp": 5000, "lvl": global.db.data.users[m.sender].level, "turn" : false}
@@ -71,9 +71,9 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
 
       if (args[1]){
         if (args[1].toLowerCase() == "a"){
-          if (conn.war2[m.chat].money == 0) return conn.reply(m.chat,`*Ayuda @${conn.war[m.chat][0].user.split('@')[0]} establecer la capital inicial de la guerra (Minimo Rp. 1.000.000)*\n\n.war money 1000000`,m, {contextInfo : {mentionedJid : [conn.war[m.chat][0].user]}})
+          if (conn.war2[m.chat].dolares == 0) return conn.reply(m.chat,`*Ayuda @${conn.war[m.chat][0].user.split('@')[0]} establecer la capital inicial de la guerra (Minimo Rp. 1.000.000)*\n\n.war dolares 1000000`,m, {contextInfo : {mentionedJid : [conn.war[m.chat][0].user]}})
           return m.reply('a')
-          if (global.db.data.users[m.sender].money < conn.war2[m.chat].money) return m.reply(`*Tu dinero es minimo Rp. ${conn.war2[m.chat].money.toLocaleString()} para jugar este juego.*`)
+          if (global.db.data.users[m.sender].dolares < conn.war2[m.chat].dolares) return m.reply(`*Tu dinero es minimo Rp. ${conn.war2[m.chat].dolares.toLocaleString()} para jugar este juego.*`)
           for (let i = 1 ; i < 5 ; i++) {
             if (conn.war[m.chat][i].user == ""){
               let exp = global.db.data.users[m.sender].exp
@@ -88,8 +88,8 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
             }
           } 
         }else if (args[1].toLowerCase() == "b"){
-          if (conn.war2[m.chat].money == 0) return conn.reply(m.chat,`*Ayuda @${conn.war[m.chat][0].user.split('@')[0]} establecer el capital inicial de la guerra (mínimo Rp. 1000000)*\n\n.war money 1000000`,m, {contextInfo : {mentionedJid : [conn.war[m.chat][0].user]}})
-          if (global.db.data.users[m.sender].money < conn.war2[m.chat].money) return m.reply(`*Tu dinero es minimo Rp. ${conn.war2[m.chat].money.toLocaleString()} para jugar este juego.*`)
+          if (conn.war2[m.chat].dolares == 0) return conn.reply(m.chat,`*Ayuda @${conn.war[m.chat][0].user.split('@')[0]} establecer el capital inicial de la guerra (mínimo Rp. 1000000)*\n\n.war dolares 1000000`,m, {contextInfo : {mentionedJid : [conn.war[m.chat][0].user]}})
+          if (global.db.data.users[m.sender].dolares < conn.war2[m.chat].dolares) return m.reply(`*Tu dinero es minimo Rp. ${conn.war2[m.chat].dolares.toLocaleString()} para jugar este juego.*`)
           for (let i = 5 ; i < 10 ; i++) {
             if (conn.war[m.chat][i].user == ""){
               let exp = global.db.data.users[m.sender].exp
@@ -153,7 +153,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
       teamAB.push(conn.war[m.chat][i].user)
     }
 
-    conn.reply(m.chat, `${conn.war2[m.chat].war ? '*Giliran : ' + '@' + conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0] + '*\n*Taruhan : Rp. ' + Number(conn.war2[m.chat].money).toLocaleString() + '*\n\n' : '*Taruhan : Rp. ' + Number(conn.war2[m.chat].money).toLocaleString() + '*\n\n' }*EQUIPO A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (Lv.${conn.war[m.chat][i].lvl} HP: ${conn.war[m.chat][i].hp})`).join`\n` + "\n\n*EQUIPO B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (Lv.${conn.war[m.chat][i+5].lvl} HP: ${conn.war[m.chat][i+5].hp})`).join`\n`,m, {contextInfo: {
+    conn.reply(m.chat, `${conn.war2[m.chat].war ? '*doblar : ' + '@' + conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0] + '*\n*Apuesta : Rp. ' + Number(conn.war2[m.chat].dolares).toLocaleString() + '*\n\n' : '*Taruhan : Rp. ' + Number(conn.war2[m.chat].dolares).toLocaleString() + '*\n\n' }*EQUIPO A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (Lv.${conn.war[m.chat][i].lvl} HP: ${conn.war[m.chat][i].hp})`).join`\n` + "\n\n*EQUIPO B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (Lv.${conn.war[m.chat][i+5].lvl} HP: ${conn.war[m.chat][i+5].hp})`).join`\n`,m, {contextInfo: {
       mentionedJid: teamAB
     }})
   }
