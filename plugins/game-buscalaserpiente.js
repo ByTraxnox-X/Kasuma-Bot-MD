@@ -14,7 +14,7 @@ function placeSnake(board) {
 }
 
 function printHiddenBoard(conn, m, revealedBoard) {
-  let result = '*Juego de Búsqueda de Serpiente*\n\n';
+  let result = '*Búsqueda de Serpiente*\n\n';
   for (let i = 0; i < revealedBoard.length; i++) {
     for (let j = 0; j < revealedBoard[i].length; j++) {
       result += revealedBoard[i][j] ? '⬛ ' : '⬜ ';
@@ -25,7 +25,7 @@ function printHiddenBoard(conn, m, revealedBoard) {
 }
 
 function printRevealedBoard(conn, m, revealedBoard, gameBoard) {
-  let result = '*Juego de Búsqueda de Serpiente*\n\n';
+  let result = '*Búsqueda de Serpiente*\n\n';
   for (let i = 0; i < revealedBoard.length; i++) {
     for (let j = 0; j < revealedBoard[i].length; j++) {
       result += revealedBoard[i][j] ? gameBoard[i][j] + ' ' : '⬜ ';
@@ -43,15 +43,15 @@ async function findSnake(conn, m, y, userId) {
     userSession.revealedBoard[0][y] = true;
     printRevealedBoard(conn, m, userSession.revealedBoard, userSession.gameBoard);
     conn.reply(m.chat, '¡Encontraste la serpiente! ¡Has ganado!', m);
-    gameSessions.delete(userId); 
+    gameSessions.delete(userId);
   } else {
     userSession.revealedBoard[0][y] = true;
     printRevealedBoard(conn, m, userSession.revealedBoard, userSession.gameBoard);
-    
+
     userSession.attempts--;
 
     if (userSession.attempts === 0) {
-      conn.reply(m.chat, 'No encontraste la serpiente. Se han agotado tus intentos. ¡Juego terminado!', m);
+      conn.reply(m.chat, 'No encontraste la serpiente. ¡Juego terminado!', m);
       gameSessions.delete(userId);
     } else {
       conn.reply(m.chat, `No encontraste la serpiente. Te quedan ${userSession.attempts} intentos. ¡Inténtalo de nuevo!`, m);
