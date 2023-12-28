@@ -2,10 +2,10 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
   conn.war = conn.war ? conn.war : {}
   conn.war2 = conn.war2 ? conn.war2 : {}
   // fungsi delay
-  function sleep(ms) {
+ /* function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-/*
+
   // fungsi turn kalau ada yg afk
   async function cekAFK(x){
     let turn = x
@@ -15,9 +15,9 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
     let timeNow = conn.war2[m.chat].time
     // m.reply("Turn : " + turn + "-" + turnNow + "\n\nTime : " + time + "-" + timeNow)
     if (turn == turnNow && time == timeNow){
-      conn.war[m.chat][turn].hp -= 2500*/
+      conn.war[m.chat][turn].hp -= 2500
       conn.reply(m.chat,`*@${conn.war[m.chat][turn].user.split('@')[0]} actualmente AFK (Bien -2500 HP)*\n\n.war player = estadísticas del jugador\n.attack @tag = ataca a tu oponente`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][turn].user]}})
-      await sleep(3000)
+      await sleep(3000)*/
       // cek kalau mati
       if (conn.war[m.chat][turn].hp <= 0) {
         conn.reply(m.chat,`*@${conn.war[m.chat][turn].user.split('@')[0]} está muerto porque los HP (puntos de salud) están agotados.*`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][turn].user]}})
@@ -32,7 +32,10 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
               playerKalah += 1
             }
           }
-          // m.reply(playerTotal + "T-K" + playerKalah)
+
+
+
+          m.reply(playerTotal + "T-K" + playerKalah)
           if (playerTotal > 0 && playerTotal == playerKalah){
             var teamA = []
             var teamB = []
