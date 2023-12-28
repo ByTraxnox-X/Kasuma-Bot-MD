@@ -9,7 +9,6 @@ let aa = toUser + '@s.whatsapp.net'
 if(!text) {
 let ps = groupMetadata.participants.map(v => v.id)
 let a = ps.getRandom()
-let b
 do b = ps.getRandom()
 while (b === a)
     
