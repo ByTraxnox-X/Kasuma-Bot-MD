@@ -25,11 +25,11 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
     if(m.sender == conn.war[m.chat][0].user){
       if (args[1] != "undefined" && !isNaN(args[1])){
         args[1] = parseInt(args[1])
-        if (args[1] < 1000) return m.reply('*Mínimo RP: 1.000*')
+        if (args[1] < 100) return m.reply('*Mínimo RP: 100*')
         conn.war2[m.chat].dolares = args[1]
         return m.reply("*Capital de guerra establecida con éxito de RP. " + Number(args[1]).toLocaleString() + "*")
       }else {
-        return m.reply("*Introduce el capital de la apuesta de guerra en forma de números (No se pueden utilizar puntos)*\n\n.war dolares 100000")
+        return m.reply("*Introduce el capital de la apuesta de guerra en forma de números (No se pueden utilizar puntos)*\n\n.war dolares 10000")
       }
     }else {
       return conn.reply(m.chat,`*Solo @${conn.war[m.chat][0].user.split('@')[0]} como un creador de habitaciones que puede reemplazar el capital de guerra inicial*`,m, {contextInfo : {mentionedJid : [conn.war[m.chat][0].user]}})
@@ -39,7 +39,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
   // JOIN
   if (args[0] == "join"){
     
-    if (global.db.data.users[m.sender].dolares < 1000) return m.reply("*Su dinero es al menos Rp. 1000 para jugar este juego.*")
+    if (global.db.data.users[m.sender].dolares < 100) return m.reply("*Su dinero debe ser al menos Rp. 100 para jugar este juego.*")
 
     if (!(m.chat in conn.war)) {
       conn.war2[m.chat] = {"war" : false, "turn" : 0, "time" : 0, "dolares" : 0}
