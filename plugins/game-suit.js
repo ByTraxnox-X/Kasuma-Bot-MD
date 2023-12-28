@@ -12,7 +12,7 @@ let handler = async (m, { conn, usedPrefix }) => {
   if (!m.mentionedJid[0]) return m.reply(`¿A quién te quieres oponer?_\nEtiqueta a la persona.. Contoh\n\n${usedPrefix}suit @${owner[1]}`, m.chat, { contextInfo: { mentionedJid: [owner[1] + '@s.whatsapp.net'] } })
   if (Object.values(conn.suit).find(room => room.id.startsWith('suit') && [room.p, room.p2].includes(m.mentionedJid[0]))) throw `La persona a la que estás desafiando está haciendo el mismo juego que otra persona. :(`
   let id = 'suit_' + new Date() * 1
-  let caption = `
+  let caption2 = `
 _*SUIT PvP*_
 
 @${m.sender.split`@`[0]} desafío @${m.mentionedJid[0].split`@`[0]} jugar al traje
@@ -21,7 +21,7 @@ Por favor @${m.mentionedJid[0].split`@`[0]}
 `.trim()
   let footer = `Tipo "aceptar/ok/gas" para empezar el traje\nKetik "rechazar/no puedo/más tarde" negarse`
   conn.suit[id] = {
-    chat: await conn.sendMessage(m.chat, caption caption, m),
+    chat: await conn.sendMessage(m.chat, caption caption2, m),
     conn.reply(m.chat, `Aceptar "ok" Rechazar "tolak"`, m)
    /* id: id,
     p: m.sender,
