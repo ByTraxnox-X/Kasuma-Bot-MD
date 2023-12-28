@@ -14,7 +14,7 @@ function placeSnake(board) {
 }
 
 function printHiddenBoard(conn, m, revealedBoard) {
-  let result = '*Juego de Búsqueda de Serpiente*\n\n';
+  let result = '*Búsqueda de Serpiente*\n\nPara jugar elije la casilla que quieras destapar, ejemplo: 2';
   for (let i = 0; i < revealedBoard.length; i++) {
     for (let j = 0; j < revealedBoard[i].length; j++) {
       result += revealedBoard[i][j] ? '⬛ ' : '⬜ ';
@@ -25,7 +25,7 @@ function printHiddenBoard(conn, m, revealedBoard) {
 }
 
 function printRevealedBoard(conn, m, revealedBoard, gameBoard) {
-  let result = '*Juego de Búsqueda de Serpiente*\n\n';
+  let result = '*Búsqueda de Serpiente*\n\nPara jugar elije la casilla que quieras destapar, ejemplo: 2';
   for (let i = 0; i < revealedBoard.length; i++) {
     for (let j = 0; j < revealedBoard[i].length; j++) {
       result += revealedBoard[i][j] ? gameBoard[i][j] + ' ' : '⬜ ';
@@ -42,7 +42,7 @@ async function findSnake(conn, m, y, userId) {
   } else if (userSession.gameBoard[0][y] === 'S') {
     userSession.revealedBoard[0][y] = true;
     printRevealedBoard(conn, m, userSession.revealedBoard, userSession.gameBoard);
-    conn.reply(m.chat, '¡Encontraste la serpiente! ¡Has ganado!', m);
+    conn.reply(m.chat, '*¡Encontraste la serpiente! ¡Has ganado!*', m);
     gameSessions.delete(userId); 
   } else {
     userSession.revealedBoard[0][y] = true;
@@ -51,10 +51,10 @@ async function findSnake(conn, m, y, userId) {
     userSession.attempts--;
 
     if (userSession.attempts === 0) {
-      conn.reply(m.chat, 'No encontraste la serpiente. Se han agotado tus intentos. ¡Juego terminado!', m);
+      conn.reply(m.chat, 'No encontraste la serpiente. Se han agotado tus intentos. *¡Juego terminado!*', m);
       gameSessions.delete(userId);
     } else {
-      conn.reply(m.chat, `No encontraste la serpiente. Te quedan ${userSession.attempts} intentos. ¡Inténtalo de nuevo!`, m);
+      conn.reply(m.chat, `No encontraste la serpiente. Te quedan ${userSession.attempts} intentos. *¡Inténtalo de nuevo!*`, m);
     }
   }
 }
@@ -62,7 +62,7 @@ async function findSnake(conn, m, y, userId) {
 let handler = async (m, { conn }) => {
     const userId = m.sender;
     if (gameSessions.has(userId)) {
-      conn.reply(m.chat, 'Ya tienes un juego en curso. Completa o cancela el juego actual antes de iniciar uno nuevo.', m);
+      conn.reply(m.chat, '*Ya tienes un juego en curso.* Completa o cancela el juego actual antes de iniciar uno nuevo.', m);
       return;
     }
     const numCols = 4;

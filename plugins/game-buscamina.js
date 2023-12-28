@@ -21,7 +21,7 @@ function placeMines(board, count) {
 }
 
 function printHiddenBoard(conn, m, revealedBoard) {
-  let result = '*Mapa del Busca Minas*\n\n';
+  let result = '*Mapa del Busca Minas*\n\nPara jugar elije la casilla de la fila que quieras destapar, ejemplo: 2,1';
   for (let i = 0; i < revealedBoard.length; i++) {
     for (let j = 0; j < revealedBoard[i].length; j++) {
       result += revealedBoard[i][j] ? '⬛ ' : '⬜ ';
