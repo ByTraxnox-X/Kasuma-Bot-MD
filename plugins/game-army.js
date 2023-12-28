@@ -14,6 +14,15 @@ function printBattleStatus(conn, m, team, userArmy, enemyArmy) {
   conn.reply(m.chat, result, m);
 }
 
+function joinTeam(userId, team, conn, m) {
+  if (!warSessions.has(userId)) {
+    warSessions.set(userId, { team });
+    teamAssignments.set(userId, team);
+  } else {
+    conn.reply(m.chat, '*Ya estás en la guerra.*', m);
+  }
+}
+
 let handler = async (m, { conn }) => {
   const userId = m.sender;
   const input = m.text.trim().toLowerCase();
@@ -50,15 +59,6 @@ let handler = async (m, { conn }) => {
     }
   }
 };
-
-function joinTeam(userId, team, conn, m) {
-  if (!warSessions.has(userId)) {
-    warSessions.set(userId, { team });
-    teamAssignments.set(userId, team);
-  } else {
-    conn.reply(m.chat, '*Ya estás en la guerra.*', m);
-  }
-}
 
 handler.help = ['guerra'];
 handler.tags = ['game'];
