@@ -38,19 +38,19 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
             var teamAB = []
             for (let j=0;j<5;j++){
               if (conn.war[m.chat][j].user != ""){
-                global.db.data.users[conn.war[m.chat][j].user].money -= Number(conn.war2[m.chat].money)
+                global.db.data.users[conn.war[m.chat][j].user].dolares -= Number(conn.war2[m.chat].dolares)
                 teamA.push(conn.war[m.chat][j].user)
                 teamAB.push(conn.war[m.chat][j].user)
               }
             }
             for (let j=5;j<10;j++){
               if (conn.war[m.chat][j].user != ""){
-                global.db.data.users[conn.war[m.chat][j].user].money += Number(conn.war2[m.chat].money)
+                global.db.data.users[conn.war[m.chat][j].user].dolares += Number(conn.war2[m.chat].dolares)
                 teamB.push(conn.war[m.chat][j].user)
                 teamAB.push(conn.war[m.chat][j].user)
               }
             }
-            conn.reply(m.chat, `*EL EQUIPO B GANÓ PORQUE EL EQUIPO A FUE TODO TONTO*\n\n*EQUIPO A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (- Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n` + "\n\n*TEAM B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (+ Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n`,m, {contextInfo: {
+            conn.reply(m.chat, `*EL EQUIPO B GANÓ PORQUE EL EQUIPO A FUE TODO TONTO*\n\n*EQUIPO A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (- Rp. ${Number(conn.war2[m.chat].dolares).toLocaleString()})`).join`\n` + "\n\n*TEAM B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (+ Rp. ${Number(conn.war2[m.chat].dolares).toLocaleString()})`).join`\n`,m, {contextInfo: {
               mentionedJid: teamAB
             }})
             delete conn.war[m.chat]
@@ -71,19 +71,19 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
             var teamAB = []
             for (let j=0;j<5;j++){
               if (conn.war[m.chat][j].user != ""){
-                global.db.data.users[conn.war[m.chat][j].user].money += Number(conn.war2[m.chat].money)
+                global.db.data.users[conn.war[m.chat][j].user].dolares += Number(conn.war2[m.chat].dolares)
                 teamA.push(conn.war[m.chat][j].user)
                 teamAB.push(conn.war[m.chat][j].user)
               }
             }
             for (let j=5;j<10;j++){
               if (conn.war[m.chat][j].user != ""){
-                global.db.data.users[conn.war[m.chat][j].user].money -= Number(conn.war2[m.chat].money)
+                global.db.data.users[conn.war[m.chat][j].user].dolares -= Number(conn.war2[m.chat].dolares)
                 teamB.push(conn.war[m.chat][j].user)
                 teamAB.push(conn.war[m.chat][j].user)
               }
             }
-            conn.reply(m.chat, `*EL EQUIPO A GANÓ PORQUE EL EQUIPO B FUE TODO TONTO*\n\n*TEAM A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (+ Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n` + "\n\n*TEAM B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (- Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n`,m, {contextInfo: {
+            conn.reply(m.chat, `*EL EQUIPO A GANÓ PORQUE EL EQUIPO B FUE TODO TONTO*\n\n*TEAM A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (+ Rp. ${Number(conn.war2[m.chat].dolares).toLocaleString()})`).join`\n` + "\n\n*TEAM B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (- Rp. ${Number(conn.war2[m.chat].dolares).toLocaleString()})`).join`\n`,m, {contextInfo: {
               mentionedJid: teamAB
             }})
             delete conn.war[m.chat]
@@ -246,19 +246,19 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
       var teamAB = []
       for (let j=0;j<5;j++){
         if (conn.war[m.chat][j].user != ""){
-          global.db.data.users[conn.war[m.chat][j].user].money += Number(conn.war2[m.chat].money)
+          global.db.data.users[conn.war[m.chat][j].user].dolares += Number(conn.war2[m.chat].dolares)
           teamA.push(conn.war[m.chat][j].user)
           teamAB.push(conn.war[m.chat][j].user)
         }
       }
       for (let j=5;j<10;j++){
         if (conn.war[m.chat][j].user != ""){
-          global.db.data.users[conn.war[m.chat][j].user].money -= Number(conn.war2[m.chat].money)
+          global.db.data.users[conn.war[m.chat][j].user].dolares -= Number(conn.war2[m.chat].dolares)
           teamB.push(conn.war[m.chat][j].user)
           teamAB.push(conn.war[m.chat][j].user)
         }
       }
-      conn.reply(m.chat, `*EL EQUIPO "A" GANÓ PORQUE EL EQUIPO "B" FUE TODO TONTO*\n\n*EQUIPO A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (+ Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n` + "\n\n*EQUIPO B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (- Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n`,m, {contextInfo: {
+      conn.reply(m.chat, `*EL EQUIPO "A" GANÓ PORQUE EL EQUIPO "B" FUE TODO TONTO*\n\n*EQUIPO A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (+ Rp. ${Number(conn.war2[m.chat].dolares).toLocaleString()})`).join`\n` + "\n\n*EQUIPO B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (- Rp. ${Number(conn.war2[m.chat].dolares).toLocaleString()})`).join`\n`,m, {contextInfo: {
         mentionedJid: teamAB
       }})
       delete conn.war[m.chat]
@@ -304,19 +304,19 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
       var teamAB = []
       for (let j=0;j<5;j++){
         if (conn.war[m.chat][j].user != ""){
-          global.db.data.users[conn.war[m.chat][j].user].money -= Number(conn.war2[m.chat].money)
+          global.db.data.users[conn.war[m.chat][j].user].dolares -= Number(conn.war2[m.chat].dolares)
           teamA.push(conn.war[m.chat][j].user)
           teamAB.push(conn.war[m.chat][j].user)
         }
       }
       for (let j=5;j<10;j++){
         if (conn.war[m.chat][j].user != ""){
-          global.db.data.users[conn.war[m.chat][j].user].money += Number(conn.war2[m.chat].money)
+          global.db.data.users[conn.war[m.chat][j].user].dolares += Number(conn.war2[m.chat].dolares)
           teamB.push(conn.war[m.chat][j].user)
           teamAB.push(conn.war[m.chat][j].user)
         }
       }
-      conn.reply(m.chat, `*EL EQUIPO "B" GANÓ PORQUE EL EQUIPO "A" FUE TODO TONTO*\n\n*EQUIPO A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (- Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n` + "\n\n*EQUIPO B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (+ Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n`,m, {contextInfo: {
+      conn.reply(m.chat, `*EL EQUIPO "B" GANÓ PORQUE EL EQUIPO "A" FUE TODO TONTO*\n\n*EQUIPO A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (- Rp. ${Number(conn.war2[m.chat].dolares).toLocaleString()})`).join`\n` + "\n\n*EQUIPO B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (+ Rp. ${Number(conn.war2[m.chat].dolares).toLocaleString()})`).join`\n`,m, {contextInfo: {
         mentionedJid: teamAB
       }})
       delete conn.war[m.chat]
