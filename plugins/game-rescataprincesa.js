@@ -3,7 +3,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 
 
-}
 
   if (args[0] == "ayudar"){
 m.reply('Gracias por ayudarme')
@@ -14,6 +13,7 @@ m.reply('Dejastes que se la llevaran')
 }
 
         
+}
 
 handler.help = ['princesa'];
 handler.tags = ['game'];
