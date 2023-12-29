@@ -1,5 +1,5 @@
 
-let handler = async(m, { conn, text, usedPrefix, command }) => {
+let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (command == 'rescatarprincesa') {
         throw `
         Hola, soy la princesa, *Ohhh noo*
