@@ -7,8 +7,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (userSession.stage === 'start' || args[0] === 'reiniciar') {
       userSession.stage = 'start';
       throw `
-Hola, soy la princesa, *Ohhh noo*
-ayuda me están secuestrando
+La princesa Mirabel esta siguendo secuestrada!, actua de la mejor manera para rescatarla!
             
 *${usedPrefix + 'princesa'} ayudar*
 *${usedPrefix + 'princesa'} dejarla*
@@ -23,7 +22,7 @@ ayuda me están secuestrando
       case 'start':
         if (args[0] == "ayudar") {
           userSession.stage = 'running';
-          m.reply(`Estás corriendo a ayudarla, *te caes* andas cojo,\n\n.princesa seguir\n.princesa dejarla?`);
+          m.reply(`Estás corriendo a ayudarla, *te caes* andas cojo,\n\n*${usedPrefix}princesa seguir*\n*${usedPrefix}princesa dejarla*`);
         }
         break;
 
@@ -33,21 +32,21 @@ ayuda me están secuestrando
           m.reply('Dejaste a la princesa');
         } else if (args[0] == "seguir") {
           userSession.stage = 'follow';
-          m.reply('Te levantas del piso, luego de ese madrazo que te diste, estás corriendo x2, los alcanzaste, los golpeas, pero ellos no se dejan, te tiran al suelo te amarran con un cabo.\n\n.princesa desatarme\n.princesa dejarla');
+          m.reply(`Te levantas del piso, luego de ese madrazo que te diste, estás corriendo x2, los alcanzaste, los golpeas, pero ellos no se dejan, te tiran al suelo te amarran con un cabo.\n\n*${usedPrefix}princesa desatarme*\n*${usedPrefix}princesa dejarla*`);
         }
         break;
 
       case 'caught':
         if (args[0] == "desatarme") {
           userSession.stage = 'rescued';
-          m.reply('Oh, te has desatado, ahora le estás dando duro, los golpeas, \nenemigo: porfavor ya no, me rindo, estás con la princesa\n\n.princesa llevarla\n.princesa dejarla');
+          m.reply(`Oh, te has desatado, ahora le estás dando duro, los golpeas, \nenemigo: porfavor ya no, me rindo, estás con la princesa\n\n*${usedPrefix}princesa llevarla*\n*${usedPrefix}princesa dejarla*`);
         }
         break;
 
       case 'rescued':
         if (args[0] == "llevarla") {
           userSession.stage = 'completed';
-          m.reply('Rescataste a la princesa, el rey te está agradeciendo mucho por ayudar a la princesa, de recompensa te va a dar $250');
+          m.reply(`Rescataste a la princesa, el rey te está agradeciendo mucho por ayudar a la princesa, de recompensa te va a dar *$250*`);
           let users = global.db.data.users[m.sender];
           users.dolares += 250;
           delete sessions[m.sender];
