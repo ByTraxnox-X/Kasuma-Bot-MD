@@ -5,7 +5,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     }[(args[0] || '')]
     if (yesno === undefined)
         throw `
-Hola, soy la princesa sebastian, *Ohhh noo*
+Hola, soy la princesa, *Ohhh noo*
 ayuda me estan secuestrando
 
   *${usedPrefix + command} ayudar*
