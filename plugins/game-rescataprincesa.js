@@ -15,7 +15,7 @@ m.reply('Dejastes que se la llevaran')
 
         
 
-handler.help = ['rescatarprincesa'];
+handler.help = ['princesa'];
 handler.tags = ['game'];
 handler.command = /^rescatarprincesa$/i;
 
