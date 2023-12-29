@@ -1,20 +1,19 @@
 let sessions = {};
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-    const userSession = sessions[m.sender] || {};
+    let userSession = sessions[m.sender] || {};
 
     if (command == 'rescatarprincesa') {
-        if (!userSession.stage) {
-            userSession.stage = 'start';
+        if (!userSession.stage || args[0] === 'reiniciar') {
+            userSession = { stage: 'start' };
             throw `
-            Hola, soy la princesa, *Ohhh noo*
-            ayuda me están secuestrando
+Hola, soy la princesa, *Ohhh noo*
+ayuda me están secuestrando
             
-              *${usedPrefix + 'princesa'} ayudar*
-              *${usedPrefix + 'princesa'} dejarla*
+*${usedPrefix + 'princesa'} ayudar*
+*${usedPrefix + 'princesa'} dejarla*
             `;
         } else {
-
             throw `Ya estás en medio de una acción. Puedes continuar desde donde quedaste usando el comando adecuado.`;
         }
     }
@@ -26,7 +25,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             case 'start':
                 if (args[0] == "ayudar") {
                     userSession.stage = 'running';
-                    m.reply(`Estás corriendo a ayudarla, *te caes* andas cojo,\n\n.princesa seguir\n.princesa dejarla?`);
+                    m.reply(`Estás corriendo a ayudarla, *te caes* andas cojo,\n\n.princesa seguir\n.princesa dejarla`);
                 }
                 break;
 
@@ -60,6 +59,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                 throw `Error desconocido en la etapa ${userSession.stage}.`;
         }
     }
+
+    sessions[m.sender] = userSession;
 }
 
 handler.help = handler.command = ['rescatarprincesa', 'princesa'];
