@@ -30,12 +30,12 @@ if (enviando) return;
       throw `Error, intentelo de nuevo.`;
     } else {
       try {
-        if (command === 'play.1') {
+        if (command === 'youtubeaudio') {
               apiUrl = `${visionary2}/api/v1/ytmp3?url=${data.resultado.url}`;
               mimeType = 'audio/mpeg';
               fileName = 'error.mp3';
               buff = await conn.getFile(apiUrl);
-            } else if (command === 'play.2') {
+            } else if (command === 'youtubevideo') {
               apiUrl = `${visionary2}/api/v1/ytmp4?url=${data.resultado.url}`;
               mimeType = 'video/mp4';
               fileName = 'error.mp4';
@@ -43,12 +43,12 @@ if (enviando) return;
         }
       } catch {
           try {
-            if (command === 'play.1') {
+            if (command === 'youtubeaudio') {
               apiUrl = `${visionary2}/api/v1/ytmp3?url=${data.resultado.url}`;
               mimeType = 'audio/mpeg';
               fileName = 'error.mp3';
               buff = await conn.getFile(apiUrl);
-            } else if (command === 'play.2') {
+            } else if (command === 'youtubevideo') {
               apiUrl = `${visionary2}/api/v1/ytmp4?url=${data.resultado.url}`;
               mimeType = 'video/mp4';
               fileName = 'error.mp4';
@@ -76,5 +76,9 @@ if (enviando) return;
     throw `Error, intentelo de nuevo.`;
   }
 };
-handler.command = ['play.1', 'play.2'];
+
+handler.help = ['youtubeaudio', 'youtubevideo'];
+handler.tags = ['dl']
+handler.command = ['youtubeaudio', 'youtubevideo'];
+
 export default handler;
