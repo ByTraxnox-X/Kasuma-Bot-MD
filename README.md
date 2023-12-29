@@ -42,16 +42,7 @@ SI DESEA PROPAR EL BOT ANTES DE INSTALAR, CLICK ABAJO.
 
 1. Click "Import from GitHub"
 
-2. Ingresar estos comandos en una pestaña "Shell"
-```sh
-yarn
-```
-```sh
-npm install
-```
-```sh
-node index.js
-```
+2. Click "RUN"
 
 3. VINCULAR CON WHATSAPP
 
