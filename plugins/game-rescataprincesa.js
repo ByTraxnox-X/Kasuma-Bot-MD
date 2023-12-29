@@ -1,5 +1,5 @@
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-
+let users = global.db.data.users[m.sender]
 
 
 
