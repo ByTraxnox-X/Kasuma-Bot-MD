@@ -1,19 +1,20 @@
 let sessions = {};
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-    let userSession = sessions[m.sender] || {};
+    let userSession = sessions[m.sender] || { stage: 'start' };
 
     if (command == 'rescatarprincesa') {
-        if (!userSession.stage || args[0] === 'reiniciar') {
-            userSession = { stage: 'start' };
+        if (userSession.stage === 'start' || args[0] === 'reiniciar') {
+            userSession.stage = 'start'; // Reiniciar la sesión
             throw `
-Hola, soy la princesa, *Ohhh noo*
-ayuda me están secuestrando
+            Hola, soy la princesa, *Ohhh noo*
+            ayuda me están secuestrando
             
-*${usedPrefix + 'princesa'} ayudar*
-*${usedPrefix + 'princesa'} dejarla*
+              *${usedPrefix + 'princesa'} ayudar*
+              *${usedPrefix + 'princesa'} dejarla*
             `;
         } else {
+
             throw `Ya estás en medio de una acción. Puedes continuar desde donde quedaste usando el comando adecuado.`;
         }
     }
