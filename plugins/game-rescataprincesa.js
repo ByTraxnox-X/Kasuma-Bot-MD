@@ -11,7 +11,7 @@ ayuda me estan secuestrando
   *${usedPrefix + command} ayudar*
   *${usedPrefix + command} dejarla*
 `.trim()
- await conn.sendMessage(m.chat, isClose)
+ await conn.sendMessage(m.chat, yesno)
 
 
 }
