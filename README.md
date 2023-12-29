@@ -118,14 +118,14 @@ cd Kasuma-Bot-MD
 npm i 
 ```
 
-*  Si elijes "npm start qr" el bot iniciara automaticamente con una vinculacion mediante un QR
+*  Si elijes "npm node index.js qr" el bot iniciara automaticamente con una vinculacion mediante un QR
 
-*  Si elijes "npm start code" el bot iniciara automaticamente con una vinculacion mediante un codigo de emparejamiento
+*  Si elijes "npm node index.js code" el bot iniciara automaticamente con una vinculacion mediante un codigo de emparejamiento
 
 2. Elegir el metodo de conexion:
     
-           npm start qr  
-           npm start code
+           npm node index.js qr  
+           npm node index.js code
 
 * Elije solo un comando, depende como quieras tu vinculacion y ponlo en la consola.
 
