@@ -5,8 +5,8 @@ throw `
 Hola, soy la princesa, *Ohhh noo*
 ayuda me estan secuestrando
 
-  *${usedPrefix + command} ayudar*
-  *${usedPrefix + command} dejarla*
+  *${usedPrefix + 'princesa'} ayudar*
+  *${usedPrefix + 'princesa'} dejarla*
 `
 
 
