@@ -14,7 +14,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
               *${usedPrefix + 'princesa'} dejarla*
             `;
         } else {
-          throw `Ya estás en medio de una acción. Puedes continuar desde donde quedaste usando el comando ${usedPrefix}princesa ${userSession.stage === 'running' ? 'seguir' : 'dejarla'} o ${usedPrefix}princesa dejarla.`;
+
+            throw `Ya estás en medio de una acción. Puedes continuar desde donde quedaste usando el comando adecuado.`;
         }
     }
 
@@ -56,7 +57,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                 break;
 
             default:
-                throw 'Error desconocido.';
+                throw `Error desconocido en la etapa ${userSession.stage}.`;
         }
     }
 }
