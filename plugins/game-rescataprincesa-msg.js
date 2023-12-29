@@ -1,4 +1,4 @@
-let handler = async (m, { conn, args, usedPrefix, command }) => {
+/*let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 
 throw `
@@ -8,14 +8,10 @@ ayuda me estan secuestrando
   *${usedPrefix + 'princesa'} ayudar*
   *${usedPrefix + 'princesa'} dejarla*
 `
-
-
 }
-
-
 
 handler.help = ['rescatarprincesa'];
 handler.tags = ['game'];
 handler.command = /^rescatarprincesa$/i;
 
-export default handler;
+export default handler;*/

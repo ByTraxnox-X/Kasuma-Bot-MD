@@ -1,4 +1,4 @@
-let handler = async (m, { conn, args, usedPrefix, command }) => {
+/*let handler = async (m, { conn, args, usedPrefix, command }) => {
 let users = global.db.data.users[m.sender]
 
 
@@ -36,4 +36,4 @@ handler.help = ['princesa'];
 handler.tags = ['game'];
 handler.command = /^princesa$/i;
 
-export default handler;
+export default handler;*/
