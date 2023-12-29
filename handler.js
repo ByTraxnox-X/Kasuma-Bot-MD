@@ -517,28 +517,6 @@ export async function participantsUpdate({ id, participants, action }) {
     let text = ''
      switch (action) {
 
-
-
-
-
-
-
-
-case 'rescatarprincesa':
-conn.sendMessage('666')
-m.reply('777')
-break;
-
-
-
-
-
-
-
-
-
-
-
         case 'add':
             case 'remove':
               if (chat.welcome && !chat?.isBanned) {
