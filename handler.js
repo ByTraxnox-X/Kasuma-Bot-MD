@@ -525,8 +525,9 @@ export async function participantsUpdate({ id, participants, action }) {
 
 
 case 'rescatarprincesa':
-m.reply('666')
-break
+conn.sendMessage('666')
+m.reply('777')
+break;
 
 
 
