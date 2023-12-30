@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (userSession.stage === 'start' || args[0] === 'reiniciar') {
       userSession.stage = 'start';
       throw `
-La princesa Mirabel esta siguendo secuestrada!, actua de la mejor manera para rescatarla!
+La princesa Mirabel esta siendo secuestrada!, actua de la mejor manera para rescatarla!
             
 *${usedPrefix + 'princesa'} ayudar*
 *${usedPrefix + 'princesa'} dejarla*
