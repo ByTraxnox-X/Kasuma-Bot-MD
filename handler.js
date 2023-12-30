@@ -522,11 +522,11 @@ export async function participantsUpdate({ id, participants, action }) {
             if (chat.welcome) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                 for (let user of participants) {
-                    let pp = await this.profilePictureUrl(user, 'image')
-                    let ppgp = await this.profilePictureUrl(id, 'image')
+                    let pp = 'https://i.imgur.com/nHHUm1a.png'
+                    let ppgp = 'https://i.imgur.com/nHHUm1a.png'
                     try {
-                        pp = 'https://i.imgur.com/nHHUm1a.png'
-                        ppgp = 'https://i.imgur.com/nHHUm1a.png'
+                        pp = await this.profilePictureUrl(user, 'image')
+                        ppgp = await this.profilePictureUrl(id, 'image')
                     } finally {
                         text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Bienvenido, @user').replace('@group', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'Desconocido') :
                             (chat.sBye || this.bye || conn.bye || 'Adiós, @user')).replace('@user', '@' + user.split('@')[0])
