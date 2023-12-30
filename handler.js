@@ -521,6 +521,7 @@ export async function participantsUpdate({ id, participants, action }) {
             if (chat.welcome) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                 for (let user of participants) {
+                    let who = m.quoted ? m.quoted.sender : m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
                     let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://i.imgur.com/nHHUm1a.png')
                     let ppgp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || 'https://i.imgur.com/nHHUm1a.png'
                     try {
