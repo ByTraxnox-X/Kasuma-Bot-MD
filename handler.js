@@ -531,7 +531,7 @@ export async function participantsUpdate({ id, participants, action }) {
                         text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Bienvenido, @user').replace('@group', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'Desconocido') :
                             (chat.sBye || this.bye || conn.bye || 'Adiós, @user')).replace('@user', '@' + user.split('@')[0])
 
-                        let wel = API(`${visionary2}`, '/api/welcome', {
+                        let wel = API(`${visionary2}`, '/api/maker/canvas/welcome?', {
                             username: await this.getName(user),
                             groupname: await this.getName(id),
                             groupicon: ppgp,
@@ -539,7 +539,7 @@ export async function participantsUpdate({ id, participants, action }) {
                             profile: pp,
                         })
 
-                        let lea = API(`${visionary2}`, '/api/goodbye', {
+                        let lea = API(`${visionary2}`, '/api/maker/canvas/goodbye?', {
                             username: await this.getName(user),
                             groupname: await this.getName(id),
                             groupicon: ppgp,
