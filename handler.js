@@ -51,13 +51,13 @@ export async function handler(chatUpdate) {
                     user.diamond = 10
                 if (!isNumber(user.lastclaim))
                     user.lastclaim = 0
-                if (!isNumber(user.antispam))
+                if (!isNumber(user.antispam)) 
                     user.antispam = 0
-                if (!isNumber(user.antispamlastclaim))
+                if (!isNumber(user.antispamlastclaim)) 
                     user.antispamlastclaim = 0
                 if (!('registered' in user))
                     user.registered = false
-                //-- user registered 
+                    //-- user registered 
                 if (!user.registered) {
                     if (!('name' in user))
                         user.name = m.name
@@ -83,7 +83,7 @@ export async function handler(chatUpdate) {
                     user.autolevelup = false
             } else
                 global.db.data.users[m.sender] = {
-                    messaggi: 0,
+                    messaggi: 0, 
                     exp: 0,
                     diamond: 10,
                     dolares: 40,
@@ -132,13 +132,13 @@ export async function handler(chatUpdate) {
                     chat.onlyLatinos = false
                 if (!('nsfw' in chat))
                     chat.nsfw = false
-                if (!('modoadmin' in chat))
+                if (!('modoadmin' in chat)) 
                     chat.modoadmin = false
                 if (!('antiLink2' in chat))
                     chat.antiLink2 = false;
-                if (!('simi' in chat))
+                if (!('simi' in chat)) 
                     chat.simi = false;
-                if (!('antiToxic' in chat))
+                if (!('antiToxic' in chat)) 
                     chat.antiToxic = false;
                 if (!isNumber(chat.expired))
                     chat.expired = 0
@@ -152,16 +152,16 @@ export async function handler(chatUpdate) {
                     sBye: '',
                     sPromote: '',
                     sDemote: '',
-                    pasangan: '',
+pasangan: '',
                     antiLink: false,
                     viewonce: false,
-                    useDocument: true,
+                    useDocument: true,   
                     antiLink2: false,
                     onlyLatinos: false,
-                    nsfw: false,
+                    nsfw: false, 
                     modoadmin: false,
                     antiToxic: false,
-                    simi: false,
+                    simi: false, 
                     expired: 0,
                 }
             let settings = global.db.data.settings[this.user.jid]
@@ -171,13 +171,13 @@ export async function handler(chatUpdate) {
                 if (!('autoread' in settings)) settings.autoread = false
                 if (!('restrict' in settings)) settings.restrict = false
                 if (!('antiPrivate' in settings)) settings.antiPrivate = false
-                if (!('antiSpam' in settings)) settings.antiSpam = false
+                if (!('antiSpam' in settings)) settings.antiSpam = false 
                 if (!('status' in settings)) settings.status = 0
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
                 autoread: false,
                 antiPrivate: false,
-                restrict: false,
+                restrict: false, 
                 antiSpam: false,
                 status: 0
             }
@@ -199,7 +199,7 @@ export async function handler(chatUpdate) {
 
         const isROwner = [conn.decodeJid(global.conn.user.id), ...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const isOwner = isROwner || m.fromMe
-        const isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+        const isMods = isOwner|| global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 
         if (opts['queque'] && m.text && !(isMods || isPrems)) {
@@ -245,11 +245,11 @@ export async function handler(chatUpdate) {
                 } catch (e) {
                     // if (typeof e === 'string') continue
                     console.error(e)
-                    /*for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
-                         let data = (await conn.onWhatsApp(jid))[0] || {}
-                         if (data.exists)
-                             m.reply(`*Plugin:* ${name}\n*Sender:* ${m.sender}\n*Chat:* ${m.chat}\n*Command:* ${m.text}\n\n${format(e)}.trim(), data.jid)
-                     }*/
+                   /*for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
+                        let data = (await conn.onWhatsApp(jid))[0] || {}
+                        if (data.exists)
+                            m.reply(`*Plugin:* ${name}\n*Sender:* ${m.sender}\n*Chat:* ${m.chat}\n*Command:* ${m.text}\n\n${format(e)}.trim(), data.jid)
+                    }*/
                 }
             }
             if (!opts['restrict'])
@@ -323,19 +323,18 @@ export async function handler(chatUpdate) {
                         return // Except this
                     if (name != 'owner-unbanuser.js' && user?.banned)
                         return
-                    if (m.text && user.banned && !isROwner) {
-                        if (user.antispam > 2) return
-                        m.reply(`ESTAS BANEADO!\n
+                        if (m.text && user.banned && !isROwner) {
+                            if (user.antispam > 2) return
+                            m.reply(`ESTAS BANEADO!\n
                             *RAZON:* ${user.messageSpam === 0 ? 'NO ESPECIFICADO' : user.messageSpam}\n
                             \`\`\`SI CREE QUE ES UN ERROR, PUEDE CONTACTAR A MI DUEÑO O MODERADORES`)
-                        user.antispam++
-                        return
-                    }
-                }
+                            user.antispam++	
+                            return
+                            }}
 
-                let hl = _prefix
+                let hl = _prefix 
                 let adminMode = global.db.data.chats[m.chat].modoadmin
-                let mystica = `${plugin.botAdmin || plugin.admin || plugin.group || plugin || noPrefix || hl || m.text.slice(0, 1) == hl || plugin.command}`
+                let mystica = `${plugin.botAdmin || plugin.admin || plugin.group || plugin || noPrefix || hl ||  m.text.slice(0, 1) == hl || plugin.command}`
                 if (adminMode && m.isGroup && !isAdmin && mystica) return
 
                 if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { // Both Owner
@@ -458,10 +457,10 @@ export async function handler(chatUpdate) {
             if (m.sender && (user = global.db.data.users[m.sender]) && (chat = global.db.data.chats[m.chat])) {
                 user.exp += m.exp
                 user.diamond -= m.diamond * 1
-                user.messaggi += 1
-                chat.messaggi += 1
-                user.messaggiId += 1
-            }
+                user.messaggi +=1
+                chat.messaggi +=1
+                user.messaggiId +=1 
+              }
 
             let stat
             if (m.plugin) {
@@ -516,50 +515,39 @@ export async function participantsUpdate({ id, participants, action }) {
         await loadDatabase()
     let chat = global.db.data.chats[id] || {}
     let text = ''
-    switch (action) {
+     switch (action) {
         case 'add':
-        case 'remove':
-            if (chat.welcome) {
-                let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
-                for (let user of participants) {
-                    let pp = 'https://i.imgur.com/nHHUm1a.png'
-                    let ppgp = 'https://i.imgur.com/nHHUm1a.png'
-                    try {
-                        pp = await this.profilePictureUrl(user, 'image')
-                        ppgp = await this.profilePictureUrl(id, 'image')
-                    } finally {
-                        text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Bienvenido, @user').replace('@group', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'Desconocido') :
-                            (chat.sBye || this.bye || conn.bye || 'Adiós, @user')).replace('@user', '@' + user.split('@')[0])
+            case 'remove':
+              if (chat.welcome && !chat?.isBanned) {
+                const groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata;
+                for (const user of participants) {
+                  let pp = './src/avatar_contact.png';
+                  try {
+                    pp = await this.profilePictureUrl(user, 'image');
+                  } catch (e) {
+                  } finally {
+                    const apii = await this.getFile(pp);
 
-                        let wel = API(`${visionary2}`, '/api/maker/canvas/welcome?', {
-                            username: await this.getName(user),
-                            groupname: await this.getName(id),
-                            groupicon: ppgp,
-                            membercount: groupMetadata.participants.length,
-                            profile: pp,
-                        })
 
-                        let lea = API(`${visionary2}`, '/api/maker/canvas/goodbye?', {
-                            username: await this.getName(user),
-                            groupname: await this.getName(id),
-                            groupicon: ppgp,
-                            membercount: groupMetadata.participants.length,
-                            profile: pp,
-                        })
-                        this.sendFile(id, action === 'add' ? wel : lea, 'pp.jpg', text, null, false, { mentions: [user] })
-                    }
+                    const botTt2 = groupMetadata.participants.find((u) => this.decodeJid(u.id) == this.user.jid) || {};
+                    const isBotAdminNn = botTt2?.admin === 'admin' || false;
+                    text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || '') :
+                                      (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0]);
+                    await this.sendFile(id, apii.data, 'pp.jpg', text, null, false, {mentions: [user]});
+                  }
                 }
-            }
-            break
+              }
+              break;
         case 'promote':
             text = (chat.sPromote || this.spromote || conn.spromote || '@user ahora es administrador')
         case 'demote':
-            let pp = await this.profilePictureUrl(participants[0], 'image').catch(_ => './src/avatar_contact.png')
+            let pp = await this.profilePictureUrl(participants[0], 'image').catch(_ => './src/avatar_contact.png') 
             if (!text)
                 text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ya no es administrador')
             text = text.replace('@user', '@' + participants[0].split('@')[0])
-            if (chat.detect)
-                this.sendFile(id, pp, 'pp.jpg', text, null, false, { mentions: this.parseMention(text) })
+            if (chat.detect)    
+            this.sendFile(id, pp, 'pp.jpg', text, null, false, { mentions: this.parseMention(text) })
+            //this.sendMessage(id, { text, mentions: this.parseMention(text) })
             break
     }
 }
