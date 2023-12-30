@@ -48,7 +48,7 @@ SI DESEA PROPAR EL BOT ANTES DE INSTALAR, CLICK ABAJO.
 
 ***
 
-## ACTVIAR EN RENDER
+## ACTIVAR EN RENDER
 [![DEPLOY TO RENDER](https://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FByTraxnox-X%2FKasuma-Bot-MD)
 
 ***
