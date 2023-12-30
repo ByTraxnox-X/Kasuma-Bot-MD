@@ -1,6 +1,6 @@
 import {search, download} from 'aptoide-scraper';
 const handler = async (m, {conn, usedPrefix: prefix, command, text}) => {
- if (!text) throw `*Ingrese el nombre del APK`;
+ if (!text) throw `Ingrese el nombre del APK`;
   try {    
     m.react(rwait)
     const searchA = await search(text);
