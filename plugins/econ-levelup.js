@@ -43,7 +43,7 @@ Rango: *${user.role}*
 
 Cuanto más interactúes con los bots, mayor será tu nivel`.trim()
         try {
-            let img = API('`${visionary2}`', '/api/maker/canvas/levelup', { 
+            let img = API(`${visionary2}`, '/api/maker/canvas/levelup', { 
                 profile: pp,
                 username: name,
                 level: user.level,
