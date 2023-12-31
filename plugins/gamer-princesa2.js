@@ -1,6 +1,6 @@
 let handler = async (m, { conn, args, usedPrefix, command }) => {
  
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class JuegoAventura {
     public static void main(String[] args) {
