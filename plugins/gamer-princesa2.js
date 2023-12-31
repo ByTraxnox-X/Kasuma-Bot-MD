@@ -1,39 +1,46 @@
 let handler = async (m, { conn, args, usedPrefix, command }) => {
  
-//import java.util.Scanner;
+const readline = require('readline');
 
-public class JuegoAventura {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("¡Bienvenido a la aventura para rescatar a la princesa!");
-        System.out.println("Tu misión es encontrar y rescatar a la princesa del malvado dragón.");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-        System.out.println("¿Deseas entrar al castillo? (si/no)");
-        String decision = scanner.nextLine();
+function iniciarJuego() {
+  console.log('¡Bienvenido a la aventura para rescatar a la princesa!');
+  console.log('Tu misión es encontrar y rescatar a la princesa del malvado dragón.');
 
-        if (decision.equalsIgnoreCase("si")) {
-            System.out.println("Has entrado al castillo. Encuentras un pasillo oscuro. ¿Deseas avanzar? (si/no)");
-            decision = scanner.nextLine();
-            if (decision.equalsIgnoreCase("si")) {
-                System.out.println("En el pasillo encuentras una puerta. Abres la puerta y encuentras al dragón.");
-                System.out.println("El dragón te reta a un juego de adivinanzas. Si adivinas la respuesta correcta, podrás rescatar a la princesa.");
-                System.out.println("¿Qué tienes en tus bolsillos? (pista: algo que comienza con la letra 'll')");
-                String respuesta = scanner.nextLine();
-                if (respuesta.equalsIgnoreCase("llaves")) {
-                    System.out.println("¡Correcto! Has rescatado a la princesa. ¡Felicidades!");
-                } else {
-                    System.out.println("Respuesta incorrecta. El dragón te ha capturado. Fin del juego.");
-                }
+  rl.question('¿Deseas entrar al castillo? (si/no)\n', (respuesta) => {
+    if (respuesta.toLowerCase() === 'si') {
+      console.log('Has entrado al castillo. Encuentras un pasillo oscuro. ¿Deseas avanzar? (si/no)');
+      rl.question('', (respuesta) => {
+        if (respuesta.toLowerCase() === 'si') {
+          console.log('En el pasillo encuentras una puerta. Abres la puerta y encuentras al dragón.');
+          console.log('El dragón te reta a un juego de adivinanzas. Si adivinas la respuesta correcta, podrás rescatar a la princesa.');
+          rl.question('¿Qué tienes en tus bolsillos? (pista: algo que comienza con la letra "ll")\n', (respuesta) => {
+            if (respuesta.toLowerCase() === 'llaves') {
+              console.log('¡Correcto! Has rescatado a la princesa. ¡Felicidades!');
+              rl.close();
             } else {
-                System.out.println("Decides no avanzar. Fin del juego.");
+              console.log('Respuesta incorrecta. El dragón te ha capturado. Fin del juego.');
+              rl.close();
             }
+          });
         } else {
-            System.out.println("Decides no entrar al castillo. Fin del juego.");
+          console.log('Decides no avanzar. Fin del juego.');
+          rl.close();
         }
+      });
+    } else {
+      console.log('Decides no entrar al castillo. Fin del juego.');
+      rl.close();
     }
+  });
 }
 
- 
+iniciarJuego();
+
 }
 handler.help = ['princesa2']
 handler.tags = ['game']
