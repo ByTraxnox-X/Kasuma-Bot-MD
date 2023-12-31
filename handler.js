@@ -529,12 +529,12 @@ export async function participantsUpdate({ id, participants, action }) {
                             (chat.sBye || this.bye || conn.bye || 'Adiós, @user')).replace('@user', '@' + user.split('@')[0])
                          
                             let wel = API(`${visionary2}`, '/api/maker/canvas/welcome1', {
-                                membercount: groupMetadata.participants.length,
+                                users: groupMetadata.participants.length,
                                 profile: pp,
                             })
 
                             let lea = API(`${visionary2}`, '/api/maker/canvas/goodbye1', {
-                                membercount: groupMetadata.participants.length,
+                                users: groupMetadata.participants.length,
                                 profile: pp,
                             })
                         this.sendFile(id, action === 'add' ? wel : lea, 'pp.jpg', text, null, false, { mentions: [user] })
