@@ -1,8 +1,6 @@
 let handler = async (m, { conn, args, usedPrefix, command }) => {
- 
-//const readline = require('readline');
 
-import readline from 'readline';
+import readline from 'readline'
 
 const rl = readline.createInterface({
   input: process.stdin,
