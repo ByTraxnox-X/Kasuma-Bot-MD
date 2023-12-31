@@ -42,8 +42,8 @@ function iniciarJuego() {
 iniciarJuego();
 
 }
-handler.help = ['princesab2']
+handler.help = ['princesa2']
 handler.tags = ['game']
-handler.command = /^((princbesa2|pribncesa22)?)$/i
+handler.command = /^((princesa2|princesa22)?)$/i
 
 export default handler
