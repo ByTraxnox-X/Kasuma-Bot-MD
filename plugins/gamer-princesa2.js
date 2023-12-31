@@ -36,7 +36,7 @@ function iniciarJuego() {
       console.log('Decides no entrar al castillo. Fin del juego.');
       rl.close();
     }
-  });
+  ;
 }
 
 iniciarJuego();
