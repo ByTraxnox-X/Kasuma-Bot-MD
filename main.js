@@ -145,7 +145,7 @@ if (opcion === '2' || methodCode) {
   process.exit(0)
   }} else {
   while (true) {
-  addNumber = await question(chalk.bgBlack(chalk.bold.greenBright('Escriba su numero, ejemplo "57315xxxxxxxxx"')))
+  addNumber = await question(chalk.bgBlack(chalk.bold.greenBright('Escriba su numero, ejemplo "57 321 5683772"')))
   addNumber = addNumber.replace(/[^0-9]/g, '')
   
   if (addNumber.match(/^\d+$/) && Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
