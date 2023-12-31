@@ -515,29 +515,49 @@ export async function participantsUpdate({ id, participants, action }) {
         await loadDatabase()
     let chat = global.db.data.chats[id] || {}
     let text = ''
-     switch (action) {
+    switch (action) {
         case 'add':
-            case 'remove':
-              if (chat.welcome && !chat?.isBanned) {
-                const groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata;
-                for (const user of participants) {
-                  let pp = './src/avatar_contact.png';
-                  try {
-                    pp = await this.profilePictureUrl(user, 'image');
-                  } catch (e) {
-                  } finally {
-                    const apii = await this.getFile(pp);
-
-
-                    const botTt2 = groupMetadata.participants.find((u) => this.decodeJid(u.id) == this.user.jid) || {};
-                    const isBotAdminNn = botTt2?.admin === 'admin' || false;
-                    text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || '') :
-                                      (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0]);
-                    await this.sendFile(id, apii.data, 'pp.jpg', text, null, false, {mentions: [user]});
-                  }
+        case 'remove':
+            if (chat.welcome) {
+                let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata;
+                for (let user of participants) {
+                    let pp = 'https://i.ibb.co/1ZxrXKJ/avatar-contact.jpg';
+                    try {
+                        pp = await this.profilePictureUrl(user, 'image');
+                    } catch (e) {
+                        console.error(e);
+                    } finally {
+                        let text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Bienvenido, @user').replace('@group', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'Desconocido') :
+                            (chat.sBye || this.bye || conn.bye || 'Adiós, @user')).replace('@user', '@' + user.split('@')[0]);
+                        let apiEndpoint = action === 'add' ?
+                            'https://visionaryapi.onrender.com/api/maker/canvas/welcome1' :
+                            'https://visionaryapi.onrender.com/api/maker/canvas/goodbye1';
+    
+                        let apiParams = {
+                            profile: pp,
+                            users: groupMetadata.participants.length
+                        };
+                        try {
+                            let apiResponse = await fetch(apiEndpoint + '?' + new URLSearchParams(apiParams), {
+                                method: 'GET',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                            });
+    
+                            if (apiResponse.ok) {
+                                let apiData = await apiResponse.json();
+                                this.sendFile(id, apiData.image, 'pp.jpg', text, null, false, { mentions: [user] });
+                            } else {
+                                console.error('Error al llamar a la API:', apiResponse.statusText);
+                            }
+                        } catch (error) {
+                            console.error('Error en la solicitud a la API:', error);
+                        }
+                    }
                 }
-              }
-              break;
+            }
+            break;
         case 'promote':
             text = (chat.sPromote || this.spromote || conn.spromote || '@user ahora es administrador')
         case 'demote':
