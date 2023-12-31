@@ -522,13 +522,16 @@ export async function participantsUpdate({ id, participants, action }) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata;
                 for (let user of participants) {
                     let pp = 'https://i.ibb.co/1ZxrXKJ/avatar-contact.jpg';
+                    let ppgp = 'https://i.ibb.co/1ZxrXKJ/avatar-contact.jpg';
                     try {
                         pp = await this.profilePictureUrl(user, 'image');
+                        ppgp = await this.profilePictureUrl(id, 'image');
                     } catch (e) {
                         console.error(e);
                     } finally {
                         let text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Bienvenido, @user').replace('@group', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'Desconocido') :
                             (chat.sBye || this.bye || conn.bye || 'Adiós, @user')).replace('@user', '@' + user.split('@')[0]);
+    
                         let apiEndpoint = action === 'add' ?
                             'https://visionaryapi.onrender.com/api/maker/canvas/welcome1' :
                             'https://visionaryapi.onrender.com/api/maker/canvas/goodbye1';
@@ -537,22 +540,16 @@ export async function participantsUpdate({ id, participants, action }) {
                             profile: pp,
                             users: groupMetadata.participants.length
                         };
-                        try {
-                            let apiResponse = await fetch(apiEndpoint + '?' + new URLSearchParams(apiParams), {
-                                method: 'GET',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                            });
     
-                            if (apiResponse.ok) {
-                                let apiData = await apiResponse.json();
-                                this.sendFile(id, apiData.image, 'pp.jpg', text, null, false, { mentions: [user] });
-                            } else {
-                                console.error('Error al llamar a la API:', apiResponse.statusText);
-                            }
-                        } catch (error) {
-                            console.error('Error en la solicitud a la API:', error);
+                        let apiResponse = await fetch(apiEndpoint + '?' + new URLSearchParams(apiParams), {
+                            method: 'GET'
+                        });
+    
+                        if (apiResponse.ok) {
+                            let imageBuffer = await apiResponse.arrayBuffer();
+                            this.sendFile(id, Buffer.from(imageBuffer), 'pp.jpg', text, null, false, { mentions: [user] });
+                        } else {
+                            console.error('Error al llamar a la API:', apiResponse.statusText);
                         }
                     }
                 }
