@@ -1,12 +1,5 @@
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
-/*import readline from 'readline'
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-*/
 function iniciarJuego() {
   console.log('¡Bienvenido a la aventura para rescatar a la princesa!');
   console.log('Tu misión es encontrar y rescatar a la princesa del malvado dragón.');
