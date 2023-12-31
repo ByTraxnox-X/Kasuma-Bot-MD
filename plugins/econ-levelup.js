@@ -2,7 +2,7 @@
 import { canLevelUp, xpRange } from '../lib/levelling.js'
 let handler = async (m, { conn }) => {
 	  let name = conn.getName(m.sender)
-    let pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://i.imgur.com/XL8wtbW.png')
+    let pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://i.imgur.com/nHHUm1a.png')
     let user = global.db.data.users[m.sender]
     if (!canLevelUp(user.level, user.exp, global.multiplier)) {
         let { min, xp, max } = xpRange(user.level, global.multiplier)
@@ -17,15 +17,12 @@ Rango: *${user.role}*
 Te falta *${max - user.exp}* de *XP* para subir de nivel
 `.trim()
 try {
-  let imgg = API('fgmods', '/api/maker/rank', {
+  let imgg = API(`${visionary2}`, '/api/maker/canvas/levelup', {
+    profile: pp,
     username: name,
-    xp: user.exp - min,
-    exp: xp,
-    avatar: pp,
     level: user.level,
-    ranklog: 'https://i.ibb.co/7gfnyMw/gold.png',
-    background: 'https://i.ibb.co/CsNgBYw/qiyana.jpg'
-}, 'apikey')
+    xp: user.exp - min,
+})
 
     conn.sendFile(m.chat, imgg, 'level.jpg', txt, m)
 } catch (e) {
@@ -46,9 +43,12 @@ Rango: *${user.role}*
 
 Cuanto más interactúes con los bots, mayor será tu nivel`.trim()
         try {
-            let img = API('fgmods', '/api/maker/levelup', { 
-                avatar: pp 
-             }, 'apikey')
+            let img = API('`${visionary2}`', '/api/maker/canvas/levelup', { 
+                profile: pp,
+                username: name,
+                level: user.level,
+                xp: user.exp - min,
+             })
       conn.sendFile(m.chat, img, 'levelup.jpg', str, m)
         } catch (e) {
             m.reply(str)
