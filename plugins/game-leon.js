@@ -10,6 +10,13 @@ let toUser = `${m.sender.split("@")[0]}`
 
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 
+for (let i=0;i<5;i++){
+            if (conn.war[m.chat][i].user != ""){
+              playerTotal += 
+              if (conn.war[m.chat][i].hp <= 0)
+              playerKalah += 1
+            }
+          }
 
 
 // Generar un nombre aleatorio
