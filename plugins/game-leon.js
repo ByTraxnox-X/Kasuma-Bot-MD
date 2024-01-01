@@ -60,7 +60,7 @@ console.log(randomName);
   }
 
 
-}}
+}
 
 handler.help = handler.command = ['leonsuelto', 'leon']
 handler.tags = ['game']
