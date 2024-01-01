@@ -1,11 +1,10 @@
 let handler = async(m, { conn, text, usedPrefix, command, args }) => {
-conn.leons = conn.leons ? conn.leons : {}
-
+  conn.leons = conn.leons ? conn.leons : {}
 
 let toUser = `${m.sender.split("@")[0]}`
 
-let pointAttacker = 0
- 
+ let pointAttacker = random.randint(1, 200)
+
 
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 
@@ -64,7 +63,7 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
 
   }
 
-}
+
 }
 
 handler.help = handler.command = ['leonsuelto', 'leon']
