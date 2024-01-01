@@ -1,4 +1,4 @@
-let handler = async (m, { conn, text, usedPrefix, command, args }) => {
+let handler = async (m, { conn, text, fs, usedPrefix, command, args }) => {
   conn.leons = conn.leons ? conn.leons : {}
 
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
