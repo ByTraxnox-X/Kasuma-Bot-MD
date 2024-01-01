@@ -6,11 +6,6 @@ let handler = async(m, { conn, text, pushname, sleep, usedPrefix, command, args 
   conn.leons = conn.leons ? conn.leons : {}
 
 
-conta sleep = async (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-
 
 
 // Generar un nombre aleatorio
@@ -19,7 +14,7 @@ conta sleep = async (ms) => {
  
   if (command == 'leonsuelto') {
     m.reply(`*Hola, ${pushname} Soy Sebastian, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
-    await sleep(3000)
+   // await sleep(3000)
       throw `
       Para hacer algo por el usa una de estas opciones
       
