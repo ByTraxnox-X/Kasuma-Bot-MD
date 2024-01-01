@@ -34,20 +34,20 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
 
 
       if (args[0] == "ayudar"){
-    m.reply(`Estas Intentando Detener Al Leon Para Que No Mate A ${pushname}, Nesesitas un arma? Para comprar use\n\n.leon arma`)
+    m.reply(`Estas Intentando Detener Al Leon Para Que No Mate A ${toUser}, Nesesitas un arma? Para comprar use\n\n.leon arma`)
     }
 
     if (args[0] == "dejarlo"){
       let din = Math.floor(Math.random() * 10)
       global.db.data.users[who].dolares -= din
       
-    m.reply('Dejastes que el leon lo matara, por lo que la policía eres sospechoso de la muerte, por lo cual perdiste $${din} Dolares.')
+    m.reply(`Dejastes que el leon lo matara, por lo que la policía eres sospechoso de la muerte, por lo cual perdiste $${din} Dolares.`)
     }
 
     if (args[0] == "arma"){
       let arm = Math.floor(Math.random() * 20)
       global.db.data.users[who].dolares -= arm
-    m.reply('Has Comprado Un Arma A $${arm} Dolares. Ahora Usa Estas Opciones De Abajo.\n\n.leon disparar\n.leon no disparar')
+    m.reply(`Has Comprado Un Arma A $${arm} Dolares. Ahora Usa Estas Opciones De Abajo.\n\n.leon disparar\n.leon no disparar`)
     }
 
     if (args[0] == "disparar"){
