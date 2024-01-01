@@ -1,4 +1,5 @@
 import fs from "fs"
+import { NombresConEdades } from './lib/nombreyedadrandom.js'
 
 let handler = async (m, { conn, text, usedPrefix, command, args }) => {
 
