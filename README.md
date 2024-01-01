@@ -62,8 +62,10 @@ SI DESEA PROPAR EL BOT ANTES DE INSTALAR, CLICK ABAJO.
 
 En BoxMine el bot estara activo 24/7, si desea instalarlo aqui, vea el tutorial de abajo para crearse una cuenta.
 
-* Create una cuenta [`COMO CREARSE UNA CUENTA`](https://www.youtube.com/watch?v=ZAwBLuNmIlI)
-* Tutorial  [`TUTORIAL DE INSTALACION`]()
+[`COMO CREARSE UNA CUENTA`](https://www.youtube.com/watch?v=ZAwBLuNmIlI)
+[`DASHBOARD`](https://dash.boxmineworld.com/)
+[`PANEL`](https://panel.boxmineworld.com/)
+[`TUTORIAL DE INSTALACION`]()
 
 <a href="https://boxmineworld.com"><img src="https://i.imgur.com/allAyd4.png" height="125px"></a>
 
