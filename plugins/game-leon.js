@@ -8,6 +8,8 @@ let handler = async(m, { conn, text, pushname, sleep, usedPrefix, command, args 
 
 let toUser = `${m.sender.split("@")[0]}`
 
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+
 
 
 // Generar un nombre aleatorio
