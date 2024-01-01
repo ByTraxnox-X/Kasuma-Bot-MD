@@ -24,7 +24,7 @@ let handler = async(m, { conn, text, pushname, sleep, usedPrefix, command, args 
 
   }
 
-  if (command == 'princesa') {
+  if (command == 'leon') {
       let users = global.db.data.users[m.sender]
 
 
