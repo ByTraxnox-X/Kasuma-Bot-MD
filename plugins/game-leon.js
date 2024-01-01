@@ -2,9 +2,10 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
   conn.leons = conn.leons ? conn.leons : {}
 
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+  let username = conn.getName(who)
 
   if (command == 'leonsuelto') {
-    m.reply(`*Hola, ${who.split`@`[0]} Soy Sebastian, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`, { mentions: [who] })
+    m.reply(`Hola ${username}, Soy Sebastian, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
     throw `
       Para hacer algo por él, usa una de estas opciones
       *${usedPrefix + 'leon'} ayudar*
@@ -16,7 +17,7 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
     let users = global.db.data.users[m.sender]
 
     if (args[0] == "ayudar") {
-      m.reply(`Estas Intentando Detener Al Leon Para Que No Mate A ${who.split`@`[0]}, ¿Necesitas un arma? Para comprar usa\n\n.leon arma`, { mentions: [who] })
+      m.reply(`Estas Intentando Detener Al Leon Para Que No Mate, ¿Necesitas un arma? Para comprar usa\n\n.leon arma`)
     }
 
     if (args[0] == "dejarlo") {
