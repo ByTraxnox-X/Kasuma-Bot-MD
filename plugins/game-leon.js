@@ -12,7 +12,7 @@ console.log(randomName);
     m.reply(`*Hola, ${pushname} Soy ${randomName}, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
     await sleep(3000)
       throw `
-      Pa
+      Para hacer algo por el usa una de estas opciones
       
         *${usedPrefix + 'leon'} ayudar*
         *${usedPrefix + 'leon'} dejarlo*
