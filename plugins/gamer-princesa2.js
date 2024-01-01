@@ -3,7 +3,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   m.reply('¡Bienvenido a la aventura para rescatar a la princesa!')
   m.reply('Tu misión es encontrar y rescatar a la princesa del malvado dragón.')
 
-  rl.question('¿Deseas entrar al castillo? (si/no)\n', (respuesta) => {
+  rl.question('¿Deseas entrar al castillo? (si/no)\n'), (respuesta) => {
     if (respuesta.toLowerCase() === 'si') {
       m.reply('Has entrado al castillo. Encuentras un pasillo oscuro. ¿Deseas avanzar? (si/no)');
       rl.question('', (respuesta) => {
@@ -29,6 +29,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       rl.close();
     }
   ;
+}
 }
 
 handler.help = ['juego']
