@@ -11,7 +11,7 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
 
 for (let i=0;i<5;i++){
             if (conn.leons[m.chat][i].user != ""){
-              playerTotal += 
+              playerTotal += 1
               if (conn.leons[m.chat][i].hp <= 0)
               playerKalah += 1
             }
