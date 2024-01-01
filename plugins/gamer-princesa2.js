@@ -1,4 +1,10 @@
+import readline from 'readline';
+
 let handler = async (m, { conn, args, usedPrefix, command }) => {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
 
   m.reply('¡Bienvenido a la aventura para rescatar a la princesa!')
   m.reply('Tu misión es encontrar y rescatar a la princesa del malvado dragón.')
