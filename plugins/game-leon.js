@@ -67,7 +67,7 @@ for (let i=0;i<5;i++){
     let  target = args[0]
     let gan = Math.floor(Math.random() * 500)
       global.db.data.users[who].dolares += gam
-    if (conn.leons[m.chat][i].hp <= 0) conn.reply(m.chat,`*Felicidades*\nEl leon acaba de morir porque se le acabaron los HP (puntos de salud), por lo a la persona que salvaste decidió darte $${gan}*`,m, {contextInfo : {mentionedJid : [target]}})
+    if (conn.leons[m.chat].hp <= 0) conn.reply(m.chat,`*Felicidades*\nEl leon acaba de morir porque se le acabaron los HP (puntos de salud), por lo a la persona que salvaste decidió darte $${gan}*`,m, {contextInfo : {mentionedJid : [target]}})
     
     }
 
