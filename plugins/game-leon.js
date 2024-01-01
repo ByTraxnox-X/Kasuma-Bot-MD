@@ -10,7 +10,7 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
 
 
   if (command == 'leonsuelto') {
-    m.reply(`Hola ${username}, Soy ${pickRandom(global.nye)}, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
+    m.reply(`Hola ${username}\nSoy *${pickRandom(global.nye)}*, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
     throw `
       Para hacer algo por él, usa una de estas opciones
       *${usedPrefix + 'leon'} ayudar*
@@ -22,13 +22,13 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
     let users = global.db.data.users[m.sender]
 
     if (args[0] == "ayudar") {
-      m.reply(`Estas Intentando Detener Al Leon Para Que No Mate, ¿Necesitas un arma? Para comprar usa\n\n.leon arma`)
+      m.reply(`Estas Intentando Detener Al Leon Para Que No Lo Mate, ¿Necesitas un arma? Para comprar usa\n\n.leon arma`)
     }
 
     if (args[0] == "dejarlo") {
-      let din = Math.floor(Math.random() * 10)
+      let din = Math.floor(Math.random() * 25)
       global.db.data.users[who].dolares -= din
-      m.reply(`Dejaste que el leon lo matara, por lo que la policía eres sospechoso de la muerte, por lo cual perdiste $${din} Dolares.`)
+      m.reply(`Dejaste que el leon lo matara, por lo que eres sospechoso de la muerte, por lo cual perdiste $${din} Dolares.`)
     }
 
     if (args[0] == "arma") {
