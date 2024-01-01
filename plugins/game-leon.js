@@ -5,7 +5,7 @@ let handler = async(m, { conn, text, usedPrefix, command, args }) => {
 let toUser = `${m.sender.split("@")[0]}`
 
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-
+/*
         let playerTotal = 0
         let playerKalah = 0
 
@@ -15,7 +15,7 @@ for (let i=0;i<5;i++){
               if (conn.leons[m.chat][i].hp <= 0)
               playerKalah += 1
             }
-          }
+          }*/
  
   if (command == 'leonsuelto') {
     m.reply(`*Hola, ${toUser} Soy Sebastian, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
@@ -57,7 +57,7 @@ for (let i=0;i<5;i++){
     await sleep(2000)
     let  target = args[0]
     let gan = Math.floor(Math.random() * 500)
-      global.db.data.users[who][i].dolares += gam
+      global.db.data.users[who].dolares += gam
     if (conn.leons[m.chat].hp <= 0) conn.reply(m.chat,`*Felicidades*\nEl leon acaba de morir porque se le acabaron los HP (puntos de salud), por lo a la persona que salvaste decidió darte $${gan}*`,m, {contextInfo : {mentionedJid : [target]}})
     
     }
