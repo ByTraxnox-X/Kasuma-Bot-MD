@@ -8,12 +8,11 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
 
  
   if (command == 'leonsuelto') {
-<<<<<<< HEAD
+
     m.reply(`*Hola, ${toUser} Soy Sebastian, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
-=======
+
     m.reply(`*Hola, ${toUser} Soy Parqui, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
-   // await sleep(3000)
->>>>>>> 5ec144094ed615eee87674ec47c3e70244204208
+
       throw `
       Para hacer algo por el, usa una de estas opciones
       
