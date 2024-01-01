@@ -2,7 +2,7 @@
 //import faker from "faker"
 
 
-let handler = async(m, { conn, text, sleep, usedPrefix, command, args }) => {
+let handler = async(m, { conn, text, pushname, sleep, usedPrefix, command, args }) => {
   conn.leons = conn.leons ? conn.leons : {}
 
 
