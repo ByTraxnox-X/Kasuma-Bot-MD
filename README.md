@@ -49,6 +49,8 @@ SI DESEA PROPAR EL BOT ANTES DE INSTALAR, CLICK ABAJO.
 
 3. VINCULAR CON WHATSAPP
 
+4. Modificar el archivo .replit y "RUN" cambiarlo a "npm start". Esto para habilitar la posibilidad de prenderlo con el boton "RUN"
+
 ***
 
 ## ACTIVAR EN RENDER
