@@ -1,7 +1,3 @@
-
-//import faker from "faker"
-
-
 let handler = async(m, { conn, text, pushname, sleep, usedPrefix, command, args }) => {
   conn.leons = conn.leons ? conn.leons : {}
 
@@ -20,11 +16,6 @@ for (let i=0;i<5;i++){
               playerKalah += 1
             }
           }
-
-
-// Generar un nombre aleatorio
-//const randomName = faker.name.findName();
-//console.log(randomName);
  
   if (command == 'leonsuelto') {
     m.reply(`*Hola, ${toUser} Soy Sebastian, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
@@ -66,7 +57,7 @@ for (let i=0;i<5;i++){
     await sleep(2000)
     let  target = args[0]
     let gan = Math.floor(Math.random() * 500)
-      global.db.data.users[who].dolares += gam
+      global.db.data.users[who][i].dolares += gam
     if (conn.leons[m.chat].hp <= 0) conn.reply(m.chat,`*Felicidades*\nEl leon acaba de morir porque se le acabaron los HP (puntos de salud), por lo a la persona que salvaste decidió darte $${gan}*`,m, {contextInfo : {mentionedJid : [target]}})
     
     }
