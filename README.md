@@ -14,7 +14,7 @@
 | **VERSION DE TERMUX** | ***DONWLOAD TERMUX*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#version-de-termux) |
 | **INSTALACION EN TERMUX** | ***INSTALACION MANUAL*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#instalacion-en-termux) |
 | **INSTALACION EN REPLIT** | ***INSTALACIÓN AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-replit) |
-| **INSTALACION EN RENDER** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#actviar-en-render) |
+| **INSTALACION EN RENDER** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-render) |
 | **INSTALACION EN BOXMINE** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#boxmine-host) |
 | **INICIO EN TERMUX** | ***EN CASO DE DETENERSE*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#en-caso-de-detenerse-en-termux) |
 
