@@ -31,8 +31,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   ;
 }
 
-handler.help = ['princesa2']
+handler.help = ['juego']
 handler.tags = ['game']
-handler.command = /^((princesa2|princesa22)?)$/i
-
-export default handler
+handler.command = /^(juego)$/i
+export default handler;
