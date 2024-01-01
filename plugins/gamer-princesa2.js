@@ -30,7 +30,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     }
   ;
 }
-}
+
 handler.help = ['juego']
 handler.tags = ['game']
 handler.command = /^(juego)$/i
