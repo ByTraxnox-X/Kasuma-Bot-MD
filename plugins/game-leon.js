@@ -54,7 +54,7 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
     let  target = args[0]
     let gan = Math.floor(Math.random() * 500)
       global.db.data.users[who].dolares += gan
-    if (conn.leons[m.chat].hp <= 0) conn.reply(m.chat,`*Felicidades*\nEl leon acaba de morir porque se le acabaron los HP (puntos de salud), por lo a la persona que salvaste decidió darte $${gan}*`,m, {contextInfo : {mentionedJid : [target]}})
+    if (conn.leons[users].hp <= 0) conn.reply(m.chat,`*Felicidades*\nEl leon acaba de morir porque se le acabaron los HP (puntos de salud), por lo a la persona que salvaste decidió darte $${gan}*`,m, {contextInfo : {mentionedJid : [target]}})
     
     }
 
