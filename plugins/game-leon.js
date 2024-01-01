@@ -18,10 +18,10 @@ for (let i=0;i<5;i++){
           }*/
  
   if (command == 'leonsuelto') {
-    m.reply(`*Hola, ${toUser} Soy Sebastian, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
+    m.reply(`*Hola, ${toUser} Soy Parqui, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
    // await sleep(3000)
       throw `
-      Para hacer algo por el usa una de estas opciones
+      Para hacer algo por el, usa una de estas opciones
       
         *${usedPrefix + 'leon'} ayudar*
         *${usedPrefix + 'leon'} dejarlo*
