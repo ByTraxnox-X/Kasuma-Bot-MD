@@ -41,9 +41,9 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
         let target = args[0]
         let gan = Math.floor(Math.random() * 500)
         global.db.data.users[who].dolares += gan
-        conn.reply(m.chat, `*Felicidades*\nEl leon acaba de morir porque se le acabaron los HP (puntos de salud), por lo que la persona que salvaste decidió darte $${gan}*`, m, { contextInfo: { mentionedJid: [target] } })
+        conn.reply(m.chat, `*Felicidades*\nEl leon acaba de morir porque se le acabaron los HP (puntos de salud), por lo que la persona que salvaste decidió darte $${gan}`, m, { contextInfo: { mentionedJid: [target] } })
       } else {
-        m.reply(`Le has disparado al leon 🦁\nOh nooo El leon aun sigue vivo y con ${user.hp}\nDebes Atacar Otra Vez Al Leon Para Matarlo\n.leon disparar`)
+        m.reply(`Le has disparado al leon 🦁\nOh nooo El leon aun sigue vivo y con ${user.hp} de HP\nDebes Atacar Otra Vez Al Leon Para Matarlo\n.leon disparar`)
         await new Promise(resolve => setTimeout(resolve, 5000))
       }
     }
