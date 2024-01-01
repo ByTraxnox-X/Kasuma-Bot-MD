@@ -44,7 +44,7 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
     }
 
     if (args[0] == "disparar"){
-      let { hp } = global.db.data.users[who]
+      let user = global.db.data.users[who]
       let pointAttacker = Math.floor(Math.random() * 200)
       global.db.data.users[who].hp -= pointAttacker
     m.reply(`Le has disparado al leon 🦁\nOh nooo El leon aun sigue vivo y con ${user.hp}\nDebes Atacar Otra Vez Al Leon Para Matarlo\n.leon disparar`)
