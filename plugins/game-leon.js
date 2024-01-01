@@ -1,5 +1,5 @@
 
-import faker from ‘faker’
+import faker from "faker"
 
 
 let handler = async(m, { conn, text, sleep, usedPrefix, command, args }) => {
