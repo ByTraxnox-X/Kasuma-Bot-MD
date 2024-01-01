@@ -3,7 +3,7 @@ let handler = async(m, { conn, text, usedPrefix, command, args }) => {
 
 let toUser = `${m.sender.split("@")[0]}`
 
-  let pointAttacker = 0
+ let pointAttacker = random.randint(1, 200)
 
 
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
@@ -47,8 +47,9 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
     }
 
     if (args[0] == "disparar"){
-      global.db.data.users[who].hp -= pointAttacker * 300
-    m.reply(`Le has disparado al leon 🦁\nOh nooo El leon aun sigue vivo y con ${pointAttacker * 300}\nDebes Atacar Otra Vez Al Leon Para Matarlo\n.leon disparar`)
+      let { hp } = global.db.data.users[who]
+      global.db.data.users[who].hp -= pointAttacker
+    m.reply(`Le has disparado al leon 🦁\nOh nooo El leon aun sigue vivo y con ${hp}\nDebes Atacar Otra Vez Al Leon Para Matarlo\n.leon disparar`)
 
     await 5000
     
