@@ -7,7 +7,7 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
   let username = conn.getName(who)
 
-const rutaArchivo = '/lib/NombresConEdades.js';
+const rutaArchivo = '../lib/NombresConEdades.js';
 
 const contenidoArchivo = fs.readFileSync(rutaArchivo, 'utf8');
 const nombresConEdades = eval(contenidoArchivo);
