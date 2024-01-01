@@ -10,6 +10,9 @@ let toUser = `${m.sender.split("@")[0]}`
 
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 
+        let playerTotal = 0
+        let playerKalah = 0
+
 for (let i=0;i<5;i++){
             if (conn.war[m.chat][i].user != ""){
               playerTotal += 
