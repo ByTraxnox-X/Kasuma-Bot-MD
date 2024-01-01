@@ -6,6 +6,12 @@ let handler = async(m, { conn, text, pushname, sleep, usedPrefix, command, args 
   conn.leons = conn.leons ? conn.leons : {}
 
 
+exports.sleep = async (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+
 
 // Generar un nombre aleatorio
 //const randomName = faker.name.findName();
