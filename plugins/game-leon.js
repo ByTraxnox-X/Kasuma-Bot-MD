@@ -47,14 +47,14 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
       let user = global.db.data.users[who]
       let pointAttacker = Math.floor(Math.random() * 200)
       global.db.data.users[who].hp -= pointAttacker
-    m.reply(`Le has disparado al leon 🦁\nOh nooo El leon aun sigue vivo y con ${user.hp}\nDebes Atacar Otra Vez Al Leon Para Matarlo\n.leon disparar`)
+    m.reply(`Le has disparado al leon 🦁\nOh nooo El leon aun sigue vivo y con ${user.hp} HP\nDebes Atacar Otra Vez Al Leon Para Matarlo\n.leon disparar`)
 
     await 5000
     
     let  target = args[0]
     let gan = Math.floor(Math.random() * 500)
       global.db.data.users[who].dolares += gan
-    if (global.db.data.users[who].hp <= 0) conn.reply(m.chat,`*Felicidades*\nEl leon acaba de morir porque se le acabaron los HP (puntos de salud), por lo a la persona que salvaste decidió darte $${gan}*`,m, {contextInfo : {mentionedJid : [target]}})
+    if (global.db.data.users[who].hp <= 0) conn.reply(m.chat,`*Felicidades*\nEl leon acaba de morir porque se le acabaron los HP (puntos de salud), por lo que a la persona que salvaste decidió darte $${gan}*`,m, {contextInfo : {mentionedJid : [target]}})
     
     }
 
