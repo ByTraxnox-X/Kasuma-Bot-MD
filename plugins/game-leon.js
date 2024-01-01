@@ -7,9 +7,9 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
   let username = conn.getName(who)
 
-const rutaArchivo = './lib/nombreyedadrandom'
+let rutaArchivo = './lib/nombreyedadrandom'
 
-const contenidoArchivo = fs.readFileSync(rutaArchivo, 'utf8');
+let contenidoArchivo = fs.readFileSync(rutaArchivo, 'utf8');
 const nombresConEdades = eval(contenidoArchivo);
 
 function obtenerNombreRandom() {
