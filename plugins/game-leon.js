@@ -1,23 +1,12 @@
 let handler = async(m, { conn, text, usedPrefix, command, args }) => {
 conn.leons = conn.leons ? conn.leons : {}
-conn.leons2 = conn.leons2 ? conn.leons2 : {}
 
 
 let toUser = `${m.sender.split("@")[0]}`
 
 
-let turn = x
 let pointAttacker = 0
-    let time = conn.leons2[m.chat].time
-    await sleep(90000)
-    let timeNow = conn.leons2[m.chat].time
-    if (time == timeNow){
-      conn.leons[m.chat].hp -= 2500
-      conn.reply(m.chat,`*@${conn.leons[m.chat][turn].user.split('@')[0]} sedang AFK (Denda -2500 HP)*\n\n.leons player = statistik pemain\n.attack @tag = serang lawan`,null,{contextInfo : {mentionedJid : [conn.leons[m.chat][turn].user]}})
-      await (3000)
-      // comprueba si está muerto
-      if (conn.leons[m.chat][turn].hp <= 0) {
-        conn.reply(m.chat,`*@${conn.leons[m.chat][turn].user.split('@')[0]} está muerto porque HP (puntos de salud) está agotado.*`,null,{contextInfo : {mentionedJid : [conn.leons[m.chat][turn].user]}})
+ 
 
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 
