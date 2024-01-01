@@ -57,7 +57,7 @@ for (let i=0;i<5;i++){
     if (args[0] == "arma"){
       let arm = Math.floor(Math.random() * 20)
       global.db.data.users[who].dolares -= arm
-    m.reply(`Has Comprado Un Arma A $${arm} Dolares. Ahora Usa Estas Opciones De Abajo.\n\n.leon disparar\n.leon no disparar`)
+    m.reply(`Has Comprado Un Arma A ${arm} Dolares. Ahora Usa Estas Opciones De Abajo.\n\n.leon disparar\n.leon no disparar`)
     }
 
     if (args[0] == "disparar"){
