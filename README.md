@@ -38,6 +38,9 @@ SI DESEA PROPAR EL BOT ANTES DE INSTALAR, CLICK ABAJO.
 ***
 
 ### ACTIVAR EN REPLIT
+
+[TUTORIAL](https://www.youtube.com/watch?v=_ZcfPIb11Xs) 
+
 <a target="_blank" href="https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD"><img alt="Run on Replit" src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg" height="45px"></a>
 
 1. Click "Import from GitHub"

@@ -48,7 +48,7 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
       global.db.data.users[who].hp -= pointAttacker * 300
     m.reply(`Le has disparado al leon 🦁\nOh nooo El leon aun sigue vivo y con ${pointAttacker * 300}\nDebes Atacar Otra Vez Al Leon Para Matarlo\n.leon disparar`)
 
-    sleep(2000)
+    await 5000
     
     let  target = args[0]
     let gan = Math.floor(Math.random() * 500)
