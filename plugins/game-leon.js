@@ -1,6 +1,7 @@
-import fs from 'fs'
+import fs from "fs"
 
 let handler = async (m, { conn, text, usedPrefix, command, args }) => {
+
   conn.leons = conn.leons ? conn.leons : {}
 
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
