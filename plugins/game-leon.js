@@ -45,7 +45,7 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
     }
 
     if (args[0] == "disparar"){
-      conn.leons[m.chat].hp -= pointAttacker * 300
+      global.db.data.users[who].hp -= pointAttacker * 300
     m.reply(`Le has disparado al leon 🦁\nOh nooo El leon aun sigue vivo y con ${pointAttacker * 300}\nDebes Atacar Otra Vez Al Leon Para Matarlo\n.leon disparar`)
 
     sleep(2000)
