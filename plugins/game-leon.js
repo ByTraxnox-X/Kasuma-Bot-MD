@@ -1,11 +1,13 @@
 let handler = async (m, { conn, text, usedPrefix, command, args }) => {
   conn.leons = conn.leons ? conn.leons : {}
 
+  let toUser = `${m.sender.split("@")[0]}`
+
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 
   if (command == 'leonsuelto') {
-    m.reply(`*Hola, ${who.split`@`[0]} Soy Sebastian, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!` , { mentions: [who] })
-    m.reply(`*Hola, ${who.split`@`[0]} Soy Parqui, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!` , { mentions: [who] })
+    m.reply(`*Hola, ${toUser} Soy Sebastian, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
+    m.reply(`*Hola, ${toUser} Soy Parqui, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
     throw `
       Para hacer algo por él, usa una de estas opciones
       *${usedPrefix + 'leon'} ayudar*
@@ -17,7 +19,7 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
     let users = global.db.data.users[m.sender]
 
     if (args[0] == "ayudar") {
-      m.reply(`Estas Intentando Detener Al Leon Para Que No Mate A ${who.split`@`[0]}, ¿Necesitas un arma? Para comprar usa\n\n.leon arma`, { mentions: [who] })
+      m.reply(`Estas Intentando Detener Al Leon Para Que No Mate A ${toUser}, ¿Necesitas un arma? Para comprar usa\n\n.leon arma`)
     }
 
     if (args[0] == "dejarlo") {
@@ -44,7 +46,7 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
         conn.reply(m.chat, `*Felicidades*\nEl leon acaba de morir porque se le acabaron los HP (puntos de salud), por lo que la persona que salvaste decidió darte $${gan}*`, m, { contextInfo: { mentionedJid: [target] } })
       } else {
         m.reply(`Le has disparado al leon 🦁\nOh nooo El leon aun sigue vivo y con ${user.hp}\nDebes Atacar Otra Vez Al Leon Para Matarlo\n.leon disparar`)
-        await new Promise(resolve => setTimeout(resolve, 5000))
+        await new Promise(resolve => setTimeout(resolve, 5000)) // Esperar 5000 milisegundos (5 segundos)
       }
     }
   }
