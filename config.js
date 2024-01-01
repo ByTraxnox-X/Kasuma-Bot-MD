@@ -25,6 +25,12 @@ global.APIKeys = { // APIKey Here
   'https://api.fgmods.xyz': 'Rex6QGQI'
 }
 
+// CONEXION CON CODIGO DE 8 DIGITOS
+
+global.KasumaCode = "" 
+global.confirmCode = ""
+
+
 //APIS
 global.tiktokkey = ['GIf4o4qJ']
 global.soundcloudID = ["iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX"]

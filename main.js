@@ -85,84 +85,92 @@ const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFil
 const msgRetryCounterMap = (MessageRetryMap) => { };
 const msgRetryCounterCache = new NodeCache()
 const {version} = await fetchLatestBaileysVersion();
-let phoneNumber = global.botNumberCode
+let phoneNumber = global.KasumaCode
 
 const methodCodeQR = process.argv.includes("qr")
 const methodCode = !!phoneNumber || process.argv.includes("code")
 const MethodMobile = process.argv.includes("mobile")
 
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
-const question = (texto) => new Promise((resolver) => rl.question(texto, resolver))
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout, prompt: '' })
+const question = (texto) => {
+return new Promise((resolver) => {
+rl.question(texto, (respuesta) => {
+resolver(respuesta.trim())
+}) })
+}
 
 let opcion
-if (!fs.existsSync(`./${authFile}/creds.json`) && !methodCodeQR && !methodCode) {
-while (true) {
-opcion = await question(`'${chalk.blueBright('')} ${chalk.bold.greenBright('Ingrese el metodo de conexion')}
+if (methodCodeQR) {
+opcion = '1'
+}
+if (!methodCodeQR && !methodCode && !fs.existsSync(`./${authFile}/creds.json`)) {
+do {
+opcion = await question(`
+${chalk.blueBright('')} ${chalk.bold.greenBright('Ingrese el metodo de conexion')}
 ${chalk.blueBright('')} ${chalk.bold.greenBright('1- Codigo QR')}'
 ${chalk.blueBright('')} ${chalk.bold.greenBright('2- Codigo de emparejamiento')}
 ${chalk.blueBright('')} ${chalk.bold.greenBright('Por favor responda con solo numeros y eliga una de las 2 opciones.\n')}`)
-if (opcion === '1' || opcion === '2') {
-break
-} else {
-console.log('Ingrese solo 1 o 2.')
-}}
-opcion = opcion
+if (!/^[1-2]$/.test(opcion)) {
+console.log(`Ingrese solo 1 o 2.
+${chalk.blueBright('')} ${chalk.bold.greenBright("PARA EVITAR UN MAL PROCEDIMIENTO COPIE Y PEGUE SU NUMERO, PERO RECUERDE QUITARLE EL '+'")}`)
+}} while (opcion !== '1' && opcion !== '2' || fs.existsSync(`./${authFile}/creds.json`))
 }
-
+  
 const connectionOptions = {
-  logger: pino({ level: 'silent' }),
-  printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
-  mobile: MethodMobile, 
-  browser: ['Chrome (Linux)', '', ''],
-  auth: {
-  creds: state.creds,
-  keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
-  },
-  markOnlineOnConnect: true, 
-  generateHighQualityLinkPreview: true, 
-  getMessage: async (clave) => {
-  let jid = jidNormalizedUser(clave.remoteJid)
-  let msg = await store.loadMessage(jid, clave.id)
-  return msg?.message || ""
-  },
-  msgRetryCounterCache,
-  msgRetryCounterMap,
-  defaultQueryTimeoutMs: undefined,   
-  version
-  }
-
+logger: pino({ level: 'silent' }),
+printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
+mobile: MethodMobile, 
+browser: opcion == '1' ? ['KasumaBot', 'Edge', '2.0.0'] : methodCodeQR ? ['KasumaBot', 'Edge', '2.0.0'] : ['Chrome (Linux)', '', ''],
+auth: {
+creds: state.creds,
+keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
+},
+markOnlineOnConnect: true, 
+generateHighQualityLinkPreview: true, 
+getMessage: async (clave) => {
+let jid = jidNormalizedUser(clave.remoteJid)
+let msg = await store.loadMessage(jid, clave.id)
+return msg?.message || ""
+},
+msgRetryCounterCache,
+msgRetryCounterMap,
+defaultQueryTimeoutMs: undefined,   
+version
+}
 //--
 global.conn = makeWASocket(connectionOptions)
+if (!fs.existsSync(`./${authFile}/creds.json`)) {
 if (opcion === '2' || methodCode) {
-  if (!conn.authState.creds.registered) {  
-  if (MethodMobile) throw new Error('Error en la API de movil')
-  
-  let addNumber
-  if (!!phoneNumber) {
-  addNumber = phoneNumber.replace(/[^0-9]/g, '')
-  if (!Object.keys(PHONENUMBER_MCC).some(v => numeroTelefono.startsWith(v))) {
-  console.log(chalk.bgBlack(chalk.bold.redBright("Su numero no comienza con el codigo de pais")))
-  process.exit(0)
-  }} else {
-  while (true) {
-  addNumber = await question(chalk.bgBlack(chalk.bold.greenBright('Escriba su numero, ejemplo "57 321 5683772"')))
-  addNumber = addNumber.replace(/[^0-9]/g, '')
-  
-  if (addNumber.match(/^\d+$/) && Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
-  break 
-  } else {
+opcion = '2'
+if (!conn.authState.creds.registered) {  
+let addNumber
+if (!!phoneNumber) {
+addNumber = phoneNumber.replace(/[^0-9]/g, '')
+if (!Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
+console.log(chalk.bgBlack(chalk.bold.greenBright('Escriba su bien su numero, ejemplo "57 321 5683772"')))
+process.exit(0)
+}} else {
+while (true) {
+addNumber = await question(chalk.bold.greenBright(`EL NUMERO ESTABLECIDO SE ENCUENTRA ERRONEO, SIGA ESTE EJEMPLO. EJEMPLO: "57 321 5683772"`))
+addNumber = addNumber.replace(/[^0-9]/g, '')
+
+if (addNumber.match(/^\d+$/) && Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
+break 
+} else {
   console.log(chalk.bgBlack(chalk.bold.redBright("Asegúrese de agregar el código de país.")))
-  }}
-  //rl.close()
-  }
-  
-  setTimeout(async () => {
-  let codeBot = await conn.requestPairingCode(addNumber)
-  codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot
-  console.log(chalk.black(chalk.bgGreen(`Código de emparejamiento: `)), chalk.bold.white(chalk.white(codeBot)))
-  rl.close()
-  }, 3000)
-  }}
+}}
+rl.close()  
+}
+
+
+setTimeout(async () => {
+let codeBot = await conn.requestPairingCode(addNumber)
+codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot
+console.log(chalk.black(chalk.bgGreen(`Codigo de emparejamiento`)), chalk.bold.white(chalk.white(codeBot)))
+}, 2000)
+}}
+}
+
 conn.isInit = false
 
 if (!opts['test']) {
