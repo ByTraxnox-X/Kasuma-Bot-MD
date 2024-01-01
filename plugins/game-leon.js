@@ -1,7 +1,7 @@
 let handler = async(m, { conn, text, sleep, usedPrefix, command, args }) => {
   conn.leons = conn.leons ? conn.leons : {}
 
-import faker from 'faker';
+import faker from ‘faker’
 
 
 // Generar un nombre aleatorio
