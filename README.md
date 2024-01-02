@@ -55,7 +55,7 @@ SI DESEA PROPAR EL BOT ANTES DE INSTALAR, CLICK ABAJO.
 
 ## ACTIVAR EN RENDER
 
-[`TUTORIAL`](¡)
+[`TUTORIAL`](https://www.youtube.com/watch?v=oNtBKTfK8vg&t)
 [`DASHBOARD`](https://dashboard.render.com/)
 
 ***
