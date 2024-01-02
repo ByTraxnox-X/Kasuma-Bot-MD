@@ -1,13 +1,5 @@
-import readline from 'readline'
-
-
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
 class Player {
   constructor(name) {
@@ -133,7 +125,7 @@ function chooseFriend(player) {
   m.reply('Elige a un amigo para que te acompañe en la aventura:');
   friends.forEach((friend, index) => m.reply(`${index + 1}. ${friend.name} - Salud: ${friend.health}, Nivel: ${friend.level}`));
 
-  rl.question('Ingresa el número del amigo que deseas (1-3): ', (choice) => {
+  m.reply('Ingresa el número del amigo que deseas (1-3): ', (choice) => {
     const selectedFriendIndex = parseInt(choice) - 1;
 
     if (selectedFriendIndex >= 0 && selectedFriendIndex < friends.length) {
@@ -151,7 +143,7 @@ function chooseFriend(player) {
 function rescuePrincess(player) {
   m.reply('\n¡Has llegado al castillo donde la princesa está prisionera! Debes rescatarla.');
 
-  rl.question('¿Quieres enfrentarte al guardia del castillo (s/n)?: ', (choice) => {
+  m.reply('¿Quieres enfrentarte al guardia del castillo (s/n)?: ', (choice) => {
     if (choice.toLowerCase() === 's') {
       const guard = new Enemy('Guardia del Castillo', 50, 10);
       combat(player, guard, () => {
@@ -176,7 +168,7 @@ function rescuePrincess(player) {
 function horrorEvent(player) {
   m.reply('\n¡Oh no! Has entrado en un área aterradora. Algo siniestro te rodea.');
 
-  rl.question('¿Quieres investigar (i) o huir (h)?: ', (choice) => {
+  m.reply('¿Quieres investigar (i) o huir (h)?: ', (choice) => {
     if (choice.toLowerCase() === 'i') {
       m.reply('Investigas el área y, a pesar de los sustos, encuentras tesoros escondidos.');
       player.level += 1;
@@ -195,7 +187,7 @@ function horrorEvent(player) {
 function jokeEvent(player) {
   m.reply('\n¡Felicidades! Has entrado en un área llena de chistes y risas.');
 
-  rl.question('¿Quieres unirte a la diversión (d) o continuar explorando (c)?: ', (choice) => {
+  m.reply('¿Quieres unirte a la diversión (d) o continuar explorando (c)?: ', (choice) => {
     if (choice.toLowerCase() === 'd') {
       m.reply('Te unes a la diversión y encuentras tesoros mientras te ríes.');
       player.level += 1;
@@ -247,7 +239,7 @@ function combat(player, enemy, onEnemyDefeated) {
     m.reply(`¡Has derrotado al ${enemy.name}!`);
     onEnemyDefeated();
   } else {
-    rl.question('¿Quieren atacar de nuevo (a), usar una poción de salud (p) o usar un artículo del inventario (u)?: ', (choice) => {
+    m.reply('¿Quieren atacar de nuevo (a), usar una poción de salud (p) o usar un artículo del inventario (u)?: ', (choice) => {
       if (choice.toLowerCase() === 'a') {
         combat(player, enemy, onEnemyDefeated);
       } else if (choice.toLowerCase() === 'p') {
@@ -267,6 +259,7 @@ function combat(player, enemy, onEnemyDefeated) {
 // Resto del código...
 
 startGame();
+
 
 
 
