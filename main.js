@@ -137,6 +137,7 @@ msgRetryCounterMap,
 defaultQueryTimeoutMs: undefined,   
 version
 }
+
 //--
 global.conn = makeWASocket(connectionOptions)
 if (!fs.existsSync(`./${authFile}/creds.json`)) {
