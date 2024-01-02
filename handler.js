@@ -84,7 +84,7 @@ export async function handler(chatUpdate) {
             } else
                 global.db.data.users[m.sender] = {
                     messaggi: 0, 
-                    hp: 300,
+                    hp: 100,
                     exp: 0,
                     diamond: 10,
                     dolares: 40,

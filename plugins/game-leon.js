@@ -1,67 +1,54 @@
-import fs from "fs"
-
 let handler = async (m, { conn, text, usedPrefix, command, args }) => {
 
-  conn.leons = conn.leons ? conn.leons : {}
+  conn.aventure = conn.aventure ? conn.aventure : {}
 
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
   let username = conn.getName(who)
 
 
 
-  if (command == 'leonsuelto') {
-    m.reply(`Hola ${username}\nSoy *${pickRandom(global.nye)}*, Ayudame un leon me esta persiguiendo, y ya no puedo mas!!!`)
-    throw `
-      Para hacer algo por él, usa una de estas opciones
-      *${usedPrefix + 'leon'} ayudar*
-      *${usedPrefix + 'leon'} dejarlo*
-    `
+  if (command == 'empezarapocalypto') {
+    m.reply(`Hola ${username}, estas a punto de empezar a vivir un apocalypto!`)
+    throw `Segun los noticieros la ciudad de "Brooksdale" esta en una crisis sanitaria debido a un virus llamado "CioVirus". Este virus es de contagio entre seres humanos y consiste en una enfermedad que te convierte en zombie, empezando un insomio, hambruna, ojos rojos. El estado recomienda  abandonar la ciudad cuanto antes. *Tienes dos opciones, irte de la ciudad o quedarte a esperar que la ciudad calme o empeore.*\n\n${usedPrefix}apocalypto irse\n${usedPrefix}apocalypto esperar`
   }
 
-  if (command == 'leon') {
-    let users = global.db.data.users[m.sender]
+  //opcion de "emprezar apocalypto"
+  if (command == 'apocalypto') {
 
-    if (args[0] == "ayudar") {
-      m.reply(`Estas Intentando Detener Al Leon Para Que No Lo Mate, ¿Necesitas un arma? Para comprar usa\n\n.leon arma`)
+    if (args[0] == "esperar") {
+      m.reply(`Has decidido esperar a que se calme la ciudad, por ahora la ciudad tiene 10,000 contagiados de CioVirus, tu vida esta corriendo peligro en la ciudad. El departamento de salud recomienda irse a zonas apartadas de la ciudad para evitar riesgo de contagio. \n\n${usedPrefix + command} irse\n${usedPrefix + command} quedarse`)
     }
 
-    if (args[0] == "dejarlo") {
-      let din = Math.floor(Math.random() * 25)
-      global.db.data.users[who].dolares -= din
-      m.reply(`Dejaste que el leon lo matara, por lo que eres sospechoso de la muerte, por lo cual perdiste $${din} Dolares.`)
+    //opcion de "esperar"
+    if (args[0] == "quedarse") {
+      m.reply(`Apesar de las advertencias que hizo el estado decides quedarse, el virus se apodero de el mundo. Todo es un caos, ya no hay recursos, y el estado anunncia un virus mortal de propagacion eextrema. Tienes solo una opcion y es irte.\n\n${usedPrefix + command} irse`)
     }
 
-    if (args[0] == "arma") {
-      let arm = Math.floor(Math.random() * 20)
-      global.db.data.users[who].dolares -= arm
-      m.reply(`Has Comprado Un Arma A ${arm} Dolares. Ahora Usa Estas Opciones De Abajo.\n\n.leon disparar\n.leon no disparar`)
+    //opcion de "esperar y empezar apocalypto"
+    if (args[0] == "irse") {
+    m.reply(`Ante la inminente propagacion del virus, tomas la dificil decision de abandonar tu hogar en busca de un refugio seguro. Empacas lo esencial y emprendes un viaje incierto hacia lo desconocido. El mundo esta en caos, pero tu determinacion te impulsa a buscar una oportunidad para sobrevivir. *Tienes dos opciones, hay 2 ciudades, en Crestview hay personas con el virus, pero mas recursos para sobrevivir, y en Rivertown no hay casos del virus, pero es una ciudad lejana y por lo tanto no tiene muchos recursos, tu decides*\n\n${usedPrefix}apocalypto Crestview\n${usedPrefix}apocalypto Rivertown`)
     }
 
-    if (args[0] == "disparar") {
-      let user = global.db.data.users[who]
-      let pointAttacker = Math.floor(Math.random() * 200)
-      global.db.data.users[who].hp -= pointAttacker
-
-      if (global.db.data.users[who].hp <= 0) {
-        let target = args[0]
-        let gan = Math.floor(Math.random() * 500)
-        global.db.data.users[who].dolares += gan
-        conn.reply(m.chat, `*Felicidades*\nEl leon acaba de morir porque se le acabaron los HP (puntos de salud), por lo que la persona que salvaste decidió darte $${gan}`, m, { contextInfo: { mentionedJid: [target] } })
-      } else {
-        m.reply(`Le has disparado al leon 🦁\nOh nooo El leon aun sigue vivo y con ${user.hp} de HP\nDebes Atacar Otra Vez Al Leon Para Matarlo\n.leon disparar`)
-        await new Promise(resolve => setTimeout(resolve, 5000))
-      }
+    // opcion de irse (ciudad que tiene casos, pero tiene mas reccursos.)
+    if (args[0] == "Crestview") {
+      m.reply(`Has tomado una decision importante para tu supervivencia, la ciudad Crestview esta contagiada en su 50%, pero hay mas recursos que Rivertown. Esto te ayudara en una cierta parte para sobrevivir, pero los medios estan recomendando encerrarse en casa con los recursos necesarios. *Tienes dos opciones: explorar para encontrar un refugio mejor, o quedarte en casa.\n\n${usedPrefix + command} explorando\n${usedPrefix + command} casa`)
     }
+    
+    //opcion de irse (ciudad que no tiene casos, pero tiene pocos recursos)
+    if (args[0] == "Rivertown") {
+      m.reply(`Has tomado una decision importante para tu supervivencia, aqui no hay muchos recursos, pero no hay casos del virus. estas solo en la ciudad sin ningun recurso, esto no te podria beneficiar mucho, ya que sin recursos el nivel se pondra cada vez mas peor.*Tienes dos opciones: explorar para encontrar un refugio mejor, o quedarte en casa.\n\n${usedPrefix + command} explorar\n${usedPrefix + command} casa*`)
+    
+    }
+
+    //opcion de las 2 ciudades (explorar)
+    if (args[0] == "explorar") {
+      m.reply(`La decision de explorar ha tomado un rumbo de supervivencia, haciendote estar mas lejos de las ciudades para evitar el virus. Explorando has llegado a un bosque exttenso, y has encontrado un gato dentro del bosque y decides l`)
   }
+
+}
 }
 
-handler.help = handler.command = ['leonsuelto', 'leon']
+handler.help = handler.command = ['empezarapocalypto', 'apocalypto']
 handler.tags = ['game']
 
 export default handler
-
-
-function pickRandom(list) {
-return list[Math.floor(list.length * Math.random())]}
-
-global.nye = ["Sebastian - 🍷🗿","Guillermo - 🍷🗿","Carlos - 20 años","Mariana - 28 años","Alejandro - 34 años","Karla - 29 años","Sofia - 27 años","Daniel - 32 años","Isabel - 26 años","Ana - 31 años","Pedro - 23 años","Elena - 35 años","Ricardo - 22 años","Marisol - 33 años","Luis - 19 años","Lucia - 37 años","Pablo - 24 años","Carmen - 40 años","Martín - 21 años","Teresa - 36 años","Felipe - 28 años","María - 39 años","Andrés - 27 años","Jimena - 25 años","Roberto - 30 años","Mónica - 31 años","Diego - 26 años","Valentina - 29 años","Hernán - 33 años","Susana - 24 años","Juan - 38 años","Verónica - 22 años","Miguel - 33 años","Paola - 27 años","Esteban - 29 años","Rosa - 30 años","Antonio - 35 años","Lorena - 26 años","Gustavo - 31 años","Natalia - 24 años","Andrea - 39 años","Fernando - 28 años","Cecilia - 32 años","Raul - 40 años","Miriam - 21 años","Alejandra - 34 años","Roberto - 36 años","Victoria - 23 años"];
