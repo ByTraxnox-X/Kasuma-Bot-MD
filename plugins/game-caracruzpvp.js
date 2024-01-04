@@ -22,17 +22,17 @@ handler.before = async function (m) {
             room.asal = m.chat
             clearTimeout(room.waktu)
 
-            let textplay = `El juego ha iniciado, por favor revisar sus chats privados @${room.p.split`@`[0]}, @${room.p2.split`@`[0]}.\n\nRecuerde que solo puede elegir una opción\n\n*Si no encuentra el chat ingrese a este enlace: wa.me/${conn.user.jid.split`@`[0]}*`
+            let textplay = `El juego ha iniciado, por favor revisa tus chats privados @${room.p.split`@`[0]}, @${room.p2.split`@`[0]}.\n\nRecuerda que puedes elegir entre Cara o Cruz.\n\n*Si no encuentras el chat, ingresa a este enlace: wa.me/${conn.user.jid.split`@`[0]}*`
             m.reply(textplay, m.chat, { mentions: this.parseMention(textplay) })
 
             let comienzop = `Debes seleccionar una de las siguientes opciones\n\nCara\nCruz\n\n*Responde al mensaje con la opción*`
-            let comienzop2 = `Debes seleccionar una de las siguientes opciones\n\n${room.pilih ? 'Cruz' : 'Cara'}\n\n*Responde al mensaje con la opción*`
+            let comienzop2 = `Debes seleccionar una de las siguientes opciones\n\nCara\nCruz\n\n*Responde al mensaje con la opción*`
 
             if (!room.pilih) this.sendMessage(room.p, { text: comienzop }, { quoted: m })
             if (!room.pilih2) this.sendMessage(room.p2, { text: comienzop2 }, { quoted: m })
 
             room.waktu_milih = setTimeout(() => {
-                let iniciativa = `Ningun jugador inicio el juego, este ha sido cancelado.`
+                let iniciativa = `Ningún jugador inició el juego, este ha sido cancelado.`
 
                 if (!room.pilih && !room.pilih2) this.sendMessage(m.chat, { text: iniciativa }, { quoted: m })
                 else if (!room.pilih || !room.pilih2) {
@@ -71,23 +71,23 @@ handler.before = async function (m) {
 
             clearTimeout(room.waktu_milih)
 
+            // Lógica de quién gana
             if (stage === stage2) tie = true
-
-            if (stage === 'cara' && stage2 === 'cara') win = room.p
-            else if (stage === 'cruz' && stage2 === 'cruz') win = room.p
             else if (stage === 'cara' && stage2 === 'cruz') win = room.p2
             else if (stage === 'cruz' && stage2 === 'cara') win = room.p
 
+            // Lógica de recompensa y penalización
             if (!tie) {
                 db.data.users[win == room.p ? room.p : room.p2].exp += room.poin
                 db.data.users[win == room.p ? room.p : room.p2].exp += room.poin_bot
                 db.data.users[win == room.p ? room.p2 : room.p].exp -= room.poin_lose
             }
 
-            let resultado1 = stage === stage2 ? `Empate` : `Resultado: ${room.p === win ? 'Ganaste' : 'Perdiste'} - ${stage2 === 'cara' ? 'Cara' : 'Cruz'}`
-            let resultado2 = stage === stage2 ? `` : `Resultado: ${room.p2 === win ? 'Ganaste' : 'Perdiste'} - ${stage === 'cara' ? 'Cara' : 'Cruz'}`
+            let resultadoMaquina = `${random(['Cara', 'Cruz'])}`
+            let resultado1 = stage === stage2 ? `Empate` : `Resultado: ${room.p === win ? 'Ganaste' : 'Perdiste'} - ${stage2}`
+            let resultado2 = stage === stage2 ? `` : `Resultado: ${room.p2 === win ? 'Ganaste' : 'Perdiste'} - ${stage}`
 
-            this.reply(room.asal, `*RESULTADOS*\n\n@${room.p.split`@`[0]} (${room.text}) - ${resultado1}\n@${room.p2.split`@`[0]} (${room.text2}) - ${resultado2}`, m, { mentions: [room.p, room.p2] })
+            this.reply(room.asal, `*RESULTADOS*\n\n${resultadoMaquina}\n@${room.p.split`@`[0]} (${room.text}) - ${resultado1}\n@${room.p2.split`@`[0]} (${room.text2}) - ${resultado2}`, m, { mentions: [room.p, room.p2] })
 
             delete this.caracruzpvp[room.id]
         }
