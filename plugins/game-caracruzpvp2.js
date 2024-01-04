@@ -9,7 +9,7 @@ let textquien = `Etiqueta a la persona a desafiar!`
 if (!m.mentionedJid[0]) return m.reply(textquien, m.chat, {quoted: m }, { mentions: conn.parseMention(textquien)})
 if (Object.values(conn.caracruzpvp).find(room => room.id.startsWith('caracruzpvp') && [room.p, room.p2].includes(m.mentionedJid[0]))) throw `La persona a desafiar se encuentra en otro Cara o Cruz, etiquete a otro oponente!`
 let id = 'caracruzpvp_' + new Date() * 1
-let caption = `*🎮👾 CARA O CRUZ PVP 🎮👾*\n\n@${m.sender.split`@`[0]} has desafiado a @${m.mentionedJid[0].split`@`[0]} a un enfrentamiento en cara o cruz.\nPara confirmar su participacion escribe "aceptar"`
+let caption = `*🎮👾 CARA O CRUZ 🎮👾*\n\n@${m.sender.split`@`[0]} ha desafiado a @${m.mentionedJid[0].split`@`[0]} a un enfrentamiento en cara o cruz.\n\n*Para confirmar su participacion escribe "aceptar" o si desea rechazar hagalo con "rechazar"*`
 conn.caracruzpvp[id] = {
 chat: await conn.sendMessage(m.chat, { text: caption }, {mentions: conn.parseMention(caption)}),
 id: id,
