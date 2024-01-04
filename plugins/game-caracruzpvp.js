@@ -13,7 +13,7 @@ handler.before = async function (m) {
 
         if (m.sender == room.p2 && /^(acc(ept)?|Aceptar|acerta|aceptar|gas|aceptare?|nao|Rechazar|rechazar|ga(k.)?bisa)/i.test(m.text) && m.isGroup && room.status == 'wait') {
             if (/^(Rechazar|gamau|rechazar|ga(k.)?bisa)/i.test(m.text)) {
-                let textno = `@${room.p2.split`@`[0]} Acaba de rechazar el pvp, por lo que el juego sera cancelado`
+                let textno = `@${room.p2.split`@`[0]} Acaba de rechazar el pvp, por lo que el juego será cancelado`
                 m.reply(textno, null, { mentions: this.parseMention(textno) })
                 delete this.caracruzpvp[room.id]
                 return !0
@@ -32,7 +32,7 @@ handler.before = async function (m) {
             if (!room.pilih2) this.sendMessage(room.p2, { text: comienzop2 }, { quoted: m })
 
             room.waktu_milih = setTimeout(() => {
-                let iniciativa = `Ningun jugador inicio el juego, este ha sido cancelado.`
+                let iniciativa = `Ningún jugador inició el juego, este ha sido cancelado.`
 
                 if (!room.pilih && !room.pilih2) this.sendMessage(m.chat, { text: iniciativa }, { quoted: m })
                 else if (!room.pilih || !room.pilih2) {
@@ -86,10 +86,10 @@ handler.before = async function (m) {
                 db.data.users[win == room.p ? room.p2 : room.p].exp -= room.poin_lose
             }
 
-            let resultado1 = stage === machineChoice ? `Empate` : `Resultado: ${room.p === win ? 'Ganaste' : 'Perdiste'} - ${machineChoice === 'cara' ? 'Cara' : 'Cruz'}`
-            let resultado2 = stage2 === machineChoice ? `Empate` : `Resultado: ${room.p2 === win ? 'Ganaste' : 'Perdiste'} - ${machineChoice === 'cara' ? 'Cara' : 'Cruz'}`
+            let resultado1 = stage === machineChoice ? `Empate` : `Resultado: ${room.p === win ? 'Ganaste' : 'Perdiste'}`
+            let resultado2 = stage2 === machineChoice ? `Empate` : `Resultado: ${room.p2 === win ? 'Ganaste' : 'Perdiste'}`
 
-            this.reply(room.asal, `*RESULTADOS*\n\n*Resultado: ${room.machineChoice}\n\n@${room.p.split`@`[0]} (${room.text}) - ${resultado1}\n@${room.p2.split`@`[0]} (${room.text2}) - ${resultado2}`, m, { mentions: [room.p, room.p2] })
+            this.reply(room.asal, `*RESULTADOS*\n\n*Resultado:* ${machineChoice}\n\n@${room.p.split`@`[0]} (${room.text}) - ${resultado1}\n@${room.p2.split`@`[0]} (${room.text2}) - ${resultado2}`, m, { mentions: [room.p, room.p2] })
 
             delete this.caracruzpvp[room.id]
         }
