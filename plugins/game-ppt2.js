@@ -25,9 +25,9 @@ if (conn.suit[id]) conn.reply(m.chat, `⏳ Tiempo De Espera Finalizado, El PvP S
 delete conn.suit[id]
 }, timeout), poin, poin_lose, poin_bot, timeout
 }}
-handler.help = ['ppt']
-handler.tags = ['games']
-handler.command = /^(ppt|suitpvp)$/i
+handler.help = ['pptpvp']
+handler.tags = ['game']
+handler.command = /^(pptpvp)$/i
 handler.group = true
 handler.game = true
 export default handler
