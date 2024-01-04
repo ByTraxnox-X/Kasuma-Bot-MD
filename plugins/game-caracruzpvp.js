@@ -83,11 +83,11 @@ handler.before = async function (m) {
                 db.data.users[win == room.p ? room.p2 : room.p].exp -= room.poin_lose
             }
 
-            let resultadoMaquina = `Resultado de la máquina: ${random(['Cara', 'Cruz'])}\n\n`
+            let resultadoMaquina = `Resultado de la máquina: ${random(['Cara', 'Cruz'])}`
             let resultado1 = stage === stage2 ? `Empate` : `Resultado: ${room.p === win ? 'Ganaste' : 'Perdiste'} - ${stage2 === 'cara' ? 'Cara' : 'Cruz'}`
             let resultado2 = stage === stage2 ? `` : `Resultado: ${room.p2 === win ? 'Ganaste' : 'Perdiste'} - ${stage === 'cara' ? 'Cara' : 'Cruz'}`
 
-            this.sendMessage(room.asal, `${resultadoMaquina}\n@${room.p.split`@`[0]} (${room.text}) - ${resultado1}\n@${room.p2.split`@`[0]} (${room.text2}) - ${resultado2}`, { quoted: m })
+            this.sendMessage(room.asal, `${resultadoMaquina}\n\n@${room.p.split`@`[0]} (${room.text}) - ${resultado1}\n@${room.p2.split`@`[0]} (${room.text2}) - ${resultado2}`, { quoted: m })
             
             delete this.caracruzpvp[room.id]
         }
