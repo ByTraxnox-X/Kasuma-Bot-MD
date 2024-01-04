@@ -1,3 +1,8 @@
+import fetch from 'node-fetch';
+import axios from 'axios';
+
+const timeout = 30000;
+const poin = 1000;
 
 let handler = async(m, { conn, usedPrefix, command }) => {
     if (command == "adivinacancion") {
