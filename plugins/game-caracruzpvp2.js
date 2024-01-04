@@ -11,7 +11,7 @@ if (Object.values(conn.caracruzpvp).find(room => room.id.startsWith('caracruzpvp
 let id = 'caracruzpvp_' + new Date() * 1
 let caption = `*🎮👾 CARA O CRUZ 🎮👾*\n\n@${m.sender.split`@`[0]} ha desafiado a @${m.mentionedJid[0].split`@`[0]} a un enfrentamiento en cara o cruz.\n\n*Para confirmar escribe "aceptar"\nsi desea rechazar hagalo con "rechazar"*`
 conn.caracruzpvp[id] = {
-chat: await m.reply(caption, m.chat, {mentions: this.parseMention(caption)}),
+chat: await conn.sendMessage(m.chat, { text: caption,mentions:[sender]}),
 id: id,
 p: m.sender,
 p2: m.mentionedJid[0],
