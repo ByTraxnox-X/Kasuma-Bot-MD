@@ -27,7 +27,7 @@ handler.before = async function (m) {
             m.reply(textplay, m.chat, { mentions: this.parseMention(textplay) })
             
             let comienzop = `Hola ${username}, Debes Seleccionar una de las siguientes opciones\n\nCara\nCruz\n\n*Responda al mensaje con la opción*`
-            let comienzop2 = `Hola ${username}, Debes Seleccionar una de las siguientes opciones\n\n${room.pilih ? 'Cruz' : 'Cara'}\n\n*Responda al mensaje con la opción*`
+            let comienzop2 = `Hola ${username}, ${room.pilih === 'cara' ? 'Solo puedes elegir *Cruz*' : 'Debes Seleccionar una de las siguientes opciones\n\nCara\nCruz\n\n*Responda al mensaje con la opción*'}`
             
             if (!room.pilih) this.sendMessage(room.p, { text: comienzop }, { quoted: m })
             if (!room.pilih2) this.sendMessage(room.p2, { text: comienzop2 }, { quoted: m })
@@ -63,7 +63,12 @@ handler.before = async function (m) {
         }
         
         if (jwb2 && reg.test(m.text) && !room.pilih2 && !m.isGroup) {
-            room.pilih2 = room.pilih === 'cara' ? 'cruz' : 'cara'
+            if (room.pilih === 'cara' && m.text.toLowerCase() !== 'cruz') {
+                room.pilih2 = 'cruz'
+            } else {
+                return !0 
+            }
+            
             room.text2 = m.text
             m.reply(`Ha elegido ${m.text}, Regresa al grupo y ${room.pilih ? `*Revisa Los Resultados*` : '*Espera los resultados*'}`)
             
@@ -78,8 +83,16 @@ handler.before = async function (m) {
             
             if (stage === stage2) tie = true
             
+            let machineChoice = random(['cara', 'cruz'])
+            
+            if (stage === machineChoice) {
+                win = room.p
+            } else if (stage2 === machineChoice) {
+                win = room.p2
+            }
+            
             this.reply(room.asal, `*RESULTADOS*\n\n${tie ? '*Empate*' : ''} @${room.p.split`@`[0]} (${room.text}) ${tie ? '' : room.p === win ? `*Ganaste* ${room.poin} XP` : `*Perdiste*  ${room.poin_lose} XP`}
-            @${room.p2.split`@`[0]} (${room.text2}) ${tie ? '' : room.p2 === win ? `*Ganaste* ${room.poin} XP` : `*Perdiste*  ${room.poin_lose} XP`}
+            Máquina (${machineChoice}) ${tie ? '' : room.p2 === win ? `*Ganaste* ${room.poin} XP` : `*Perdiste*  ${room.poin_lose} XP`}
             `.trim(), m, { mentions: [room.p, room.p2] })
             
             if (!tie) {
