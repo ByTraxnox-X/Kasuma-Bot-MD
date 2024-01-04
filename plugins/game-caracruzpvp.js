@@ -14,12 +14,11 @@ handler.before = async function (m) {
         
         if (m.sender == room.p2 && /^(acc(ept)?|Aceptar|acerta|aceptar|gas|aceptare?|nao|Rechazar|rechazar|ga(k.)?bisa)/i.test(m.text) && m.isGroup && room.status == 'wait') {
             if (/^(Rechazar|gamau|rechazar|ga(k.)?bisa)/i.test(m.text)) {
-                let textno = `@${room.p2.split`@`[0]} Acaba de rechazar el pvp, por lo que el juego sera cancelado`
-                m.reply(textno, null, { mentions: this.parseMention(textno) })
-                delete this.caracruzpvp[room.id]
-                return !0
-            }
-            room.status = 'play'
+            let textno = `@${room.p2.split`@`[0]} Acaba de rechazar el pvp, por lo que el juego sera cancelado`
+            m.reply(textno, null, {mentions: this.parseMention(textno)})
+            delete this.caracruzpvp[room.id]
+            return !0 }
+            room.status = 'play' 
             room.asal = m.chat
             clearTimeout(room.waktu)
             
