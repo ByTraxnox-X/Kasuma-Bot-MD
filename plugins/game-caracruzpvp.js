@@ -84,8 +84,8 @@ handler.before = async function (m) {
                 db.data.users[win == room.p ? room.p2 : room.p].exp -= room.poin_lose
             }
 
-            let resultado1 = stage === stage2 ? `Empate` : `Resultado: ${room.p === win ? 'Ganaste' : 'Perdiste'} - ${stage}`
-            let resultado2 = stage === stage2 ? `` : `Resultado: ${room.p2 === win ? 'Ganaste' : 'Perdiste'} - ${stage2}`
+            let resultado1 = stage === stage2 ? `Empate` : `Resultado: ${room.p === win ? 'Ganaste' : 'Perdiste'} - ${stage2 === 'cara' ? 'Cara' : 'Cruz'}`
+            let resultado2 = stage === stage2 ? `` : `Resultado: ${room.p2 === win ? 'Ganaste' : 'Perdiste'} - ${stage === 'cara' ? 'Cara' : 'Cruz'}`
 
             this.reply(room.asal, `*RESULTADOS*\n\n@${room.p.split`@`[0]} (${room.text}) - ${resultado1}\n@${room.p2.split`@`[0]} (${room.text2}) - ${resultado2}`, m, { mentions: [room.p, room.p2] })
 
