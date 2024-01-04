@@ -1,8 +1,6 @@
 let handler = m => m
 
 handler.before = async function (m) {
-    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-    let username = conn.getName(who)
     this.caracruzpvp = this.caracruzpvp ? this.caracruzpvp : {}
 
     if (db.data.users[m.sender].caracruzpvp < 0) db.data.users[m.sender].caracruzpvp = 0
@@ -27,8 +25,8 @@ handler.before = async function (m) {
             let textplay = `El juego ha iniciado, por favor revisar sus chats privados @${room.p.split`@`[0]}, @${room.p2.split`@`[0]}.\n\nRecuerde que solo puede elegir una opción\n\n*Si no encuentra el chat ingrese a este enlace: wa.me/${conn.user.jid.split`@`[0]}*`
             m.reply(textplay, m.chat, { mentions: this.parseMention(textplay) })
 
-            let comienzop = `Hola ${username}, Debes Seleccionar una de las siguientes opciones\n\nCara\nCruz\n\n*Responda al mensaje con la opción*`
-            let comienzop2 = `Hola ${username}, Debes Seleccionar una de las siguientes opciones\n\n${room.pilih ? 'Cruz' : 'Cara'}\n\n*Responda al mensaje con la opción*`
+            let comienzop = `Debes seleccionar una de las siguientes opciones\n\nCara\nCruz\n\n*Responde al mensaje con la opción*`
+            let comienzop2 = `Debes seleccionar una de las siguientes opciones\n\n${room.pilih ? 'Cruz' : 'Cara'}\n\n*Responde al mensaje con la opción*`
 
             if (!room.pilih) this.sendMessage(room.p, { text: comienzop }, { quoted: m })
             if (!room.pilih2) this.sendMessage(room.p2, { text: comienzop2 }, { quoted: m })
@@ -58,23 +56,19 @@ handler.before = async function (m) {
         if (jwb && reg.test(m.text) && !room.pilih && !m.isGroup) {
             room.pilih = reg.exec(m.text.toLowerCase())[0]
             room.text = m.text
-            m.reply(`Ha elegido ${m.text}, Regresa al grupo y ${room.pilih2 ? `*Revisa Los Resultados*` : '*Espera los resultados*'}`)
+            m.reply(`Has elegido ${m.text}, Regresa al grupo y ${room.pilih2 ? `*Revisa los resultados*` : '*Espera los resultados*'}`)
 
-            if (!room.pilih2) this.reply(room.p2, `El Oponente ya a elegido, ahora te toca a ti`, m, 0)
+            if (!room.pilih2) this.reply(room.p2, `El oponente ya ha elegido, ahora te toca a ti`, m, 0)
         }
 
-        if (jwb2 && reg.test(m.text) && !room.pilih2 && !m.isGroup) {
-            room.pilih2 = room.pilih === 'cara' ? 'cruz' : 'cara'
+        if (jwb2 && reg.test(m.text) && !room.pilih2 && !m.isGroup && room.pilih) {
+            room.pilih2 = reg.exec(m.text.toLowerCase())[0]
             room.text2 = m.text
-            m.reply(`Ha elegido ${m.text}, Regresa al grupo y ${room.pilih ? `*Revisa Los Resultados*` : '*Espera los resultados*'}`)
+            m.reply(`Has elegido ${m.text}, Regresa al grupo y *Revisa los resultados*`)
 
-            if (!room.pilih) this.reply(room.p, `Ya el equipo contrario eligió una opción, ahora hazlo tú!`, m, 0)
-        }
+            let stage = room.pilih
+            let stage2 = room.pilih2
 
-        let stage = room.pilih
-        let stage2 = room.pilih2
-
-        if (room.pilih && room.pilih2) {
             clearTimeout(room.waktu_milih)
 
             if (stage === stage2) tie = true
@@ -84,15 +78,17 @@ handler.before = async function (m) {
             else if (stage === 'cara' && stage2 === 'cruz') win = room.p2
             else if (stage === 'cruz' && stage2 === 'cara') win = room.p
 
-            this.reply(room.asal, `*RESULTADOS*\n\n${tie ? '*Empate*\n\n' : ''} @${room.p.split`@`[0]} (${room.text}) ${tie ? '' : room.p === win ? `\n*Ganaste* ${room.poin} XP` : `\n*Perdiste*  ${room.poin_lose} XP`}
-            @${room.p2.split`@`[0]} (${room.text2}) ${tie ? '' : room.p2 === win ? `\n*Ganaste* ${room.poin} XP` : `\n*Perdiste*  ${room.poin_lose} XP`}
-            `.trim(), m, { mentions: [room.p, room.p2] })
-
             if (!tie) {
                 db.data.users[win == room.p ? room.p : room.p2].exp += room.poin
                 db.data.users[win == room.p ? room.p : room.p2].exp += room.poin_bot
                 db.data.users[win == room.p ? room.p2 : room.p].exp -= room.poin_lose
             }
+
+            let resultado1 = stage === stage2 ? `Empate` : `Resultado: ${room.p === win ? 'Ganaste' : 'Perdiste'} - ${stage}`
+            let resultado2 = stage === stage2 ? `` : `Resultado: ${room.p2 === win ? 'Ganaste' : 'Perdiste'} - ${stage2}`
+
+            this.reply(room.asal, `*RESULTADOS*\n\n@${room.p.split`@`[0]} (${room.text}) - ${resultado1}\n@${room.p2.split`@`[0]} (${room.text2}) - ${resultado2}`, m, { mentions: [room.p, room.p2] })
+
             delete this.caracruzpvp[room.id]
         }
     }
