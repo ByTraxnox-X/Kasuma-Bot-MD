@@ -14,7 +14,7 @@ handler.before = async function (m) {
         if (m.sender == room.p2 && /^(acc(ept)?|Aceptar|acerta|aceptar|gas|aceptare?|nao|Rechazar|rechazar|ga(k.)?bisa)/i.test(m.text) && m.isGroup && room.status == 'wait') {
             if (/^(Rechazar|gamau|rechazar|ga(k.)?bisa)/i.test(m.text)) {
                 let textno = `@${room.p2.split`@`[0]} Acaba de rechazar el pvp, por lo que el juego será cancelado`
-                m.reply(textno, null, { mentions: this.parseMention(textno) })
+                this.sendMessage(m.chat, textno, null, { mentions: this.parseMention(textno) })
                 delete this.caracruzpvp[room.id]
                 return !0
             }
@@ -23,7 +23,7 @@ handler.before = async function (m) {
             clearTimeout(room.waktu)
 
             let textplay = `El juego ha iniciado, por favor revisa tus chats privados @${room.p.split`@`[0]}, @${room.p2.split`@`[0]}.\n\nRecuerda que solo puedes elegir una opción\n\n*Si no encuentras el chat, ingresa a este enlace: wa.me/${conn.user.jid.split`@`[0]}*`
-            m.reply(textplay, m.chat, { mentions: this.parseMention(textplay) })
+            this.sendMessage(m.chat, textplay, null, { mentions: this.parseMention(textplay) })
 
             let comienzop = `Debes seleccionar una de las siguientes opciones\n\nCara\nCruz\n\n*Responde al mensaje con la opción*`
             let comienzop2 = `Debes seleccionar una de las siguientes opciones\n\nCara\nCruz\n\n*Responde al mensaje con la opción*`
@@ -56,26 +56,22 @@ handler.before = async function (m) {
         if (jwb && reg.test(m.text) && !room.pilih && !m.isGroup) {
             room.pilih = reg.exec(m.text.toLowerCase())[0]
             room.text = m.text
-            m.reply(`Has elegido ${m.text}, Regresa al grupo y ${room.pilih2 ? `*Revisa los resultados*` : '*Espera los resultados*'}`)
-
+            this.sendMessage(m.chat, `Has elegido ${m.text}, Regresa al grupo y ${room.pilih2 ? `*Revisa los resultados*` : '*Espera los resultados*'}`)
             if (!room.pilih2) this.sendMessage(room.p2, `El oponente ya ha elegido, ahora te toca a ti`, { quoted: m })
         }
 
         if (jwb2 && reg.test(m.text) && !room.pilih2 && !m.isGroup && room.pilih) {
             room.pilih2 = reg.exec(m.text.toLowerCase())[0]
             room.text2 = m.text
-            m.reply(`Has elegido ${m.text}, Regresa al grupo y *Revisa los resultados*`)
-
+            this.sendMessage(m.chat, `Has elegido ${m.text}, Regresa al grupo y *Revisa los resultados*`)
             let stage = room.pilih
             let stage2 = room.pilih2
 
             clearTimeout(room.waktu_milih)
 
-
             if (stage === stage2) tie = true
             else if (stage === 'cara' && stage2 === 'cruz') win = room.p2
             else if (stage === 'cruz' && stage2 === 'cara') win = room.p
-
 
             if (!tie) {
                 db.data.users[win == room.p ? room.p : room.p2].exp += room.poin
@@ -84,11 +80,11 @@ handler.before = async function (m) {
             }
 
             let resultadoMaquina = `Resultado de la máquina: ${random(['Cara', 'Cruz'])}`
-            let resultado1 = stage === stage2 ? `Empate` : `Resultado: ${room.p === win ? 'Ganaste' : 'Perdiste'} - ${stage2 === 'cara' ? 'Cara' : 'Cruz'}`
-            let resultado2 = stage === stage2 ? `` : `Resultado: ${room.p2 === win ? 'Ganaste' : 'Perdiste'} - ${stage === 'cara' ? 'Cara' : 'Cruz'}`
+            let resultado1 = stage === stage2 ? `Empate` : `Resultado: ${room.p === win ? 'Ganaste' : 'Perdiste'} - ${stage2}`
+            let resultado2 = stage === stage2 ? `` : `Resultado: ${room.p2 === win ? 'Ganaste' : 'Perdiste'} - ${stage}`
 
-            this.sendMessage(room.asal, `${resultadoMaquina}\n\n@${room.p.split`@`[0]} (${room.text}) - ${resultado1}\n@${room.p2.split`@`[0]} (${room.text2}) - ${resultado2}`, { quoted: m })
-            
+            this.sendMessage(room.asal, `${resultadoMaquina}\n@${room.p.split`@`[0]} (${room.text}) - ${resultado1}\n@${room.p2.split`@`[0]} (${room.text2}) - ${resultado2}`, { quoted: m })
+
             delete this.caracruzpvp[room.id]
         }
     }
