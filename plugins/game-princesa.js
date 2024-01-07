@@ -4,8 +4,6 @@ let handler = async(m, { conn, text, usedPrefix, command, args }) => {
 
 const juegosEnCurso = {};
 
-conn.on('chat-update', async (chatUpdate) => {
-  if (chatUpdate.messages && chatUpdate.messages.length > 0) {
     const message = chatUpdate.messages.all()[0];
     const userJID = message.key.remoteJID;
 
@@ -30,8 +28,8 @@ conn.on('chat-update', async (chatUpdate) => {
       unirseAMultijugador(userJID);
     }
     // Puedes agregar más comandos y lógica del juego aquí
-  }
-});
+  
+);
 
 function iniciarJuego(userJID) {
   juegosEnCurso[userJID] = {
