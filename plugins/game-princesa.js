@@ -2,13 +2,9 @@
 let handler = async(m, { conn, text, usedPrefix, command, args }) => {
 
 
-const { Client } = require('@adiwajshing/baileys');
-
-const client = new Client();
-
 const juegosEnCurso = {};
 
-client.on('chat-update', async (chatUpdate) => {
+conn.on('chat-update', async (chatUpdate) => {
   if (chatUpdate.messages && chatUpdate.messages.length > 0) {
     const message = chatUpdate.messages.all()[0];
     const userJID = message.key.remoteJID;
@@ -28,7 +24,7 @@ client.on('chat-update', async (chatUpdate) => {
       if (accion === 'princesa') {
         rescatarPrincesa(userJID);
       } else {
-        client.sendMessage(userJID, 'Comando no válido. Intenta !rescatar princesa');
+        conn.sendMessage(userJID, 'Comando no válido. Intenta !rescatar princesa');
       }
     } else if (message.body.toLowerCase() === '!unirse') {
       unirseAMultijugador(userJID);
@@ -46,13 +42,13 @@ function iniciarJuego(userJID) {
     aventuraCompletada: false,
   };
 
-  client.sendMessage(userJID, '¡Bienvenido al juego de aventura! Tu misión es rescatar a la princesa de la mazmorra. ¡Comencemos!');
+  conn.sendMessage(userJID, '¡Bienvenido al juego de aventura! Tu misión es rescatar a la princesa de la mazmorra. ¡Comencemos!');
   mostrarInstrucciones(userJID);
 }
 
 function unirseAMultijugador(userJID) {
   if (!juegosEnCurso[userJID]) {
-    client.sendMessage(userJID, 'Te uniste a la partida multijugador. ¡Es tu turno!');
+    conn.sendMessage(userJID, 'Te uniste a la partida multijugador. ¡Es tu turno!');
     juegosEnCurso[userJID] = {
       estado: 'en_progreso',
       turnoActual: userJID,
@@ -62,7 +58,7 @@ function unirseAMultijugador(userJID) {
     };
     mostrarInstrucciones(userJID);
   } else {
-    client.sendMessage(userJID, 'Ya estás en una partida. ¡Espera tu turno!');
+    conn.sendMessage(userJID, 'Ya estás en una partida. ¡Espera tu turno!');
   }
 }
 
@@ -87,17 +83,13 @@ function explorarMazmorra(userJID) {
     avanzarTurno(userJID);
 
     // Mostrar instrucciones al siguiente jugador
-    client.sendMessage(juegosEnCurso[userJID].turnoActual, '¡Es tu turno! Usa !explorar para continuar la aventura.');
+    conn.sendMessage(juegosEnCurso[userJID].turnoActual, '¡Es tu turno! Usa !explorar para continuar la aventura.');
   } else {
-    client.sendMessage(userJID, 'No es tu turno para explorar. ¡Espera tu turno!');
+    conn.sendMessage(userJID, 'No es tu turno para explorar. ¡Espera tu turno!');
   }
 }
 
 // Resto de las funciones del juego siguen similar lógica multijugador
-
-client.connect();
-
-
 
 }
     
