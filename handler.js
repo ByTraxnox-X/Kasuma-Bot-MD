@@ -43,8 +43,8 @@ export async function handler(chatUpdate) {
             if (typeof user !== 'object')
                 global.db.data.users[m.sender] = {}
             if (user) {
-                if (!isNumber(user.messaggi))
-                    user.messaggi = 0;
+                if (!isNumber(user.Mensaje))
+                    user.Mensaje = 0;
                 if (!isNumber(user.exp))
                     user.exp = 0
                 if (!isNumber(user.diamond))
@@ -83,7 +83,7 @@ export async function handler(chatUpdate) {
                     user.autolevelup = false
             } else
                 global.db.data.users[m.sender] = {
-                    messaggi: 0, 
+                    Mensaje: 0, 
                     hp: 100,
                     exp: 0,
                     diamond: 10,
@@ -109,8 +109,8 @@ export async function handler(chatUpdate) {
             if (typeof chat !== 'object')
                 global.db.data.chats[m.chat] = {}
             if (chat) {
-                if (!isNumber(chat.messaggi))
-                    chat.messaggi = 0
+                if (!isNumber(chat.Mensaje))
+                    chat.Mensaje = 0
                 if (!('isBanned' in chat))
                     chat.isBanned = false
                 if (!('welcome' in chat))
@@ -145,7 +145,7 @@ export async function handler(chatUpdate) {
                     chat.expired = 0
             } else
                 global.db.data.chats[m.chat] = {
-                    messaggi: 0,
+                    Mensaje: 0,
                     isBanned: false,
                     welcome: true,
                     detect: false,
@@ -458,9 +458,9 @@ pasangan: '',
             if (m.sender && (user = global.db.data.users[m.sender]) && (chat = global.db.data.chats[m.chat])) {
                 user.exp += m.exp
                 user.diamond -= m.diamond * 1
-                user.messaggi +=1
-                chat.messaggi +=1
-                user.messaggiId +=1 
+                user.Mensaje +=1
+                chat.Mensaje +=1
+                user.MensajeId +=1 
               }
 
             let stat
