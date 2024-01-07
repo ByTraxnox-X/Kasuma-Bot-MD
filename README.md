@@ -16,7 +16,7 @@
 | **INSTALACION EN REPLIT** | ***INSTALACIÓN AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-replit) |
 | **INSTALACION EN RENDER** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-render) |
 | **INSTALACION EN BOXMINE** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#boxmine-host) |
-| **INSTALACION EN WINDOWS** | ***INSTALACION MANUAL*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#en-caso-de-detenerse-en-termux) |
+| **INSTALACION EN WINDOWS** | ***INSTALACION MANUAL*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#instalacion-en-windows) |
 | **INICIO EN TERMUX** | ***EN CASO DE DETENERSE*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#en-caso-de-detenerse-en-termux) |
 
 ***
@@ -83,6 +83,43 @@ DESCARGA POR MEDIAFIRE
 DESCARGA POR MEGA 
 
 [TERMUX](https://mega.nz/file/8ms2wSxZ#jVRHw31hJiZTMZjd09vEFLrfjmlOK7EybnU9bqLn-yg) 
+
+***
+
+### INSTALACION EN WINDOWS
+
+[TUTORIAL]() 
+
+[`DESCARGAR NODE JS`](https://nodejs.org/en)
+[`DESCARGAR GIT`](https://git-scm.com/downloads)
+[`DESCARGAR FFMPEG`](https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z)
+[`DESCARGAR IMAGE MAGICK`](https://imagemagick.org/script/download.php)
+
+1. CREA UNA CARPETA EXCLUSIVA COMO LO VES EN EL TUTORIAL (NO INSTALAR SIN VER EL TUTORIAL PARA EVITAR ERRORES)
+
+```sh
+git clone https://github.com/ByTraxnox-X/Kasuma-Bot-MD
+```
+
+```sh
+npm install -g yarn
+```
+
+```sh
+cd kasuma-bot-md
+```
+
+```sh
+yarn
+```
+
+```sh
+npm install
+```
+
+```sh
+npm start
+```
 
 ***
 
@@ -153,36 +190,6 @@ npm i
 SI POR ALGUNA RAZON NO PUEDE CONECTARSE, ELIMINE LA CARPETA "SESSION" Y INTENTE DE NUEVO.
 
 ***
-
-### INSTALACION EN WINDOWS
-
-[TUTORIAL]() 
-
-1. CREA UNA CARPETA EXCLUSIVA COMO LO VES EN EL TUTORIAL (NO INSTALAR SIN VER EL TUTORIAL PARA EVITAR ERRORES)
-
-```sh
-git clone https://github.com/ByTraxnox-X/Kasuma-Bot-MD
-```
-
-```sh
-npm install -g yarn
-```
-
-```sh
-cd kasuma-bot-md
-```
-
-```sh
-yarn
-```
-
-```sh
-npm install
-```
-
-```sh
-npm start
-```
 
 ### EN CASO DE DETENERSE EN TERMUX
 1. 
