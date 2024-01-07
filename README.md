@@ -16,18 +16,19 @@
 | **INSTALACION EN REPLIT** | ***INSTALACIÓN AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-replit) |
 | **INSTALACION EN RENDER** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-render) |
 | **INSTALACION EN BOXMINE** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#boxmine-host) |
+| **INSTALACION EN CODE SPACE** | ***INSTALACION AUTOMATICA*** |[VER]() |
 | **INSTALACION EN WINDOWS** | ***INSTALACION MANUAL*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#instalacion-en-windows) |
 | **INICIO EN TERMUX** | ***EN CASO DE DETENERSE*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#en-caso-de-detenerse-en-termux) |
 
 ***
 
 ### API FREE
--  [VISIONARY API](https://visionaryapi.boxmine.xyz/)
+-  [`VISIONARY API`](https://visionaryapi.boxmine.xyz/)
 
 ***
 
 ### CUENTAS OFICIALES
--  [CUENTAS OFICIALES](https://solo.to/kasuma)
+-  [`CUENTAS OFICIALES`](https://solo.to/kasuma)
 
 ***
 
@@ -40,7 +41,7 @@ SI DESEA PROPAR EL BOT ANTES DE INSTALAR, CLICK ABAJO.
 
 ### ACTIVAR EN REPLIT
 
-[TUTORIAL](https://www.youtube.com/watch?v=_ZcfPIb11Xs) 
+[`TUTORIAL DE INSTALACION`](https://www.youtube.com/watch?v=_ZcfPIb11Xs) 
 
 <a target="_blank" href="https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD"><img alt="Run on Replit" src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg" height="45px"></a>
 
@@ -56,7 +57,7 @@ SI DESEA PROPAR EL BOT ANTES DE INSTALAR, CLICK ABAJO.
 
 ## ACTIVAR EN RENDER
 
-[`TUTORIAL`](https://www.youtube.com/watch?v=oNtBKTfK8vg&t)
+[`TUTORIAL DE INSTALACION`](https://www.youtube.com/watch?v=oNtBKTfK8vg&t)
 [`DASHBOARD`](https://dashboard.render.com/)
 
 ***
@@ -74,21 +75,28 @@ En BoxMine el bot estara activo 24/7, si desea instalarlo aqui, vea el tutorial 
 
 ***
 
+## CODE SPACE
+
+En code space el bot estara activo 24/7.
+[`TUTORIAL DE INSTALACION`]()
+[`CREAR SERVIDOR`](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=733291595&ref=main&geo=UsEast)
+***
+
 ### VERSION DE TERMUX
 
 DESCARGA POR MEDIAFIRE
 
-[TERMUX](https://www.mediafire.com/file/w0y0wkgrwl6sxtl/com.termux_118.apk/file) 
+[`TERMUX`](https://www.mediafire.com/file/w0y0wkgrwl6sxtl/com.termux_118.apk/file) 
 
 DESCARGA POR MEGA 
 
-[TERMUX](https://mega.nz/file/8ms2wSxZ#jVRHw31hJiZTMZjd09vEFLrfjmlOK7EybnU9bqLn-yg) 
+[`TERMUX`](https://mega.nz/file/8ms2wSxZ#jVRHw31hJiZTMZjd09vEFLrfjmlOK7EybnU9bqLn-yg) 
 
 ***
 
 ### INSTALACION EN WINDOWS
 
-[TUTORIAL]() 
+[`TUTORIAL DE INSTALACION`]() 
 
 [`DESCARGAR NODE JS`](https://nodejs.org/en)
 [`DESCARGAR GIT`](https://git-scm.com/downloads)
@@ -125,7 +133,7 @@ npm start
 
 ### INSTALACION EN TERMUX
 
-[TUTORIAL](https://youtu.be/IOzudtyN87U?si=spflnObmfSHXnVa5) 
+[`TUTORIAL DE INSTALACION`](https://youtu.be/IOzudtyN87U?si=spflnObmfSHXnVa5) 
 
 1. Para prevenir algún error de comandos, ponga uno por uno.
 
