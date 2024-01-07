@@ -16,7 +16,7 @@
 | **INSTALACION EN REPLIT** | ***INSTALACIÓN AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-replit) |
 | **INSTALACION EN RENDER** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-render) |
 | **INSTALACION EN BOXMINE** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#boxmine-host) |
-| **INSTALACION EN CODE SPACE** | ***INSTALACION AUTOMATICA*** |[VER]() |
+| **INSTALACION EN CODE SPACE** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD/tree/main?tab=readme-ov-file#code-space) |
 | **INSTALACION EN WINDOWS** | ***INSTALACION MANUAL*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#instalacion-en-windows) |
 | **INICIO EN TERMUX** | ***EN CASO DE DETENERSE*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#en-caso-de-detenerse-en-termux) |
 
