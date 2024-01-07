@@ -1,45 +1,103 @@
 
 let handler = async(m, { conn, text, usedPrefix, command, args }) => {
-  if (command == 'rescatarprincesa') {
-      throw `
-      Hola, soy la princesa, *Ohhh noo*
-      ayuda me estan secuestrando
-      
-        *${usedPrefix + 'princesa'} ayudar*
-        *${usedPrefix + 'princesa'} dejarla*
-      `
-    
+
+
+const { Client } = require('@adiwajshing/baileys');
+
+const client = new Client();
+
+const juegosEnCurso = {};
+
+client.on('chat-update', async (chatUpdate) => {
+  if (chatUpdate.messages && chatUpdate.messages.length > 0) {
+    const message = chatUpdate.messages.all()[0];
+    const userJID = message.key.remoteJID;
+
+    if (message.body.toLowerCase() === '!comenzar') {
+      iniciarJuego(userJID);
+    } else if (message.body.toLowerCase() === '!estado') {
+      mostrarEstado(userJID);
+    } else if (message.body.toLowerCase() === '!ayuda') {
+      mostrarInstrucciones(userJID);
+    } else if (message.body.toLowerCase() === '!explorar') {
+      explorarMazmorra(userJID);
+    } else if (message.body.toLowerCase() === '!izquierda' || message.body.toLowerCase() === '!derecha') {
+      tomarDecision(userJID, message.body.toLowerCase());
+    } else if (message.body.toLowerCase().startsWith('!rescatar')) {
+      const accion = message.body.split(' ')[1];
+      if (accion === 'princesa') {
+        rescatarPrincesa(userJID);
+      } else {
+        client.sendMessage(userJID, 'Comando no válido. Intenta !rescatar princesa');
+      }
+    } else if (message.body.toLowerCase() === '!unirse') {
+      unirseAMultijugador(userJID);
+    }
+    // Puedes agregar más comandos y lógica del juego aquí
   }
+});
 
-  if (command == 'princesa') {
-      let users = global.db.data.users[m.sender]
+function iniciarJuego(userJID) {
+  juegosEnCurso[userJID] = {
+    estado: 'en_progreso',
+    turnoActual: userJID,
+    ubicacion: 'inicio',
+    items: [],
+    aventuraCompletada: false,
+  };
 
+  client.sendMessage(userJID, '¡Bienvenido al juego de aventura! Tu misión es rescatar a la princesa de la mazmorra. ¡Comencemos!');
+  mostrarInstrucciones(userJID);
+}
 
-
-      if (args[0] == "ayudar"){
-    m.reply(`Estas Corriendo a ayudarla, *te caes* andas cojo,\n\n.princesa seguir\n.princesa dejarla?`)
-    }
-    
-    if (args[0] == "dejarla"){
-    m.reply('Dejastes a la princesa')
-    }
-    
-    if (args[0] == "seguir"){
-    m.reply('Te levantas del piso, luego de ese madrazo que te distes, estás corriendo x2, los alcanzaste, los golpeas, pero ellos no se dejan, te tiran al suelo te amarran con un cabo.\n\n.princesa desatarme\n.princesa dejarla')
-    }
-    
-    if (args[0] == "desatarme"){
-    m.reply('Oh, te has desatado, ahora le estás dando duro, los golpeas, \nenemigo: porfavor ya no, me rindo, estás con la princesa\n\n.princesa llevarla\n.princesa dejarla')
-    }
-    
-    if (args[0] == "llevarla"){
-    m.reply('Rescataste a la princesa, el rey te está agradeciendo mucho por ayudar a la princesa, de recompensa te va a dar $250')
-    let users = global.db.data.users[m.sender];
-    users.dolares += 250
-    }
-       
-    
+function unirseAMultijugador(userJID) {
+  if (!juegosEnCurso[userJID]) {
+    client.sendMessage(userJID, 'Te uniste a la partida multijugador. ¡Es tu turno!');
+    juegosEnCurso[userJID] = {
+      estado: 'en_progreso',
+      turnoActual: userJID,
+      ubicacion: 'inicio',
+      items: [],
+      aventuraCompletada: false,
+    };
+    mostrarInstrucciones(userJID);
+  } else {
+    client.sendMessage(userJID, 'Ya estás en una partida. ¡Espera tu turno!');
   }
+}
+
+function turnoMultijugador(userJID) {
+  return juegosEnCurso[userJID] && juegosEnCurso[userJID].estado === 'en_progreso' && juegosEnCurso[userJID].turnoActual === userJID;
+}
+
+function avanzarTurno(userJID) {
+  const jugadores = Object.keys(juegosEnCurso);
+  const indiceActual = jugadores.indexOf(userJID);
+  const siguienteTurno = jugadores[(indiceActual + 1) % jugadores.length];
+  juegosEnCurso[userJID].turnoActual = siguienteTurno;
+}
+
+function explorarMazmorra(userJID) {
+  if (turnoMultijugador(userJID)) {
+    const state = juegosEnCurso[userJID];
+    // Lógica de exploración de mazmorra
+    // ...
+
+    // Avanzar al siguiente turno
+    avanzarTurno(userJID);
+
+    // Mostrar instrucciones al siguiente jugador
+    client.sendMessage(juegosEnCurso[userJID].turnoActual, '¡Es tu turno! Usa !explorar para continuar la aventura.');
+  } else {
+    client.sendMessage(userJID, 'No es tu turno para explorar. ¡Espera tu turno!');
+  }
+}
+
+// Resto de las funciones del juego siguen similar lógica multijugador
+
+client.connect();
+
+
 
 }
     
