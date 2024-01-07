@@ -92,7 +92,7 @@ DESCARGA POR MEGA
 
 [`DESCARGAR NODE JS`](https://nodejs.org/en)
 [`DESCARGAR GIT`](https://git-scm.com/downloads)
-[`DESCARGAR FFMPEG`](https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z)
+[`DESCARGAR FFMPEG`](https://imagemagick.org/script/download.php)
 [`DESCARGAR IMAGE MAGICK`](https://imagemagick.org/script/download.php)
 
 1. CREA UNA CARPETA EXCLUSIVA COMO LO VES EN EL TUTORIAL (NO INSTALAR SIN VER EL TUTORIAL PARA EVITAR ERRORES)
