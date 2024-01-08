@@ -2,11 +2,13 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
 
   conn.aventure = conn.aventure ? conn.aventure : {}
 
+  let args = args || [];
+
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
   let username = conn.getName(who)
 
   let users = global.db.data.users[m.sender];
-  let daño = 10; // Puedes ajustar la cantidad de daño según la situación
+  let daño = 10;
 
   if (command == 'empezarapocalypto') {
     m.reply(`Hola ${username}, estas a punto de empezar a vivir un apocalypto!`)
