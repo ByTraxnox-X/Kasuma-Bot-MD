@@ -77,7 +77,6 @@ En BoxMine el bot estara activo 24/7, si desea instalarlo aqui, vea el tutorial 
 
 ## CODE SPACE
 
-En code space el bot estara activo 24/7.
 [`TUTORIAL DE INSTALACION`](https://youtu.be/ZNZJ2tZhiM4)
 [`CREAR SERVIDOR`](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=733291595&ref=main&geo=UsEast)
 ***
