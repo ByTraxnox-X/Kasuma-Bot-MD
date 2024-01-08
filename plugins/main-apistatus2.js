@@ -6,7 +6,7 @@ const handler = async (m, { conn }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `${apivisionary}/status`;
+    const apiUrl = `${visionary2}/status`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
@@ -15,7 +15,7 @@ const handler = async (m, { conn }) => {
 
       const mensaje = `\t\t*Estado de la API:*
       
-*API:* ${apivisionary}
+*API:* ${visionary2}
 *Uptime:* ${uptime}
 *Latencia:* ${latencia}
 *Total de Solicitudes:* ${totalRequests}
@@ -32,8 +32,8 @@ conn.sendMessage(m.chat,{image: {url: imageUrl}, caption: mensaje}, {quoted: m})
   }
 };
 
-handler.help = ['apistatus'];
+handler.help = ['apistatus2'];
 handler.tags = ['main'];
-handler.command = /^apistatus$/i;
+handler.command = /^apistatus2$/i;
 
 export default handler;
