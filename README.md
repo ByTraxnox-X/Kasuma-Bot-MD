@@ -35,7 +35,7 @@
 ###
 SI DESEA PROPAR EL BOT ANTES DE INSTALAR, CLICK ABAJO.
 
-[![WHATSAPP](https://img.shields.io/badge/KasumaBot-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://api.whatsapp.com/send/?phone=573215683772&text&type=phone_number&app_absent=0) 
+[![WHATSAPP](https://img.shields.io/badge/KasumaBot-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://api.whatsapp.com/send/?phone=593997940406&text&type=phone_number&app_absent=0) 
 
 ***
 
