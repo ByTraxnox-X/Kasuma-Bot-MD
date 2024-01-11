@@ -107,7 +107,7 @@ if (!methodCodeQR && !methodCode && !fs.existsSync(`./${authFile}/creds.json`)) 
 do {
 opcion = await question(`
 ${chalk.blueBright('')} ${chalk.bold.greenBright('Ingrese el metodo de conexion')}
-${chalk.blueBright('')} ${chalk.bold.greenBright('1- Codigo QR')}'
+${chalk.blueBright('')} ${chalk.bold.greenBright('1- Codigo QR')}
 ${chalk.blueBright('')} ${chalk.bold.greenBright('2- Codigo de emparejamiento')}
 ${chalk.blueBright('')} ${chalk.bold.greenBright('Por favor responda con solo numeros y eliga una de las 2 opciones.\n')}`)
 if (!/^[1-2]$/.test(opcion)) {

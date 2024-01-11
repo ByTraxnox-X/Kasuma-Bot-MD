@@ -2,7 +2,7 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
 
   conn.aventure = conn.aventure ? conn.aventure : {}
 
-  let args = args || [];
+  let args = text ? text.split(' ').slice(1) : [];
 
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
   let username = conn.getName(who)
@@ -152,7 +152,7 @@ if (args[0] == "saquear_supermercado") {
 
 // Opción para continuar la historia después de las situaciones
 if (args[0] == "continuar_viaje") {
-  m.reply(`Continúas tu viaje en el apocalipsis. La situación se vuelve más intensa a medida que avanzas. ¿Qué decisiones tomarás a continuación?\n\n${usedPrefix + command} enfrentar_desafio\n${usedPrefix + command} buscar_refugio_noche`)
+  m.reply(`Continuas tu viaje en el apocalipsis. A medida que avanzas, te das cuenta de que la situación empeora. ¿Cuál será tu próximo paso?\n\n${usedPrefix + command} buscar_refugio\n${usedPrefix + command} buscar_alimentos`)
 }
 
 // Opción de enfrentar nuevos desafíos
