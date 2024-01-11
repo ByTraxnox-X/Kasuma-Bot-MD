@@ -1,4 +1,4 @@
-let handler = async (m, { conn, text, usedPrefix, command, args }) => {
+let handler = async (m, { conn, text, usedPrefix, command }) => {
 
   conn.aventure = conn.aventure ? conn.aventure : {}
 
