@@ -36,7 +36,7 @@
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {
-        "@whiskeysockets/baileys": "npm:@whiskeysockets/baileys",
+        "@whiskeysockets/baileys": "^6.5.0",
         "@adiwajshing/keyed-db": "^0.2.4",
         "@bochilteam/scraper": "^4.2.3",
         "awesome-phonenumber": "^3.4.0",
