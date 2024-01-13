@@ -4,7 +4,7 @@ import FormData from "form-data";
 const split = '|';
 const handler = async (m, {conn, args: [effect], text: txt, usedPrefix, command, name}) => {
   if (!effect) throw `Debes usar el comando de la siguiente manera\n*${usedPrefix + command} efecto texto*\nEjemplo\n💫 *${usedPrefix + command} American-flag-3D KasumaBot*\n\nY si te dice que falta texto, es porque el logo es de 2 texto, ejemplo: *${usedPrefix + command} texto1|texto2*\nEjemplo *${usedPrefix + command} KasumaBot|KasumaBot*\n\n*Aqui Abajo Esta Toda La Lista De Los Logos Que Puede Hacer El Bot*\n\n🍷 ${usedPrefix + command} ` + EfectoLogoKasuma.map(v => v.title).join(`\n🗿 ${usedPrefix + command} `)
-  if (!EfectoLogoKasuma.find(v => (new RegExp(v.title, 'gi')).test(effect))) throw `${mg}El logo ${effect}No se encuentra en la lista.`
+  if (!EfectoLogoKasuma.find(v => (new RegExp(v.title, 'gi')).test(effect))) throw `El logo ${effect}No se encuentra en la lista.`
  try {
   let text = txt.replace(new RegExp(effect, 'gi'), '').trimStart();
   if (text.includes(split)) {
@@ -13,8 +13,8 @@ const handler = async (m, {conn, args: [effect], text: txt, usedPrefix, command,
     text = [text.trim()];
   }
   const effectoSelect = EfectoLogoKasuma.find((effectz) => new RegExp(effectz?.title, 'i').test(effect));
-  const res = await maker(effectoSelect?.url, [...text]).catch(_ => { throw `${mg} Escriba un texto para hacer el logo.` })
-   if (typeof res == 'number') throw res == -1 ? `${mg}El efecto ${effect} No se encuentra en la lista` : `Use el comando de la siguiente manera: ${usedPrefix}logo Wolf-Logo-Galaxy KasumaBot`
+  const res = await maker(effectoSelect?.url, [...text]).catch(_ => { throw `Escriba un texto para hacer el logo.` })
+   if (typeof res == 'number') throw res == -1 ? `El efecto ${effect} No se encuentra en la lista` : `Use el comando de la siguiente manera: ${usedPrefix}logo Wolf-Logo-Galaxy KasumaBot`
   await conn.sendMessage(m.chat, {image: {url: res.image}, caption: `✅ *Aqui Esta Tu Logo* ✅\n\n*Efecto del logo: ${effect}*`}, {quoted: m});  
 } catch (e) {
 await m.reply(`Si no funciona el comando reportelo de la siguiente manera: .reporte <texto>`)
