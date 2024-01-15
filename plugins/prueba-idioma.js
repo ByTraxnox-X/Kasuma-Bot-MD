@@ -1,4 +1,4 @@
-const handler = async (m, {text, command, lenguaje, args, usedPrefix}) => {
+const handler = async (m, {text, command, lenguajeKA, args, usedPrefix}) => {
 m.reply('use es o en')
 //let language = 'es'
 m.reply(`${lenguajeKA['p1']()}`)
