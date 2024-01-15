@@ -1,3 +1,5 @@
+import { es, en } from '../idiomas/kasu-total-idiomas.js'
+
 const handler = async (m, {text, command, lenguaje, args, usedPrefix}) => {
 
 let user = global.db.data.users[m.sender]
