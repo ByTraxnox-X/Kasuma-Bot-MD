@@ -5,4 +5,4 @@ const idioma2 = () => { return `Hola como estas soy Kasuma` }
 
 
 
-module.exports = { idioma }
+module.exports = { idioma2 }
