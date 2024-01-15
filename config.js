@@ -33,7 +33,7 @@ global.confirmCode = ""
 
 // IDOMAS
 
-global.lenguaje = es
+global.lenguajeKA = es
 
 
 //APIS
