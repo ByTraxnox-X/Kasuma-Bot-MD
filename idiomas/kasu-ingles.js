@@ -1,8 +1,8 @@
 const lenguaje = () => { return 'en' } //Ingles  
 
-const p1 = () => { return `Hello how are you, I'm Kasuma` } 
+const idioma2 = () => { return `Hello how are you, I'm Kasuma` } 
 
 
 
 
-module.exports = { p1 }
+module.exports = { idioma2 }
