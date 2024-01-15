@@ -1,4 +1,4 @@
-const lenguaje = () => { return 'es' } //Español  
+const lenguaje = () => { return 'en' } //Ingles  
 
 
 
