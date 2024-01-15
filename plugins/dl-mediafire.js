@@ -25,9 +25,9 @@ sourceUrl: `https://github.com/ByTraxnox-X/KasumaBot-MD`}}})
 m.reply(`Vuelva a intentar, debe ser un enlace de mediafire.`)
 handler.limit = false      
 }}
-handler.help = ['mediafire2'].map(v => v + ' <url>')
-handler.tags = ['downloader']
-handler.command = /^(mediafire2|mediafiredl2|dlmediafire2)$/i
+handler.help = ['mediafire'].map(v => v + ' <url>')
+handler.tags = ['dl']
+handler.command = /^(mediafire|mediafiredl|dlmediafire)$/i
 //handler.register = true
 handler.limit = true
 export default handler
