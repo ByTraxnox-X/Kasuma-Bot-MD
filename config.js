@@ -31,6 +31,11 @@ global.KasumaCode = ""
 global.confirmCode = ""
 
 
+// IDOMAS
+
+global.lenguaje = es
+
+
 //APIS
 global.tiktokkey = ['GIf4o4qJ']
 global.soundcloudID = ["iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX"]
