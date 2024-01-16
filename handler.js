@@ -153,7 +153,6 @@ export async function handler(chatUpdate) {
                     sBye: '',
                     sPromote: '',
                     sDemote: '',
-pasangan: '',
                     antiLink: false,
                     viewonce: false,
                     useDocument: true,   
