@@ -6,4 +6,4 @@ const AvisoMG = () => { return `MISUSED ACTION\n\n` }
 
 
 
-module.exports = { idioma2. AvisoMG }
+module.exports = { idioma2, AvisoMG }
