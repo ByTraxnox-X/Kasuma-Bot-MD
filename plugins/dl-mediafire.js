@@ -4,7 +4,7 @@ let handler = async (m, { conn, text }) => {
    if (!text) throw 'Ingrese el enlace del archivo';
 
    try {
-      let res = await fetch(`${apivisionary}/api/mediafire?url=${encodeURIComponent(text)}`);
+      let res = await fetch(`${apivisionary}/api/mediafire?url=${text}`);
 
       if (!res.ok) {
          throw new Error(`Error`);
