@@ -60,7 +60,7 @@ global.conversiondocs = ["https://www.easymarkets.com/int/es/learn-centre/discov
 global.packname = 'Kasuma-Bot'
 global.author = 'Kasuma-Bot 1.0'
 global.waig = 'Sígueme en Instagram\nhttps://www.instagram.com/traxnox/\n'
-global.wagp = 'https://chat.whatsapp.com/EkYXUIw7AY4A8wPPghGPCs'
+global.wagp = 'https://chat.whatsapp.com/HvbqkYZlJzYLhczPhDteMt'
 global.wagit = 'https://github.com/ByTraxnox-X/KasumaBot-MD'
 global.wayt = 'https://youtube.com/@by_traxnox'
 global.wapyp = 'https://paypal.me/txpaying?country.x=CO&locale.x=es_XC'
