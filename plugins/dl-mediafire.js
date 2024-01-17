@@ -1,47 +1,40 @@
-/*import axios from 'axios'
-import fetch from 'node-fetch'
-import cheerio from 'cheerio'
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-if (!args[0]) throw `Ingrese un linj de mediafire.`
-try {  
-let res = await mediafireDl(args[0])
-let { name, size, date, mime, link } = res
-let caption = `*NOMBRE*
-${name}
+import fetch from 'node-fetch';
 
-*PESO*
-${size}
+let handler = async (m, { conn, text }) => {
+  if (!text) throw 'Ingrese el enlace del archivo';
 
-*TIPO*
-┃ ${mime}`.trim()
-conn.reply(m.chat, caption, m, {
-contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, 
-title: 'KasumaBot-MD',
-body: 'Super Bot De WhatsApp',         
-previewType: 0, thumbnail: fs.readFileSync("./src/tx_logo.png"),
-sourceUrl: `https://github.com/ByTraxnox-X/KasumaBot-MD`}}})
-   await conn.sendFile(m.chat, link, name, '', m, null, { mimetype: mime, asDocument: true })
-} catch (e) {
-m.reply(`Vuelva a intentar, debe ser un enlace de mediafire.`)
-handler.limit = false      
-}}
-handler.help = ['mediafire'].map(v => v + ' <url>')
-handler.tags = ['dl']
-handler.command = /^(mediafire|mediafiredl|dlmediafire)$/i
-//handler.register = true
-handler.limit = true
-export default handler
+  try {
+    let res = await fetch(`${apivisionary}/api/mediafire?url=${encodeURIComponent(text)}`);
 
-async function mediafireDl(url) {
-const res = await axios.get(`https://www-mediafire-com.translate.goog/${url.replace('https://www.mediafire.com/','')}?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=en&_x_tr_pto=wapp`)
-const $ = cheerio.load(res.data)
-const link = $('#downloadButton').attr('href')
-const name = $('body > main > div.content > div.center > div > div.dl-btn-cont > div.dl-btn-labelWrap > div.promoDownloadName.notranslate > div').attr('title').replaceAll(' ','').replaceAll('\n','')
-const date = $('body > main > div.content > div.center > div > div.dl-info > ul > li:nth-child(2) > span').text()
-const size = $('#downloadButton').text().replace('Download', '').replace('(', '').replace(')', '').replace('\n', '').replace('\n', '').replace('                         ', '').replaceAll(' ','')
-let mime = ''
-let rese = await axios.head(link)
-mime = rese.headers['content-type']
-return { name, size, date, mime, link }
-}
-*/
+    if (!res.ok) {
+      throw new Error(`Error`);
+    }
+
+    let json = await res.json();
+
+    console.log('JSON response:', json);
+    m.react(rwait);
+
+    let fileInfo = 
+      `*Nombre:* ${json.message.name}\n` +
+      `*Tamaño:* ${json.message.size}\n` +
+      `*Fecha:* ${json.message.date}\n` +
+      `*Tipo:* ${json.message.mime}\n`;
+
+    if (json.message.link) {
+      m.react(done);
+      await conn.sendFile(m.chat, json.message.link, json.message.name, fileInfo, m);
+    } else {
+      m.reply('No se pudo obtener el enlace del archivo');
+    }
+
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+handler.help = ['descargar'];
+handler.tags = ['dl'];
+handler.command = /^(descargar)$/i;
+
+export default handler;
