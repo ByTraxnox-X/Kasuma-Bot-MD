@@ -1,4 +1,4 @@
-import {search, download} from 'aptoide-scraper';
+/*import {search, download} from 'aptoide-scraper';
 const handler = async (m, {conn, usedPrefix: prefix, command, text}) => {
  if (!text) throw `Ingrese el nombre del APK`;
   try {    
@@ -23,4 +23,4 @@ const handler = async (m, {conn, usedPrefix: prefix, command, text}) => {
 handler.help = ['apk aplicacion']
 handler.tags = ['dl']
 handler.command = /^(apk|descargarapp|descargarapk|apk)$/i;
-export default handler;
+export default handler;*/
