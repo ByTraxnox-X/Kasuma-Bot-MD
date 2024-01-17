@@ -30,12 +30,6 @@ global.APIKeys = { // APIKey Here
 global.KasumaCode = "" 
 global.confirmCode = ""
 
-
-// IDOMAS
-
-//global.lenguajeKA = es
-
-
 //APIS
 global.tiktokkey = ['GIf4o4qJ']
 global.soundcloudID = ["iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX"]
