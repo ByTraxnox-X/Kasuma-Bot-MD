@@ -1,4 +1,4 @@
-import axios from 'axios'
+/*import axios from 'axios'
 import fetch from 'node-fetch'
 import cheerio from 'cheerio'
 let handler = async (m, { conn, args, usedPrefix, command }) => {
@@ -44,3 +44,4 @@ let rese = await axios.head(link)
 mime = rese.headers['content-type']
 return { name, size, date, mime, link }
 }
+*/
