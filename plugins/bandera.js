@@ -1,5 +1,3 @@
-import { sticker } from '../lib/sticker.js'
-
 import fs from 'fs'
 
 let timeout = 10000
