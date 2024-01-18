@@ -1,26 +1,35 @@
-/*import {search, download} from 'aptoide-scraper';
-const handler = async (m, {conn, usedPrefix: prefix, command, text}) => {
- if (!text) throw `Ingrese el nombre del APK`;
-  try {    
-    m.react(rwait)
-    const searchA = await search(text);
-    const data5 = await download(searchA[0].id);
-    let response = `\n\n*${data5.name}*
+import axios from 'axios';
 
-*Package:* ${data5.package}
-*Ultima Actualizacion:* ${data5.lastup}
-*Tamaño:* ${data5.size}`
-    m.react(done)
-    await conn.sendMessage(m.chat, {image: {url: data5.icon}, caption: response}, {quoted: m});
- if (data5.size.includes('GB') || data5.size.replace(' MB', '') > 999) {
-      return await conn.sendMessage(m.chat, {text: 'El APK es demasiado pesado para ser enviado.'}, {quoted: m});
+const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
+  if (!text) throw `Ingrese el nombre del APK`;
+
+  try {
+    m.react(rwait);
+
+    const response = await axios.get(`${apivisionary}/api/apk?id=${text}`);
+    const data = response.data.data;
+
+    let responseText = `\n\n*${data.name}*\n\n`;
+    responseText += `*Package:* ${data.package}\n`;
+    responseText += `*Ultima Actualizacion:* ${data.lastup}\n`;
+    responseText += `*Tamaño:* ${data.size}`;
+
+    await conn.sendMessage(m.chat, { image: { url: data.icon }, caption: responseText }, { quoted: m });
+
+    if (data.size.includes('GB') || parseFloat(data.size.replace(' MB', '')) > 999) {
+      return await conn.sendMessage(m.chat, { text: 'El APK es demasiado pesado para ser enviado.' }, { quoted: m });
     }
-    await conn.sendMessage(m.chat, {document: {url: data5.dllink}, mimetype: 'application/vnd.android.package-archive', fileName: data5.name + '.apk', caption: null}, {quoted: m});
-  } catch {
-    throw `error`;
-  }    
+    const apkBuffer = await axios.get(data.dllink, { responseType: 'arraybuffer' });
+    await conn.sendMessage(m.chat, { document: { buffer: apkBuffer.data, mimetype: 'application/vnd.android.package-archive' }, fileName: `${data.name}.apk`, caption: null }, { quoted: m });
+    m.react(done);
+
+  } catch (error) {
+    console.error(error);
+    throw 'Ocurrió un error al procesar la solicitud';
+  }
 };
-handler.help = ['apk aplicacion']
-handler.tags = ['dl']
+
+handler.help = ['apk aplicacion'];
+handler.tags = ['dl'];
 handler.command = /^(apk|descargarapp|descargarapk|apk)$/i;
-export default handler;*/
+export default handler;
