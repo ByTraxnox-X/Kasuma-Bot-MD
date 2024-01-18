@@ -23,10 +23,13 @@ let handler = async (m, { conn, usedPrefix }) => {
 Recuerda responder con el nombre completo!
 `.trim()
     conn.tekateki[id] = [
-//stiker = await sticker(img, false, packname, author)
-//await this.sendFile(m.chat, sticker { json.foto: true })
 
 conn.sendMessage(m.chat, { image: { url: `${json.foto}` }, caption: caption, mentions: [m.sender] }, { quoted: m })
+
+let jkis = await foto.json()
+   let stiker = await sticker(null, jkis)
+   conn.sendFile(m.chat, stiker, null, { asSticker: true }, m)
+   m.react('🗡️') 
 
 //await conn.reply(m.chat, caption, m),
 
