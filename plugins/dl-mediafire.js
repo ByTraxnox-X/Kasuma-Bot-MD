@@ -4,7 +4,7 @@ let handler = async (m, { conn, text }) => {
    if (!text) throw 'Ingrese el enlace del archivo';
 
    try {
-      let res = await fetch(`${apivisionary}/api/mediafire?url=${text}`);
+      let res = await fetch(`https://vihangayt.me/download/mediafire?url=${text}`);
 
       if (!res.ok) {
          throw new Error(`Error`);
@@ -16,15 +16,15 @@ let handler = async (m, { conn, text }) => {
       m.react(rwait);
 
       let fileInfo =
-         `*Nombre:* ${json.message.name}\n` +
-         `*Tamaño:* ${json.message.size}\n` +
-         `*Fecha:* ${json.message.date}\n` +
-         `*Tipo:* ${json.message.mime}\n`;
+         `*Nombre:* ${json.data.name}\n` +
+         `*Tamaño:* ${json.data.size}\n` +
+         `*Fecha:* ${json.data.date}\n` +
+         `*Tipo:* ${json.data.mime}\n`;
 
-      if (json.message.link) {
+      if (json.data.link) {
          m.react(done);
-         let fileBuffer = await fetch(json.message.link).then(res => res.buffer());
-         await conn.sendFile(m.chat, fileBuffer, json.message.name, fileInfo, m);
+         let fileBuffer = await fetch(json.data.link).then(res => res.buffer());
+         await conn.sendFile(m.chat, fileBuffer, json.data.name, fileInfo, m);
       } else {
          m.reply('No se pudo obtener el enlace del archivo');
       }
