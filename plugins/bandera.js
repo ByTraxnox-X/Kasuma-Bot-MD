@@ -1,5 +1,6 @@
 import { sticker } from '../lib/sticker.js'
 import axios from 'axios';
+import fetch from 'fetch';
 const handler = async (m, {
         conn,
         usedPrefix
@@ -15,7 +16,7 @@ const poin = 1000
                         conn.reply(m.chat, 'Todavía hay problemas que aún no has terminado.', conn.tebakbendera[id].msg)
                         throw false
                 }*/
-                const anua = await axios.get(API('xzn', 'api/game/tebakbendera', {}, 'apikey'))
+                const anua = await fetch.get(API('xzn', 'api/game/tebakbendera', {}, 'apikey'))
                 const json = anua.data
                 if (!json.img) throw "error"
                 // if (!json.status) throw json
