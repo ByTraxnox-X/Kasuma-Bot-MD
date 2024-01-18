@@ -29,7 +29,7 @@ Recuerda responder con emoji la bandera!
 
 const c = await conn.sendFile(m.chat, await sticker(json.img, "", ""), "", "", m)
                 conn.bandera[id] = [
-                        await conn.reply(m.chat, caption, c),
+                        await conn.reply(m.chat, caption, c, m),
 
 
 
