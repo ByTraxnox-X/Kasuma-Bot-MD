@@ -1,4 +1,4 @@
-import { sticker } from '../lib/sticker.cjs'
+import { sticker } from '../lib/sticker.js'
 
 import fs from 'fs'
 
@@ -24,11 +24,11 @@ let handler = async (m, { conn, usedPrefix }) => {
 
 Recuerda responder con el nombre completo!
 `.trim()
-    const c = await conn.sendFile(m.chat, await sticker(json.foto, "", ""), "", "", m)
-                conn.tekateki[id] = [
-                        await conn.reply(m.chat, caption, c, m),
+    
+stiker = await sticker(img, false, packname, author)
+await this.sendFile(m.chat, sticker null { json.foto: true })
 
-     //  await conn.reply(m.chat, caption, m),
+await conn.reply(m.chat, caption, m),
 
         json, poin,
         setTimeout(async () => {
