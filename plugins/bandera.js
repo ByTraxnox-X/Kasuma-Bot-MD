@@ -3,7 +3,12 @@ import fs from 'fs'
 let timeout = 10000
 let poin = 10000
 
+
+
 let handler = async (m, { conn, usedPrefix }) => {
+
+const pp = 'https://flagcdn.com/af.svg'
+
     conn.tekateki = conn.tekateki ? conn.tekateki : {}
     let id = m.chat
     if (id in conn.tekateki) {
@@ -25,7 +30,7 @@ Recuerda responder con el nombre completo!
     conn.tekateki[id] = [
 
 
-   conn.sendMessage(m.chat, { caption: caption, image: { url: json.foto } }, { quoted: m })
+   conn.sendMessage(m.chat, { caption: caption, image: { url: pp } }, { quoted: m })
 
    //  await conn.reply(m.chat, caption, m),
 
