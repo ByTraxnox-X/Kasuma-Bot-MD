@@ -9,11 +9,11 @@ const poin = 1000
 
         conn.tebakbendera = conn.tebakbendera ? conn.tebakbendera : {}
         try {
-                var id = m.sender
-                if (id in conn.tebakbendera) {
+                const id = m.sender
+              /*  if (id in conn.tebakbendera) {
                         conn.reply(m.chat, 'Todavía hay problemas que aún no has terminado.', conn.tebakbendera[id].msg)
                         throw false
-                }
+                }*)
                 const anua = await axios.get(API('xzn', 'api/game/tebakbendera', {}, 'apikey'))
                 const json = anua.data
                 if (!json.img) throw "error"
