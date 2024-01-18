@@ -1,20 +1,21 @@
-import fs from 'fs'
 import { sticker } from '../lib/sticker.js'
 
-let timeout = 10000
+import fs from 'fs'
+
+let timeout = 40000
 let poin = 5000
 
 let handler = async (m, { conn, usedPrefix }) => {
-    conn.bandera = conn.bandera ? conn.bandera : {}
+    conn.tekateki = conn.tekateki ? conn.tekateki : {}
     let id = m.chat
-    if (id in conn.bandera) {
-        conn.reply(m.chat, 'Todavía hay un juego sin terminar!', conn.bandera[id][0])
+    if (id in conn.tekateki) {
+        conn.reply(m.chat, 'Todavía hay un juego sin terminar!', conn.tekateki[id][0])
         throw false
     }
-    let bandera = JSON.parse(fs.readFileSync("./src/game/banderas.json"))
-    let json = bandera[Math.floor(Math.random() * bandera.length)]
-   /* let stickerFile = fs.readFileSync(json.foto)
-await conn.sendFile(m.chat, stickerFile, 'sticker.png', '')*/
+    let tekateki = JSON.parse(fs.readFileSync("./src/game/banderas.json"))
+    let json = tekateki[Math.floor(Math.random() * tekateki.length)]
+    let stickerFile = fs.readFileSync(json.foto)
+await conn.sendFile(m.chat, stickerFile, 'sticker.png', '')
     
     let _clue = json.response
     let clue = _clue.replace(/[A-Za-z]/g, '_')
@@ -25,12 +26,12 @@ await conn.sendFile(m.chat, stickerFile, 'sticker.png', '')*/
 
 Recuerda responder con el nombre correcto y bien escrito!
 `.trim()
-    conn.bandera[id] = [
+    conn.tekateki[id] = [
        await conn.reply(m.chat, caption, m),
         json, poin,
         setTimeout(async () => {
-            if (conn.bandera[id]) await conn.reply(m.chat, `¡Se acabó el tiempo, inténtalo de nuevo! `, conn.bandera[id][0])
-            delete conn.bandera[id]
+            if (conn.tekateki[id]) await conn.reply(m.chat, `¡Se acabó el tiempo, inténtalo de nuevo! `, conn.tekateki[id][0])
+            delete conn.tekateki[id]
         }, timeout)
     ]
 }
