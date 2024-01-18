@@ -51,4 +51,4 @@ handler.help = ['adivinabandera']
 handler.tags = ['game']
 handler.command = /^adivinabandera/i
 
-module.exports = handler
+export default handler;
