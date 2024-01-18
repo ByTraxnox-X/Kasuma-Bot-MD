@@ -1,4 +1,5 @@
 import { sticker } from '../lib/sticker.js'
+import axios from 'axios';
 const handler = async (m, {
         conn,
         usedPrefix
