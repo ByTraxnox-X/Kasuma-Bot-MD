@@ -1,4 +1,5 @@
 import fs from 'fs'
+import { sticker } from '../lib/sticker.js'
 
 let timeout = 10000
 let poin = 5000
