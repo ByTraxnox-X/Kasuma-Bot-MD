@@ -24,8 +24,12 @@ let handler = async (m, { conn, usedPrefix }) => {
 
 Recuerda responder con el nombre completo!
 `.trim()
-    conn.tekateki[id] = [
-       await conn.reply(m.chat, caption, m),
+    const c = await conn.sendFile(m.chat, await sticker(json.foto, "", ""), "", "", m)
+                conn.tekateki[id] = [
+                        await conn.reply(m.chat, caption, c, m),
+
+     //  await conn.reply(m.chat, caption, m),
+
         json, poin,
         setTimeout(async () => {
             if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!.`, conn.tekateki[id][0])
