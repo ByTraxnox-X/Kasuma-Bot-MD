@@ -1,4 +1,4 @@
-import { sticker } from '../lib/sticker.js'
+import { sticker } from '../lib/sticker.cjs'
 
 import fs from 'fs'
 
