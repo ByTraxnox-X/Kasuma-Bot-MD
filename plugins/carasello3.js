@@ -53,7 +53,7 @@ const retarJugador = (m, jugadorId) => {
     conn.sendMessage(m.chat, `Has retado a ${jugadorId.split('@')[0]} a jugar CARA O SELLO. Esperando respuesta...`, { image: { url: pp }, quoted: m });
 };
 
-handler.help = ['suerte'];
+handler.help = ['suerte43'];
 handler.tags = ['game'];
-handler.command = ['suerte', 'gm'];
+handler.command = ['suerte3', 'gm3'];
 export default handler;
