@@ -20,8 +20,7 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
       return await conn.sendMessage(m.chat, { text: 'El APK es demasiado pesado para ser enviado.' }, { quoted: m });
     }
     const apkBuffer = await axios.get(data.dllink, { responseType: 'arraybuffer' });
-    await conn.sendMessage(m.chat, { document: { buffer: apkBuffer.data, mimetype: 'application/vnd.android.package-archive' }, fileName: `${data.name}.apk`, caption: null }, { quoted: m });
-    m.react(done);
+await conn.sendFile(m.chat, apkBuffer.data, `${data.name}.apk`, null, m);
 
   } catch (error) {
     console.error(error);
