@@ -26,7 +26,9 @@ Recuerda responder con el nombre completo!
 //stiker = await sticker(img, false, packname, author)
 //await this.sendFile(m.chat, sticker { json.foto: true })
 
-await conn.reply(m.chat, caption, m),
+conn.sendMessage(m.chat, { image: { url: json.foto }, caption: caption, mentions: [m.sender] }, { quoted: m });
+
+//await conn.reply(m.chat, caption, m),
 
         json, poin,
         setTimeout(async () => {
