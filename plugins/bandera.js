@@ -1,42 +1,33 @@
+
 import fs from 'fs'
 
 let timeout = 10000
 let poin = 10000
 
-
-
 let handler = async (m, { conn, usedPrefix }) => {
-
-const pp = 'https://flagcdn.com/af.svg'
-
-    conn.tekateki = conn.tekateki ? conn.tekateki : {}
+    conn.tekateki = conn.tekateki || {}
     let id = m.chat
     if (id in conn.tekateki) {
-        conn.reply(m.chat, 'Todavia hay un juego sin terminar!', conn.tekateki[id][0])
+        conn.reply(m.chat, '¡Todavía hay un juego sin terminar!', conn.tekateki[id][0])
         throw false
     }
+
     let tekateki = JSON.parse(fs.readFileSync("./src/game/banderas.json"))
     let json = tekateki[Math.floor(Math.random() * tekateki.length)]
-    let _clue = json.response
-    let clue = _clue.replace(/[A-Za-z]/g, '_')
-    let caption = `*Mira la imagen y escribe el nombre del pais*
-
+    let clue = json.response.replace(/[A-Za-z]/g, '_')
+    let caption = `*Adivina el país de la siguiente bandera*
 
 *Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
 *Bono:* +${poin} Exp
 
-Recuerda responder con el nombre completo!
-`.trim()
+Recuerda responder con el nombre completo del país!`.trim()
+    
     conn.tekateki[id] = [
-
-
-   conn.sendMessage(m.chat, { caption: caption, image: { url: pp } }, { quoted: m })
-
-   //  await conn.reply(m.chat, caption, m),
+        await conn.sendFile(m.chat, json.foto, 'bandera.jpg', caption, m),
 
         json, poin,
-        setTimeout(async () => {
-            if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!.`, conn.tekateki[id][0])
+        setTimeout(() => {
+            if (conn.tekateki[id]) conn.reply(m.chat, `Se acabó el tiempo!.`, conn.tekateki[id][0])
             delete conn.tekateki[id]
         }, timeout)
     ]
