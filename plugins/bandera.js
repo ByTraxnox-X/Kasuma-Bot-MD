@@ -13,8 +13,8 @@ let handler = async (m, { conn, usedPrefix }) => {
     }
     let bandera = JSON.parse(fs.readFileSync("./src/game/banderas.json"))
     let json = bandera[Math.floor(Math.random() * bandera.length)]
-    let stickerFile = fs.readFileSync(json.foto)
-await conn.sendFile(m.chat, stickerFile, 'sticker.png', '')
+   /* let stickerFile = fs.readFileSync(json.foto)
+await conn.sendFile(m.chat, stickerFile, 'sticker.png', '')*/
     
     let _clue = json.response
     let clue = _clue.replace(/[A-Za-z]/g, '_')
