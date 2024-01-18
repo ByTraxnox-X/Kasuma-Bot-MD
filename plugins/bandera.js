@@ -1,4 +1,4 @@
-import { sticker } = from '../lib/sticker.js'
+import { sticker } from '../lib/sticker.js'
 const handler = async (m, {
         conn,
         usedPrefix
