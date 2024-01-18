@@ -23,7 +23,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 Recuerda responder con el nombre completo del país!`.trim()
     
     conn.tekateki[id] = [
-        await conn.sendFile(m.chat, json.foto, 'bandera.jpg', caption, m),
+        await conn.sendImage(m.chat, json.foto, 'bandera.jpg', caption, m),
 
         json, poin,
         setTimeout(() => {
