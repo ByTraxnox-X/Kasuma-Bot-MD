@@ -35,6 +35,7 @@ Recuerda responder con el nombre completo del presunto culpable!
     ]
 }
 
+
 handler.help = ['adivinabandera']
 handler.tags = ['game']
 handler.command = /^(adivinabandera|bandera|adivinalabandera)$/i
