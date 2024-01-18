@@ -24,10 +24,10 @@ Recuerda responder con el nombre completo!
 `.trim()
     conn.tekateki[id] = [
 
-conn.sendMessage(m.chat, { image: { url: `${json.foto}` }, caption: caption, mentions: [m.sender] }, { quoted: m })
+/*conn.sendMessage(m.chat, { image: { url: `${json.foto}` }, caption: caption, mentions: [m.sender] }, { quoted: m })*/
 
-let jkis = await foto.json()
-   let stiker = await sticker(null, jkis)
+let jkis = await json.foto()
+   let stiker = await sticker(null, jkis, `(Holas`,`Holas`))
    conn.sendFile(m.chat, stiker, null, { asSticker: true }, m)
    m.react('🗡️') 
 
