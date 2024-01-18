@@ -17,9 +17,9 @@ let handler = async (m, { conn, usedPrefix }) => {
    /* let stickerFile = fs.readFileSync(json.foto)
 await conn.sendFile(m.chat, stickerFile, 'sticker.png', '')*/
     
-    let _clue = json.pais
+    let _clue = json.response
     let clue = _clue.replace(/[A-Za-z]/g, '_')
-    let caption = `*País*: *"${json.pais}"*
+    let caption = `*País*: *"${json.response}"*
 
 *Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
 *Bono:* +${poin} Exp
