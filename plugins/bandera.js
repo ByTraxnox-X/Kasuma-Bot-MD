@@ -14,7 +14,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let json = tekateki[Math.floor(Math.random() * tekateki.length)]
     let _clue = json.response
     let clue = _clue.replace(/[A-Za-z]/g, '_')
-    let caption = `*Mira la imagen y escribe el nombre del pais.*
+    let caption = `*Mira la imagen y escribe el nombre del pais*
 
 
 *Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
@@ -23,7 +23,11 @@ let handler = async (m, { conn, usedPrefix }) => {
 Recuerda responder con el nombre completo!
 `.trim()
     conn.tekateki[id] = [
-     await conn.reply(m.chat, caption, m),
+
+
+   conn.sendMessage(m.chat, { caption: caption, image: { url: json.foto } }, { quoted: m })
+
+   //  await conn.reply(m.chat, caption, m),
 
         json, poin,
         setTimeout(async () => {
