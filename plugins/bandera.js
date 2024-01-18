@@ -16,7 +16,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let _clue = json.emoji
     let clue = _clue.replace(/[A-Za-z]/g, '_')
     let caption = `
-ⷮ *Adivina la bandera de este pais:*\n*"${json.pais}"*
+ⷮ *Adivina la bandera de este pais:*\n*"${jsonfile.pais}"*
 
 
 *Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
