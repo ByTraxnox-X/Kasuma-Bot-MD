@@ -14,8 +14,8 @@ let handler = async (m, { conn, usedPrefix }) => {
     }
     let tekateki = JSON.parse(fs.readFileSync("./src/game/banderas.json"))
     let json = tekateki[Math.floor(Math.random() * tekateki.length)]
-    let stickerFile = fs.readFileSync(json.foto)
-await conn.sendFile(m.chat, stickerFile, 'sticker.png', '')
+   /* let stickerFile = fs.readFileSync(json.foto)
+await conn.sendFile(m.chat, stickerFile, 'sticker.png', '')*/
     
     let _clue = json.response
     let clue = _clue.replace(/[A-Za-z]/g, '_')
