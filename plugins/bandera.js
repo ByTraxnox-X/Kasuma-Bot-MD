@@ -24,10 +24,9 @@ Recuerda responder con el nombre completo!
 `.trim()
     conn.tekateki[id] = [
 
-conn.sendMessage(m.chat, { image: { url: `${json.foto}` }, caption: caption, mentions: [m.sender] }, { quoted: m })
-   m.react('🍷') 
-
-//await conn.reply(m.chat, caption, m),
+   
+await conn.reply(m.chat, caption, m),
+m.react('🍷') 
 
         json, poin,
         setTimeout(async () => {
