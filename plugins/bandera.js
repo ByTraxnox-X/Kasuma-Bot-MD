@@ -42,9 +42,8 @@ Intentemoslo de nuevo🧢`, conn.tebakbendera[id].msg)
                                 delete conn.tebakbendera[id]
                         }, timeout)
                 ]
-        } catch (e) {
-                log(e)
-                throw 'hay un error'
+              } catch {
+    throw 'Error';
         }
 }
 handler.help = ['adivinabandera']
