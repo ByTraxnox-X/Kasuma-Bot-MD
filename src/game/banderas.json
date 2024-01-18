@@ -1,1531 +1,783 @@
 [
+ 
   {
     "response": "Afganistán",
-    "paiscode": 93,
-    "code": "AF",
-    "foto": "https://flagcdn.com/af.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/af.svg"
   },
   {
     "response": "Albania",
-    "paiscode": 355,
-    "code": "AL",
-    "foto": "https://flagcdn.com/al.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/al.svg"
   },
   {
     "response": "Alemania",
-    "paiscode": 49,
-    "code": "DE",
-    "foto": "https://flagcdn.com/de.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/de.svg"
   },
   {
     "response": "Andorra",
-    "paiscode": 376,
-    "code": "AD",
-    "foto": "https://flagcdn.com/ad.svg",
-    "latinAmerica": false,
-    "phoneLength": 6,
+    "foto": "https://flagcdn.com/ad.svg"
   },
   {
     "response": "Angola",
-    "paiscode": 244,
-    "code": "AO",
-    "foto": "https://flagcdn.com/ao.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/ao.svg"
   },
   {
     "response": "Antigua y Barbuda",
-    "paiscode": 1268,
-    "code": "AG",
-    "foto": "https://flagcdn.com/ag.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/ag.svg"
   },
   {
     "response": "Arabia Saudita",
-    "paiscode": 966,
-    "code": "SA",
-    "foto": "https://flagcdn.com/sa.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/sa.svg"
   },
   {
     "response": "Argelia",
-    "paiscode": 213,
-    "code": "DZ",
-    "foto": "https://flagcdn.com/dz.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/dz.svg"
   },
   {
     "response": "Argentina",
-    "paiscode": 54,
-    "code": "AR",
-    "foto": "https://flagcdn.com/ar.svg",
-    "latinAmerica": true,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/ar.svg"
   },
   {
     "response": "Armenia",
-    "paiscode": 374,
-    "code": "AM",
-    "foto": "https://flagcdn.com/am.svg",
-    "latinAmerica": false,
-    "phoneLength": 6,
+    "foto": "https://flagcdn.com/am.svg"
   },
   {
     "response": "Australia",
-    "paiscode": 61,
-    "code": "AU",
-    "foto": "https://flagcdn.com/au.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/au.svg"
   },
   {
     "response": "Austria",
-    "paiscode": 43,
-    "code": "AT",
-    "foto": "https://flagcdn.com/at.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/at.svg"
   },
   {
     "response": "Azerbaiyán",
-    "paiscode": 994,
-    "code": "AZ",
-    "foto": "https://flagcdn.com/az.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/az.svg"
   },
   {
     "response": "Bahamas",
-    "paiscode": 1242,
-    "code": "BS",
-    "foto": "https://flagcdn.com/bs.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/bs.svg"
   },
   {
     "response": "Bangladés",
-    "paiscode": 880,
-    "code": "BD",
-    "foto": "https://flagcdn.com/bd.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/bd.svg"
   },
   {
     "response": "Barbados",
-    "paiscode": 1246,
-    "code": "BB",
-    "foto": "https://flagcdn.com/bb.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/bb.svg"
   },
   {
     "response": "Baréin",
-    "paiscode": 973,
-    "code": "BH",
-    "foto": "https://flagcdn.com/bh.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/bh.svg"
   },
   {
     "response": "Bélgica",
-    "paiscode": 32,
-    "code": "BE",
-    "foto": "https://flagcdn.com/be.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/be.svg"
   },
   {
     "response": "Belice",
-    "paiscode": 501,
-    "code": "BZ",
-    "foto": "https://flagcdn.com/bz.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/bz.svg"
   },
   {
     "response": "Benín",
-    "paiscode": 229,
-    "code": "BJ",
-    "foto": "https://flagcdn.com/bj.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/bj.svg"
   },
   {
     "response": "Bielorrusia",
-    "paiscode": 375,
-    "code": "BY",
-    "foto": "https://flagcdn.com/by.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/by.svg"
   },
   {
     "response": "Birmania",
-    "paiscode": 95,
-    "code": "MM",
-    "foto": "https://flagcdn.com/mm.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/mm.svg"
   },
   {
     "response": "Bolivia",
-    "paiscode": 591,
-    "code": "BO",
-    "foto": "https://flagcdn.com/bo.svg",
-    "latinAmerica": true,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/bo.svg"
   },
   {
     "response": "Bosnia y Herzegovina",
-    "paiscode": 387,
-    "code": "BA",
-    "foto": "https://flagcdn.com/ba.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/ba.svg"
   },
   {
     "response": "Botsuana",
-    "paiscode": 267,
-    "code": "BW",
-    "foto": "https://flagcdn.com/bw.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/bw.svg"
   },
-  {
+{
     "response": "Brasil",
-    "paiscode": 55,
-    "code": "BR",
-    "foto": "https://flagcdn.com/br.svg",
-    "latinAmerica": true,
-    "phoneLength": 11,
+    "foto": "https://flagcdn.com/br.svg"
   },
   {
     "response": "Brunéi",
-    "paiscode": 673,
-    "code": "BN",
-    "foto": "https://flagcdn.com/bn.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/bn.svg"
   },
   {
     "response": "Bulgaria",
-    "paiscode": 359,
-    "code": "BG",
-    "foto": "https://flagcdn.com/bg.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/bg.svg"
   },
   {
     "response": "Burkina Faso",
-    "paiscode": 226,
-    "code": "BF",
-    "foto": "https://flagcdn.com/bf.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/bf.svg"
   },
   {
     "response": "Burundi",
-    "paiscode": 257,
-    "code": "BI",
-    "foto": "https://flagcdn.com/bi.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/bi.svg"
   },
   {
     "response": "Bután",
-    "paiscode": 975,
-    "code": "BT",
-    "foto": "https://flagcdn.com/bt.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/bt.svg"
   },
   {
     "response": "Cabo Verde",
-    "paiscode": 238,
-    "code": "CV",
-    "foto": "https://flagcdn.com/cv.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/cv.svg"
   },
   {
     "response": "Camboya",
-    "paiscode": 855,
-    "code": "KH",
-    "foto": "https://flagcdn.com/kh.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/kh.svg"
   },
   {
     "response": "Camerún",
-    "paiscode": 237,
-    "code": "CM",
-    "foto": "https://flagcdn.com/cm.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/cm.svg"
   },
   {
     "response": "Canadá",
-    "paiscode": 1,
-    "code": "CA",
-    "foto": "https://flagcdn.com/ca.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/ca.svg"
   },
   {
     "response": "Catar",
-    "paiscode": 974,
-    "code": "QA",
-    "foto": "https://flagcdn.com/qa.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/qa.svg"
   },
   {
     "response": "Chad",
-    "paiscode": 235,
-    "code": "TD",
-    "foto": "https://flagcdn.com/td.svg",
-    "latinAmerica": false,
-    "phoneLength": 6,
+    "foto": "https://flagcdn.com/td.svg"
   },
   {
     "response": "Chile",
-    "paiscode": 56,
-    "code": "CL",
-    "foto": "https://flagcdn.com/cl.svg",
-    "latinAmerica": true,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/cl.svg"
   },
   {
     "response": "China",
-    "paiscode": 86,
-    "code": "CN",
-    "foto": "https://flagcdn.com/cn.svg",
-    "latinAmerica": false,
-    "phoneLength": 11,
+    "foto": "https://flagcdn.com/cn.svg"
   },
   {
     "response": "Chipre",
-    "paiscode": 357,
-    "code": "CY",
-    "foto": "https://flagcdn.com/cy.svg",
-🇨🇾",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/cy.svg"
+  },
+  {
+    "response": "Ciudad del Vaticano",
+    "foto": "https://flagcdn.com/va.svg"
   },
   {
     "response": "Colombia",
-    "paiscode": 57,
-    "code": "CO",
-    "foto": "https://flagcdn.com/co.svg",
-    "latinAmerica": true,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/co.svg"
   },
   {
     "response": "Comoras",
-    "paiscode": 269,
-    "code": "KM",
-    "foto": "https://flagcdn.com/km.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
-  },
-  {
-    "response": "Congo",
-    "paiscode": 242,
-    "code": "CG",
-    "foto": "https://flagcdn.com/cg.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/km.svg"
   },
   {
     "response": "Corea del Norte",
-    "paiscode": 850,
-    "code": "KP",
-    "foto": "https://flagcdn.com/kp.svg",
-    "latinAmerica": false,
-    "phoneLength": 13,
+    "foto": "https://flagcdn.com/kp.svg"
   },
   {
     "response": "Corea del Sur",
-    "paiscode": 82,
-    "code": "KR",
-    "foto": "https://flagcdn.com/kr.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/kr.svg"
   },
   {
     "response": "Costa de Marfil",
-    "paiscode": 225,
-    "code": "CI",
-    "foto": "https://flagcdn.com/ci.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/ci.svg"
   },
   {
     "response": "Costa Rica",
-    "paiscode": 506,
-    "code": "CR",
-    "foto": "https://flagcdn.com/cr.svg",
-    "latinAmerica": true,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/cr.svg"
   },
   {
     "response": "Croacia",
-    "paiscode": 385,
-    "code": "HR",
-    "foto": "https://flagcdn.com/hr.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/hr.svg"
   },
   {
     "response": "Cuba",
-    "paiscode": 53,
-    "code": "CU",
-    "foto": "https://flagcdn.com/cu.svg",
-    "latinAmerica": true,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/cu.svg"
+  },
+{
+    "response": "Cuba",
+    "foto": "https://flagcdn.com/cu.svg"
   },
   {
     "response": "Dinamarca",
-    "paiscode": 45,
-    "code": "DK",
-    "foto": "https://flagcdn.com/dk.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/dk.svg"
   },
   {
     "response": "Dominica",
-    "paiscode": 1767,
-    "code": "DM",
-    "foto": "https://flagcdn.com/dm.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/dm.svg"
   },
   {
     "response": "Ecuador",
-    "paiscode": 593,
-    "code": "EC",
-    "foto": "https://flagcdn.com/ec.svg",
-    "latinAmerica": true,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/ec.svg"
   },
   {
     "response": "Egipto",
-    "paiscode": 20,
-    "code": "EG",
-    "foto": "https://flagcdn.com/eg.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/eg.svg"
   },
   {
     "response": "El Salvador",
-    "paiscode": 503,
-    "code": "SV",
-    "foto": "https://flagcdn.com/sv.svg",
-    "latinAmerica": true,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/sv.svg"
   },
   {
     "response": "Emiratos Árabes Unidos",
-    "paiscode": 971,
-    "code": "AE",
-    "foto": "https://flagcdn.com/ae.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/ae.svg"
   },
   {
     "response": "Eritrea",
-    "paiscode": 291,
-    "code": "ER",
-    "foto": "https://flagcdn.com/er.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/er.svg"
   },
   {
     "response": "Eslovaquia",
-    "paiscode": 421,
-    "code": "SK",
-    "foto": "https://flagcdn.com/sk.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/sk.svg"
   },
   {
     "response": "Eslovenia",
-    "paiscode": 386,
-    "code": "SI",
-    "foto": "https://flagcdn.com/si.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/si.svg"
   },
   {
     "response": "España",
-    "paiscode": 34,
-    "code": "ES",
-    "foto": "https://flagcdn.com/es.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/es.svg"
+  },
+  {
+    "response": "Estado de Palestina",
+    "foto": "https://flagcdn.com/ps.svg"
   },
   {
     "response": "Estados Unidos",
-    "paiscode": 1,
-    "code": "US",
-    "foto": "https://flagcdn.com/us.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/us.svg"
+  },
+{
+    "response": "Estonia",
+    "foto": "https://flagcdn.com/ee.svg"
   },
   {
-    "response": "Estonia",
-    "paiscode": 372,
-    "code": "EE",
-    "foto": "https://flagcdn.com/ee.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "response": "Eswatini",
+    "foto": "https://flagcdn.com/sz.svg"
   },
   {
     "response": "Etiopía",
-    "paiscode": 251,
-    "code": "ET",
-    "foto": "https://flagcdn.com/et.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/et.svg"
   },
   {
     "response": "Filipinas",
-    "paiscode": 63,
-    "code": "PH",
-    "foto": "https://flagcdn.com/ph.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/ph.svg"
   },
   {
     "response": "Finlandia",
-    "paiscode": 358,
-    "code": "FI",
-    "foto": "https://flagcdn.com/fi.svg",
-    "latinAmerica": false,
-    "phoneLength": 11,
+    "foto": "https://flagcdn.com/fi.svg"
   },
   {
     "response": "Fiyi",
-    "paiscode": 679,
-    "code": "FJ",
-    "foto": "https://flagcdn.com/fj.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/fj.svg"
   },
   {
     "response": "Francia",
-    "paiscode": 33,
-    "code": "FR",
-    "foto": "https://flagcdn.com/fr.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/fr.svg"
   },
   {
     "response": "Gabón",
-    "paiscode": 241,
-    "code": "GA",
-    "foto": "https://flagcdn.com/ga.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/ga.svg"
   },
   {
     "response": "Gambia",
-    "paiscode": 220,
-    "code": "GM",
-    "foto": "https://flagcdn.com/gm.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/gm.svg"
   },
   {
     "response": "Georgia",
-    "paiscode": 995,
-    "code": "GE",
-    "foto": "https://flagcdn.com/ge.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/ge.svg"
   },
   {
     "response": "Ghana",
-    "paiscode": 233,
-    "code": "GH",
-    "foto": "https://flagcdn.com/gh.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/gh.svg"
   },
   {
     "response": "Granada",
-    "paiscode": 1473,
-    "code": "GD",
-    "foto": "https://flagcdn.com/gd.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/gd.svg"
   },
   {
     "response": "Grecia",
-    "paiscode": 30,
-    "code": "GR",
-    "foto": "https://flagcdn.com/gr.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/gr.svg"
   },
   {
     "response": "Guatemala",
-    "paiscode": 502,
-    "code": "GT",
-    "foto": "https://flagcdn.com/gt.svg",
-    "latinAmerica": true,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/gt.svg"
   },
   {
     "response": "Guinea",
-    "paiscode": 224,
-    "code": "GN",
-    "foto": "https://flagcdn.com/gn.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
-  },
-  {
-    "response": "Guinea-Bisáu",
-    "paiscode": 245,
-    "code": "GW",
-    "foto": "https://flagcdn.com/gw.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/gn.svg"
   },
   {
     "response": "Guinea Ecuatorial",
-    "paiscode": 240,
-    "code": "GQ",
-    "foto": "https://flagcdn.com/gq.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/gq.svg"
+  },
+  {
+    "response": "Guinea-Bisáu",
+    "foto": "https://flagcdn.com/gw.svg"
   },
   {
     "response": "Guyana",
-    "paiscode": 592,
-    "code": "GY",
-    "foto": "https://flagcdn.com/gy.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/gy.svg"
   },
   {
     "response": "Haití",
-    "paiscode": 509,
-    "code": "HT",
-    "foto": "https://flagcdn.com/ht.svg",
-    "latinAmerica": true,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/ht.svg"
   },
   {
     "response": "Honduras",
-    "paiscode": 504,
-    "code": "HN",
-    "foto": "https://flagcdn.com/hn.svg",
-    "latinAmerica": true,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/hn.svg"
   },
   {
     "response": "Hungría",
-    "paiscode": 36,
-    "code": "HU",
-    "foto": "https://flagcdn.com/hu.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/hu.svg"
   },
   {
     "response": "India",
-    "paiscode": 91,
-    "code": "IN",
-    "foto": "https://flagcdn.com/in.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/in.svg"
   },
   {
     "response": "Indonesia",
-    "paiscode": 62,
-    "code": "ID",
-    "foto": "https://flagcdn.com/id.svg",
-    "latinAmerica": false,
-    "phoneLength": 11,
+    "foto": "https://flagcdn.com/id.svg"
   },
   {
     "response": "Irak",
-    "paiscode": 964,
-    "code": "IQ",
-    "foto": "https://flagcdn.com/iq.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/iq.svg"
   },
   {
     "response": "Irán",
-    "paiscode": 98,
-    "code": "IR",
-    "foto": "https://flagcdn.com/ir.svg",
-    "latinAmerica": false,
-    "phoneLength": 11,
+    "foto": "https://flagcdn.com/ir.svg"
   },
   {
     "response": "Irlanda",
-    "paiscode": 353,
-    "code": "IE",
-    "foto": "https://flagcdn.com/ie.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/ie.svg"
   },
   {
     "response": "Islandia",
-    "paiscode": 354,
-    "code": "IS",
-    "foto": "https://flagcdn.com/is.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/is.svg"
   },
   {
     "response": "Islas Marshall",
-    "paiscode": 692,
-    "code": "MH",
-    "foto": "https://flagcdn.com/mh.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/mh.svg"
   },
   {
     "response": "Islas Salomón",
-    "paiscode": 677,
-    "code": "SB",
-    "foto": "https://flagcdn.com/sb.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/sb.svg"
   },
   {
     "response": "Israel",
-    "paiscode": 972,
-    "code": "IL",
-    "foto": "https://flagcdn.com/il.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/il.svg"
   },
   {
     "response": "Italia",
-    "paiscode": 39,
-    "code": "IT",
-    "foto": "https://flagcdn.com/it.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/it.svg"
   },
   {
     "response": "Jamaica",
-    "paiscode": 1876,
-    "code": "JM",
-    "foto": "https://flagcdn.com/jm.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/jm.svg"
   },
   {
     "response": "Japón",
-    "paiscode": 81,
-    "code": "JP",
-    "foto": "https://flagcdn.com/jp.svg",
-    "latinAmerica": false,
-    "phoneLength": 0,
+    "foto": "https://flagcdn.com/jp.svg"
   },
   {
     "response": "Jordania",
-    "paiscode": 962,
-    "code": "JO",
-    "foto": "https://flagcdn.com/jo.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/jo.svg"
   },
   {
     "response": "Kazajistán",
-    "paiscode": 7,
-    "code": "KZ",
-    "foto": "https://flagcdn.com/kz.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/kz.svg"
   },
   {
     "response": "Kenia",
-    "paiscode": 254,
-    "code": "KE",
-    "foto": "https://flagcdn.com/ke.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/ke.svg"
   },
   {
     "response": "Kirguistán",
-    "paiscode": 996,
-    "code": "KG",
-    "foto": "https://flagcdn.com/kg.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/kg.svg"
   },
   {
     "response": "Kiribati",
-    "paiscode": 686,
-    "code": "KI",
-    "foto": "https://flagcdn.com/ki.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/ki.svg"
   },
   {
     "response": "Kuwait",
-    "paiscode": 965,
-    "code": "KW",
-    "foto": "https://flagcdn.com/kw.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/kw.svg"
   },
   {
     "response": "Laos",
-    "paiscode": 856,
-    "code": "LA",
-    "foto": "https://flagcdn.com/la.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/la.svg"
   },
   {
     "response": "Lesoto",
-    "paiscode": 266,
-    "code": "LS",
-    "foto": "https://flagcdn.com/ls.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/ls.svg"
   },
   {
     "response": "Letonia",
-    "paiscode": 371,
-    "code": "LV",
-    "foto": "https://flagcdn.com/lv.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/lv.svg"
   },
   {
     "response": "Líbano",
-    "paiscode": 961,
-    "code": "LB",
-    "foto": "https://flagcdn.com/lb.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/lb.svg"
   },
   {
     "response": "Liberia",
-    "paiscode": 231,
-    "code": "LR",
-    "foto": "https://flagcdn.com/lr.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/lr.svg"
   },
   {
     "response": "Libia",
-    "paiscode": 218,
-    "code": "LY",
-    "foto": "https://flagcdn.com/ly.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/ly.svg"
   },
   {
     "response": "Liechtenstein",
-    "paiscode": 423,
-    "code": "LI",
-    "foto": "https://flagcdn.com/li.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/li.svg"
   },
   {
     "response": "Lituania",
-    "paiscode": 370,
-    "code": "LT",
-    "foto": "https://flagcdn.com/lt.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/lt.svg"
   },
   {
     "response": "Luxemburgo",
-    "paiscode": 352,
-    "code": "LU",
-    "foto": "https://flagcdn.com/lu.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/lu.svg"
   },
   {
     "response": "Madagascar",
-    "paiscode": 261,
-    "code": "MG",
-    "foto": "https://flagcdn.com/mg.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/mg.svg"
   },
   {
     "response": "Malasia",
-    "paiscode": 60,
-    "code": "MY",
-    "foto": "https://flagcdn.com/my.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/my.svg"
   },
   {
     "response": "Malaui",
-    "paiscode": 265,
-    "code": "MW",
-    "foto": "https://flagcdn.com/mw.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/mw.svg"
   },
   {
     "response": "Maldivas",
-    "paiscode": 960,
-    "code": "MV",
-    "foto": "https://flagcdn.com/mv.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/mv.svg"
   },
   {
     "response": "Malí",
-    "paiscode": 223,
-    "code": "ML",
-    "foto": "https://flagcdn.com/ml.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/ml.svg"
   },
   {
     "response": "Malta",
-    "paiscode": 356,
-    "code": "MT",
-    "foto": "https://flagcdn.com/mt.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/mt.svg"
   },
   {
     "response": "Marruecos",
-    "paiscode": 212,
-    "code": "MA",
-    "foto": "https://flagcdn.com/ma.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/ma.svg"
   },
   {
     "response": "Mauricio",
-    "paiscode": 230,
-    "code": "MU",
-    "foto": "https://flagcdn.com/mu.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/mu.svg"
   },
   {
     "response": "Mauritania",
-    "paiscode": 222,
-    "code": "MR",
-    "foto": "https://flagcdn.com/mr.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/mr.svg"
   },
   {
     "response": "México",
-    "paiscode": 52,
-    "code": "MX",
-    "foto": "https://flagcdn.com/mx.svg",
-    "latinAmerica": true,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/mx.svg"
   },
   {
     "response": "Micronesia",
-    "paiscode": 691,
-    "code": "FM",
-    "foto": "https://flagcdn.com/fm.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/fm.svg"
   },
   {
     "response": "Moldavia",
-    "paiscode": 373,
-    "code": "MD",
-    "foto": "https://flagcdn.com/md.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/md.svg"
   },
   {
     "response": "Mónaco",
-    "paiscode": 377,
-    "code": "MC",
-    "foto": "https://flagcdn.com/mc.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/mc.svg"
   },
   {
     "response": "Mongolia",
-    "paiscode": 976,
-    "code": "MN",
-    "foto": "https://flagcdn.com/mn.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/mn.svg"
   },
   {
     "response": "Montenegro",
-    "paiscode": 382,
-    "code": "ME",
-    "foto": "https://flagcdn.com/me.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/me.svg"
   },
   {
     "response": "Mozambique",
-    "paiscode": 258,
-    "code": "MZ",
-    "foto": "https://flagcdn.com/mz.svg",
-    "latinAmerica": false,
-    "phoneLength": 12,
+    "foto": "https://flagcdn.com/mz.svg"
   },
   {
     "response": "Namibia",
-    "paiscode": 264,
-    "code": "NA",
-    "foto": "https://flagcdn.com/na.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/na.svg"
   },
   {
     "response": "Nauru",
-    "paiscode": 674,
-    "code": "NR",
-    "foto": "https://flagcdn.com/nr.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/nr.svg"
   },
   {
     "response": "Nepal",
-    "paiscode": 977,
-    "code": "NP",
-    "foto": "https://flagcdn.com/np.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/np.svg"
   },
   {
     "response": "Nicaragua",
-    "paiscode": 505,
-    "code": "NI",
-    "foto": "https://flagcdn.com/ni.svg",
-    "latinAmerica": true,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/ni.svg"
   },
   {
     "response": "Níger",
-    "paiscode": 227,
-    "code": "NE",
-    "foto": "https://flagcdn.com/ne.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/ne.svg"
   },
   {
     "response": "Nigeria",
-    "paiscode": 234,
-    "code": "NG",
-    "foto": "https://flagcdn.com/ng.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/ng.svg"
   },
   {
     "response": "Noruega",
-    "paiscode": 47,
-    "code": "NO",
-    "foto": "https://flagcdn.com/no.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/no.svg"
   },
   {
     "response": "Nueva Zelanda",
-    "paiscode": 64,
-    "code": "NZ",
-    "foto": "https://flagcdn.com/nz.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/nz.svg"
   },
   {
     "response": "Omán",
-    "paiscode": 968,
-    "code": "OM",
-    "foto": "https://flagcdn.com/om.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/om.svg"
   },
   {
     "response": "Países Bajos",
-    "paiscode": 31,
-    "code": "NL",
-    "foto": "https://flagcdn.com/nl.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/nl.svg"
   },
   {
     "response": "Pakistán",
-    "paiscode": 92,
-    "code": "PK",
-    "foto": "https://flagcdn.com/pk.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/pk.svg"
   },
   {
     "response": "Palaos",
-    "paiscode": 680,
-    "code": "PW",
-    "foto": "https://flagcdn.com/pw.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/pw.svg"
   },
   {
     "response": "Panamá",
-    "paiscode": 507,
-    "code": "PA",
-    "foto": "https://flagcdn.com/pa.svg",
-    "latinAmerica": true,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/pa.svg"
   },
   {
     "response": "Papúa Nueva Guinea",
-    "paiscode": 675,
-    "code": "PG",
-    "foto": "https://flagcdn.com/pg.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/pg.svg"
   },
   {
     "response": "Paraguay",
-    "paiscode": 595,
-    "code": "PY",
-    "foto": "https://flagcdn.com/py.svg",
-    "latinAmerica": true,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/py.svg"
   },
   {
     "response": "Perú",
-    "paiscode": 51,
-    "code": "PE",
-    "foto": "https://flagcdn.com/pe.svg",
-    "latinAmerica": true,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/pe.svg"
   },
   {
     "response": "Polonia",
-    "paiscode": 48,
-    "code": "PL",
-    "foto": "https://flagcdn.com/pl.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/pl.svg"
   },
   {
     "response": "Portugal",
-    "paiscode": 351,
-    "code": "PT",
-    "foto": "https://flagcdn.com/pt.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/pt.svg"
   },
   {
     "response": "Reino Unido",
-    "paiscode": 44,
-    "code": "GB",
-    "foto": "https://flagcdn.com/gb.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/gb.svg"
   },
   {
     "response": "República Centroafricana",
-    "paiscode": 236,
-    "code": "CF",
-    "foto": "https://flagcdn.com/cf.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/cf.svg"
   },
   {
     "response": "República Checa",
-    "paiscode": 420,
-    "code": "CZ",
-    "foto": "https://flagcdn.com/cz.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/cz.svg"
   },
   {
     "response": "República del Congo",
-    "paiscode": 243,
-    "code": "CD",
-    "foto": "https://flagcdn.com/cd.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/cg.svg"
+  },
+  {
+    "response": "República Democrática del Congo",
+    "foto": "https://flagcdn.com/cd.svg"
   },
   {
     "response": "República Dominicana",
-    "paiscode": 1809,
-    "code": "DO",
-    "foto": "https://flagcdn.com/do.svg",
-    "latinAmerica": true,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/do.svg"
   },
   {
     "response": "Ruanda",
-    "paiscode": 250,
-    "code": "RW",
-    "foto": "https://flagcdn.com/rw.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/rw.svg"
   },
   {
     "response": "Rumania",
-    "paiscode": 40,
-    "code": "RO",
-    "foto": "https://flagcdn.com/ro.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/ro.svg"
   },
   {
     "response": "Rusia",
-    "paiscode": 7,
-    "code": "RU",
-    "foto": "https://flagcdn.com/ru.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/ru.svg"
   },
   {
     "response": "Samoa",
-    "paiscode": 685,
-    "code": "WS",
-    "foto": "https://flagcdn.com/ws.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/ws.svg"
   },
   {
     "response": "San Cristóbal y Nieves",
-    "paiscode": 1869,
-    "code": "KN",
-    "foto": "https://flagcdn.com/kn.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/kn.svg"
   },
   {
     "response": "San Marino",
-    "paiscode": 378,
-    "code": "SM",
-    "foto": "https://flagcdn.com/sm.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
-  },
-  {
-    "response": "Santa Lucía",
-    "paiscode": 1758,
-    "code": "LC",
-    "foto": "https://flagcdn.com/lc.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
-  },
-  {
-    "response": "Santo Tomé y Príncipe",
-    "paiscode": 239,
-    "code": "ST",
-    "foto": "https://flagcdn.com/st.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/sm.svg"
   },
   {
     "response": "San Vicente y las Granadinas",
-    "paiscode": 1784,
-    "code": "VC",
-    "foto": "https://flagcdn.com/vc.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/vc.svg"
+  },
+  {
+    "response": "Santa Lucía",
+    "foto": "https://flagcdn.com/lc.svg"
+  },
+  {
+    "response": "Santo Tomé y Príncipe",
+    "foto": "https://flagcdn.com/st.svg"
   },
   {
     "response": "Senegal",
-    "paiscode": 221,
-    "code": "SN",
-    "foto": "https://flagcdn.com/sn.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/sn.svg"
   },
   {
     "response": "Serbia",
-    "paiscode": 381,
-    "code": "RS",
-    "foto": "https://flagcdn.com/rs.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/rs.svg"
   },
   {
     "response": "Seychelles",
-    "paiscode": 248,
-    "code": "SC",
-    "foto": "https://flagcdn.com/sc.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/sc.svg"
   },
   {
     "response": "Sierra Leona",
-    "paiscode": 232,
-    "code": "SL",
-    "foto": "https://flagcdn.com/sl.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/sl.svg"
   },
   {
     "response": "Singapur",
-    "paiscode": 65,
-    "code": "SG",
-    "foto": "https://flagcdn.com/sg.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/sg.svg"
   },
   {
     "response": "Siria",
-    "paiscode": 963,
-    "code": "SY",
-    "foto": "https://flagcdn.com/sy.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/sy.svg"
   },
   {
     "response": "Somalia",
-    "paiscode": 252,
-    "code": "SO",
-    "foto": "https://flagcdn.com/so.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/so.svg"
   },
   {
     "response": "Sri Lanka",
-    "paiscode": 94,
-    "code": "LK",
-    "foto": "https://flagcdn.com/lk.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/lk.svg"
   },
   {
     "response": "Sudáfrica",
-    "paiscode": 27,
-    "code": "ZA",
-    "foto": "https://flagcdn.com/za.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/za.svg"
   },
   {
     "response": "Sudán",
-    "paiscode": 249,
-    "code": "SD",
-    "foto": "https://flagcdn.com/sd.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/sd.svg"
   },
   {
     "response": "Sudán del Sur",
-    "paiscode": 211,
-    "code": "SS",
-    "foto": "https://flagcdn.com/ss.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/ss.svg"
   },
   {
     "response": "Suecia",
-    "paiscode": 46,
-    "code": "SE",
-    "foto": "https://flagcdn.com/se.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/se.svg"
   },
   {
     "response": "Suiza",
-    "paiscode": 41,
-    "code": "CH",
-    "foto": "https://flagcdn.com/ch.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/ch.svg"
   },
   {
     "response": "Surinam",
-    "paiscode": 597,
-    "code": "SR",
-    "foto": "https://flagcdn.com/sr.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/sr.svg"
   },
   {
     "response": "Tailandia",
-    "paiscode": 66,
-    "code": "TH",
-    "foto": "https://flagcdn.com/th.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/th.svg"
   },
   {
     "response": "Tanzania",
-    "paiscode": 255,
-    "code": "TZ",
-    "foto": "https://flagcdn.com/tz.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/tz.svg"
   },
   {
     "response": "Tayikistán",
-    "paiscode": 992,
-    "code": "TJ",
-    "foto": "https://flagcdn.com/tj.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/tj.svg"
   },
   {
     "response": "Timor Oriental",
-    "paiscode": 670,
-    "code": "TL",
-    "foto": "https://flagcdn.com/tl.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/tl.svg"
   },
   {
     "response": "Togo",
-    "paiscode": 228,
-    "code": "TG",
-    "foto": "https://flagcdn.com/tg.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/tg.svg"
   },
   {
     "response": "Tonga",
-    "paiscode": 676,
-    "code": "TO",
-    "foto": "https://flagcdn.com/to.svg",
-    "latinAmerica": false,
-    "phoneLength": 5,
+    "foto": "https://flagcdn.com/to.svg"
   },
   {
     "response": "Trinidad y Tobago",
-    "paiscode": 1868,
-    "code": "TT",
-    "foto": "https://flagcdn.com/tt.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/tt.svg"
   },
   {
     "response": "Túnez",
-    "paiscode": 216,
-    "code": "TN",
-    "foto": "https://flagcdn.com/tn.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/tn.svg"
   },
   {
     "response": "Turkmenistán",
-    "paiscode": 993,
-    "code": "TM",
-    "foto": "https://flagcdn.com/tm.svg",
-    "latinAmerica": false,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/tm.svg"
   },
   {
     "response": "Turquía",
-    "paiscode": 90,
-    "code": "TR",
-    "foto": "https://flagcdn.com/tr.svg",
-    "latinAmerica": false,
-    "phoneLength": 11,
+    "foto": "https://flagcdn.com/tr.svg"
   },
   {
     "response": "Tuvalu",
-    "paiscode": 688,
-    "code": "TV",
-    "foto": "https://flagcdn.com/tv.svg",
-    "latinAmerica": false,
-    "phoneLength": 5,
+    "foto": "https://flagcdn.com/tv.svg"
   },
   {
     "response": "Ucrania",
-    "paiscode": 380,
-    "code": "UA",
-    "foto": "https://flagcdn.com/ua.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/ua.svg"
   },
   {
     "response": "Uganda",
-    "paiscode": 256,
-    "code": "UG",
-    "foto": "https://flagcdn.com/ug.svg",
-    "latinAmerica": false,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/ug.svg"
   },
   {
     "response": "Uruguay",
-    "paiscode": 598,
-    "code": "UY",
-    "foto": "https://flagcdn.com/uy.svg",
-    "latinAmerica": true,
-    "phoneLength": 8,
+    "foto": "https://flagcdn.com/uy.svg"
   },
   {
     "response": "Uzbekistán",
-    "paiscode": 998,
-    "code": "UZ",
-    "foto": "https://flagcdn.com/uz.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/uz.svg"
   },
   {
     "response": "Vanuatu",
-    "paiscode": 678,
-    "code": "VU",
-    "foto": "https://flagcdn.com/vu.svg",
-    "latinAmerica": false,
-    "phoneLength": 5,
+    "foto": "https://flagcdn.com/vu.svg"
   },
   {
     "response": "Venezuela",
-    "paiscode": 58,
-    "code": "VE",
-    "foto": "https://flagcdn.com/ve.svg",
-    "latinAmerica": true,
-    "phoneLength": 7,
+    "foto": "https://flagcdn.com/ve.svg"
   },
   {
     "response": "Vietnam",
-    "paiscode": 84,
-    "code": "VN",
-    "foto": "https://flagcdn.com/vn.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/vn.svg"
   },
   {
     "response": "Yemen",
-    "paiscode": 967,
-    "code": "YE",
-    "foto": "https://flagcdn.com/ye.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/ye.svg"
   },
   {
     "response": "Yibuti",
-    "paiscode": 253,
-    "code": "DJ",
-    "foto": "https://flagcdn.com/dj.svg",
-    "latinAmerica": false,
-    "phoneLength": 10,
+    "foto": "https://flagcdn.com/dj.svg"
   },
   {
     "response": "Zambia",
-    "paiscode": 260,
-    "code": "ZM",
-    "foto": "https://flagcdn.com/zm.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
+    "foto": "https://flagcdn.com/zm.svg"
   },
   {
     "response": "Zimbabue",
-    "paiscode": 263,
-    "code": "ZW",
-    "foto": "https://flagcdn.com/zw.svg",
-    "latinAmerica": false,
-    "phoneLength": 9,
-  },
+    "foto": "https://flagcdn.com/zw.svg"
+  }
 ];
