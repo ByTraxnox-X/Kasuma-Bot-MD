@@ -23,10 +23,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 Recuerda responder con el nombre completo!
 `.trim()
     conn.tekateki[id] = [
-
-   
-await conn.reply(m.chat, caption, m),
-m.react('🍷') 
+     await conn.reply(m.chat, caption, m),
 
         json, poin,
         setTimeout(async () => {
