@@ -1,10 +1,12 @@
-const timeout = 60000
-const poin = 1000
-const { sticker } = import('../lib/sticker.js')
+import { sticker } = from '../lib/sticker.js'
 const handler = async (m, {
         conn,
         usedPrefix
 }) => {
+
+const timeout = 60000
+const poin = 1000
+
         conn.tebakbendera = conn.tebakbendera ? conn.tebakbendera : {}
         try {
                 var id = m.sender
