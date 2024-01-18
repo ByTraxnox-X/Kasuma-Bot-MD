@@ -49,7 +49,7 @@ const retarJugador = (m, jugadorId) => {
     }
 
     const pp = './src/caraosello.jpg';
-    conn.sendMessage(jugadorId, `\t${m.sender.split('@')[0]} te ha retado a jugar CARA O SELLO. ¿Aceptas? Responde con ${usedPrefix + 'aceptar'} o ${usedPrefix + 'rechazar'}.`, { quoted: m });
+    conn.sendMessage(jugadorId, `\t${m.sender.split('@')[0]} te ha retado a jugar CARA O SELLO. ¿Aceptas? Responde con .aceptar o .rechazar'}.`, { quoted: m });
     conn.sendMessage(m.chat, `Has retado a ${jugadorId.split('@')[0]} a jugar CARA O SELLO. Esperando respuesta...`, { image: { url: pp }, quoted: m });
 };
 
