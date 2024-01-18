@@ -22,9 +22,9 @@ let handler = async (m, { conn, usedPrefix }) => {
 
 Recuerda responder con el nombre completo!
 `.trim()
-    
+    conn.tekateki[id] = [
 //stiker = await sticker(img, false, packname, author)
-//await this.sendFile(m.chat, sticker { json.foto: true })
+await this.sendFile(m.chat, sticker { json.foto: true })
 
 await conn.reply(m.chat, caption, m),
 
