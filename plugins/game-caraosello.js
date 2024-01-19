@@ -26,7 +26,7 @@ const pp = 'https://flagcdn.com/gd.svg';
        global.db.data.users[m.sender].dolares -= perdida;
        const pp = './src/caraosello.jpg';
        let msg = `\tPerdiste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Perdiste:* - ${perdida} $`
-       conn.sendMessage(m.chat, { image: { url: pp }, caption: msg }, { quoted: m });
+       conn.sendMessage(m.chat, { image: { url: 'https://flagcdn.com/gd.svg' }, caption: msg }, { quoted: m });
    }
 
    global.db.data.users[m.sender].wait = new Date() * 1;
