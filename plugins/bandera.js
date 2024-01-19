@@ -1,6 +1,4 @@
-Claro, puedo ayudarte a crear un juego de "adivina la bandera" en JavaScript. Aquí tienes un ejemplo de un manipulador (handler) para este juego:
 
-```javascript
 // Este sería el archivo `adivinaLaBanderaHandler.js`
 
 // Importamos el módulo fs para manejar archivos
