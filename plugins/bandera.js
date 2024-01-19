@@ -23,12 +23,14 @@ let handler = async (m, { conn, usedPrefix }) => {
 
 Recuerda responder con el nombre completo del país!`.trim()
 
-    // Descargar la imagen desde la URL externa
-    let image = (await axios.get(json.foto, { responseType: 'arraybuffer' })).data
-    let mimetype = 'image/jpeg' // Modificar el tipo de medio según la extensión de la imagen
+ 
 
     conn.tekateki[id] = [
-        await conn.sendMessage(m.chat, image, 'imageMessage', { mimetype, caption: caption, quoted: m }), // Ajustar el tipo de medio
+        
+
+await conn.sendMessage(m.chat, {image: {url: json.foto}, caption: `✅`}, {quoted: m});  
+
+
         json, poin,
         setTimeout(() => {
             if (conn.tekateki[id]) conn.reply(m.chat, `¡Se acabó el tiempo!`, conn.tekateki[id][0])
