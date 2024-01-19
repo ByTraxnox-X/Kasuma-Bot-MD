@@ -1,5 +1,6 @@
 
 import fs from 'fs'
+import axios from 'axios'
 
 let timeout = 10000
 let poin = 10000
@@ -22,9 +23,10 @@ let handler = async (m, { conn, usedPrefix }) => {
 
 Recuerda responder con el nombre completo del país!`.trim()
 
-    let image = fs.readFileSync(json.foto) // Lee la imagen como un buffer
+    // Descargar la imagen desde la URL externa
+    let image = (await axios.get(json.foto, { responseType: 'arraybuffer' })).data
     conn.tekateki[id] = [
-        await conn.sendMessage(m.chat, image, 'imageMessage', { caption: caption, quoted: m }), // Enviar la imagen como un mensaje
+        await conn.sendMessage(m.chat, image, 'imageMessage', { mimetype: 'image/jpeg', caption: caption, quoted: m }), // Enviar la imagen como un mensaje
         json, poin,
         setTimeout(() => {
             if (conn.tekateki[id]) conn.reply(m.chat, `¡Se acabó el tiempo!`, conn.tekateki[id][0])
