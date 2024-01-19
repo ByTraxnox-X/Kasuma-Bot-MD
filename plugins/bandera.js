@@ -28,7 +28,7 @@ Recuerda responder con el nombre completo del país!`.trim()
     conn.tekateki[id] = [
         
 
-await conn.sendMessage(m.chat, {image: {url: json.foto}, caption: `✅`}, {quoted: m});  
+await conn.sendFile(m.chat, {image: {url: json.foto}, caption: `✅`}, {quoted: m});  
 
 
         json, poin,
