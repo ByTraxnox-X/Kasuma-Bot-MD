@@ -4,6 +4,8 @@
 // Importamos el módulo fs para manejar archivos
 const fs = require('fs');
 
+let handler = async (m, { conn, usedPrefix }) => {
+
 // Función para leer el archivo JSON de las banderas
 function leerBanderas() {
     const banderasJSON = fs.readFileSync("banderas.json", "utf8");
