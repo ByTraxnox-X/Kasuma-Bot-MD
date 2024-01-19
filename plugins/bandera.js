@@ -18,7 +18,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let caption = `
 🚩 *Adivina la Bandera*
 
-¿De qué país es esta bandera? (${country})
+¿De qué país es esta bandera? (${pais})
 
 *Tienes ${timeout/1000} segundos para responder*.
 `.trim()
