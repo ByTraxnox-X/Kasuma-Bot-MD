@@ -20,12 +20,12 @@ let pais = `${json.pais}`
     let caption = `
 🚩 *Adivina la Bandera*
 
-¿De qué país es esta bandera? (${pais})
+¿De qué país es esta bandera? (${json.pais})
 
 *Tienes ${timeout/1000} segundos para responder*.
 `.trim()
     conn.banderas[id] = [
-       await conn.sendMessage(m.chat, pais, 'bandera.png', caption, m),
+       await conn.sendMessage(m.chat, json.pais, 'bandera.png', caption, m),
        json, poin,
        setTimeout(async () => {
             if (conn.banderas[id]) await conn.reply(m.chat, `Se acabó el tiempo. La respuesta correcta era ${pais}. Inténtalo de nuevo.`, conn.banderas[id][0])
