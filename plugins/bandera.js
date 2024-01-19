@@ -1,6 +1,5 @@
 
 import fs from 'fs'
-import axios from 'axios'
 
 let timeout = 10000
 let poin = 10000
