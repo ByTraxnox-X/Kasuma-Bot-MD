@@ -21,15 +21,13 @@ let handler = async (m, { conn, usedPrefix }) => {
 *Bono:* +${poin} Exp
 
 Recuerda responder con el nombre completo del país!`.trim()
-    
+
+    let image = fs.readFileSync(json.foto) // Lee la imagen como un buffer
     conn.tekateki[id] = [
-        await conn.sendFile(m.chat, json.image, 'bandera.jpg', caption, m, false }),
-
-      
-
+        await conn.sendMessage(m.chat, image, 'imageMessage', { caption: caption, quoted: m }), // Enviar la imagen como un mensaje
         json, poin,
         setTimeout(() => {
-            if (conn.tekateki[id]) conn.reply(m.chat, `Se acabó el tiempo!.`, conn.tekateki[id][0])
+            if (conn.tekateki[id]) conn.reply(m.chat, `¡Se acabó el tiempo!`, conn.tekateki[id][0])
             delete conn.tekateki[id]
         }, timeout)
     ]
