@@ -7,10 +7,9 @@ const handler = async (m, { conn, args }) => {
         const apiUrl = `https://skizo.tech/api/tiktok?url=${args[0]}&apikey=kasumabot`;
         const response = await fetch(apiUrl);
         const data = await response.buffer();
-        let json = await apiUrl.json();
         
         m.react(rwait)
-        m.reply(`Titulo: ${json.data.title}`)
+        m.reply(`Titulo: ${data.title}`)
 
         const fileName = "tiktok.mp4";
 
