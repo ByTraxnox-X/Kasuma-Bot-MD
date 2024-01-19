@@ -1,7 +1,5 @@
 import fetch from 'node-fetch'
 
-
-
 let handler = async (m, { conn, command, usedPrefix, args }) => {
     const apiUrl = 'https://skizo.tech/api/game/tebakbendera?apikey=kasumabot';
 
@@ -13,12 +11,8 @@ let handler = async (m, { conn, command, usedPrefix, args }) => {
             const response = await fetch(apiUrl);
             const data = await response.json();
 
-            // Descargar la imagen y convertirla a base64
-            const imageBuffer = await (await fetch(data.img)).buffer();
-            const base64Image = imageBuffer.toString('base64');
-
-            // Enviar la imagen en formato base64
-            conn.sendMessage(m.chat, { image: base64Image, caption: textos }, { quoted: m, mimetype: 'image/jpeg' });
+            // Envía la imagen de la bandera al usuario
+            conn.sendFile(m.chat, data.img, 'bandera.jpg', textos, m);
 
             // Almacena la respuesta correcta en la base de datos del usuario
             global.db.data.users[m.sender].answer = data.name.toLowerCase();
