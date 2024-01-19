@@ -12,9 +12,11 @@ let handler = async (m, { conn, usedPrefix }) => {
         throw false
     }
     let banderas = JSON.parse(fs.readFileSync("./src/game/banderas.json"))
-    let randomFlag = banderas[Math.floor(Math.random() * banderas.length)]
-    let country = randomFlag.country
-    let flagURL = randomFlag.foto
+    let json = tekateki[Math.floor(Math.random() * tekateki.length)]
+let banderaurl = `${json.foto}`
+let pais = `${json.pais}`
+
+
     let caption = `
 🚩 *Adivina la Bandera*
 
@@ -23,8 +25,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 *Tienes ${timeout/1000} segundos para responder*.
 `.trim()
     conn.banderas[id] = [
-       await conn.sendMessage(m.chat, flagURL, 'bandera.png', caption, m),
-       randomFlag,
+       await conn.sendMessage(m.chat, pais, 'bandera.png', caption, m),
+       json, poin,
        setTimeout(async () => {
             if (conn.banderas[id]) await conn.reply(m.chat, `Se acabó el tiempo. La respuesta correcta era ${pais}. Inténtalo de nuevo.`, conn.banderas[id][0])
             delete conn.banderas[id]
