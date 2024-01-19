@@ -7,13 +7,16 @@ const handler = async (m, { conn, args }) => {
         const apiUrl = `https://skizo.tech/api/tiktok?url=${args[0]}&apikey=kasumabot`;
         const response = await fetch(apiUrl);
         const hdplay = await response.buffer();
+        let json = await response.json();
+        
         m.react(rwait)
-        m.reply(`Titulo: ${title}`)
+        m.reply(`Titulo: ${json.data.title}`)
 
         const fileName = "tiktok.mp4";
 
         m.react(done)
-        conn.sendFile(m.chat, hdplay, fileName, "", m);
+                 let fileBuffer = await fetch(json.data.hdplay).then(response => response.buffer());
+        conn.sendFile(m.chat, fileBuffer, fileName, "", m);
     } catch (error) {
         throw `Ocurrió un error al descargar el video de TikTok: ${error}`;
     }
