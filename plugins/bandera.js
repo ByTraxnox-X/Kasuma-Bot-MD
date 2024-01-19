@@ -1,4 +1,4 @@
-const fetch from 'node-fetch'
+import fetch from 'node-fetch'
 
 let handler = async (m, { conn, command, usedPrefix, args }) => {
     const apiUrl = 'https://skizo.tech/api/game/tebakbendera?apikey=kasumabot';
