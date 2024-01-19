@@ -8,6 +8,7 @@ const handler = async (m, { conn, args }) => {
         const response = await fetch(apiUrl);
         const hdplay = await response.buffer();
         m.react(rwait)
+        m.reply(`Titulo: ${title}`)
 
         const fileName = "tiktok.mp4";
 
