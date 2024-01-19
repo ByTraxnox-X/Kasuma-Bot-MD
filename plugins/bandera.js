@@ -27,7 +27,8 @@ let handler = async (m, { conn, command, usedPrefix, args }) => {
     global.db.data.users[m.sender].wait = new Date() * 1;
 };
 
-handler.command = ['juego'];
-handler.help = ['juego'];
-handler.tags = ['game'];
-export default handler;
+handler.help = ['adivinabandera']
+handler.tags = ['game']
+handler.command = /^(adivinabandera|bandera|banderade|banderapais)$/i
+
+export default handler
