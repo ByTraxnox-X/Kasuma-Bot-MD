@@ -1,16 +1,8 @@
-
 import fs from 'fs'
 
 let timeout = 180000
-let poin = 10000
 
 let handler = async (m, { conn, usedPrefix }) => {
-    conn.banderas = conn.banderas ? conn.banderas : {}
-    let id = m.chat
-    if (id in conn.banderas) {
-        conn.reply(m.chat, 'Todavía hay un juego sin terminar!', conn.banderas[id][0])
-        throw false
-    }
     let banderasJSON = JSON.parse(fs.readFileSync("./src/game/banderas.json"))
     let randomFlag = banderasJSON[Math.floor(Math.random() * banderasJSON.length)]
     let country = randomFlag.pais
@@ -22,13 +14,17 @@ let handler = async (m, { conn, usedPrefix }) => {
 
 *Tienes ${timeout/1000} segundos para responder*.
 `.trim()
-    conn.banderas[id] = [
-       await conn.sendFile(m.chat, flagURL, 'bandera.png', caption, m),
-       randomFlag,
-       setTimeout(async () => {
-            if (conn.banderas[id]) await conn.reply(m.chat, `Se acabó el tiempo. La respuesta correcta era ${country}. Inténtalo de nuevo.`, conn.banderas[id][0])
-            delete conn.banderas[id]
-        }, timeout)
+    conn.sendMessage(m.chat, { url: flagURL }, 'imageMessage', { caption: caption })
+    conn.banderas = conn.banderas || {}
+    conn.banderas[m.chat] = [
+      country,
+      flagURL,
+      setTimeout(() => {
+        if (conn.banderas[m.chat]) {
+          conn.reply(m.chat, `Se acabó el tiempo. La respuesta correcta era ${country}. ¡Inténtalo de nuevo!`, m)
+          delete conn.banderas[m.chat]
+        }
+      }, timeout)
     ]
 }
 
