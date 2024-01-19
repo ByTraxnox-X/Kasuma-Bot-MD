@@ -20,9 +20,22 @@ let handler = async (m, { conn, command, usedPrefix, args }) => {
             console.error(error);
             conn.reply(m.chat, 'Hubo un error al obtener la bandera. Inténtalo de nuevo más tarde.', m);
         }
+    } else if (args[0] && args[0].toLowerCase() === 'respuesta') {
+        const userAnswer = args[1] ? args.slice(1).join(' ').toLowerCase() : '';
+        const correctAnswer = global.db.data.users[m.sender].answer;
+
+        if (userAnswer === correctAnswer) {
+            conn.reply(m.chat, '¡Correcto! Has adivinado la bandera correctamente.', m);
+        } else {
+            conn.reply(m.chat, `Incorrecto. La respuesta correcta era: ${correctAnswer}`, m);
+        }
+
+        // Limpia la respuesta almacenada en la base de datos del usuario
+        global.db.data.users[m.sender].answer = '';
     } else {
         conn.sendMessage(m.chat, { text: textos, mentions: [m.sender] }, { quoted: m });
     }
+
 
     global.db.data.users[m.sender].wait = new Date() * 1;
 };
