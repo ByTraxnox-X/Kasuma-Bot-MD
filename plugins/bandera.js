@@ -6,7 +6,7 @@ let handler = async (m, { conn, command, usedPrefix, args }) => {
     let time = global.db.data.users[m.sender].wait + 40000;
     let textos = `\t*ADIVINA LA BANDERA*\n\nPuedes responder usando el comando:\n\n${usedPrefix + command} [nombre de la bandera]`;
 
-    if (args[0] && args[0].toLowerCase() === 'jugar') {
+    if (args[0] && args[0].toLowerCase() === 'bandera') {
         try {
             const response = await fetch(apiUrl);
             const data = await response.json();
