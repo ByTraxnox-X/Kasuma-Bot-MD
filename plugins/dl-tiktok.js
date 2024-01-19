@@ -9,13 +9,12 @@ const handler = async (m, { conn, args }) => {
         const data = await response.buffer();
         
         m.react(rwait)
-        m.reply(`Titulo: ${data.title}`)
 
         const fileName = "tiktok.mp4";
 
         m.react(done)
-        
-        conn.sendFile(m.chat, data, fileName, "", m);
+                 let fileBuffer = await fetch(data.link).then(response => response.buffer());
+        conn.sendFile(m.chat, data, fileBuffer, "", m);
     } catch (error) {
         throw `Ocurrió un error al descargar el video de TikTok: ${error}`;
     }
