@@ -1,6 +1,6 @@
 let handler = async (m, { conn, text, command, usedPrefix, args }) => {
    //const pp = './src/caraosello.jpg';
-const pp = 'https://i.pinimg.com/originals/45/03/cc/4503cc4f4e1d187374a843e2f06748f1.jpg';
+const pp = 'https://flagcdn.com/gd.svg';
    let time = global.db.data.users[m.sender].wait + 40000;
    let textos = `\t*CARA O SELLO*\n\nPuedes Jugar usando los comandos:\n\n${usedPrefix + command} cara\n${usedPrefix + command} cruz`;
 
@@ -26,8 +26,11 @@ const pp = 'https://i.pinimg.com/originals/45/03/cc/4503cc4f4e1d187374a843e2f067
        global.db.data.users[m.sender].dolares -= perdida;
        const pp = './src/caraosello.jpg';
        let msg = `\tPerdiste\n*Elegiste:* ${text}\n*Resultado:* ${pvjuegocs}\n*Perdiste:* - ${perdida} $`
-       conn.sendMessage(m.chat, { image: { url: pp }, caption: msg }, { quoted: m });
-   }
+       /*conn.sendMessage(m.chat, { image: { url: pp }, caption: msg }, { quoted: m });
+   }*/
+
+       conn.sendMessage(m.chat, { image: { url: pp , mimetype: 'image/svg+xml' }, caption: msg }, { quoted: m });
+
 
    global.db.data.users[m.sender].wait = new Date() * 1;
 };
