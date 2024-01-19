@@ -4,7 +4,7 @@ let handler = async (m, { conn, command, usedPrefix, args }) => {
     const apiUrl = 'https://skizo.tech/api/game/tebakbendera?apikey=kasumabot';
 
     let time = global.db.data.users[m.sender].wait + 40000;
-    let textos = `\t*ADIVINA LA BANDERA*\n\nPuedes jugar usando el comando:\n\n${usedPrefix + command} jugar`;
+    let textos = `\t*ADIVINA LA BANDERA*\n\nPuedes responder usando el comando:\n\n${usedPrefix + command} [nombre de la bandera]`;
 
     if (args[0] && args[0].toLowerCase() === 'jugar') {
         try {
@@ -20,8 +20,9 @@ let handler = async (m, { conn, command, usedPrefix, args }) => {
             console.error(error);
             conn.reply(m.chat, 'Hubo un error al obtener la bandera. Inténtalo de nuevo más tarde.', m);
         }
-    } else if (args[0] && args[0].toLowerCase() === 'respuesta') {
-        const userAnswer = args[1] ? args.slice(1).join(' ').toLowerCase() : '';
+    } else {
+        // Verifica si el mensaje contiene el nombre de la bandera y compara con la respuesta almacenada
+        const userAnswer = args.join(' ').toLowerCase();
         const correctAnswer = global.db.data.users[m.sender].answer;
 
         if (userAnswer === correctAnswer) {
@@ -32,10 +33,7 @@ let handler = async (m, { conn, command, usedPrefix, args }) => {
 
         // Limpia la respuesta almacenada en la base de datos del usuario
         global.db.data.users[m.sender].answer = '';
-    } else {
-        conn.sendMessage(m.chat, { text: textos, mentions: [m.sender] }, { quoted: m });
     }
-
 
     global.db.data.users[m.sender].wait = new Date() * 1;
 };
