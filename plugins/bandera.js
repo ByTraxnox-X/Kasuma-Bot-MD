@@ -11,8 +11,8 @@ let handler = async (m, { conn, command, usedPrefix, args }) => {
             const response = await fetch(apiUrl);
             const data = await response.json();
 
-            // Envía la imagen de la bandera al usuario
-            conn.sendFile(m.chat, data.img, 'bandera.jpg', textos, m);
+            // Envía la imagen de la bandera al usuario con mejor calidad
+            conn.sendFile(m.chat, data.img, 'bandera.jpg', textos, m, false, { thumbnail: Buffer.alloc(0) });
 
             // Almacena la respuesta correcta en la base de datos del usuario
             global.db.data.users[m.sender].answer = data.name.toLowerCase();
