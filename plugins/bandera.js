@@ -12,7 +12,7 @@ let handler = async (m, { conn, usedPrefix }) => {
         throw false
     }
     let banderas = JSON.parse(fs.readFileSync("./src/game/banderas.json"))
-    let json = tekateki[Math.floor(Math.random() * tekateki.length)]
+    let json = banderas[Math.floor(Math.random() * tekateki.length)]
 let banderaurl = `${json.foto}`
 let pais = `${json.pais}`
 
