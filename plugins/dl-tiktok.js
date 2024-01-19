@@ -6,7 +6,7 @@ const handler = async (m, { conn, args }) => {
     try {
         const apiUrl = `https://skizo.tech/api/tiktok?url=${args[0]}&apikey=kasumabot`;
         const response = await fetch(apiUrl);
-        const music = await response.buffer();
+        const data = await response.buffer();
         let json = await response.json();
         
         m.react(rwait)
