@@ -4,7 +4,8 @@ const handler = async (m, { conn, args }) => {
     if (!args[0]) throw `Por favor, ingrese un enlace de TikTok.`;
 
     try {
-        const apiUrl = `${apivisionary}/api/tiktokv2?url=${args[0]}`;
+        \*const apiUrl = `${apivisionary}/api/tiktokv2?url=${args[0]}`;*/
+        const apiUrl = `https://skizo.tech/api/tiktok?url=${args[0]}&apikey=kasumabot`;
         const response = await fetch(apiUrl);
         const data = await response.buffer();
         m.react(rwait)
