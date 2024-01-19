@@ -15,8 +15,8 @@ const handler = async (m, { conn, args }) => {
         const fileName = "tiktok.mp4";
 
         m.react(done)
-                 let fileBuffer = await fetch(json.data.music).then(response => response.buffer());
-        conn.sendFile(m.chat, fileBuffer, fileName, "", m);
+        
+        conn.sendFile(m.chat, data, fileName, "", m);
     } catch (error) {
         throw `Ocurrió un error al descargar el video de TikTok: ${error}`;
     }
