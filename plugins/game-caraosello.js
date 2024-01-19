@@ -1,5 +1,6 @@
 let handler = async (m, { conn, text, command, usedPrefix, args }) => {
-   const pp = './src/caraosello.jpg';
+   //const pp = './src/caraosello.jpg';
+const pp = 'https://flagcdn.com/gd.svg';
    let time = global.db.data.users[m.sender].wait + 40000;
    let textos = `\t*CARA O SELLO*\n\nPuedes Jugar usando los comandos:\n\n${usedPrefix + command} cara\n${usedPrefix + command} cruz`;
 
