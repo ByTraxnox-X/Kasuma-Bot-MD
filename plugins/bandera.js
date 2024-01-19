@@ -1,59 +1,42 @@
 
-// Este sería el archivo `adivinaLaBanderaHandler.js`
+import svg2img from 'svg2img'
+import fs from 'fs'
 
-// Importamos el módulo fs para manejar archivos
-const fs = require('fs');
+let banderas = JSON.parse(fs.readFileSync('banderas.json'))
 
-let handler = async (m, { conn, usedPrefix }) => {
+let handler = async (m, { conn, usedPrefix, args }) => {
+  let paisAleatorio = banderas[Math.floor(Math.random() * banderas.length)]
+  let svgUrl = paisAleatorio.foto // URL de la imagen en formato SVG
 
-// Función para leer el archivo JSON de las banderas
-function leerBanderas() {
-    const banderasJSON = fs.readFileSync("banderas.json", "utf8");
-    return JSON.parse(banderasJSON);
+  svg2img(svgUrl, function(error, buffer) {
+    if (error) {
+      console.log('Error al convertir SVG a imagen:', error)
+      return
+    }
+    fs.writeFileSync('bandera.jpg', buffer)
+
+    conn.sendFile(m.chat, 'bandera.jpg', 'bandera.jpg', `¿Adivina a qué país pertenece esta bandera? Envía ${usedPrefix}bandera <país>`, m)
+
+    m.reply('¿Cuál es el nombre de este país?')
+
+    let respuesta = await conn.onMessage(m.chat, async (msg) => {
+      if (msg.text && msg.text.toLowerCase() == paisAleatorio.pais.toLowerCase()) {
+        conn.reply(m.chat, '¡Correcto! Has adivinado el país', msg)
+      } else {
+        conn.reply(m.chat, `Lo siento, la respuesta correcta es ${paisAleatorio.pais}`, msg)
+      }
+    })
+
+    setTimeout(() => {
+      if (!respuesta) {
+        conn.reply(m.chat, 'El tiempo ha expirado. La respuesta correcta es ' + paisAleatorio.pais)
+      }
+    }, 40000)
+  })
 }
 
-// Función para seleccionar una bandera aleatoria
-function seleccionarBandera(banderas) {
-    return banderas[Math.floor(Math.random() * banderas.length)];
-}
-
-// Función principal del juego
-function adivinaLaBandera(m, conn) {
-    const banderas = leerBanderas(); // Leer las banderas desde el archivo
-    const bandera = seleccionarBandera(banderas); // Seleccionar una bandera aleatoria
-
-    const pais = bandera.pais;
-    const foto = bandera.foto;
-
-    const timeout = 60000; // tiempo en milisegundos
-    const chatId = m.chat;
-
-    // Enviar la imagen de la bandera al chat con la descripción del juego
-    conn.sendMessage(chatId, { url: foto }, 'imageMessage', {
-        caption: `
-🚩 *Adivina la Bandera*
-
-¿De qué país es esta bandera? (${pais})
-
-*Tienes 60 segundos para responder*.
-`.trim()
-    });
-
-    // Almacenar la respuesta correcta y el temporizador
-    conn.banderas = conn.banderas || {};
-    conn.banderas[chatId] = [
-        pais,
-        setTimeout(() => {
-            if (conn.banderas[chatId]) {
-                conn.sendMessage(chatId, `Se acabó el tiempo. La respuesta correcta era ${pais}. ¡Inténtalo de nuevo!`, 'conversation');
-                delete conn.banderas[chatId];
-            }
-        }, timeout)
-    ];
-}
-}
-handler.help = ['adivina']
+handler.help = ['adivinabandera']
 handler.tags = ['game']
-handler.command = /^(adivina|adivinabandera|bandera)$/i
+handler.command = /^(adivinabandera|bandera|banderade|banderapais)$/i
 
 export default handler
