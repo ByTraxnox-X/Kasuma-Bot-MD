@@ -23,10 +23,10 @@ let handler = async (m, { conn, usedPrefix }) => {
 *Tienes ${timeout/1000} segundos para responder*.
 `.trim()
     conn.banderas[id] = [
-       await conn.sendFile(m.chat, flagURL, 'bandera.png', caption, m),
+       await conn.sendMessage(m.chat, flagURL, 'bandera.png', caption, m),
        randomFlag,
        setTimeout(async () => {
-            if (conn.banderas[id]) await conn.reply(m.chat, `Se acabó el tiempo. La respuesta correcta era ${country}. Inténtalo de nuevo.`, conn.banderas[id][0])
+            if (conn.banderas[id]) await conn.reply(m.chat, `Se acabó el tiempo. La respuesta correcta era ${pais}. Inténtalo de nuevo.`, conn.banderas[id][0])
             delete conn.banderas[id]
         }, timeout)
     ]
