@@ -51,7 +51,7 @@ function adivinaLaBandera(m, conn) {
         }, timeout)
     ];
 }
-
+}
 handler.help = ['adivina']
 handler.tags = ['game']
 handler.command = /^(adivina|adivinabandera|bandera)$/i
