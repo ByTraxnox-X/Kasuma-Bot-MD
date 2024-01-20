@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-const timeoutDuration = 110000;
+const timeoutDuration = 11000;
 const bonusPoints = 10000;
 
 const getApiData = async () => {
