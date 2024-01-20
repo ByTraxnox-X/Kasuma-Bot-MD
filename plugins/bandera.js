@@ -1,37 +1,42 @@
 import fetch from 'node-fetch'
+import fs from 'fs'
 
-let handler = async (m, { conn, command, usedPrefix, args }) => {
+let timeout = 110000
+let poin = 10000
+
+let handler = async (m, { conn, usedPrefix }) => {
+
     const apiUrl = 'https://skizo.tech/api/game/tebakbendera?apikey=kasumabot';
+    const response = await fetch(apiUrl);
+    const data = await response.json();
 
-    let time = global.db.data.users[m.sender].wait + 40000;
-    let textos = `\t*ADIVINA LA BANDERA*\n\nPuedes responder usando el comando:\n\n${usedPrefix + command} [nombre de la bandera]`;
-
-    // Verifica si el mensaje contiene el nombre de la bandera y compara con la respuesta almacenada
-    const userAnswer = args.join(' ').toLowerCase();
-    const correctAnswer = global.db.data.users[m.sender].answer;
-
-    if (userAnswer === correctAnswer) {
-        conn.reply(m.chat, '¡Correcto! Has adivinado la bandera correctamente.', m);
-    } else {
-        // Si el usuario responde incorrectamente, envía la imagen de la bandera
-        try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-
-            // Envía la imagen de la bandera al usuario
-            conn.sendFile(m.chat, data.img, 'bandera.jpg', textos, m);
-
-            // Almacena la respuesta correcta en la base de datos del usuario
-            global.db.data.users[m.sender].answer = data.name.toLowerCase();
-        } catch (error) {
-            console.error(error);
-            conn.reply(m.chat, 'Hubo un error al obtener la bandera. Inténtalo de nuevo más tarde.', m);
-        }
+    conn.tekateki = conn.tekateki ? conn.tekateki : {}
+    let id = m.chat
+    if (id in conn.tekateki) {
+        conn.reply(m.chat, 'Todavia hay un juego sin terminar!', conn.tekateki[id][0])
+        throw false
     }
+    let textos = `
+ⷮ *Adivina el nombre de la bandera de la foto*
+*Nota: Pusimos 2 minutos para poder visualizar la imagen bien ya que esta borrosa, estamos mejorando eso, en muy poco tiempo estara lista con foto hd*
 
-    global.db.data.users[m.sender].wait = new Date() * 1;
-};
 
+*Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
+*Bono:* +${poin} Exp
+
+Recuerda responder con el nombre completo!
+`.trim()
+    conn.tekateki[id] = [
+       
+       conn.sendFile(m.chat, data.img, 'bandera.jpg', textos, m);
+       
+        json, poin,
+        setTimeout(async () => {
+            if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!, intenta resolver de nuevo.`, conn.tekateki[id][0])
+            delete conn.tekateki[id]
+        }, timeout)
+    ]
+}
 
 handler.help = ['adivinabandera']
 handler.tags = ['game']
