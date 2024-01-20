@@ -23,21 +23,6 @@ conn.tekateki = conn.tekateki ? conn.tekateki : {}
 
 Recuerda responder con el nombre completo!`.trim()
 
-  /*  if (args[0] && args[0].toLowerCase() === 'jugar') {
-        try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-
-            // Envía la imagen de la bandera al usuario
-            conn.sendFile(m.chat, data.img, 'bandera.jpg', textos, m);
-
-            // Almacena la respuesta correcta en la base de datos del usuario
-            global.db.data.users[m.sender].answer = data.name.toLowerCase();
-        } catch (error) {
-            console.error(error);
-            conn.reply(m.chat, 'Hubo un error al obtener la bandera. Inténtalo de nuevo más tarde.', m);
-        }
-    } */
     
     conn.tekateki[id] = [
     
