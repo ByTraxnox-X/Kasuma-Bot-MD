@@ -8,7 +8,7 @@ const handler = async (m, { text, mentions }) => {
 
     if (!validChoices.includes(userChoice)) throw 'Elija piedra, papel o tijera';
 
-    const opponent = mentions[0];
+    const opponent = mentions?.[0];
     if (!opponent) throw 'Menciona a otro usuario para jugar';
 
     m.reply(`@${opponent.id}, ${m.sender} quiere jugar a piedra, papel o tijera contigo. ¿Aceptas? (responde con .acepto o .rechazo)`);
@@ -16,8 +16,9 @@ const handler = async (m, { text, mentions }) => {
 };
 
 handler.acceptChallenge = async (m) => {
-    if (activeGames[m.sender]) {
-        const { user, opponent } = activeGames[m.sender];
+    const game = activeGames[m.sender];
+    if (game) {
+        const { user, opponent } = game;
 
         m.reply(`¡Perfecto! ${user} y ${opponent}, ambos jugadores, elijan piedra, papel o tijera.`);
         m.send(`¡Perfecto! ${user} y ${opponent}, ambos jugadores, elijan piedra, papel o tijera.`);
