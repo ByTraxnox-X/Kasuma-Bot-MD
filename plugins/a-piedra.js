@@ -11,7 +11,7 @@ const lanzarPiedra = (intensidad) => {
     return fuerza;
 }
 
-const pvpLanzarPiedra = (player1, player2, conn) => {
+const pvpLanzarPiedra = (player1, player2, m) => {
     let jugadorActual = player1;
     let jugadorSiguiente = player2;
   
@@ -24,7 +24,7 @@ const pvpLanzarPiedra = (player1, player2, conn) => {
       let fuerzaJugadorActual = lanzarPiedra(Math.random());
       resultado[jugadorActual] += fuerzaJugadorActual;
 
-      conn.sendMessage(jugadorActual, `Has lanzado la piedra con una fuerza de ${fuerzaJugadorActual.toFixed(2)}`);
+      m.reply(jugadorActual, `Has lanzado la piedra con una fuerza de ${fuerzaJugadorActual.toFixed(2)}`);
       
       // Intercambiar jugadores para el siguiente turno
       let temp = jugadorActual;
@@ -36,14 +36,14 @@ const pvpLanzarPiedra = (player1, player2, conn) => {
     const recompensaGanador = otorgarRecompensa();
     const recompensaPerdedor = otorgarRecompensa();
   
-    conn.sendMessage(player1, `Resultados del PVP: Ganador: ${ganador}, Recompensa Ganador: ${recompensaGanador.tipo === 'exp' ? recompensaGanador.cantidad + ' de experiencia' : '$' + recompensaGanador.cantidad}, Recompensa Perdedor: ${recompensaPerdedor.tipo === 'exp' ? recompensaPerdedor.cantidad + ' de experiencia' : '$' + recompensaPerdedor.cantidad}`);
-    conn.sendMessage(player2, `Resultados del PVP: Ganador: ${ganador}, Recompensa Ganador: ${recompensaGanador.tipo === 'exp' ? recompensaGanador.cantidad + ' de experiencia' : '$' + recompensaGanador.cantidad}, Recompensa Perdedor: ${recompensaPerdedor.tipo === 'exp' ? recompensaPerdedor.cantidad + ' de experiencia' : '$' + recompensaPerdedor.cantidad}`);
+    m.reply(player1, `Resultados del PVP: Ganador: ${ganador}, Recompensa Ganador: ${recompensaGanador.tipo === 'exp' ? recompensaGanador.cantidad + ' de experiencia' : '$' + recompensaGanador.cantidad}, Recompensa Perdedor: ${recompensaPerdedor.tipo === 'exp' ? recompensaPerdedor.cantidad + ' de experiencia' : '$' + recompensaPerdedor.cantidad}`);
+    m.reply(player2, `Resultados del PVP: Ganador: ${ganador}, Recompensa Ganador: ${recompensaGanador.tipo === 'exp' ? recompensaGanador.cantidad + ' de experiencia' : '$' + recompensaGanador.cantidad}, Recompensa Perdedor: ${recompensaPerdedor.tipo === 'exp' ? recompensaPerdedor.cantidad + ' de experiencia' : '$' + recompensaPerdedor.cantidad}`);
 };
 
-const handler = async (message, conn) => {
+const handler = async (message, m) => {
     const player1 = message.sender;
     const player2 = 'player2'; // Asignar al segundo jugador
-    pvpLanzarPiedra(player1, player2, conn);
+    pvpLanzarPiedra(player1, player2, m);
 };
 
 handler.command = 'lanzapiedra';
