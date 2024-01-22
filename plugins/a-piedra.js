@@ -18,19 +18,20 @@ const romperEnvase = (users) => {
         const recompensa = otorgarRecompensa();
         if (recompensa.tipo === 'exp') {
             users.exp += recompensa.cantidad;
-            return `¡Rompió el envase de vidrio! ¡Ganaste! Has recibido ${recompensa.cantidad} de experiencia 💥🎉`;
+            return { message: `¡Rompió el envase de vidrio! ¡Ganaste! Has recibido ${recompensa.cantidad} de experiencia 💥🎉`, user: users };
         } else {
             users.dolares += recompensa.cantidad;
-            return `¡Rompió el envase de vidrio! ¡Ganaste! Has recibido ${recompensa.cantidad} dólares 💰💥🎉`;
+            return { message: `¡Rompió el envase de vidrio! ¡Ganaste! Has recibido $${recompensa.cantidad} 💰💥🎉`, user: users };
         }
     } else {
-        return '¡No rompió el envase de vidrio, perdiste! 😔';
+        return { message: '¡No rompió el envase de vidrio, perdiste! 😔', user: users };
     }
 }
 
 const handler = async (message, users) => {
     const result = romperEnvase(users);
-    message.reply(result);
+    message.reply(result.message);
+    return result.user;
 };
 
 handler.command = 'lanzapiedra';
