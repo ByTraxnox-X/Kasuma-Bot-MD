@@ -1,18 +1,28 @@
 const activeGames = {};
 
-const handler = async (m, { text, mentions }) => {
-    if (!text) throw 'Elija piedra, papel o tijera';
+const handler = async (m, { text, args }) => {
+    if (!text) throw 'Selecciona un modo de juego: 1vs1, duelo';
+
+    const modes = ['1vs1', 'duelo'];
+    const mode = args[0]?.toLowerCase();
+
+    if (!modes.includes(mode)) throw 'Modo de juego no válido. Selecciona 1vs1 o duelo';
+
+    if (mode === 'duelo') {
+        m.reply('Usa el comando `.ppt @usuario` para desafiar a otro jugador.');
+        return;
+    }
 
     const validChoices = ['piedra', 'papel', 'tijera'];
     const userChoice = text.toLowerCase();
 
-    if (!validChoices.includes(userChoice)) throw 'Elija piedra, papel o tijera';
+    if (!validChoices.includes(userChoice)) throw 'Elije piedra, papel o tijera';
 
-    const opponent = mentions?.[0];
+    const opponent = args[1]?.replace('@', '');
     if (!opponent) throw 'Menciona a otro usuario para jugar';
 
-    m.reply(`@${opponent.id}, ${m.sender} quiere jugar a piedra, papel o tijera contigo. ¿Aceptas? (responde con .acepto o .rechazo)`);
-    activeGames[m.sender] = { user: m.sender, opponent: opponent.id };
+    m.reply(`@${opponent}, ${m.sender} quiere jugar a piedra, papel o tijera contigo. ¿Aceptas? (responde con .acepto o .rechazo)`);
+    activeGames[m.sender] = { user: m.sender, opponent };
 };
 
 handler.acceptChallenge = async (m) => {
@@ -43,7 +53,7 @@ handler.playGame = async (m) => {
         const validChoices = ['piedra', 'papel', 'tijera'];
         const userChoice = m.text.toLowerCase();
 
-        if (!validChoices.includes(userChoice)) throw 'Elija piedra, papel o tijera';
+        if (!validChoices.includes(userChoice)) throw 'Elije piedra, papel o tijera';
 
         const botChoice = validChoices[Math.floor(Math.random() * validChoices.length)];
 
@@ -61,7 +71,8 @@ handler.playGame = async (m) => {
 
 handler.help = [
     'ppt <piedra/papel/tijera>',
-    '.ppt @usuario - Iniciar un juego de piedra, papel o tijera con otro usuario',
+    '.ppt duelo - Iniciar un juego de duelo',
+    '.ppt 1vs1 @usuario - Iniciar un juego 1 vs 1 con otro usuario',
     '.acepto - Aceptar un desafío pendiente',
     '.rechazo - Rechazar un desafío pendiente',
     '.jugar <piedra/papel/tijera> - Jugar una ronda del juego activo'
