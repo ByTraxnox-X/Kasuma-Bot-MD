@@ -1,8 +1,8 @@
 
 const otorgarRecompensa = () => {
-    const exp = Math.floor(Math.random() * 1001); // Valor aleatorio entre 0 y 1000
-    const dolares = Math.floor(Math.random() * 16); // Valor aleatorio entre 0 y 15
-    const moneda = Math.random() < 0.7 ? 'exp' : 'dolares'; // 70% de probabilidad de recibir experiencia
+    const exp = Math.floor(Math.random() * 1001); 
+    const dolares = Math.floor(Math.random() * 16); 
+    const moneda = Math.random() < 0.7 ? 'exp' : 'dolares'; 
     return { tipo: moneda, cantidad: moneda === 'exp' ? exp : dolares };
 }
 
@@ -11,7 +11,7 @@ const lanzarPiedra = (intensidad) => {
     return fuerza;
 }
 
-const pvpLanzarPiedra = (player1, player2, m) => {
+const pvpLanzarPiedra = (player1, player2, conn, chatId) => {
     let jugadorActual = player1;
     let jugadorSiguiente = player2;
   
@@ -24,7 +24,7 @@ const pvpLanzarPiedra = (player1, player2, m) => {
       let fuerzaJugadorActual = lanzarPiedra(Math.random());
       resultado[jugadorActual] += fuerzaJugadorActual;
 
-      m.reply(jugadorActual, `Has lanzado la piedra con una fuerza de ${fuerzaJugadorActual.toFixed(2)}`);
+      conn.reply(chatId, `${jugadorActual}, has lanzado la piedra con una fuerza de ${fuerzaJugadorActual.toFixed(2)}`);
       
       // Intercambiar jugadores para el siguiente turno
       let temp = jugadorActual;
@@ -36,14 +36,14 @@ const pvpLanzarPiedra = (player1, player2, m) => {
     const recompensaGanador = otorgarRecompensa();
     const recompensaPerdedor = otorgarRecompensa();
   
-    m.reply(player1, `Resultados del PVP: Ganador: ${ganador}, Recompensa Ganador: ${recompensaGanador.tipo === 'exp' ? recompensaGanador.cantidad + ' de experiencia' : '$' + recompensaGanador.cantidad}, Recompensa Perdedor: ${recompensaPerdedor.tipo === 'exp' ? recompensaPerdedor.cantidad + ' de experiencia' : '$' + recompensaPerdedor.cantidad}`);
-    m.reply(player2, `Resultados del PVP: Ganador: ${ganador}, Recompensa Ganador: ${recompensaGanador.tipo === 'exp' ? recompensaGanador.cantidad + ' de experiencia' : '$' + recompensaGanador.cantidad}, Recompensa Perdedor: ${recompensaPerdedor.tipo === 'exp' ? recompensaPerdedor.cantidad + ' de experiencia' : '$' + recompensaPerdedor.cantidad}`);
+    conn.reply(chatId, `Resultados del PVP: Ganador: ${ganador}, Recompensa Ganador: ${recompensaGanador.tipo === 'exp' ? recompensaGanador.cantidad + ' de experiencia' : '$' + recompensaGanador.cantidad}, Recompensa Perdedor: ${recompensaPerdedor.tipo === 'exp' ? recompensaPerdedor.cantidad + ' de experiencia' : '$' + recompensaPerdedor.cantidad}`);
 };
 
-const handler = async (message, m) => {
+const handler = async (message, conn, m) => {
     const player1 = message.sender;
     const player2 = 'player2'; // Asignar al segundo jugador
-    pvpLanzarPiedra(player1, player2, m);
+    const chatId = message.chatId; // Obtener el ID del chat
+    pvpLanzarPiedra(player1, player2, conn, chatId);
 };
 
 handler.command = 'lanzapiedra';
