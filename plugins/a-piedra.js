@@ -16,11 +16,11 @@ const lanzarPiedra = (intensidad) => {
 const romperEnvase = () => {
     const intensidad = Math.random(); // La intensidad del lanzamiento varía
     const fuerza = lanzarPiedra(intensidad);
-    if (fuerza > 5) {
+    if (fuerza > 4) { // 60% de probabilidad de ganar
         const recompensa = otorgarRecompensa();
-        return `¡Rompió el envase de vidrio! ¡Ganaste! Has recibido ${recompensa} ${recompensa === 'exp' ? "de experiencia" : "dólares"}`;
+        return `¡Rompió el envase de vidrio! ¡Ganaste! Has recibido ${recompensa} ${recompensa === 'exp' ? "de experiencia" : "dólares"} 💥🎉`;
     } else {
-        return 'No rompió el envase de vidrio, perdiste';
+        return '¡No rompió el envase de vidrio, perdiste! 😔';
     }
 }
 
