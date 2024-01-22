@@ -14,11 +14,11 @@ const handler = async (m, { text, args }) => {
     }
 
     const validChoices = ['piedra', 'papel', 'tijera'];
-    const userChoice = text.toLowerCase();
+    const userChoice = args[1]?.toLowerCase();
 
     if (!validChoices.includes(userChoice)) throw 'Elije piedra, papel o tijera';
 
-    const opponent = args[1]?.replace('@', '');
+    const opponent = args[2]?.replace('@', '');
     if (!opponent) throw 'Menciona a otro usuario para jugar';
 
     m.reply(`@${opponent}, ${m.sender} te desafía a un juego 1vs1 de piedra, papel o tijera. ¿Aceptas? (responde con .acepto o .rechazo)`);
