@@ -1,11 +1,9 @@
 
 const otorgarRecompensa = () => {
-    const recompensas = {
-        exp: 250,
-        dolares: 100
-    };
-    const moneda = Math.random() < 0.5 ? 'exp' : 'dolares'; // Escoger aleatoriamente entre exp y dolares
-    return recompensas[moneda];
+    const exp = Math.floor(Math.random() * 1001); // Valor aleatorio entre 0 y 1000
+    const dolares = Math.floor(Math.random() * 16); // Valor aleatorio entre 0 y 15
+    const moneda = Math.random() < 0.7 ? 'exp' : 'dolares'; // 70% de probabilidad de recibir experiencia
+    return { tipo: moneda, cantidad: moneda === 'exp' ? exp : dolares };
 }
 
 const lanzarPiedra = (intensidad) => {
@@ -13,19 +11,25 @@ const lanzarPiedra = (intensidad) => {
     return fuerza;
 }
 
-const romperEnvase = () => {
+const romperEnvase = (users) => {
     const intensidad = Math.random(); // La intensidad del lanzamiento varía
     const fuerza = lanzarPiedra(intensidad);
-    if (fuerza > 4) { // 60% de probabilidad de ganar
+    if (fuerza > 4) { // 70% de probabilidad de ganar
         const recompensa = otorgarRecompensa();
-        return `¡Rompió el envase de vidrio! ¡Ganaste! Has recibido ${recompensa} ${recompensa === 'exp' ? "de experiencia" : "dólares"} 💥🎉`;
+        if (recompensa.tipo === 'exp') {
+            users.exp += recompensa.cantidad;
+            return `¡Rompió el envase de vidrio! ¡Ganaste! Has recibido ${recompensa.cantidad} de experiencia 💥🎉`;
+        } else {
+            users.dolares += recompensa.cantidad;
+            return `¡Rompió el envase de vidrio! ¡Ganaste! Has recibido ${recompensa.cantidad} dólares 💰💥🎉`;
+        }
     } else {
         return '¡No rompió el envase de vidrio, perdiste! 😔';
     }
 }
 
-const handler = async (message) => {
-    const result = romperEnvase();
+const handler = async (message, users) => {
+    const result = romperEnvase(users);
     message.reply(result);
 };
 
