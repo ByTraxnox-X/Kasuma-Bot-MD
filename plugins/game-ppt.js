@@ -1,4 +1,4 @@
-const activeGames = {};
+const activeChallenges = {};
 
 const handler = async (m, { text, args }) => {
     if (!text) throw 'Selecciona un modo de juego: 1vs1, duelo';
@@ -21,49 +21,51 @@ const handler = async (m, { text, args }) => {
     const opponent = args[1]?.replace('@', '');
     if (!opponent) throw 'Menciona a otro usuario para jugar';
 
-    m.reply(`@${opponent}, ${m.sender} quiere jugar a piedra, papel o tijera contigo. ¿Aceptas? (responde con .acepto o .rechazo)`);
-    activeGames[m.sender] = { user: m.sender, opponent };
+    m.reply(`@${opponent}, ${m.sender} te desafía a un juego 1vs1 de piedra, papel o tijera. ¿Aceptas? (responde con .acepto o .rechazo)`);
+    activeChallenges[m.sender] = { user: m.sender, opponent, userChoice };
 };
 
 handler.acceptChallenge = async (m) => {
-    const game = activeGames[m.sender];
-    if (game) {
-        const { user, opponent } = game;
+    const challenge = activeChallenges[m.sender];
+    if (challenge) {
+        const { user, opponent, userChoice } = challenge;
 
-        m.reply(`¡Perfecto! ${user} y ${opponent}, ambos jugadores, elijan piedra, papel o tijera.`);
-        m.send(`¡Perfecto! ${user} y ${opponent}, ambos jugadores, elijan piedra, papel o tijera.`);
+        m.reply(`¡Perfecto! Ambos jugadores, elijan piedra, papel o tijera.`);
+        m.send(`@${opponent}, ${user} ha aceptado tu desafío. Ambos jugadores, elijan piedra, papel o tijera.`);
+
+        // Puedes agregar más detalles según tus necesidades aquí.
+
+        delete activeChallenges[m.sender];
     } else {
         throw 'No tienes un desafío pendiente.';
     }
 };
 
 handler.rejectChallenge = async (m) => {
-    if (activeGames[m.sender]) {
+    if (activeChallenges[m.sender]) {
         m.reply(`¡Oh, qué lástima! El desafío ha sido rechazado.`);
-        delete activeGames[m.sender];
+        delete activeChallenges[m.sender];
     } else {
         throw 'No tienes un desafío pendiente.';
     }
 };
 
 handler.playGame = async (m) => {
-    if (activeGames[m.sender]) {
-        const { user, opponent } = activeGames[m.sender];
+    if (activeChallenges[m.sender]) {
+        const { user, opponent, userChoice } = activeChallenges[m.sender];
 
         const validChoices = ['piedra', 'papel', 'tijera'];
-        const userChoice = m.text.toLowerCase();
+        const opponentChoice = m.text.toLowerCase();
 
-        if (!validChoices.includes(userChoice)) throw 'Elije piedra, papel o tijera';
-
-        const botChoice = validChoices[Math.floor(Math.random() * validChoices.length)];
+        if (!validChoices.includes(opponentChoice)) throw 'Elije piedra, papel o tijera';
 
         // Lógica para determinar el resultado del juego
-        const result = userChoice === botChoice ? '*Empate*' : (userChoice === 'piedra' && botChoice === 'tijera') || (userChoice === 'tijera' && botChoice === 'papel') || (userChoice === 'papel' && botChoice === 'piedra') ? `*@${user} ganó*` : `*@${opponent} ganó*`;
+        const result = userChoice === opponentChoice ? '*Empate*' : (userChoice === 'piedra' && opponentChoice === 'tijera') || (userChoice === 'tijera' && opponentChoice === 'papel') || (userChoice === 'papel' && opponentChoice === 'piedra') ? `*@${user} ganó*` : `*@${opponent} ganó*`;
 
-        m.reply(`${result}\n${user}: ${userChoice}\n${opponent}: ${botChoice}`);
-        m.send(`${result}\n${user}: ${userChoice}\n${opponent}: ${botChoice}`);
+        m.reply(`${result}\n${user}: ${userChoice}\n${opponent}: ${opponentChoice}`);
+        m.send(`${result}\n${user}: ${userChoice}\n${opponent}: ${opponentChoice}`);
 
-        delete activeGames[m.sender];
+        delete activeChallenges[m.sender];
     } else {
         throw 'No hay un juego en curso.';
     }
@@ -72,7 +74,7 @@ handler.playGame = async (m) => {
 handler.help = [
     'ppt <piedra/papel/tijera>',
     '.ppt duelo - Iniciar un juego de duelo',
-    '.ppt 1vs1 @usuario - Iniciar un juego 1 vs 1 con otro usuario',
+    '.ppt 1vs1 @usuario - Desafiar a otro usuario a un juego 1 vs 1',
     '.acepto - Aceptar un desafío pendiente',
     '.rechazo - Rechazar un desafío pendiente',
     '.jugar <piedra/papel/tijera> - Jugar una ronda del juego activo'
