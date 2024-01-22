@@ -1,4 +1,9 @@
 
+// Función para seleccionar aleatoriamente un valor de un array
+const pickRandom = (array) => {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
 const otorgarRecompensa = () => {
     const exp = Math.floor(Math.random() * 1001); // Valor aleatorio entre 0 y 1000
     const dolares = Math.floor(Math.random() * 16); // Valor aleatorio entre 0 y 15
@@ -31,7 +36,8 @@ const romperEnvase = (users) => {
 const handler = async (message, users) => {
     const result = romperEnvase(users);
     message.reply(result.message);
-    return result.user;
+    global.db.data.users[message.sender].dolares += result.user.dolares;
+    global.db.data.users[message.sender].exp += result.user.exp;
 };
 
 handler.command = 'lanzapiedra';
