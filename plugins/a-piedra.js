@@ -11,30 +11,42 @@ const lanzarPiedra = (intensidad) => {
     return fuerza;
 }
 
-const romperEnvase = (userId) => {
-    const users = global.db.data.users[userId];
-    const intensidad = Math.random(); // La intensidad del lanzamiento varía
-    const fuerza = lanzarPiedra(intensidad);
-    if (fuerza > 4) { // 70% de probabilidad de ganar
-        const recompensa = otorgarRecompensa();
-        if (recompensa.tipo === 'exp') {
-            users.exp += recompensa.cantidad;
-            return { message: `¡Rompió el envase de vidrio! ¡Ganaste! Has recibido ${recompensa.cantidad} de experiencia 💥🎉` };
-        } else {
-            users.dolares += recompensa.cantidad;
-            return { message: `¡Rompió el envase de vidrio! ¡Ganaste! Has recibido $${recompensa.cantidad} 💰💥🎉` };
-        }
-    } else {
-        return { message: '¡No rompió el envase de vidrio, perdiste! 😔' };
-    }
-}
+const pvpLanzarPiedra = (player1, player2, conn) => {
+    let jugadorActual = player1;
+    let jugadorSiguiente = player2;
+  
+    let resultado = {
+      [player1]: 0,
+      [player2]: 0
+    };
+    
+    for (let i = 1; i <= 10; i++) {
+      let fuerzaJugadorActual = lanzarPiedra(Math.random());
+      resultado[jugadorActual] += fuerzaJugadorActual;
 
-const handler = async (message) => {
-    const result = romperEnvase(message.sender);
-    message.reply(result.message);
+      conn.sendMessage(jugadorActual, `Has lanzado la piedra con una fuerza de ${fuerzaJugadorActual.toFixed(2)}`);
+      
+      // Intercambiar jugadores para el siguiente turno
+      let temp = jugadorActual;
+      jugadorActual = jugadorSiguiente;
+      jugadorSiguiente = temp;
+    }
+    
+    const ganador = resultado[player1] > resultado[player2] ? player1 : resultado[player2] > resultado[player1] ? player2 : 'Empate';
+    const recompensaGanador = otorgarRecompensa();
+    const recompensaPerdedor = otorgarRecompensa();
+  
+    conn.sendMessage(player1, `Resultados del PVP: Ganador: ${ganador}, Recompensa Ganador: ${recompensaGanador.tipo === 'exp' ? recompensaGanador.cantidad + ' de experiencia' : '$' + recompensaGanador.cantidad}, Recompensa Perdedor: ${recompensaPerdedor.tipo === 'exp' ? recompensaPerdedor.cantidad + ' de experiencia' : '$' + recompensaPerdedor.cantidad}`);
+    conn.sendMessage(player2, `Resultados del PVP: Ganador: ${ganador}, Recompensa Ganador: ${recompensaGanador.tipo === 'exp' ? recompensaGanador.cantidad + ' de experiencia' : '$' + recompensaGanador.cantidad}, Recompensa Perdedor: ${recompensaPerdedor.tipo === 'exp' ? recompensaPerdedor.cantidad + ' de experiencia' : '$' + recompensaPerdedor.cantidad}`);
+};
+
+const handler = async (message, conn) => {
+    const player1 = message.sender;
+    const player2 = 'player2'; // Asignar al segundo jugador
+    pvpLanzarPiedra(player1, player2, conn);
 };
 
 handler.command = 'lanzapiedra';
-handler.desc = 'Juego de lanzar piedra para romper un envase de vidrio';
+handler.desc = 'Juego de lanzar piedra en un duelo PvP';
 handler.register = true;
 export default handler;
