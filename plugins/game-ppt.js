@@ -1,40 +1,26 @@
 const activeGames = {};
 
-const handler = async (m, { text, args, mentions }) => {
+const handler = async (m, { text, mentions }) => {
     if (!text) throw 'Elija piedra, papel o tijera';
 
-    const gameModes = ['1vs1', 'duelo'];
-    const mode = args[0]?.toLowerCase();
-
-    if (!mode || !gameModes.includes(mode)) throw 'Seleccione un modo de juego válido: 1vs1, duelo';
-
+    const validChoices = ['piedra', 'papel', 'tijera'];
     const userChoice = text.toLowerCase();
 
-    if (!['piedra', 'papel', 'tijera'].includes(userChoice)) throw 'Elija piedra, papel o tijera';
+    if (!validChoices.includes(userChoice)) throw 'Elija piedra, papel o tijera';
 
-    if (mode === '1vs1' || mode === 'duelo') {
-        const opponent = mentions[0];
-        if (!opponent) throw 'Menciona a otro usuario para jugar';
+    const opponent = mentions[0];
+    if (!opponent) throw 'Menciona a otro usuario para jugar';
 
-        m.reply(`@${opponent.id}, ${m.sender} quiere jugar a piedra, papel o tijera contigo. ¿Aceptas? (responde con .acepto o .rechazo)`);
-        activeGames[m.sender] = { mode, userChoice, opponent: opponent.id };
-        return;
-    }
-
-    // Resto del código para otros modos...
+    m.reply(`@${opponent.id}, ${m.sender} quiere jugar a piedra, papel o tijera contigo. ¿Aceptas? (responde con .acepto o .rechazo)`);
+    activeGames[m.sender] = { user: m.sender, opponent: opponent.id };
 };
 
 handler.acceptChallenge = async (m) => {
     if (activeGames[m.sender]) {
-        const { mode, userChoice, opponent } = activeGames[m.sender];
+        const { user, opponent } = activeGames[m.sender];
 
-        if (mode === '1vs1' || mode === 'duelo') {
-            m.reply(`¡Perfecto! Ambos jugadores, elijan piedra, papel o tijera.`);
-            m.send(`@${opponent.id}, ${m.sender} ha aceptado el desafío. Ambos jugadores, elijan piedra, papel o tijera.`);
-            return;
-        }
-
-        // Resto del código para otros modos...
+        m.reply(`¡Perfecto! ${user} y ${opponent}, ambos jugadores, elijan piedra, papel o tijera.`);
+        m.send(`¡Perfecto! ${user} y ${opponent}, ambos jugadores, elijan piedra, papel o tijera.`);
     } else {
         throw 'No tienes un desafío pendiente.';
     }
@@ -51,20 +37,20 @@ handler.rejectChallenge = async (m) => {
 
 handler.playGame = async (m) => {
     if (activeGames[m.sender]) {
-        const { mode, userChoice, opponent } = activeGames[m.sender];
+        const { user, opponent } = activeGames[m.sender];
 
-        if (mode === '1vs1' || mode === 'duelo') {
-            const botChoice = ['piedra', 'papel', 'tijera'][Math.floor(Math.random() * 3)];
+        const validChoices = ['piedra', 'papel', 'tijera'];
+        const userChoice = m.text.toLowerCase();
 
-            // Lógica específica para el PvP
-            const result = userChoice === botChoice ? '*Empate*' : (userChoice === 'piedra' && botChoice === 'tijera') || (userChoice === 'tijera' && botChoice === 'papel') || (userChoice === 'papel' && botChoice === 'piedra') ? `*@${m.sender} ganó*` : `*@${opponent.id} ganó*`;
-            const xpChange = result === '*Empate*' ? '(±)100 XP para ambos' : result.includes('ganó') ? '*+300 XP*' : '*-300 XP*';
+        if (!validChoices.includes(userChoice)) throw 'Elija piedra, papel o tijera';
 
-            m.reply(`${result}\n${m.sender}: ${userChoice}\n${opponent.id}: ${botChoice}\n\nPuntos ${xpChange}`);
-            m.send(`${result}\n${m.sender}: ${userChoice}\n${opponent.id}: ${botChoice}\n\nPuntos ${xpChange}`);
-        }
+        const botChoice = validChoices[Math.floor(Math.random() * validChoices.length)];
 
-        // Resto del código para otros modos...
+        // Lógica para determinar el resultado del juego
+        const result = userChoice === botChoice ? '*Empate*' : (userChoice === 'piedra' && botChoice === 'tijera') || (userChoice === 'tijera' && botChoice === 'papel') || (userChoice === 'papel' && botChoice === 'piedra') ? `*@${user} ganó*` : `*@${opponent} ganó*`;
+
+        m.reply(`${result}\n${user}: ${userChoice}\n${opponent}: ${botChoice}`);
+        m.send(`${result}\n${user}: ${userChoice}\n${opponent}: ${botChoice}`);
 
         delete activeGames[m.sender];
     } else {
@@ -73,12 +59,11 @@ handler.playGame = async (m) => {
 };
 
 handler.help = [
-    'ppt <piedra/papel/tijera> [modo: 1vs1, duelo]',
-    '.ppt @usuario 1vs1 - Iniciar un desafío de 1 vs 1 con otro usuario',
-    '.ppt @usuario duelo - Retar a otro usuario a un duelo',
+    'ppt <piedra/papel/tijera>',
+    '.ppt @usuario - Iniciar un juego de piedra, papel o tijera con otro usuario',
     '.acepto - Aceptar un desafío pendiente',
     '.rechazo - Rechazar un desafío pendiente',
-    '.jugar - Jugar una ronda del juego activo'
+    '.jugar <piedra/papel/tijera> - Jugar una ronda del juego activo'
 ];
 handler.tags = ['game'];
 handler.command = ['ppt', 'acepto', 'rechazo', 'jugar'];
