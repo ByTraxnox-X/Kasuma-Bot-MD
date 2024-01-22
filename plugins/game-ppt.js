@@ -1,49 +1,86 @@
-const handler = async (m, { text, args }) => {
+const activeGames = {};
+
+const handler = async (m, { text, args, mentions }) => {
     if (!text) throw 'Elija piedra, papel o tijera';
 
-    const gameModes = ['1vs1', '2vs2', '1vs2'];
+    const gameModes = ['1vs1', 'duelo'];
     const mode = args[0]?.toLowerCase();
 
-    if (!mode || !gameModes.includes(mode)) throw 'Seleccione un modo de juego válido: 1vs1, 2vs2, 1vs2';
+    if (!mode || !gameModes.includes(mode)) throw 'Seleccione un modo de juego válido: 1vs1, duelo';
 
-    const o = ['piedra', 'papel', 'tijera'];
     const userChoice = text.toLowerCase();
-    const botChoice = o[Math.floor(Math.random() * o.length)];
 
-    if (!o.includes(userChoice)) throw 'Elija piedra, papel o tijera';
+    if (!['piedra', 'papel', 'tijera'].includes(userChoice)) throw 'Elija piedra, papel o tijera';
 
-    let r, p;
+    if (mode === '1vs1' || mode === 'duelo') {
+        const opponent = mentions[0];
+        if (!opponent) throw 'Menciona a otro usuario para jugar';
 
-    if (mode === '1vs1') {
-        // Lógica para 1 vs 1
-        r = userChoice === botChoice ? '*Empate*' : (userChoice === 'piedra' && botChoice === 'tijera') || (userChoice === 'tijera' && botChoice === 'papel') || (userChoice === 'papel' && botChoice === 'piedra') ? '*Ganaste*' : '*Perdiste*';
-        p = r === '*Empate*' ? '(±)100 XP' : r === '*Ganaste*' ? '*+300 XP*' : '*-300 XP*';
-    } else if (mode === '2vs2') {
-        // Lógica para 2 vs 2
-        const team1 = ['piedra', 'papel', 'tijera'];
-        const team2 = ['piedra', 'papel', 'tijera'];
-
-        const result1 = team1.includes(userChoice) ? userChoice : 'error';
-        const result2 = team2[Math.floor(Math.random() * team2.length)];
-
-        r = result1 === result2 ? '*Empate*' : (result1 === 'piedra' && result2 === 'tijera') || (result1 === 'tijera' && result2 === 'papel') || (result1 === 'papel' && result2 === 'piedra') ? '*Ganaron*' : '*Perdieron*';
-        p = r === '*Empate*' ? '(±)100 XP para ambos equipos' : r === '*Ganaron*' ? '*+300 XP* para equipo 1*' : '*+300 XP* para equipo 2*';
-
-    } else if (mode === '1vs2') {
-        // Lógica para 1 vs 2
-        const playerResult = userChoice;
-        const teamResult = ['piedra', 'papel', 'tijera'][Math.floor(Math.random() * 3)];
-
-        r = playerResult === teamResult ? '*Ganaste*' : '*Perdiste*';
-        p = r === '*Ganaste*' ? '*+300 XP*' : '*-300 XP*';
+        m.reply(`@${opponent.id}, ${m.sender} quiere jugar a piedra, papel o tijera contigo. ¿Aceptas? (responde con .acepto o .rechazo)`);
+        activeGames[m.sender] = { mode, userChoice, opponent: opponent.id };
+        return;
     }
 
-    global.db.data.users[m.sender].exp += r === '*Empate*' ? 100 : r === '*Ganaste*' ? 300 : -300;
-    m.reply(`${r}\nTú: ${userChoice}\nKasuma: ${botChoice}\n\nPuntos ${p}`);
+    // Resto del código para otros modos...
 };
 
-handler.help = ['ppt <piedra/papel/tijera> [modo: 1vs1, 2vs2, 1vs2]'];
+handler.acceptChallenge = async (m) => {
+    if (activeGames[m.sender]) {
+        const { mode, userChoice, opponent } = activeGames[m.sender];
+
+        if (mode === '1vs1' || mode === 'duelo') {
+            m.reply(`¡Perfecto! Ambos jugadores, elijan piedra, papel o tijera.`);
+            m.send(`@${opponent.id}, ${m.sender} ha aceptado el desafío. Ambos jugadores, elijan piedra, papel o tijera.`);
+            return;
+        }
+
+        // Resto del código para otros modos...
+    } else {
+        throw 'No tienes un desafío pendiente.';
+    }
+};
+
+handler.rejectChallenge = async (m) => {
+    if (activeGames[m.sender]) {
+        m.reply(`¡Oh, qué lástima! El desafío ha sido rechazado.`);
+        delete activeGames[m.sender];
+    } else {
+        throw 'No tienes un desafío pendiente.';
+    }
+};
+
+handler.playGame = async (m) => {
+    if (activeGames[m.sender]) {
+        const { mode, userChoice, opponent } = activeGames[m.sender];
+
+        if (mode === '1vs1' || mode === 'duelo') {
+            const botChoice = ['piedra', 'papel', 'tijera'][Math.floor(Math.random() * 3)];
+
+            // Lógica específica para el PvP
+            const result = userChoice === botChoice ? '*Empate*' : (userChoice === 'piedra' && botChoice === 'tijera') || (userChoice === 'tijera' && botChoice === 'papel') || (userChoice === 'papel' && botChoice === 'piedra') ? `*@${m.sender} ganó*` : `*@${opponent.id} ganó*`;
+            const xpChange = result === '*Empate*' ? '(±)100 XP para ambos' : result.includes('ganó') ? '*+300 XP*' : '*-300 XP*';
+
+            m.reply(`${result}\n${m.sender}: ${userChoice}\n${opponent.id}: ${botChoice}\n\nPuntos ${xpChange}`);
+            m.send(`${result}\n${m.sender}: ${userChoice}\n${opponent.id}: ${botChoice}\n\nPuntos ${xpChange}`);
+        }
+
+        // Resto del código para otros modos...
+
+        delete activeGames[m.sender];
+    } else {
+        throw 'No hay un juego en curso.';
+    }
+};
+
+handler.help = [
+    'ppt <piedra/papel/tijera> [modo: 1vs1, duelo]',
+    '.ppt @usuario 1vs1 - Iniciar un desafío de 1 vs 1 con otro usuario',
+    '.ppt @usuario duelo - Retar a otro usuario a un duelo',
+    '.acepto - Aceptar un desafío pendiente',
+    '.rechazo - Rechazar un desafío pendiente',
+    '.jugar - Jugar una ronda del juego activo'
+];
 handler.tags = ['game'];
-handler.command = ['ppt'];
-handler.register = false;
+handler.command = ['ppt', 'acepto', 'rechazo', 'jugar'];
+handler.register = true;
 export default handler;
