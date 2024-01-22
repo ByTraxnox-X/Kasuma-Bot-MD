@@ -1,54 +1,16 @@
-//import db from '../lib/database.js'
 
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-    let poin = 300
-    let reseqv = `Seleccione piedra/papel/tijera\n\nEjemplo: *${usedPrefix + command}* papel\n`
-    if (!text) throw reseqv
-    var astro = Math.random()
-
-    if (astro < 0.34) {
-        astro = 'piedra'
-    } else if (astro > 0.34 && astro < 0.67) {
-        astro = 'tijera'
-    } else {
-        astro = 'papel'
-    }
-
-
-    if (text == astro) {
-      global.db.data.users[m.sender].exp += 100
-        m.reply(`*Empate*\n\nTú: ${text}\nKasuma: ${astro}\n\nPuntos (±)100 XP`)
-    } else if (text == 'piedra') {
-        if (astro == 'tijera') {
-            global.db.data.users[m.sender].exp += 300
-            m.reply(`*Ganaste*\n\nTú : ${text}\nKasuma: ${astro}\n\n Puntos *+${poin} XP*`)
-        } else {
-          global.db.data.users[m.sender].exp -= 300
-            m.reply(`*Perdiste*\n\nTú : ${text}\nKasuma: ${astro}\n\n Puntos *-${poin} XP*`)
-        }
-    } else if (text == 'tijera') {
-        if (astro == 'papel') {
-            global.db.data.users[m.sender].exp += 300
-            m.reply(`*Ganaste*\n\nTú : ${text}\nKasuma: ${astro}\n\n Puntos *+${poin} XP*`)
-        } else {
-          global.db.data.users[m.sender].exp -= 300
-            m.reply(`*Perdiste*\n\nTú : ${text}\nKasuma: ${astro}\n\nPuntos *-${poin} XP*`)
-        }
-    } else if (text == 'papel') {
-        if (astro == 'piedra') {
-            global.db.data.users[m.sender].exp += 300
-            m.reply(`*Ganaste*\n\nTú : ${text}\nKasuma: ${astro}\n\n Puntos *+${poin} XP*`)
-        } else {
-          global.db.data.users[m.sender].exp -= 300
-            m.reply(`*Perdiste*\n\nTú : ${text}\nKasuma: ${astro}\n\nPuntos *-${poin} XP*`)
-        }
-    } else {
-        throw reseqv
-    }
-}
-handler.help = ['ppt <piedra/papel/tijera>']
-handler.tags = ['game']
-handler.command = ['ppt'] 
-handler.register = false
-
-export default handler
+const handler = async (m, { text }) => {
+    if(!text) throw 'Elija piedra, papel o tijera';
+    const o = ['piedra', 'papel', 'tijera'];
+    const a = o[Math.floor(Math.random() * o.length)];
+    if(!o.includes(text.toLowerCase())) throw 'Elija piedra, papel o tijera';
+    let r = text === a ? '*Empate*' : (text === 'piedra' && a === 'tijera') || (text === 'tijera' && a === 'papel') || (text === 'papel' && a === 'piedra') ? '*Ganaste*' : '*Perdiste*';
+    let p = r === '*Empate*' ? '(±)100 XP' : r === '*Ganaste*' ? '*+300 XP*' : '*-300 XP*';
+    global.db.data.users[m.sender].exp += r === '*Empate*' ? 100 : r === '*Ganaste*' ? 300 : -300;
+    m.reply(`${r}\nTú: ${text}\nKasuma: ${a}\n\nPuntos ${p}`);
+};
+handler.help = ['ppt <piedra/papel/tijera>'];
+handler.tags = ['game'];
+handler.command = ['ppt'];
+handler.register = false;
+export default handler;
