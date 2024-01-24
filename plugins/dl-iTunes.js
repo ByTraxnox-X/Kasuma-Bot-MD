@@ -3,6 +3,8 @@ import fetch from 'node-fetch';
 let handler = async (m, { conn, text }) => {
   if (!text) throw 'Ingrese el nombre de la canción';
 
+  const apivisionary = "https://visionaryapi.boxmine.xyz/"
+
   try {
     let res = await fetch(`${apivisionary}/api/itunes?text=${encodeURIComponent(text)}`);
 
@@ -15,7 +17,7 @@ let handler = async (m, { conn, text }) => {
     console.log('JSON response:', json);
     m.react(rwait);
 
-    let songInfo = 
+    let songInfo =
       `*${json.message.name}*\n\n` +
       `*Nombre:* ${json.message.name}\n` +
       `*Artista:* ${json.message.artist}\n` +
@@ -36,7 +38,7 @@ let handler = async (m, { conn, text }) => {
   } catch (error) {
     console.error(error);
   }
-};
+}
 
 handler.help = ['applemusic'];
 handler.tags = ['dl'];
