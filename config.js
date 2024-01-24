@@ -6,20 +6,18 @@ global.owner = [
   ['593995668111', 'Guillermo', true],
   ['573014953662', 'Sebastian', false],
 
-] //Numeros de owner 
+]
 
 global.mods = ['']
 global.prems = ['', '', '']
-global.APIs = { // API Prefix
-  // name: 'https://website'
+global.APIs = {
   xteam: 'https://api.xteam.xyz',
   ApiSebastian: 'kasumaapi.boxmine.xyz',
   nrtm: 'https://fg-nrtm.ddns.net',
   bg: 'http://bochil.ddns.net',
   fgmods: 'https://api.fgmods.xyz'
 }
-global.APIKeys = { // APIKey Here
-  // 'https://website': 'apikey'
+global.APIKeys = {
   'https://api.xteam.xyz': 'd90a9e986e18778b',
   'https://zenzapis.xyz': '675e34de8a',
   'https://api.fgmods.xyz': 'Rex6QGQI'

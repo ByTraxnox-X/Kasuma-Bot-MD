@@ -6,7 +6,7 @@ const handler = async (m, { conn }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `${api}/status`;
+    const apiUrl = `${apivisionary}/status`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
@@ -15,7 +15,7 @@ const handler = async (m, { conn }) => {
 
       const mensaje = `\t\t*Estado de la API:*
       
-*API:* ${api}
+*API:* ${apivisionary}
 *Uptime:* ${uptime}
 *Latencia:* ${latencia}
 *Total de Solicitudes:* ${totalRequests}
