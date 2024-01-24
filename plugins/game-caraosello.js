@@ -1,5 +1,3 @@
-import svg2img from 'svg2img';
-
 let handler = async (m, { conn, text, command, usedPrefix, args }) => {
     const pp = 'https://flagcdn.com/gd.svg';
 
