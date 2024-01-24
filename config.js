@@ -34,7 +34,7 @@ global.confirmCode = ""
 global.tiktokkey = ['GIf4o4qJ']
 global.soundcloudID = ["iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX"]
 global.apikeyocr = ["8e65f273cd88957"]
-global.api = ["kasumaapi.boxmine.xyz"]
+global.kasumaapi = ["kasumaapi.boxmine.xyz"]
 global.token = ["&token=KasumaToken"]
 global.githubapi = ["https://api.github.com/repos"]
 global.drop = ["https://dropmail.me"]
