@@ -11,8 +11,8 @@ if (enviando) return;
     enviando = true
   try {
     const apiUrls = [
-      `${apivisionary}/api/ytplay?text=${text}`,
-      `${visionary2}/api/ytplay?text=${text}`
+      `${api}/api/ytplay?text=${text}${token}`,
+      `${api}/api/ytplay?text=${text}${token}`
     ];
 
     for (const url of apiUrls) {
@@ -31,12 +31,12 @@ if (enviando) return;
     } else {
       try {
         if (command === 'youtubeaudio') {
-              apiUrl = `${visionary2}/api/v1/ytmp3?url=${data.resultado.url}`;
+              apiUrl = `${api}/api/v1/ytmp3?url=${data.resultado.url}${token}`;
               mimeType = 'audio/mpeg';
               fileName = 'error.mp3';
               buff = await conn.getFile(apiUrl);
             } else if (command === 'youtubevideo') {
-              apiUrl = `${visionary2}/api/v1/ytmp4?url=${data.resultado.url}`;
+              apiUrl = `${api}/api/v1/ytmp4?url=${data.resultado.url}${token}`;
               mimeType = 'video/mp4';
               fileName = 'error.mp4';
               buff = await conn.getFile(apiUrl);
@@ -44,12 +44,12 @@ if (enviando) return;
       } catch {
           try {
             if (command === 'youtubeaudio') {
-              apiUrl = `${visionary2}/api/v1/ytmp3?url=${data.resultado.url}`;
+              apiUrl = `${api}/api/v1/ytmp3?url=${data.resultado.url}${token}`;
               mimeType = 'audio/mpeg';
               fileName = 'error.mp3';
               buff = await conn.getFile(apiUrl);
             } else if (command === 'youtubevideo') {
-              apiUrl = `${visionary2}/api/v1/ytmp4?url=${data.resultado.url}`;
+              apiUrl = `${api}/api/v1/ytmp4?url=${data.resultado.url}${token}`;
               mimeType = 'video/mp4';
               fileName = 'error.mp4';
               buff = await conn.getFile(apiUrl);

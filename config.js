@@ -13,7 +13,7 @@ global.prems = ['', '', '']
 global.APIs = { // API Prefix
   // name: 'https://website'
   xteam: 'https://api.xteam.xyz',
-  ApiSebastian: 'https://visionaryapi.boxmine.xyz',
+  ApiSebastian: 'kasumaapi.boxmine.xyz',
   nrtm: 'https://fg-nrtm.ddns.net',
   bg: 'http://bochil.ddns.net',
   fgmods: 'https://api.fgmods.xyz'
@@ -34,8 +34,8 @@ global.confirmCode = ""
 global.tiktokkey = ['GIf4o4qJ']
 global.soundcloudID = ["iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX"]
 global.apikeyocr = ["8e65f273cd88957"]
-global.apivisionary = ["https://visionaryapi.boxmine.xyz"]
-global.visionary2 = ["https://visionaryapi.boxmine.xyz"]
+global.api = ["kasumaapi.boxmine.xyz"]
+global.token = ["&token=KasumaToken"]
 global.githubapi = ["https://api.github.com/repos"]
 global.drop = ["https://dropmail.me"]
 global.dropmail = ["https://dropmail.me/api/graphql/web-test-wgq6m5i?query=mutation%20%7BintroduceSession%20%7Bid%2C%20expiresAt%2C%20addresses%20%7Baddress%7D%7D%7D"]
