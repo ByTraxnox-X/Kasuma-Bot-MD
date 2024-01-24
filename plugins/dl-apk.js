@@ -6,7 +6,7 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
   try {
     m.react(rwait);
 
-    const response = await axios.get(`${api}/api/apk?id=${text}`);
+    const response = await axios.get(`${apivisionary}/api/apk?id=${text}`);
     const data = response.data.data;
 
     let responseText = `\n\n*${data.name}*\n\n`;

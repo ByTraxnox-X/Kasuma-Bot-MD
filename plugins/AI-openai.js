@@ -8,7 +8,7 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `${api}/api/chatgpt?text=${text}&lenguaje=es`;
+    const apiUrl = `${apivisionary}/api/chatgpt?text=${text}&lenguaje=es`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 

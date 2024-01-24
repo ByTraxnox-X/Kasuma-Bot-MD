@@ -17,7 +17,7 @@ Rango: *${user.role}*
 Te falta *${max - user.exp}* de *XP* para subir de nivel
 `.trim()
 try {
-  let imgg = API(`${api}`, '/api/maker/canvas/levelup', {
+  let imgg = API(`${apivisionary}`, '/api/maker/canvas/levelup', {
     profile: pp,
     username: name,
     level: user.level,
@@ -43,7 +43,7 @@ Rango: *${user.role}*
 
 Cuanto más interactúes con los bots, mayor será tu nivel`.trim()
         try {
-            let img = API(`${api}`, '/api/maker/canvas/levelup', { 
+            let img = API(`${apivisionary}`, '/api/maker/canvas/levelup', { 
                 profile: pp,
                 username: name,
                 level: user.level,

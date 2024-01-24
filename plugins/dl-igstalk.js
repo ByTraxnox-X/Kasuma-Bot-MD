@@ -6,7 +6,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     }
 
     try {
-        const apiUrl = `${api}/api/igstalk?username=${encodeURIComponent(args[0])}`;
+        const apiUrl = `${apivisionary}/api/igstalk?username=${encodeURIComponent(args[0])}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
 

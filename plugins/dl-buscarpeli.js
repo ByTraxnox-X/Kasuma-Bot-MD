@@ -6,7 +6,7 @@ const handler = async (m, { conn, text }) => {
   }
 
   try {
-    const apiUrl = `${api}/api/movie?text=${encodeURIComponent(text)}`;
+    const apiUrl = `${apivisionary}/api/movie?text=${encodeURIComponent(text)}`;
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
