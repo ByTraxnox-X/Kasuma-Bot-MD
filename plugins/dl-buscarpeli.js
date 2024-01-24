@@ -6,7 +6,7 @@ const handler = async (m, { conn, text }) => {
   }
 
   try {
-    const apiUrl = `${kasumaapi}/api/movie?text=${encodeURIComponent(text)}${token}`;
+    const apiUrl = `${kasumaapi}/api/movie?text=${encodeURIComponent(text)}&token=KasumaToken`;
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
