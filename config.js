@@ -13,7 +13,7 @@ global.prems = ['', '', '']
 global.APIs = { // API Prefix
   // name: 'https://website'
   xteam: 'https://api.xteam.xyz',
-  ApiSebastian: 'https://kasumaapi.boxmine.xyz/',
+  ApiSebastian: 'https://kasumaapi.boxmine.xyz',
   nrtm: 'https://fg-nrtm.ddns.net',
   bg: 'http://bochil.ddns.net',
   fgmods: 'https://api.fgmods.xyz'
@@ -34,7 +34,7 @@ global.confirmCode = ""
 global.tiktokkey = ['GIf4o4qJ']
 global.soundcloudID = ["iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX"]
 global.apikeyocr = ["8e65f273cd88957"]
-global.api = ["https://kasumaapi.boxmine.xyz/"]
+global.api = ["https://kasumaapi.boxmine.xyz"]
 global.token = ["&token=KasumaToken"]
 global.githubapi = ["https://api.github.com/repos"]
 global.drop = ["https://dropmail.me"]
