@@ -6,18 +6,20 @@ global.owner = [
   ['593995668111', 'Guillermo', true],
   ['573014953662', 'Sebastian', false],
 
-]
+] //Numeros de owner 
 
 global.mods = ['']
 global.prems = ['', '', '']
-global.APIs = {
+global.APIs = { // API Prefix
+  // name: 'https://website'
   xteam: 'https://api.xteam.xyz',
-  ApiSebastian: 'kasumaapi.boxmine.xyz',
+  ApiSebastian: 'https://visionaryapi.boxmine.xyz',
   nrtm: 'https://fg-nrtm.ddns.net',
   bg: 'http://bochil.ddns.net',
   fgmods: 'https://api.fgmods.xyz'
 }
-global.APIKeys = {
+global.APIKeys = { // APIKey Here
+  // 'https://website': 'apikey'
   'https://api.xteam.xyz': 'd90a9e986e18778b',
   'https://zenzapis.xyz': '675e34de8a',
   'https://api.fgmods.xyz': 'Rex6QGQI'
@@ -33,6 +35,7 @@ global.tiktokkey = ['GIf4o4qJ']
 global.soundcloudID = ["iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX"]
 global.apikeyocr = ["8e65f273cd88957"]
 global.apivisionary = ["https://visionaryapi.boxmine.xyz"]
+global.api = ["https://visionaryapi.boxmine.xyz"]
 global.visionary2 = ["https://visionaryapi.boxmine.xyz"]
 global.token = ["&token=KasumaToken"]
 global.githubapi = ["https://api.github.com/repos"]

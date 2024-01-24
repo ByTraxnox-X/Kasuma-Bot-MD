@@ -6,7 +6,7 @@ const handler = async (m, { conn, args }) => {
     }
 
     try {
-        const apiUrl = `${apivisionary}/api/v1/igdl?url=${args[0]}${token}`;
+        const apiUrl = `${api}/api/v1/igdl?url=${args[0]}${token}`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();

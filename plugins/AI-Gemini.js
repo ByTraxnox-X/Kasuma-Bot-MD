@@ -8,7 +8,7 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `${apivisionary}/api/gemini?text=${encodeURIComponent(text)}${token}`;
+    const apiUrl = `${api}/api/gemini?text=${encodeURIComponent(text)}${token}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 

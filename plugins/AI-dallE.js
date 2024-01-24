@@ -3,7 +3,7 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
   if (!text) throw `Ingrese una  peticion`;
     await conn.sendMessage(m.chat, {text: 'Realizando...'}, {quoted: m});
   try {
-    const tiores1 = await fetch(`${apivisionary}/api/imagine?text=${text}${token}`);
+    const tiores1 = await fetch(`${api}/api/imagine?text=${text}${token}`);
     const json1 = await tiores1.json();
     await conn.sendMessage(m.chat, {image: {url: json1.data}}, {quoted: m});
   } catch {  
@@ -14,7 +14,7 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
   } catch {
       console.log('Error');
   try {
-    const tiores3 = await fetch(`${apivisionary}/api/Lexicaart?text=${text}${token}`);
+    const tiores3 = await fetch(`${api}/api/Lexicaart?text=${text}${token}`);
     const json3 = await tiores3.json();
     await conn.sendMessage(m.chat, {image: {url: json3.data[0].images[0].url}}, {quoted: m});
   } catch {

@@ -17,12 +17,12 @@ Rango: *${user.role}*
 Te falta *${max - user.exp}* de *XP* para subir de nivel
 `.trim()
 try {
-  let imgg = API(`${apivisionary}`, '/api/maker/canvas/levelup', {
+  let imgg = API(`${api}`, '/api/maker/canvas/levelup', {
     profile: pp,
     username: name,
     level: user.level,
     xp: user.exp - min,
-}, `${token}`)
+})
 
     conn.sendFile(m.chat, imgg, 'level.jpg', txt, m)
 } catch (e) {
@@ -43,12 +43,12 @@ Rango: *${user.role}*
 
 Cuanto más interactúes con los bots, mayor será tu nivel`.trim()
         try {
-            let img = API(`${apivisionary}`, '/api/maker/canvas/levelup', { 
+            let img = API(`${api}`, '/api/maker/canvas/levelup', { 
                 profile: pp,
                 username: name,
                 level: user.level,
                 xp: user.exp - min,
-             }, `${token}`)
+             })
       conn.sendFile(m.chat, img, 'levelup.jpg', str, m)
         } catch (e) {
             m.reply(str)
