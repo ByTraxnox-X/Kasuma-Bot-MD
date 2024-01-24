@@ -4,12 +4,12 @@ const handler = async (m, { conn, text }) => {
  if (!text) throw `Ingrese el nombre de la canción.`;
   try {
     const encodedText = encodeURIComponent(text);
-    const res = await fetch(global.API(`${api}`, `/api/spotifysearch?text=${encodedText}${token}`));
+    const res = await fetch(global.API(`${api}`, `/api/spotifysearch?text=${encodedText}`));
     const data = await res.json();
     const linkDL = data.spty.resultado[0].link;
-    const musics = await fetch(global.API(`${api}`, `/api/spotifydl?text=${linkDL}${token}`));
+    const musics = await fetch(global.API(`${api}`, `/api/spotifydl?text=${linkDL}`));
     const music = await conn.getFile(musics.url);
-    const infos = await fetch(global.API(`${api}`, `/api/spotifyinfo?text=${encodedText}${token}`));
+    const infos = await fetch(global.API(`${api}`, `/api/spotifyinfo?text=${encodedText}`));
     const info = await infos.json();
     const spty = info.spty.resultado;
     const img = await (await fetch(`${spty.thumbnail}`)).buffer();

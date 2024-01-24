@@ -4,7 +4,7 @@ const handler = async (m, { conn, args }) => {
     if (!args[0]) throw `Por favor, ingrese un enlace de TikTok.`;
 
     try {
-        const apiUrl = `${api}/api/tiktokv2?url=${args[0]}${token}`;
+        const apiUrl = `${api}/api/tiktokv2?url=${args[0]}`;
         const response = await fetch(apiUrl);
         const data = await response.buffer();
         

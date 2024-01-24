@@ -6,7 +6,7 @@ const handler = async (m, { conn, args }) => {
   }
 
   try {
-    const apiUrl = `${api}/api/threads?url=${args[0]}${token}`;
+    const apiUrl = `${api}/api/threads?url=${args[0]}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
