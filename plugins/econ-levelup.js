@@ -22,8 +22,8 @@ Te falta *${max - user.exp}* de *XP* para subir de nivel`.trim();
                 params: {
                     background: 'https://cdn.discordapp.com/attachments/850808002545319957/859359637106065408/bg.png',
                     text1: name,
-                    text2: 'No es suficiente para subir de nivel',
-                    text3: `XP: ${user.exp - min}/${xp}`,
+                    text2: 'No%20es%20suficiente%20para%20subir%20de%20nivel',
+                    text3: `XP:%20${user.exp - min}/${xp}`,
                     avatar: pp,
                 },
             });
@@ -54,8 +54,8 @@ Rango: *${user.role}*
                     params: {
                         background: 'https://cdn.discordapp.com/attachments/850808002545319957/859359637106065408/bg.png',
                         text1: name,
-                        text2: 'Ha subido de nivel',
-                        text3: `Nuevo nivel: ${user.level}`,
+                        text2: 'Ha%20subido%20de%20nivel',
+                        text3: `Nuevo%20nivel: ${user.level}`,
                         avatar: pp,
                     },
                 });
