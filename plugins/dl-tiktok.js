@@ -6,14 +6,13 @@ const handler = async (m, { conn, args }) => {
     try {
         const apiUrl = `https://api.cafirexos.com/api/tiktokv2?url=${args[0]}`;
         const response = await fetch(apiUrl);
-        const data = await response.json();
 
-        if (data.status) {
+        if (response.ok) {
             m.react(rwait);
 
             const fileName = "tiktok.mp4";
 
-            let fileBuffer = await fetch(data.link).then(response => response.buffer());
+            let fileBuffer = await response.buffer();
             conn.sendFile(m.chat, fileBuffer, fileName, "", m);
 
             m.react(done);
