@@ -541,7 +541,7 @@ export async function participantsUpdate({ id, participants, action }) {
                             let lea = API(`https://api.popcat.xyz`, '/welcomecard', {
                                 background: bg,
                                 text1: "GOOD BYE",
-                                text2: `USUARIOS ${members}`,
+                                text2: `USUARIOS%20${members}`,
                                 text3: " ",
                                 avatar: pp,
                             })
