@@ -522,6 +522,7 @@ export async function participantsUpdate({ id, participants, action }) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                 for (let user of participants) {
                     let pp = 'https://i.imgur.com/nHHUm1a.png'
+                    let bg = 'https://cdn.discordapp.com/attachments/850808002545319957/859359637106065408/bg.png'
                     try {
                         pp = await this.profilePictureUrl(user, 'image')
                         } finally {
@@ -529,13 +530,19 @@ export async function participantsUpdate({ id, participants, action }) {
                             (chat.sBye || this.bye || conn.bye || 'Adiós, @user')).replace('@user', '@' + user.split('@')[0])
 
                             let wel = API(`${visionary2}`, '/api/maker/canvas/welcome1', {
-                                users: groupMetadata.participants.length,
-                                profile: pp,
+                                background: bg,
+                                text1: "WELCOME",
+                                text2: +groupMetadata.participants.length,
+                                text3: " ",
+                                avatar: pp,
                             })
 
                             let lea = API(`${visionary2}`, '/api/maker/canvas/goodbye1', {
-                                users: groupMetadata.participants.length,
-                                profile: pp,
+                                background: bg,
+                                text1: "WELCOME",
+                                text2: +groupMetadata.participants.length,
+                                text3: " ",
+                                avatar: pp,
                             })
                         this.sendFile(id, action === 'add' ? wel : lea, 'pp.jpg', text, null, false, { mentions: [user] })
                     }
