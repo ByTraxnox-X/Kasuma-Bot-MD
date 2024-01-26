@@ -4,18 +4,25 @@ const handler = async (m, { conn, args }) => {
     if (!args[0]) throw `Por favor, ingrese un enlace de TikTok.`;
 
     try {
-        const apiUrl = `${apivisionary}/api/tiktokv2?url=${args[0]}`;
+        const apiUrl = `https://api.cafirexos.com/api/tiktokv2?url=${args[0]}`;
         const response = await fetch(apiUrl);
-        const data = await response.buffer();
-        
-        m.react(rwait);
+        const data = await response.json();
 
-        const fileName = "tiktok.mp4";
+        if (data.status) {
+            m.react(rwait);
 
-        let fileBuffer = await fetch(data.link).then(response => response.buffer());
-        conn.sendFile(m.chat, fileBuffer, fileName, "", m);
+            const fileName = "tiktok.mp4";
+
+            let fileBuffer = await fetch(data.link).then(response => response.buffer());
+            conn.sendFile(m.chat, fileBuffer, fileName, "", m);
+
+            m.react(done);
+        } else {
+            throw 'No se pudo obtener el contenido de TikTok.';
+        }
     } catch (error) {
-        throw `Ocurrió un error al descargar el video de TikTok: ${error}`;
+        console.error(error);
+        throw `Ocurrió un error al descargar el video de TikTok: ${error.message}`;
     }
 };
 

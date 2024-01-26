@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
-  if (!text) throw `Ingrese el nombre del APK`;
+  if (!text) throw 'Ingrese el nombre del APK';
 
   try {
     m.react(rwait);
 
-    const response = await axios.get(`${apivisionary}/api/apk?id=${text}`);
+    const apiUrl = `https://vihangayt.me/api/apk?id=${text}`;
+    const response = await axios.get(apiUrl);
     const data = response.data.data;
 
     let responseText = `\n\n*${data.name}*\n\n`;
@@ -19,8 +20,9 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     if (data.size.includes('GB') || parseFloat(data.size.replace(' MB', '')) > 999) {
       return await conn.sendMessage(m.chat, { text: 'El APK es demasiado pesado para ser enviado.' }, { quoted: m });
     }
+
     const apkBuffer = await axios.get(data.dllink, { responseType: 'arraybuffer' });
-await conn.sendFile(m.chat, apkBuffer.data, `${data.name}.apk`, null, m);
+    await conn.sendFile(m.chat, apkBuffer.data, `${data.name}.apk`, null, m);
 
   } catch (error) {
     console.error(error);
@@ -30,5 +32,6 @@ await conn.sendFile(m.chat, apkBuffer.data, `${data.name}.apk`, null, m);
 
 handler.help = ['apk aplicacion'];
 handler.tags = ['dl'];
-handler.command = /^(apk|descargarapp|descargarapk|apk)$/i;
+handler.command = /^(apk|descargarapp|descargarapk)$/i;
+
 export default handler;

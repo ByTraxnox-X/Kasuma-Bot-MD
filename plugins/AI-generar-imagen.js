@@ -8,12 +8,12 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `${apivisionary}/api/photoleap?text=${encodeURIComponent(text)}`;
+    const apiUrl = `https://vihangayt.me/tools/photoleap?q=${encodeURIComponent(text)}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    if (data.status && data.message) {
-      const imagen = data.message;
+    if (data.status && data.data) {
+      const imagen = data.data;
       conn.sendFile(m.chat, imagen, 'imagen.jpg', '', m);
     } else {
       throw 'No se pudo obtener una respuesta válida';

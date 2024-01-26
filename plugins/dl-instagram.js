@@ -6,28 +6,25 @@ const handler = async (m, { conn, args }) => {
     }
 
     try {
-        const apiUrl = `${apivisionary}/api/v1/igdl?url=${args[0]}`;
-
+        const apiUrl = `https://vihangayt.me/download/instagram2?url=${args[0]}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
-        m.react(rwait)
+        
+        m.react(rwait);
 
-        if (data.success && data.data.length > 0) {
+        if (data.status && data.data.length > 0) {
             for (const media of data.data) {
-                if (media.type === 'video')
-                 {
-                    m.react(done)
-                    await conn.sendFile(m.chat, media.url_download, 'video.mp4', '', m);
-                } else {
-                    m.react(done)
-                    await conn.sendFile(m.chat, media.url_download, 'imagen.jpg', '', m);
-                }
+                const fileType = media.type === 'video' ? 'video.mp4' : 'imagen.jpg';
+                m.react(done);
+
+                await conn.sendFile(m.chat, media.download_link, fileType, '', m);
             }
         } else {
             throw 'No se pudo obtener el contenido de Instagram.';
         }
     } catch (error) {
-        throw `Ocurrió un error al procesar la solicitud: ${error}`;
+        console.error(error);
+        throw `Ocurrió un error al procesar la solicitud: ${error.message}`;
     }
 };
 
@@ -35,4 +32,4 @@ handler.help = ['instagram'];
 handler.tags = ['dl'];
 handler.command = /^(instagramdl|instagram|igdl|ig)$/i;
 
-export default handler
+export default handler;

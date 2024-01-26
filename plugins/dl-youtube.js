@@ -11,8 +11,8 @@ if (enviando) return;
     enviando = true
   try {
     const apiUrls = [
-      `${apivisionary}/api/ytplay?text=${text}`,
-      `${apivisionary}/api/ytplay?text=${text}`
+      `https://api.cafirexos.com/api/ytplay?text=${text}`,
+      `https://api.cafirexos.com/api/ytplay?text=${text}`
     ];
 
     for (const url of apiUrls) {
@@ -31,12 +31,12 @@ if (enviando) return;
     } else {
       try {
         if (command === 'youtubeaudio') {
-              apiUrl = `${apivisionary}/api/v1/ytmp3?url=${data.resultado.url}`;
+              apiUrl = `https://api.cafirexos.com/api/v1/ytmp3?url=${data.resultado.url}`;
               mimeType = 'audio/mpeg';
               fileName = 'error.mp3';
               buff = await conn.getFile(apiUrl);
             } else if (command === 'youtubevideo') {
-              apiUrl = `${apivisionary}/api/v1/ytmp4?url=${data.resultado.url}`;
+              apiUrl = `https://api.cafirexos.com/api/v1/ytmp4?url=${data.resultado.url}`;
               mimeType = 'video/mp4';
               fileName = 'error.mp4';
               buff = await conn.getFile(apiUrl);
@@ -44,12 +44,12 @@ if (enviando) return;
       } catch {
           try {
             if (command === 'youtubeaudio') {
-              apiUrl = `${apivisionary}/api/v1/ytmp3?url=${data.resultado.url}`;
+              apiUrl = `https://api.cafirexos.com/api/v1/ytmp3?url=${data.resultado.url}`;
               mimeType = 'audio/mpeg';
               fileName = 'error.mp3';
               buff = await conn.getFile(apiUrl);
             } else if (command === 'youtubevideo') {
-              apiUrl = `${apivisionary}/api/v1/ytmp4?url=${data.resultado.url}`;
+              apiUrl = `https://api.cafirexos.com/api/v1/ytmp4?url=${data.resultado.url}`;
               mimeType = 'video/mp4';
               fileName = 'error.mp4';
               buff = await conn.getFile(apiUrl);
