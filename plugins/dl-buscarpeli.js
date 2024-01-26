@@ -20,29 +20,29 @@ const handler = async (m, { conn, text }) => {
     const ratings = data.ratings.map(rating => `*${rating.source}:* ${rating.value}`).join('\n');
 
     const movieInfo = `
-      *${data.title}*
-      *Año:* ${data.year}
-      *Clasificación:* ${data.rated}
-      *Fecha de lanzamiento:* ${data.released}
-      *Duración:* ${data.runtime}
-      *Géneros:* ${data.genres}
-      *Director:* ${data.director}
-      *Guionista:* ${data.writer}
-      *Actores:* ${data.actors}
-      *Argumento:* ${data.plot}
-      *Idiomas:* ${data.languages}
-      *País:* ${data.country}
-      *Premios:* ${data.awards}
-      *Metascore:* ${data.metascore}
-      *Calificación:* ${data.rating}
-      *Votos:* ${data.votes}
-      *ID de IMDB:* ${data.imdbid}
-      *Tipo:* ${data.type}
-      *DVD:* ${data.dvd}
-      *Taquilla:* ${data.boxoffice}
-      *Producción:* ${data.production}
-      *Sitio web:* ${data.website}
-      *Calificaciones:*${ratings}
+*${data.title}*\n
+*Año:* ${data.year}
+*Clasificación:* ${data.rated}
+*Fecha de lanzamiento:* ${data.released}
+*Duración:* ${data.runtime}
+*Géneros:* ${data.genres}
+*Director:* ${data.director}
+*Guionista:* ${data.writer}
+*Actores:* ${data.actors}
+*Argumento:* ${data.plot}
+*Idiomas:* ${data.languages}
+*País:* ${data.country}
+*Premios:* ${data.awards}
+*Metascore:* ${data.metascore}
+*Calificación:* ${data.rating}
+*Votos:* ${data.votes}
+*ID de IMDB:* ${data.imdbid}
+*Tipo:* ${data.type}
+*DVD:* ${data.dvd}
+*Taquilla:* ${data.boxoffice}
+*Producción:* ${data.production}
+*Sitio web:* ${data.website}
+*Calificaciones:*${ratings}
     `;
 
     await conn.sendFile(m.chat, data.poster, 'poster.jpg', movieInfo, m);
