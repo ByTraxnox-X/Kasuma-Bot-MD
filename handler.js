@@ -529,7 +529,7 @@ export async function participantsUpdate({ id, participants, action }) {
                             text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Bienvenido, @user').replace('@group', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'Desconocido') :
                             (chat.sBye || this.bye || conn.bye || 'Adiós, @user')).replace('@user', '@' + user.split('@')[0])
 
-                            let wel = API(`${visionary2}`, '/api/maker/canvas/welcome1', {
+                            let wel = API(`https://api.popcat.xyz`, '/welcomecard', {
                                 background: bg,
                                 text1: "WELCOME",
                                 text2: +groupMetadata.participants.length,
@@ -537,9 +537,9 @@ export async function participantsUpdate({ id, participants, action }) {
                                 avatar: pp,
                             })
 
-                            let lea = API(`${visionary2}`, '/api/maker/canvas/goodbye1', {
+                            let lea = API(`https://api.popcat.xyz`, '/welcomecard', {
                                 background: bg,
-                                text1: "WELCOME",
+                                text1: "GOOD BYE",
                                 text2: +groupMetadata.participants.length,
                                 text3: " ",
                                 avatar: pp,
