@@ -1,4 +1,4 @@
-let handler = async (m, { conn, text, command, usedPrefix, args }) => {
+/*let handler = async (m, { conn, text, command, usedPrefix, args }) => {
    const pp = './src/caraosello.jpg';
    let time = global.db.data.users[m.sender].wait + 40000;
    let textos = `\t*CARA O SELLO*\n\nPuedes Jugar usando los comandos:\n\n${usedPrefix + command} cara\n${usedPrefix + command} cruz`;
@@ -34,4 +34,4 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
 handler.help = ['suerte'];
 handler.tags = ['game'];
 handler.command = ['suerte', 'gm'];
-export default handler;
+export default handler;*/
