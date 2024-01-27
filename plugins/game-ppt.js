@@ -1,6 +1,6 @@
-
+/*
 const handler = async (m, { text }) => {
-    if(!text) throw 'Elija piedra, papel o tijera';
+    if(!text) throw 'Elija mpiedra, papel o tijera';
     const o = ['piedra', 'papel', 'tijera'];
     const a = o[Math.floor(Math.random() * o.length)];
     if(!o.includes(text.toLowerCase())) throw 'Elija piedra, papel o tijera';
@@ -13,4 +13,4 @@ handler.help = ['ppt <piedra/papel/tijera>'];
 handler.tags = ['game'];
 handler.command = ['ppt'];
 handler.register = false;
-export default handler;
+export default handler;*/
