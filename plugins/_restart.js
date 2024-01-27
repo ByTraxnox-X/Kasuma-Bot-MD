@@ -13,7 +13,7 @@ const handler = async (m, { conn, isROwner, text }) => {
 };
 
 handler.help = ['reiniciar'];
-handler.tags = ['prueba'];
+handler.tags = ['owner'];
 handler.command = ['restart', 'reiniciar'];
 
 
