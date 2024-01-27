@@ -47,15 +47,30 @@ const piedraPapelTijera = async (m, text) => {
     m.reply(`${r}\nTú: ${text}\nKasuma: ${a}\n\nPuntos ${p}`);
 };
 
+const pajeame = async (m, conn) => {
+    let { key } = await conn.sendMessage(m.chat, { text: "Tas caliente! Ahora te hare una paja" }, { quoted: m });
+    const array = [
+        "8==👊==D", "8===👊=D", "8=👊===D", "8=👊===D", "8==👊==D", "8===👊=D", "8====👊D", "8==👊=D", "8==👊==D", "8=👊===D", "8👊====D", "8=👊===D","8==👊==D", "8===👊=D", "8====👊D","8==👊==D", "8===👊=D", "8=👊===D", "8=👊===D", "8==👊==D", "8===👊=D", "8====👊D💦"
+    ];
+
+    for (let item of array) {
+        await conn.sendMessage(m.chat, { text: `${item}`, edit: key }, { quoted: m });
+        await new Promise(resolve => setTimeout(resolve, 20)); // Delay 5 seconds
+    }
+    return conn.sendMessage(m.chat, { text: `Oh, se corrió en menos de 1 hora!`.trim() , edit: key, mentions: [m.sender] }, { quoted: m });
+};
+
 const handler = async (m, { conn, text, command, usedPrefix, args }) => {
     if (command === 'suerte' || command === 'gm') {
         await caraOSello(m, conn, command, usedPrefix);
     } else if (command === 'ppt') {
         await piedraPapelTijera(m, text);
+    } else if (command === 'pajeame' || command === 'paja') {
+        await pajeame(m, conn);
     }
 };
 
-handler.help = ['suerte', 'ppt <piedra/papel/tijera>'];
-handler.tags = ['game'];
-handler.command = ['suerte', 'gm', 'ppt'];
+handler.help = ['suerte', 'ppt <piedra/papel/tijera>', 'pajeame'];
+handler.tags = ['game', 'fun'];
+handler.command = ['suerte', 'gm', 'ppt', 'pajeame', 'paja'];
 export default handler;
