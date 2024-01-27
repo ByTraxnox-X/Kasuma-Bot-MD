@@ -1,10 +1,3 @@
-import fs from 'fs'
-import similarity from 'similarity'
-
-const threshold = 0.72
-const timeout = 30000
-const poin = 5000
-
 const caraOSello = async (m, conn, command, usedPrefix) => {
     const pp = './src/caraosello.jpg';
     let time = global.db.data.users[m.sender].wait + 40000;
@@ -67,51 +60,6 @@ const pajeame = async (m, conn) => {
     return conn.sendMessage(m.chat, { text: `Oh, se corrió en menos de 1 hora!`.trim() , edit: key, mentions: [m.sender] }, { quoted: m });
 };
 
-const acertijo = async (m, conn) => {
-    conn.tekateki = conn.tekateki ? conn.tekateki : {}
-    let id = m.chat
-    if (id in conn.tekateki) {
-        conn.reply(m.chat, 'Todavía hay acertijos sin responder en este chat', conn.tekateki[id][0])
-        throw false
-    }
-    let tekateki = JSON.parse(fs.readFileSync(`./src/game/acertijo.json`))
-    let json = tekateki[Math.floor(Math.random() * tekateki.length)]
-    let _clue = json.response
-    let clue = _clue.replace(/[A-Za-z]/g, '_')
-    let caption = `
-ⷮ *${json.question}*
-
-*TIEMPO:* ${(timeout / 1000).toFixed(2)} SEGUNDOS
-*BONO:* +${poin} Exp
-`.trim()
-    conn.tekateki[id] = [
-       await conn.reply(m.chat, caption, m),
-        json, poin,
-        setTimeout(async () => {
-            if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!\n*Respuesta:* ${json.response}`, conn.tekateki[id][0])
-            delete conn.tekateki[id]
-        }, timeout)
-    ]
-};
-
-const acertijoChecker = async (m) => {
-    let id = m.chat
-    if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/^ⷮ/i.test(m.quoted.text)) return !0
-    this.tekateki = this.tekateki ? this.tekateki : {}
-    if (!(id in this.tekateki)) return m.reply('Ese juego ya ha terminado!')
-    if (m.quoted.id == this.tekateki[id][0].id) {
-        let json = JSON.parse(JSON.stringify(this.tekateki[id][1]))
-        if (m.text.toLowerCase() == json.response.toLowerCase().trim()) {
-            global.db.data.users[m.sender].exp += this.tekateki[id][2]
-            m.reply(`*Respuesta correcta!*\n+${this.tekateki[id][2]} Exp`)
-            clearTimeout(this.tekateki[id][3])
-            delete this.tekateki[id]
-        } else if (similarity(m.text.toLowerCase(), json.response.toLowerCase().trim()) >= threshold) m.reply(`Casi lo logras!`)
-        else m.reply('Respuesta incorrecta!')
-    }
-    return !0
-};
-
 const handler = async (m, { conn, text, command, usedPrefix, args }) => {
     if (command === 'suerte' || command === 'gm') {
         await caraOSello(m, conn, command, usedPrefix);
@@ -119,14 +67,10 @@ const handler = async (m, { conn, text, command, usedPrefix, args }) => {
         await piedraPapelTijera(m, text);
     } else if (command === 'pajeame' || command === 'paja') {
         await pajeame(m, conn);
-    } else if (command === 'acertijo' || command === 'acert' || command === 'adivinanza' || command === 'tekateki') {
-        await acertijo(m, conn);
     }
 };
 
-handler.before = acertijoChecker;
-
-handler.help = ['suerte', 'ppt <piedra/papel/tijera>', 'pajeame', 'acertijo'];
+handler.help = ['suerte', 'ppt <piedra/papel/tijera>', 'pajeame'];
 handler.tags = ['game', 'fun'];
-handler.command = ['suerte', 'gm', 'ppt', 'pajeame', 'paja', 'acertijo', 'acert', 'adivinanza', 'tekateki'];
+handler.command = ['suerte', 'gm', 'ppt', 'pajeame', 'paja'];
 export default handler;
