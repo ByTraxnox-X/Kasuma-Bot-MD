@@ -1,4 +1,4 @@
-import fs from 'fs'
+/*import fs from 'fs'
 
 let timeout = 30000
 let poin = 5000
@@ -34,4 +34,4 @@ handler.help = ['acertijo']
 handler.tags = ['game']
 handler.command = /^(acertijo|acert|adivinanza|tekateki)$/i
 
-export default handler
+export default handler*/
