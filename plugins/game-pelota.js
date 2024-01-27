@@ -52,7 +52,12 @@ const endGame = (gameId) => {
 const handler = async (m, { conn, args }) => {
     console.log("Argumentos:", args);
     const player1 = m.sender;
-    const player2 = m.mentionedJid ? m.mentionedJid[0] : args[0];
+    let player2 = args[0];
+
+    // Verificar si se menciona a un jugador
+    if (m.mentionedJid && m.mentionedJid.length > 0) {
+        player2 = m.mentionedJid[0];
+    }
 
     if (!player2) {
         return m.reply("Debes mencionar al segundo jugador o proporcionar su ID.");
