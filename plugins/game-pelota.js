@@ -55,11 +55,11 @@ const handler = async (m, { conn, args }) => {
     const player2 = args[0];
 
     if (!player2) {
-        return "Debes mencionar al segundo jugador.";
+        return m.reply("Debes mencionar al segundo jugador.");
     }
 
     const gameId = startGame(player1, player2);
-    return `¡Juego de Pelota de Gol iniciado! ID del juego: ${gameId}\n${player1} vs ${player2}`;
+    return m.reply(`¡Juego de Pelota de Gol iniciado! ID del juego: ${gameId}\n${player1} vs ${player2}`);
 };
 
 handler.play = async (m, { conn, args }) => {
@@ -68,21 +68,21 @@ handler.play = async (m, { conn, args }) => {
     const playerIndex = parseInt(args[1]) - 1; // Player index is 0-based
 
     if (isNaN(playerIndex) || ![0, 1].includes(playerIndex)) {
-        return "Por favor, ingresa el número de jugador (1 o 2).";
+        return m.reply("Por favor, ingresa el número de jugador (1 o 2).");
     }
 
     try {
         const result = playRound(gameId, playerIndex);
-        return result;
+        return m.reply(result);
     } catch (error) {
-        return error;
+        return m.reply(error);
     }
 };
 
 handler.end = async (m, { conn, args }) => {
     console.log("Argumentos de finalización:", args);
     const gameId = args[0];
-    return endGame(gameId);
+    return m.reply(endGame(gameId));
 };
 
 handler.help = ['gol @usuario', 'gol jugar <ID del juego> <número de jugador (1 o 2)>', 'gol terminar <ID del juego>'];
