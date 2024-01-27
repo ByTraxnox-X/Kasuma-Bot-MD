@@ -28,6 +28,7 @@ const playRound = (gameId, playerIndex) => {
         db[game.players[playerIndex]] = db[game.players[playerIndex]] || 0;
         db[game.players[playerIndex]]++;
         if (game.scores[playerIndex] >= game.maxGoals) {
+            delete games[gameId];
             return `${game.players[playerIndex]} anotó un gol! ¡Ha ganado el juego! Puntaje: ${game.scores.join(" - ")}`;
         } else {
             game.currentPlayer = opponentIndex;
