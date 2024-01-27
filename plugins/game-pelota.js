@@ -52,10 +52,10 @@ const endGame = (gameId) => {
 const handler = async (m, { conn, args }) => {
     console.log("Argumentos:", args);
     const player1 = m.sender;
-    const player2 = args[0];
+    const player2 = m.mentionedJid ? m.mentionedJid[0] : args[0];
 
     if (!player2) {
-        return m.reply("Debes mencionar al segundo jugador.");
+        return m.reply("Debes mencionar al segundo jugador o proporcionar su ID.");
     }
 
     const gameId = startGame(player1, player2);
