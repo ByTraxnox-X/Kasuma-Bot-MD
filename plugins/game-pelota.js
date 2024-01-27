@@ -17,6 +17,8 @@ const playRound = (gameId, playerIndex) => {
     const game = games[gameId];
     if (!game) throw "Juego no encontrado.";
 
+    console.log("Juego:", game);
+
     if (playerIndex !== game.currentPlayer) {
         throw "No es tu turno.";
     }
@@ -48,6 +50,7 @@ const endGame = (gameId) => {
 };
 
 const handler = async (m, { conn, args }) => {
+    console.log("Argumentos:", args);
     const player1 = m.sender;
     const player2 = args[0];
 
@@ -60,6 +63,7 @@ const handler = async (m, { conn, args }) => {
 };
 
 handler.play = async (m, { conn, args }) => {
+    console.log("Argumentos de juego:", args);
     const gameId = args[0];
     const playerIndex = parseInt(args[1]) - 1; // Player index is 0-based
 
@@ -76,6 +80,7 @@ handler.play = async (m, { conn, args }) => {
 };
 
 handler.end = async (m, { conn, args }) => {
+    console.log("Argumentos de finalización:", args);
     const gameId = args[0];
     return endGame(gameId);
 };
