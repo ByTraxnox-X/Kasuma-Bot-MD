@@ -51,20 +51,16 @@ const endGame = (gameId) => {
 
 const handler = async (m, { conn, args }) => {
     console.log("Argumentos:", args);
-    const player1 = m.sender;
-    let player2 = args[0];
+    const user1 = m.mentionedJid ? m.mentionedJid[0] : m.quoted.sender;
+    const user2 = m.sender ? m.sender : m.quoted.sender;
 
-    // Verificar si se menciona a un jugador
-    if (m.mentionedJid && m.mentionedJid.length > 0) {
-        player2 = m.mentionedJid[0];
+    if (!user1 || !user2) {
+        return m.reply("No se pudo obtener la información de los usuarios.");
     }
 
-    if (!player2) {
-        return m.reply("Debes mencionar al segundo jugador o proporcionar su ID.");
-    }
-
-    const gameId = startGame(player1, player2);
-    return m.reply(`¡Juego de Pelota de Gol iniciado! ID del juego: ${gameId}\n${player1} vs ${player2}`);
+    const gameId = startGame(user1, user2);
+    console.log("ID del juego:", gameId);
+    return m.reply(`¡Juego de Pelota de Gol iniciado! ID del juego: ${gameId}\n${user1} vs ${user2}`);
 };
 
 handler.play = async (m, { conn, args }) => {
