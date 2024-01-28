@@ -17,7 +17,7 @@ const handler = async (m, {conn, args: [effect], text: txt, usedPrefix, command,
    if (typeof res == 'number') throw res == -1 ? `El efecto ${effect} No se encuentra en la lista` : `Use el comando de la siguiente manera: ${usedPrefix}logo Wolf-Logo-Galaxy KasumaBot`
   await conn.sendMessage(m.chat, {image: {url: res.image}, caption: `✅ *Aqui Esta Tu Logo* ✅\n\n*Efecto del logo: ${effect}*`}, {quoted: m});  
 } catch (e) {
-await m.reply(`Debes usar el comando de la siguiente manera\n*${usedPrefix + command} efecto texto*\nEjemplo\n💫 *${usedPrefix + command} American-flag-3D KasumaBot*\n\n\nSi no funciona el comando reportelo de la siguiente manera: .reporte <texto>`)
+await m.reply(`Debes usar el comando de la siguiente manera\n*${usedPrefix + command} efecto texto*\nEjemplo\n💫 *${usedPrefix + command} American-flag-3D KasumaBot*\n\nY si te dice que falta texto, es porque el logo es de 2 texto, ejemplo: *${usedPrefix + command} texto1|texto2*\nEjemplo *${usedPrefix + command} KasumaBot|KasumaBot*\n\n\n\nSi no funciona el comando reportelo de la siguiente manera: .reporte <texto>`)
 console.log(e)}
 }
 handler.help = ['logos'];
