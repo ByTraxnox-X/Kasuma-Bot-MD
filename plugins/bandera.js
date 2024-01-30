@@ -10,7 +10,7 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, 'Todavia hay un juego sin terminar!', conn.apiUrl[id][0])
         throw false
     }
-    let apiUrl = JSON.parse(fs.readFileSync("./src/game/casos.json"))
+   // let apiUrl = JSON.parse(fs.readFileSync("./src/game/casos.json"))
     const apiUrl = 'https://api-kasu.onrender.com/api/game/bandera?apikey=79242cc3';
   /*  let json = apiUrl[Math.floor(Math.random() * apiUrl.length)]
     let _clue = json.name
