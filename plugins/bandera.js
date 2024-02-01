@@ -1,32 +1,50 @@
-import axios from "axios"
+import fetch from 'node-fetch';
+import fs from 'fs';
 
-let handler = async (m, { conn }) => {
-    try {
-        let response = await axios.get('https://apikasu.onrender.com/api/game/bandera?apikey=SebastianDevelop');
+let timeout = 5000;
+let poin = 10000;
 
-        if (response.status === 200 && response.result && response.result.img) {
-            let imgURL = response.result.img;
-            conn.sendFile(m.chat, imgURL, 'bandera.jpg', '¿Cuál es el nombre de esta bandera?');
+let handler = async (m, { conn, command, usedPrefix, args }) => {
+    const apiUrl = 'https://apikasu.onrender.com/api/game/bandera?apikey=SebastianDevelop';
 
-            // Espera la respuesta del usuario
-            conn.waitForReply(m.chat, async (reply) => {
-                if (reply.text.trim().toLowerCase() === response.result.respuesta.toLowerCase()) {
-                    conn.reply(m.chat, `¡Correcto! La bandera es ${response.result.respuesta}.`, m);
-                } else {
-                    conn.reply(m.chat, `Incorrecto. La bandera es ${response.result.respuesta}.`, m);
-                }
-            });
-        } else {
-            conn.reply(m.chat, 'No se pudo obtener la imagen de la bandera. Inténtalo de nuevo más tarde.', m);
-        }
-    } catch (error) {
-        console.error('Error al llamar a la API:', error);
-        conn.reply(m.chat, 'Ocurrió un error al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.', m);
+    conn.tekateki = conn.tekateki ? conn.tekateki : {};
+    let id = m.chat;
+    if (id in conn.tekateki) {
+        conn.reply(m.chat, '¡Todavía hay un juego sin terminar!', conn.tekateki[id][0]);
+        throw false;
     }
-}
 
-handler.help = ['bandera']
-handler.tags = ['game']
-handler.command = ["bandera"]
+    let user = global.db.data.users[m.sender] || {};
+    let userWait = user.wait || 0;
+    let timeout = userWait + 40000;
+    let textos = `*Adivina el nombre de la bandera de la foto*
+
+*Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
+*Bono:* +${poin} Exp
+
+Recuerda responder con el nombre completo!`.trim();
+
+    conn.tekateki[id] = true;
+
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    conn.sendFile(m.chat, data.img, 'bandera.jpg', textos, m);
+
+    setTimeout(async () => {
+        if (conn.tekateki[id]) {
+            await conn.reply(m.chat, `¡Se acabó el tiempo!, intenta resolver de nuevo.`, conn.tekateki[id][0]);
+            delete conn.tekateki[id];
+        }
+    }, timeout);
+
+    user.wait = new Date() * 1;
+    user.poin = (user.poin || 0) + poin;
+    global.db.data.users[m.sender] = user;
+};
+
+handler.help = ['adivinabandera'];
+handler.tags = ['game'];
+handler.command = /^(adivinabandera|bandera|banderade|banderapais)$/i;
 
 export default handler;
