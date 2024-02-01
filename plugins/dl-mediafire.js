@@ -4,27 +4,27 @@ let handler = async (m, { conn, text }) => {
    if (!text) throw 'Ingrese el enlace del archivo';
 
    try {
-      let res = await fetch(`https://vihangayt.me/download/mediafire?url=${text}`);
+      let apiUrl = await fetch(global.API('KasuApi', '/api/dowloader/mediafire', { url: text }, 'apikey'))
+      const res = await fetch(apiUrl);
 
       if (!res.ok) {
          throw new Error(`Error`);
       }
 
-      let json = await res.json();
+      const json = await res.json();
 
       console.log('JSON response:', json);
       m.react(rwait);
 
-      let fileInfo =
-         `*Nombre:* ${json.data.name}\n` +
-         `*Tamaño:* ${json.data.size}\n` +
-         `*Fecha:* ${json.data.date}\n` +
-         `*Tipo:* ${json.data.mime}\n`;
+      if (json.status) {
+         const fileInfo = `*Nombre:* ${json.result.filename}\n` +
+            `*Tamaño:* ${json.result.filesizeH}\n` +
+            `*Fecha:* ${json.result.upload_date}\n` +
+            `*Tipo:* ${json.result.filetype}\n`;
 
-      if (json.data.link) {
          m.react(done);
-         let fileBuffer = await fetch(json.data.link).then(res => res.buffer());
-         await conn.sendFile(m.chat, fileBuffer, json.data.name, fileInfo, m);
+         const fileBuffer = await fetch(json.result.url).then(res => res.buffer());
+         await conn.sendFile(m.chat, fileBuffer, json.result.filename, fileInfo, m);
       } else {
          m.reply('No se pudo obtener el enlace del archivo');
       }
