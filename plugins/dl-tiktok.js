@@ -8,7 +8,7 @@ const handler = async (m, { conn, args }) => {
         const response = await fetch(apiUrl);
 
         if (response.ok) {
-            m.react(rwait);
+            m.react('⌛');
 
             const data = await response.json();
             const videoHdUrl = data.result.video_HD;
@@ -16,11 +16,11 @@ const handler = async (m, { conn, args }) => {
             const fileName = "tiktok.mp4";
 
             const videoResponse = await fetch(videoHdUrl);
-            const fileBuffer = await videoResponse.buffer();
+            const videoBuffer = await videoResponse.buffer();
 
-            conn.sendFile(m.chat, fileBuffer, fileName, "", m);
+            conn.sendFile(m.chat, videoBuffer, fileName, "", m);
 
-            m.react(done);
+            m.react('✅');
         } else {
             throw 'No se pudo obtener el contenido de TikTok.';
         }
