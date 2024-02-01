@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import fs from 'fs';
 
-let timeout = 5000;
+let timeout = 1000;
 let poin = 10000;
 
 let handler = async (m, { conn, command, usedPrefix, args }) => {
