@@ -4,16 +4,13 @@ let handler = async (m, { conn, text }) => {
    if (!text) throw 'Ingrese el enlace del archivo';
 
    try {
-      let apiUrl = await fetch(global.API('KasuApi', '/api/dowloader/mediafire', { url: text }, 'apikey'))
+      const apiUrl = `${apikasu}/api/dowloader/mediafire?url=${text}&apikey=${apikeykasu}`;
       const res = await fetch(apiUrl);
 
       if (!res.ok) {
          throw new Error(`Error`);
       }
-
       const json = await res.json();
-
-      console.log('JSON response:', json);
       m.react(rwait);
 
       if (json.status) {
