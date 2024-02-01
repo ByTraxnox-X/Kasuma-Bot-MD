@@ -6,18 +6,18 @@ let handler = async (m, { conn, text: tiktok }) => {
     }
 
     try {
-        const apiURL = `https://api.cafirexos.com/api/ttimg?url=${tiktok}`;
+        const apiURL = `${apikasu}/api/dowloader/tikok?url=${tiktok}&apikey=${apikeykasu}`;
         const response = await axios.get(apiURL);
         const responseData = response.data;
 
         m.react(rwait);
 
-        if (responseData.data && responseData.data.length > 0) {
-            const imageUrls = responseData.data;
+        if (responseData.status && responseData.result.photo && responseData.result.photo.length > 0) {
+            const photoData = responseData.result.photo;
 
-            for (const imageUrl of imageUrls) {
+            for (const photo of photoData) {
                 m.react(done);
-                const imageBuffer = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+                const imageBuffer = await axios.get(photo.url_download, { responseType: 'arraybuffer' });
                 await conn.sendMessage(m.chat, { image: { data: imageBuffer.data, mimetype: 'image/jpeg' } }, m);
             }
         } else {
