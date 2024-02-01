@@ -11,7 +11,7 @@ const handler = async (m, { conn, args }) => {
             m.react(rwait);
 
             const data = await response.json();
-            const videoUrl = data.result.video;
+            const videoUrl = data.result.video_HD;
 
             const fileName = "twitter.mp4";
 
