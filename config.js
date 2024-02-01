@@ -32,6 +32,11 @@ global.APIKeys = { // APIKey Here
 global.KasumaCode = "" 
 global.confirmCode = ""
 
+
+// KASU API
+global.apikasu = "https://apikasu.onrender.com"
+global.apikeykasu = "SebastianDevelop"
+
 //APIS
 global.tiktokkey = ['GIf4o4qJ']
 global.soundcloudID = ["iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX"]
