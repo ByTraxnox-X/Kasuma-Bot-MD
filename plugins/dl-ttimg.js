@@ -6,25 +6,27 @@ let handler = async (m, { conn, text: tiktok }) => {
     }
 
     try {
-        const apiURL = `${apikasu}/api/dowloader/tikok?url=${tiktok}&apikey=${apikeykasu}`;
+        const apiURL = `${apikasu}/api/dowloader/tikok?url=${encodeURIComponent(tiktok)}&apikey=${apikeykasu}`;
         const response = await axios.get(apiURL);
         const responseData = response.data;
 
-        m.react(rwait);
+        m.react('⌛');
 
         if (responseData.status && responseData.result.photo && responseData.result.photo.length > 0) {
             const photoData = responseData.result.photo;
 
             for (const photo of photoData) {
-                m.react(done);
                 const imageBuffer = await axios.get(photo.url_download, { responseType: 'arraybuffer' });
-                await conn.sendMessage(m.chat, { image: { data: imageBuffer.data, mimetype: 'image/jpeg' } }, m);
+                await conn.sendFile(m.chat, imageBuffer.data, 'tiktok_image.jpg', '', m);
             }
+
+            m.react('✅');
         } else {
             throw 'No se encontraron imágenes para este TikTok.';
         }
     } catch (error) {
-        throw `Error al obtener imágenes del TikTok: ${error}`;
+        console.error(error);
+        throw `Error al obtener imágenes del TikTok: ${error.message}`;
     }
 };
 
