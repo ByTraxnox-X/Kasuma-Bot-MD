@@ -11,7 +11,7 @@ const handler = async (m, { conn, args }) => {
             m.react('⌛');
 
             const data = await response.json();
-            const videoUrl = data.result.vídeo;
+            const videoUrl = data.result.video2;
 
             const fileName = "tiktok.mp4";
 
