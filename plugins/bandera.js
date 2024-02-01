@@ -2,7 +2,7 @@ import axios from "axios"
 
 let handler = async (m, { conn }) => {
     try {
-        let response = await axios.get('https://apikasu.onrender.com/juego/bandera/random');
+        let response = await axios.get('https://apikasu.onrender.com/api/game/bandera?apikey=SebastianDevelop');
 
         if (response.status === 200 && response.data && response.data.img) {
             let imgURL = response.data.img;
