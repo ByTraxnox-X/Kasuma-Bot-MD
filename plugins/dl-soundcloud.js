@@ -20,7 +20,7 @@ const handler = async (m, {conn, text}) => {
     const shortUrl = await (await fetch(`${tunyurl}/api-create.php?url=${download}`)).text();
     const soundcloudt = `*${title}*
     
-    *URL:* ${shortUrl}`;
+*URL:* ${shortUrl}`;
     await conn.sendFile(m.chat, thumbnail, '', soundcloudt, m);
     m.react(done)
     await conn.sendMessage(m.chat, {audio: {url: download}, fileName: `${title}.mp3`, mimetype: 'audio/mpeg'}, {quoted: m});
