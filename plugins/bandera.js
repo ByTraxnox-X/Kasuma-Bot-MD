@@ -9,12 +9,12 @@ let handler = async (m, { conn, usedPrefix }) => {
     const name = await fetch(apiUrl);
     const data = await name.json();
 
-    conn.tekateki = conn.tekateki ? conn.tekateki : {}
-    let id = m.chat
+   // conn.tekateki = conn.tekateki ? conn.tekateki : {}
+   /* let id = m.chat
     if (id in conn.tekateki) {
         conn.reply(m.chat, 'Todavia hay un juego sin terminar!', conn.tekateki[id][0])
         throw false
-    }
+    }*/
     let textos = `
 ⷮ *Adivina el nombre de la bandera de la foto*
 *Nota: Pusimos 2 minutos para poder visualizar la imagen bien ya que esta borrosa, estamos mejorando eso, en muy poco tiempo estara lista con foto hd*
@@ -32,7 +32,7 @@ Recuerda responder con el nombre completo!
         json, poin,
         setTimeout(async () => {
             if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!, intenta resolver de nuevo.`, conn.tekateki[id][0])
-            delete conn.tekateki[id]
+            //delete conn.tekateki[id]
         }, timeout)
     ]
 }
