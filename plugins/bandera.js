@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 
 let timeout = 180000
@@ -14,7 +13,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     try {
         let res = await axios.get('https://apikasu.onrender.com/api/game/bandera?apikey=SebastianDevelop');
         let json = res.data;
-        let imageUrl = json.img;
+        let imageUrl = json.result.img;
         let caption = `
 ⷮ *Bandera Mystery*
 
