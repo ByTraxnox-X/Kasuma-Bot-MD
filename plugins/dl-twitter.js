@@ -1,23 +1,37 @@
+import fetch from 'node-fetch';
 
-import fg from 'api-dylux'
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-if (!args[0]) throw `Ingrese un enlace de twitter`
-          m.react(rwait)    
-          try {
-          let { SD, HD, desc, thumb, audio } = await fg.twitter(args[0])
-          let te = `*${desc}*
-`
-m.react(done)
-conn.sendFile(m.chat, HD, 'twitter.mp4', te, m)
-m.react(done)
-} catch (e) {
-  	m.reply(`verifica que el link sea de Twitter`)
-	} 
-	
-}
-handler.help = ['twitter'].map(v => v + ' <url>')
-handler.tags = ['dl']
-handler.command = /^(twitter|tw)$/i
-handler.diamond = true
+const handler = async (m, { conn, args }) => {
+    if (!args[0]) throw `Por favor, ingrese un enlace de Twitter.`;
 
-export default handler
+    try {
+        const apiUrl = `${apikasu}/api/dowloader/twitter?url=${args[0]}&apikey=${apikeykasu}`;
+        const response = await fetch(apiUrl);
+
+        if (response.ok) {
+            m.react(rwait);
+
+            const data = await response.json();
+            const videoUrl = data.result.video;
+
+            const fileName = "twitter.mp4";
+
+            const videoResponse = await fetch(videoUrl);
+            const fileBuffer = await videoResponse.buffer();
+
+            conn.sendFile(m.chat, fileBuffer, fileName, "", m);
+
+            m.react(done);
+        } else {
+            throw 'No se pudo obtener el contenido de Twitter.';
+        }
+    } catch (error) {
+        console.error(error);
+        throw `Ocurrió un error al descargar el video de Twitter: ${error.message}`;
+    }
+};
+
+handler.help = ['twitter'];
+handler.tags = ['dl'];
+handler.command = ['twitter', 'tw'];
+
+export default handler;
