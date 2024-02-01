@@ -16,7 +16,7 @@ const handler = async (m, { conn, args }) => {
             const fileName = "tiktok.mp4";
 
             const videoResponse = await fetch(videoUrl);
-            const videoBuffer = await videoResponse.buffer();
+            const fileBuffer = await videoResponse.buffer();
 
             conn.sendFile(m.chat, fileBuffer, fileName, "", m);
 
