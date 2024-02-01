@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 
-let timeout = 180000
+let timeout = 5000
 let poin = 10000
 
 let handler = async (m, { conn, usedPrefix }) => {
