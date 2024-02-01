@@ -1,7 +1,6 @@
 import fetch from 'node-fetch';
-import fs from 'fs';
 
-let timeout = 5000;
+let timeout = 1000;
 let poin = 10000;
 
 let handler = async (m, { conn, command, usedPrefix, args }) => {
@@ -16,7 +15,7 @@ let handler = async (m, { conn, command, usedPrefix, args }) => {
 
     let user = global.db.data.users[m.sender] || {};
     let userWait = user.wait || 0;
-    let timeout = userWait + 40000;
+    let timeout = userWait + 1000;
     let textos = `*Adivina el nombre de la bandera de la foto*
 
 *Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
