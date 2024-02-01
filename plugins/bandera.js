@@ -29,7 +29,7 @@ Recuerda responder con el nombre completo!`.trim();
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    conn.sendFile(m.chat, data.img, 'bandera.jpg', textos, m);
+    conn.sendFile(m.chat, result.img, 'bandera.jpg', textos, m);
 
     setTimeout(async () => {
         if (conn.tekateki[id]) {
