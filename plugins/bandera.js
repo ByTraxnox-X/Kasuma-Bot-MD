@@ -33,7 +33,7 @@ Adivina la bandera de qué país es esta?
         ]
 
         // Agregar la respuesta del usuario
-        conn.tekateki[id][4] = json.result.name // Almacena el nombre de la bandera para comparación
+        conn.tekateki[id][4] = json.name // Almacena el nombre de la bandera para comparación
 
         // Escuchar la respuesta del usuario
         conn.on('text', async (msg) => {
