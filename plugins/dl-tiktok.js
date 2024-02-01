@@ -4,7 +4,7 @@ const handler = async (m, { conn, args }) => {
     if (!args[0]) throw `Por favor, ingrese un enlace de TikTok.`;
 
     try {
-        const apiUrl = `https://apikasu.onrender.com/api/dowloader/tikok?url=${encodeURIComponent(args[0])}&apikey=SebastianDevelop`;
+        const apiUrl = `${apikasu}/api/dowloader/tikok?url=${encodeURIComponent(args[0])}&apikey=${apikeykasu}`;
         const response = await fetch(apiUrl);
 
         if (response.ok) {
