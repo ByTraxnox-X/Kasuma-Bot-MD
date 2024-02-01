@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+
 const handler = async (m, {conn, text}) => {
   if (!text) throw `ingrese el nombre de la cancion`;
   try {
@@ -13,15 +14,16 @@ const handler = async (m, {conn, text}) => {
       permalinkUrl = await json2.collection[0].permalink_url;
     }
     m.react(rwait)
-    const res2 = await fetch(`${akuari}/downloader/scdl?link=${permalinkUrl}`);
+    const res2 = await fetch(`${apikasu}/api/dowloader/soundcloud?url=${permalinkUrl}&apikey=${apikeykasu}`);
     const json = await res2.json();
-    const shortUrl = await (await fetch(`${tunyurl}/api-create.php?url=${json.link}`)).text();
-    const soundcloudt = `*${json.title}*
+    const { title, download, thumbnail } = json.result;
+    const shortUrl = await (await fetch(`${tunyurl}/api-create.php?url=${download}`)).text();
+    const soundcloudt = `*${title}*
     
     *URL:* ${shortUrl}`;
-    await conn.sendFile(m.chat, json.thumb, '', soundcloudt, m);
+    await conn.sendFile(m.chat, thumbnail, '', soundcloudt, m);
     m.react(done)
-    await conn.sendMessage(m.chat, {audio: {url: json.link}, fileName: `${json.title}.mp3`, mimetype: 'audio/mpeg'}, {quoted: m});
+    await conn.sendMessage(m.chat, {audio: {url: download}, fileName: `${title}.mp3`, mimetype: 'audio/mpeg'}, {quoted: m});
   } catch {
     throw 'ERROR';
   }
