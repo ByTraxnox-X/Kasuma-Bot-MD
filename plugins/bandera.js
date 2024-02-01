@@ -13,8 +13,8 @@ let handler = async (m, { conn, usedPrefix }) => {
     }
     try {
         let res = await axios.get('https://apikasu.onrender.com/api/game/bandera?apikey=SebastianDevelop');
-        let json = res.data;
-        let imageUrl = json.result.img;
+        let json = res.data.result;
+        let imageUrl = json.img;
         let caption = `
 ⷮ *Bandera Mystery*
 
@@ -33,10 +33,12 @@ Adivina la bandera de qué país es esta?
         ]
 
         // Agregar la respuesta del usuario
-        const responseListener = conn.on('text', async (msg) => {
-            let txt = msg.text.trim().toLowerCase()
-            if (txt == json.result.name.toLowerCase() && conn.tekateki[id]) {
-                conn.reply(m.chat, `¡Correcto! La bandera es de ${json.result.name}. Ganaste ${poin} Exp.`, conn.tekateki[id][0])
+        conn.tekateki[id][4] = json.result.name // Almacena el nombre de la bandera para comparación
+
+        // Escuchar la respuesta del usuario
+        conn.on('text', async (msg) => {
+            if (msg.text.trim() == conn.tekateki[id][4] && conn.tekateki[id]) {
+                conn.reply(m.chat, `¡Correcto! La bandera es de ${conn.tekateki[id][4]}. Ganaste ${poin} Exp.`, conn.tekateki[id][0])
                 global.DATABASE._data.users[m.sender].exp += poin
                 clearTimeout(conn.tekateki[id][3])
                 delete conn.tekateki[id]
