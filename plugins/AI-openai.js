@@ -8,12 +8,12 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `https://vihangayt.me/tools/chatgpt?q=${text}`;
+    const apiUrl = `https://vanitas-api.boxmine.xyz/api/chatgpt?text=${text}&apikey=Vanitas`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    if (data.status && data.resultado) {
-      m.reply(data.resultado);
+    if (data.status && data.response) {
+      m.reply(data.response);
     } else {
       throw 'No se pudo obtener una respuesta de la API.';
     }
