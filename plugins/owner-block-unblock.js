@@ -1,11 +1,10 @@
-import fs from 'fs'
-
 const handler = async (m, { text, conn, usedPrefix, command }) => {
   const why = `Uso correcto\n${usedPrefix + command} @${m.sender.split('@')[0]}`;
   const who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : false;
   if (!who) conn.reply(m.chat, why, m, { mentions: [m.sender] });
 
   const res = [];
+  let responseSent = false; // Variable para controlar si ya se envió la respuesta
 
   switch (command) {
     case 'blok':
@@ -18,6 +17,10 @@ const handler = async (m, { text, conn, usedPrefix, command }) => {
           global.db.data.blockedUsers[who] = global.db.data.blockedUsers[who] || [];
           global.db.data.blockedUsers[who].push(m.chat); // Guarda el ID del grupo en el que se bloqueó al usuario
           fs.writeFileSync('./lib/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8'); // Guarda la base de datos de forma síncrona
+          if (!responseSent) {
+            conn.reply(m.chat, `*Se completó la operación (${command}) con ${res ? `${res.map((v) => '@' + v.split('@')[0])}` : ''}*`, m, { mentions: res });
+            responseSent = true; // Marcar que ya se envió la respuesta
+          }
         });
       } else conn.reply(m.chat, why, m, { mentions: [m.sender] });
       break;
@@ -33,19 +36,14 @@ const handler = async (m, { text, conn, usedPrefix, command }) => {
               global.db.data.blockedUsers[who].splice(index, 1);
               if (global.db.data.blockedUsers[who].length === 0) delete global.db.data.blockedUsers[who];
               fs.writeFileSync('./path/to/your/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8'); // Guarda la base de datos de forma síncrona
+              if (!responseSent) {
+                conn.reply(m.chat, `*Se completó la operación (${command}) con ${res ? `${res.map((v) => '@' + v.split('@')[0])}` : ''}*`, m, { mentions: res });
+                responseSent = true; // Marcar que ya se envió la respuesta
+              }
             }
           }
         });
       } else conn.reply(m.chat, why, m, { mentions: [m.sender] });
       break;
   }
-
-  if (res[0]) conn.reply(m.chat, `*Se completó la operación (${command}) con ${res ? `${res.map((v) => '@' + v.split('@')[0])}` : ''}*`, m, { mentions: res });
 };
-
-handler.help = ['block/unblock (@user)']
-handler.tags = ['owner']
-handler.command = /^(block|unblock)$/i;
-handler.rowner = true
-
-export default handler;
