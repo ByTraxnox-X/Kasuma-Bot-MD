@@ -1,5 +1,6 @@
-let handler = async (m, { conn }) => {
-  await conn.fetchBlocklist().then(async data => {
+const handler = async (m, { conn }) => {
+  try {
+    const data = await conn.fetchBlocklist();
     let txt = `*Lista de bloqueados*\n\n*Total :* ${data.length}\n\n\n`;
 
     for (let i of data) {
@@ -8,12 +9,12 @@ let handler = async (m, { conn }) => {
       txt += `@${i.split("@")[0]} - Bloqueado en los grupos: ${groupNames.join(', ')}\n`;
     }
 
-    return conn.reply(m.chat, txt, m, { mentions: await conn.parseMention(txt) });
-  }).catch(err => {
+    conn.reply(m.chat, txt, m, { mentions: await conn.parseMention(txt) });
+  } catch (err) {
     console.log(err);
     throw 'No hay números bloqueados';
-  });
-}
+  }
+};
 
 handler.help = ['bloqueados'];
 handler.tags = ['owner'];
