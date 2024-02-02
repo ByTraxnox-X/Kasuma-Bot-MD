@@ -1,4 +1,4 @@
-const handler = async (m, { conn }) => {
+const handler = async (m, { conn, command }) => {
   try {
     const data = await conn.fetchBlocklist();
     let txt = `*Lista de bloqueados*\n\n*Total :* ${data.length}\n\n\n`;
