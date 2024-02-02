@@ -15,7 +15,7 @@ const handler = async (m, { text, conn, usedPrefix, command }) => {
           global.db.data.blockedUsers = global.db.data.blockedUsers || {};
           global.db.data.blockedUsers[who] = global.db.data.blockedUsers[who] || [];
           global.db.data.blockedUsers[who].push(m.chat); // Guarda el ID del grupo en el que se bloqueó al usuario
-          global.db.save();
+          fs.writeFileSync('./path/to/your/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8'); // Guarda la base de datos de forma síncrona
         });
       } else conn.reply(m.chat, why, m, { mentions: [m.sender] });
       break;
@@ -30,7 +30,7 @@ const handler = async (m, { text, conn, usedPrefix, command }) => {
             if (index !== -1) {
               global.db.data.blockedUsers[who].splice(index, 1);
               if (global.db.data.blockedUsers[who].length === 0) delete global.db.data.blockedUsers[who];
-              global.db.save();
+              fs.writeFileSync('./path/to/your/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8'); // Guarda la base de datos de forma síncrona
             }
           }
         });
