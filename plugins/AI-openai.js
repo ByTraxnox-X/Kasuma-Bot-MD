@@ -8,7 +8,7 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `https://vanitas-api.boxmine.xyz/api/chatgpt?text=${text}&apikey=Vanitas`;
+    const apiUrl = `https://vanitas.website/api/chatgpt?text=${text}&apikey=Vanitas`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
