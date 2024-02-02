@@ -1,11 +1,12 @@
-const handler = async (m, { conn, command }) => {
+const handler = async (m, { conn }) => {
   try {
     const data = await conn.fetchBlocklist();
     let txt = `*Lista de bloqueados*\n\n*Total :* ${data.length}\n\n\n`;
 
     for (let i of data) {
       let blockedUser = global.db.data.blockedUsers && global.db.data.blockedUsers[i] ? global.db.data.blockedUsers[i] : [];
-      let groupNames = await Promise.all(blockedUser.map(groupId => conn.getName(groupId)));
+      let uniqueGroups = [...new Set(blockedUser)]; // Eliminar duplicados
+      let groupNames = await Promise.all(uniqueGroups.map(groupId => conn.getName(groupId)));
       txt += `@${i.split("@")[0]} - Bloqueado en los grupos: ${groupNames.join(', ')}\n`;
     }
 
