@@ -1,3 +1,5 @@
+import fs from 'fs'
+
 const handler = async (m, { text, conn, usedPrefix, command }) => {
   const why = `Uso correcto\n${usedPrefix + command} @${m.sender.split('@')[0]}`;
   const who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : false;
