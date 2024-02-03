@@ -34,7 +34,7 @@ const handler = async (m, { conn, command }) => {
             if (index !== -1) {
               global.db.data.blockedUsers[who].splice(index, 1);
               if (global.db.data.blockedUsers[who].length === 0) delete global.db.data.blockedUsers[who];
-              fs.writeFileSync('./path/to/your/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8'); // Guarda la base de datos de forma síncrona
+              fs.writeFileSync('./lib/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8'); // Guarda la base de datos de forma síncrona
             }
           }
         }
