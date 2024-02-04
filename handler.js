@@ -172,6 +172,8 @@ export async function handler(chatUpdate) {
                 if (!('restrict' in settings)) settings.restrict = false
                 if (!('antiPrivate' in settings)) settings.antiPrivate = false
                 if (!('antiSpam' in settings)) settings.antiSpam = false 
+                if (!('solopv' in settings)) settings.solopv = false
+                if (!('sologp' in settings)) settings.sologp = false 
                 if (!('status' in settings)) settings.status = 0
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
@@ -179,6 +181,8 @@ export async function handler(chatUpdate) {
                 antiPrivate: false,
                 restrict: false, 
                 antiSpam: false,
+                solopv: false, 
+                sologp: false,
                 status: 0
             }
         } catch (e) {
@@ -188,10 +192,8 @@ export async function handler(chatUpdate) {
             return
         if (!m.fromMe && opts['self'])
             return
-        if (opts['pconly'] && m.chat.endsWith('g.us'))
-            return
-        if (opts['gconly'] && !m.chat.endsWith('g.us'))
-            return
+            if (settings.solopv && m.chat.endsWith('g.us')) return  
+            if (settings.sologp && !m.chat.endsWith('g.us') && !/bot|owner|script/gim.test(m.text)) return 
         if (opts['swonly'] && m.chat !== 'status@broadcast')
             return
         if (typeof m.text !== 'string')

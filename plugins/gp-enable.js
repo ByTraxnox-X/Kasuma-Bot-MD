@@ -1,37 +1,5 @@
 // Código para activar/desactivar funciones
 let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isROwner }) => {
-  const sections = [
-    {
-      title: `Lista de Opciones`,
-      rows: [
-        { title: "Welcome", rowId: `${usedPrefix + command} welcome` },
-        { title: "Public", rowId: `${usedPrefix + command} public` },
-        { title: "Nsfw", rowId: `${usedPrefix + command} nsfw` },
-        { title: "modoadmin", rowId: `${usedPrefix + command} modoadmin` },
-        { title: "antiprivado", rowId: `${usedPrefix + command} antiprivado` },
-        { title: "OnlyLatinos", rowId: `${usedPrefix + command} onlylatinos` },
-        { title: "antilink2", rowId: `${usedPrefix + command} antilink2` },
-        { title: "Antilink", rowId: `${usedPrefix + command} antilink` },
-        { title: "AntiToxic", rowId: `${usedPrefix + command} antitoxic` },
-        { title: "Antidelete", rowId: `${usedPrefix + command} antidelete` },
-        { title: "Autolevelup", rowId: `${usedPrefix + command} autolevelup` },
-        { title: "Simsimi", rowId: `${usedPrefix + command} simsimi` },
-        { title: "Detect", rowId: `${usedPrefix + command} detect` },
-        { title: "Document", rowId: `${usedPrefix + command} document` },
-        { title: "Restrict", rowId: `${usedPrefix + command} restrict` },
-        { title: "antiSpam", rowId: `${usedPrefix + command} antiSpam` },
-        { title: "OnlyPv", rowId: `${usedPrefix + command} onlydm` },
-        { title: "OnlyGp", rowId: `${usedPrefix + command} onlygp` }
-      ]
-    },
-  ]
-
-  const listMessage = {
-    text: '\nAquí tiene una lista de lo que puede activar y desactivar',
-    title: `Lista de Opciones`,
-    buttonText: "Click Aquí",
-    sections
-  }
 
   let isEnable = /true|enable|(turn)?on|1/i.test(command)
   let chat = global.db.data.chats[m.chat]
@@ -201,30 +169,30 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       bot.restrict = isEnable
       break;
 
-    case 'onlypv':
-    case 'onlydm':
-    case 'onlymd':
-    case 'solopv':
-      isAll = true
-      if (!isROwner) {
-        global.dfail('rowner', m, conn)
-        throw false
-      }
-      global.opts['pconly'] = isEnable
-      break;
-
-    case 'gponly':
-    case 'onlygp':
-    case 'grouponly':
-    case 'sologp':
-    case 'sologrupo':
-      isAll = true
-      if (!isROwner) {
-        global.dfail('rowner', m, conn)
-        throw false
-      }
-      global.opts['gconly'] = isEnable
-      break;
+      case 'onlypv':
+        case 'onlydm':
+        case 'onlymd':
+        case 'solopv':
+          isAll = true
+          if (!isOwner) {
+            global.dfail('owner', m, conn)
+            throw false
+          }
+          bot.solopv = isEnable
+          break
+          
+        case 'gponly':
+        case 'onlygp':
+        case 'grouponly':
+        case 'sologp':
+        case 'sologrupo':
+          isAll = true
+          if (!isOwner) {
+            global.dfail('owner', m, conn)
+            throw false
+          }
+          bot.sologp = isEnable
+          break
 
     case 'antispam':
       isAll = true
