@@ -24,7 +24,7 @@ const handler = async (m, { conn, command }) => {
           if (!global.db.data.blockedUsers[who].includes(`${who}@g.us:${groupName}`)) {
             global.db.data.blockedUsers[who].push(`${who}@g.us:${groupName}`);
           }
-          fs.writeFileSync('./lib/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
+          fs.writeFileSync('./lib/databasepro.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
         }
       });
       break;
