@@ -1,14 +1,11 @@
 import fs from 'fs';
 
-const isUserBlockedInGroup = (userId, groupName) => {
-  return (
-    global.db.data.blockedUsers &&
-    global.db.data.blockedUsers[userId] &&
-    global.db.data.blockedUsers[userId].includes(groupName)
-  );
+const isUserBlockedInGroup = (userId, groupId) => {
+  const blockedUsers = global.db.data.blockedUsers?.[userId];
+  return blockedUsers && blockedUsers.includes(`${userId}@g.us:${groupId}`);
 };
 
-const handler = async (m, { conn, command, __dirname }) => {
+const handler = async (m, { conn, command }) => {
   const why = `Uso correcto\n${command} @usuario`;
   const who = m.mentionedJid[0] || (m.quoted ? m.quoted.sender : null);
   if (!who) return conn.reply(m.chat, why, m, { mentions: [m.sender] });
@@ -24,49 +21,12 @@ const handler = async (m, { conn, command, __dirname }) => {
         if (groupName) {
           global.db.data.blockedUsers = global.db.data.blockedUsers || {};
           global.db.data.blockedUsers[who] = global.db.data.blockedUsers[who] || [];
-          if (!global.db.data.blockedUsers[who].includes(groupName)) {
-            global.db.data.blockedUsers[who].push(groupName);
+          if (!global.db.data.blockedUsers[who].includes(`${who}@g.us:${groupName}`)) {
+            global.db.data.blockedUsers[who].push(`${who}@g.us:${groupName}`);
           }
           fs.writeFileSync('./lib/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
         }
       });
-      break;
-    case 'unblok':
-    case 'unblock':
-      await conn.updateBlockStatus(who, 'unblock').then(() => {
-        res.push(who);
-        if (groupName) {
-          if (global.db.data.blockedUsers && global.db.data.blockedUsers[who]) {
-            const index = global.db.data.blockedUsers[who].indexOf(groupName);
-            if (index !== -1) {
-              global.db.data.blockedUsers[who].splice(index, 1);
-              if (global.db.data.blockedUsers[who].length === 0) delete global.db.data.blockedUsers[who];
-              fs.writeFileSync('./lib/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
-            }
-          }
-        }
-      });
-      break;
-    case 'listgroup':
-      let txt = `ESTOY EN ESTOS GRUPOS ✅\n`;
-      for (const [jid, data] of chats) {
-        if (jid && data.isChats) {
-          txt += `\n*GRUPO*: ${data.name || jid}\n*ID:* ${jid}\n`;
-        }
-      }
-      conn.reply(m.chat, txt.trim(), m);
-      break;
-    case 'checkblock':
-      if (groupName) {
-        if (isUserBlockedInGroup(who, groupName)) {
-          res.push(who);
-          conn.reply(m.chat, `@${who.split('@')[0]} está bloqueado en el grupo: ${groupName}`, m, { mentions: [who] });
-        } else {
-          conn.reply(m.chat, `@${who.split('@')[0]} no está bloqueado en el grupo: ${groupName}`, m, { mentions: [who] });
-        }
-      } else {
-        conn.reply(m.chat, 'Este comando solo puede usarse en grupos', m);
-      }
       break;
   }
 
@@ -82,9 +42,9 @@ const handler = async (m, { conn, command, __dirname }) => {
   }
 };
 
-handler.help = ['block/unblock/checkblock (@usuario)'];
+handler.help = ['block (@usuario)'];
 handler.tags = ['owner'];
-handler.command = /^(block|unblock|checkblock|listgroup)$/i;
+handler.command = /^(blok|block)$/i;
 handler.rowner = true;
 
 export default handler;
