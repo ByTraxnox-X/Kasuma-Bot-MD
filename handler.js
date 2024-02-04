@@ -164,7 +164,7 @@ export async function handler(chatUpdate) {
                     simi: false, 
                     expired: 0,
                 }
-            let settings = global.db.data.settings[this.user.jid]
+                var settings = global.db.data.settings[this.user.jid]
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
             if (settings) {
                 if (!('self' in settings)) settings.self = false
