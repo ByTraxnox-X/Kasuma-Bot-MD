@@ -8,9 +8,10 @@ const handler = async (m, { conn }) => {
     const groupName = group.subject || group.id;
     const groupId = group.id;
 
+    txt += `\nNombre del grupo: ${groupName}\nID del grupo: ${groupId}`;
+    
     const blockedTxt = getBlockedUsersText(conn.user.jid, groupId);
-
-    txt += `\nNombre del grupo: ${groupName}\nID del grupo: ${groupId}${blockedTxt}\n\n`;
+    txt += `${blockedTxt}\n\n`;
   }
 
   const allBlockedUsersTxt = getAllBlockedUsersText(conn.user.jid);
