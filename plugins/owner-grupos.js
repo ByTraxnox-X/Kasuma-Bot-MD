@@ -2,16 +2,15 @@ import fs from 'fs';
 
 const handler = async (m, { conn }) => {
   const groups = Object.values(await conn.groupFetchAllParticipating());
-  let txt = 'Total de Lista de grupos\n';
+  let txt = 'Lista de grupos\n';
 
   for (const group of groups) {
     const groupName = group.subject || group.id;
     const groupId = group.id;
-    const participationStatus = group.metadata?.read_only ? 'No participa' : 'Participa';
 
     const blockedTxt = getBlockedUsersText(conn.user.jid, groupId);
 
-    txt += `\nNombre del grupo: ${groupName}\nID del grupo: ${groupId} [${participationStatus}${blockedTxt}]\n\n`;
+    txt += `\nNombre del grupo: ${groupName}\nID del grupo: ${groupId}${blockedTxt}\n\n`;
   }
 
   const allBlockedUsersTxt = getAllBlockedUsersText(conn.user.jid);
