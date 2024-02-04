@@ -9,8 +9,9 @@ const handler = async (m, { conn }) => {
   for (const group of groups) {
     const groupName = group.subject || group.id;
 
-    // Verificar y mostrar usuarios bloqueados en este grupo
     let blockedTxt = '';
+
+    // Verificar y mostrar usuarios bloqueados en este grupo
     if (global.db.data.blockedUsers) {
       const blockedUsers = global.db.data.blockedUsers[conn.user.jid];
       const blockedUsersInGroup = blockedUsers?.filter(user => user.endsWith('@g.us') && group.participants.find(p => p.jid === user));
