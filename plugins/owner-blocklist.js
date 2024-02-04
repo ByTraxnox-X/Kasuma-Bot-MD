@@ -1,29 +1,22 @@
-// Código mejorado para la función ".listblock"
 let handler = async (m, { conn }) => {
-  await conn.fetchBlocklist().then(async data => {
-    let txt = `*Lista de bloqueados*\n\n*Total :* ${data.length}\n\n\n`;
+  const blockedUserData = global.db.data.blockedUsers[m.sender] || { groups: [] };
 
-    for (let i of data) {
-      let userBlockedInfo = global.db.data.blockedUsers[i.split('@')[0]];
-      if (userBlockedInfo && userBlockedInfo.length > 0) {
-        let groupInfo = userBlockedInfo.map(group => `${group.name} (@${group.jid.split('@')[0]})`).join(', ');
-        txt += `@${i.split('@')[0]}\nBloqueado en: ${groupInfo}\n\n`;
-      } else {
-        txt += `@${i.split('@')[0]}\nBloqueado en: No se tiene información del grupo\n\n`;
-      }
-    }
+  if (blockedUserData.groups.length === 0) {
+    throw 'No hay usuarios bloqueados.';
+  }
 
-    txt += "";
-    return conn.reply(m.chat, txt, m, { mentions: await conn.parseMention(txt) });
-  }).catch(err => {
-    console.log(err);
-    throw 'No hay números bloqueados';
-  })
+  let txt = `*Lista de usuarios bloqueados*\n\n`;
+  
+  for (let group of blockedUserData.groups) {
+    txt += `Usuario: @${m.sender.split("@")[0]}\nGrupo: ${group.name} (@${group.jid.split("@")[0]})\n\n`;
+  }
+
+  return conn.reply(m.chat, txt, m, { mentions: [m.sender] });
 }
 
-handler.help = ['bloqueados'];
+handler.help = ['listblock'];
 handler.tags = ['owner'];
-handler.command = ['bloqueados', 'listblock'];
+handler.command = ['listblock'];
 
 handler.rowner = true;
 
