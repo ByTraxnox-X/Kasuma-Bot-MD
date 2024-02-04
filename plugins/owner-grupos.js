@@ -1,22 +1,39 @@
 import fs from 'fs';
 
 const handler = async (m, { conn }) => {
-  try {
-    const data = await conn.fetchBlocklist();
-    let txt = `*Lista de bloqueados*\n\n*Total :* ${data.length}\n\n\n`;
+  const groups = Object.values(await conn.groupFetchAllParticipating());
+  const blockedUsers = global.db.data.blockedUsers?.[conn.user.jid];
+  let txt = 'Lista de grupos\n';
 
-    for (let i of data) {
-      let blockedUser = global.db.data.blockedUsers && global.db.data.blockedUsers[i] ? global.db.data.blockedUsers[i] : [];
-      let uniqueGroups = [...new Set(blockedUser)]; // Eliminar duplicados
-      let groupNames = await Promise.all(uniqueGroups.map(groupId => conn.getName(groupId)));
-      txt += `@${i.split("@")[0]} - grupos: ${groupNames.join(', ')}\n`;
-    }
+  for (const group of groups) {
+    const groupName = group.subject || group.id;
+    const groupId = group.id;
 
-    conn.reply(m.chat, txt, m, { mentions: await conn.parseMention(txt) });
-  } catch (err) {
-    console.log(err);
-    throw 'No hay números bloqueados';
+    txt += `\nNombre del grupo: ${groupName}\nID del grupo: ${groupId}`;
+
+    const blockedTxt = isUserBlockedInGroup(conn.user.jid, groupId, blockedUsers)
+      ? `, Bloqueados: @${conn.user.jid.split('@')[0]}`
+      : '';
+    
+    txt += `${blockedTxt}\n\n`;
   }
+
+  const allBlockedUsersTxt = getAllBlockedUsersText(conn.user.jid, blockedUsers);
+  if (allBlockedUsersTxt) {
+    txt += `\nUsuarios bloqueados en todos los grupos: ${allBlockedUsersTxt}\n\n`;
+  }
+
+  conn.reply(m.chat, txt.trim(), m);
+};
+
+const isUserBlockedInGroup = (botId, groupId, blockedUsers) => {
+  return blockedUsers && blockedUsers.includes(`${botId}@g.us:${groupId}`);
+};
+
+const getAllBlockedUsersText = (botId, blockedUsers) => {
+  return blockedUsers && blockedUsers.length > 0
+    ? blockedUsers.map(user => `@${user.split('@')[0]}`).join(', ')
+    : '';
 };
 
 handler.help = ['listagrupos'];
