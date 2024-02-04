@@ -2,7 +2,7 @@ import fs from 'fs';
 
 const handler = async (m, { conn }) => {
   const groups = Object.values(await conn.groupFetchAllParticipating());
-  let txt = 'Lista de grupos\n';
+  let txt = 'Total de Lista de grupos\n';
 
   for (const group of groups) {
     const groupName = group.subject || group.id;
