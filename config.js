@@ -63,6 +63,7 @@ global.wagp = 'https://chat.whatsapp.com/HvbqkYZlJzYLhczPhDteMt'
 global.wagit = 'https://github.com/ByTraxnox-X/KasumaBot-MD'
 global.wayt = 'https://youtube.com/@by_traxnox'
 global.wapyp = 'https://paypal.me/txpaying?country.x=CO&locale.x=es_XC'
+global.canal = 'https://chat.whatsapp.com/HvbqkYZlJzYLhczPhDteMt'
 global.fglog = 'https://i.imgur.com/mWHCPIe.jpg'
 global.numero = ['593995668111']
 global.wait = 'Cargando'
