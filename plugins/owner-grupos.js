@@ -1,4 +1,3 @@
-
 import fs from 'fs';
 
 const isUserBlockedInGroup = (userId, groupName) => {
@@ -28,10 +27,9 @@ const handler = async (m, { conn, command }) => {
 
       // Verificar y mostrar usuarios bloqueados en este grupo
       if (global.db.data.blockedUsers) {
-        for (const [userId, blockedGroups] of Object.entries(global.db.data.blockedUsers)) {
-          if (blockedGroups.includes(groupId)) {
-            txt += `  - @${userId.split('@')[0]}\n`;
-          }
+        const blockedUsers = global.db.data.blockedUsers[m.sender];
+        if (blockedUsers && blockedUsers.includes(groupId)) {
+          txt += `  - @${m.sender.split('@')[0]}\n`;
         }
       }
     }
