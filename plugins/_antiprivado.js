@@ -1,4 +1,4 @@
-// Código actualizado para la función "before"
+// Código corregido para la función "before"
 export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner }) {
   if (m.isBaileys && m.fromMe) return !0
   if (m.isGroup) return !1
@@ -19,7 +19,7 @@ export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner }
 
       global.db.data.blockedUsers = global.db.data.blockedUsers || {};
       global.db.data.blockedUsers[m.sender] = global.db.data.blockedUsers[m.sender] || [];
-      global.db.data.blockedUsers[m.sender].push(...userGroups.map(group => ({ jid: group.jid, name: groupNameString })));
+      global.db.data.blockedUsers[m.sender].push({ groups: userGroups.map(group => ({ jid: group.jid, name: groupNameString })) });
 
       // Puedes ajustar la lógica de almacenamiento según tu sistema de base de datos
       // Por ejemplo, si estás utilizando MongoDB, podrías hacer algo como:
