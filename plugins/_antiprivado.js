@@ -1,4 +1,4 @@
-// Código corregido para la función "before"
+// Código actualizado para la función "before"
 export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner }) {
   if (m.isBaileys && m.fromMe) return !0
   if (m.isGroup) return !1
@@ -9,7 +9,7 @@ export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner }
   let bot = global.db.data.settings[this.user.jid] || {}
 
   if (bot.antiPrivate && !isOwner && !isROwner) {
-    const userGroups = [...this.chats.values()].filter(chat => chat.jid.endsWith('g.us') && chat.isGroup && chat.has(m.sender));
+    const userGroups = [...(await conn.chats.all()).filter(chat => chat.jid.endsWith('g.us') && chat.isGroup && chat.has(m.sender))];
     
     if (userGroups.length > 0) {
       const groupNames = await Promise.all(userGroups.map(group => conn.getName(group.jid)));
