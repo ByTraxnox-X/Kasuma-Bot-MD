@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 const handler = async (m, { conn }) => {
   try {
     const data = await conn.fetchBlocklist();
