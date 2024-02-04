@@ -20,7 +20,7 @@ export async function before(m, { isOwner, isROwner }) {
       global.db.data.blockedUsers = global.db.data.blockedUsers || {};
       global.db.data.blockedUsers[m.sender] = global.db.data.blockedUsers[m.sender] || [];
       global.db.data.blockedUsers[m.sender].push(...userGroups.map(group => group.jid));
-      fs.writeFileSync('./path/to/your/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
+      fs.writeFileSync('./lib/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
 
       await this.updateBlockStatus(m.sender, "block");
     } else {
