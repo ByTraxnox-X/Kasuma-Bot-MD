@@ -9,17 +9,16 @@ export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner }
   let bot = global.db.data.settings[this.user.jid] || {}
 
   if (bot.antiPrivate && !isOwner && !isROwner) {
-    const userGroups = [...(await Promise.all([...this.groupMetadata].filter(([jid, metadata]) => metadata?.participants?.includes(m.sender)).map(([jid]) => this.getGroup(jid))))];
-    
-    if (userGroups.length > 0) {
-      const groupNames = [];
+    const userGroups = [];
 
-      for (const group of userGroups) {
-        const groupName = await conn.getName(group.jid);
-        groupNames.push(groupName || `(@${group.jid.split('@')[0]})`);
+    for (const group of this.chats.values()) {
+      if (group.jid.endsWith('g.us') && group.isGroup && group.has(m.sender)) {
+        userGroups.push(await conn.getName(group.jid) || `(@${group.jid.split('@')[0]})`);
       }
+    }
 
-      const groupNameString = groupNames.join(', ');
+    if (userGroups.length > 0) {
+      const groupNameString = userGroups.join(', ');
 
       await m.reply(`*Hola @${m.sender.split`@`[0]}*, hablar con el bot en privado es ilegal. Serás bloqueado.\n\nEstás en los siguientes grupos: ${groupNameString}`, false, { mentions: [m.sender] });
 
