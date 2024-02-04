@@ -27,7 +27,7 @@ const handler = async (m, { conn }) => {
       // Verificar y mostrar usuarios bloqueados en este grupo
       if (global.db.data.blockedUsers) {
         const blockedUsers = global.db.data.blockedUsers[conn.user.jid];
-        const blockedUsersInGroup = blockedUsers?.filter(user => groups.find(group => group.participants.find(p => p.jid === user) && group.id === jid));
+        const blockedUsersInGroup = blockedUsers?.filter(user => isUserBlockedInGroup(user, jid));
 
         if (blockedUsersInGroup && blockedUsersInGroup.length > 0) {
           blockedTxt += `\nBloqueados en ${groupName}: ${blockedUsersInGroup.map(user => `@${user.split('@')[0]}`).join(', ')}`;
