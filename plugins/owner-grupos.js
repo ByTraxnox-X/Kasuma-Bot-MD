@@ -9,37 +9,35 @@ const isUserBlockedInGroup = (userId, groupName) => {
 };
 
 const handler = async (m, { conn }) => {
-  let txt = `ESTOY EN ESTOS GRUPOS ✅\n`;
+  let txt = 'Lista de grupos\n';
 
   // Obtener la lista de grupos
   const groups = Object.values(await conn.groupFetchAllParticipating());
 
-  for (let i = 0; i < groups.length; i++) {
-    const group = groups[i];
-    const groupId = group.id;
-    const groupName = group.subject || groupId;
+  for (const [jid, chat] of Object.entries(conn.chats).filter(([jid, chat]) => jid.endsWith('@g.us') && chat.isChats)) {
+    txt += `\nNombre del grupo: ${await conn.getName(jid)}\nID del grupo: ${jid} [${chat?.metadata?.read_only ? 'No participa' : 'Participa'}]\n`;
 
-    // Verificar si el bot está en el grupo
-    if (group.participants.find(p => p.jid === conn.user.jid)) {
-      txt += `\n*GRUPO*: ${groupName}\n*ID:* ${groupId}\n`;
-
+    // Verificar si el usuario y el bot están en el mismo grupo
+    const isUserInGroup = groups.find(group => group.id === jid);
+    if (isUserInGroup) {
       // Verificar y mostrar usuarios bloqueados en este grupo
       if (global.db.data.blockedUsers) {
-        const blockedUsers = global.db.data.blockedUsers[conn.user.jid];
-        if (blockedUsers && blockedUsers.includes(groupId)) {
-          txt += `  - @${conn.user.jid.split('@')[0]}\n`;
+        const blockedUsers = global.db.data.blockedUsers[m.sender];
+        if (blockedUsers && blockedUsers.includes(jid)) {
+          txt += `  - @${m.sender.split('@')[0]} está bloqueado en este grupo\n`;
         }
       }
     }
+
+    txt += '\n';
   }
 
   conn.reply(m.chat, txt.trim(), m);
 };
 
-handler.help = ['grouplist'];
-handler.tags = ['info'];
-handler.command = /^(grouplist)$/i;
-handler.rowner = true;
-handler.exp = 30;
+handler.help = ['listagrupos'];
+handler.tags = ['owner'];
+handler.command = /^(listagrupos)$/i;
+handler.owner = true;
 
 export default handler;
