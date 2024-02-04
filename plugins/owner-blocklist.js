@@ -13,15 +13,17 @@ const handler = async (m, { conn }) => {
     // Mostrar todos los usuarios bloqueados, incluso si no tienen información de grupo
     let allBlockedUsers = Object.keys(global.db.data.blockedUsers || {});
     allBlockedUsers = allBlockedUsers.filter(user => !data.includes(user)); // Filtrar para mostrar solo los nuevos bloqueados
-    txt += `\n*Usuarios bloqueados sin información de grupo:*\n`;
-    for (let user of allBlockedUsers) {
-      txt += `@${user.split("@")[0]}\n`;
+    if (allBlockedUsers.length > 0) {
+      txt += `\n*Usuarios bloqueados sin información de grupo:*\n`;
+      for (let user of allBlockedUsers) {
+        txt += `@${user.split("@")[0]}\n`;
+      }
     }
 
     conn.reply(m.chat, txt, m, { mentions: await conn.parseMention(txt) });
   } catch (err) {
     console.log(err);
-    throw 'No hay números bloqueados';
+    throw 'Error al obtener la lista de bloqueados';
   }
 };
 
