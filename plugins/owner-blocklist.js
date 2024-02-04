@@ -8,9 +8,8 @@ const handler = async (m, { conn }) => {
     let txt = `*Lista de bloqueados*\n\n*Total :* ${data.length}\n\n`;
 
     for (let i of data) {
-      let blockedUser = global.db.data.blockedUsers && global.db.data.blockedUsers[i] ? global.db.data.blockedUsers[i] : [];
-      let groupNames = await Promise.all(blockedUser.map(groupId => conn.getName(groupId)));
-      txt += `@${i.split("@")[0]} - grupos: ${groupNames.join(', ')}\n`;
+      let groupNames = global.db.data.blockedUsers && global.db.data.blockedUsers[i] ? global.db.data.blockedUsers[i].join(', ') : '';
+      txt += `@${i.split("@")[0]} - grupos: ${groupNames}\n`;
     }
 
     conn.reply(m.chat, txt, m, { mentions: await conn.parseMention(txt) });
