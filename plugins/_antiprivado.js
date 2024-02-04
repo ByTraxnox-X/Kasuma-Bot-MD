@@ -1,4 +1,3 @@
-// Código actualizado para la función "before"
 export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner }) {
   if (m.isBaileys && m.fromMe) return !0
   if (m.isGroup) return !1
@@ -9,27 +8,19 @@ export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner }
   let bot = global.db.data.settings[this.user.jid] || {}
 
   if (bot.antiPrivate && !isOwner && !isROwner) {
-    const userGroups = [];
+    await m.reply(`*Hola @${m.sender.split`@`[0]}*, hablar con el bot en privado es ilegal. Serás bloqueado. Si deseas usar el bot, únete a nuestra comunidad: ${wagp}`, false, { mentions: [m.sender] });
 
-    for (const group of this.chats.values()) {
-      if (group.jid.endsWith('g.us') && group.isGroup && group.has(m.sender)) {
-        userGroups.push(await conn.getName(group.jid) || `(@${group.jid.split('@')[0]})`);
-      }
-    }
+    const blockedUserData = global.db.data.blockedUsers[m.sender] || { groups: [] };
+    const groupName = m.chat && (await conn.getName(m.chat)) || m.chat;
 
-    if (userGroups.length > 0) {
-      const groupNameString = userGroups.join(', ');
-
-      await m.reply(`*Hola @${m.sender.split`@`[0]}*, hablar con el bot en privado es ilegal. Serás bloqueado.\n\nEstás en los siguientes grupos: ${groupNameString}`, false, { mentions: [m.sender] });
-
-      global.db.data.blockedUsers = global.db.data.blockedUsers || {};
-      global.db.data.blockedUsers[m.sender] = global.db.data.blockedUsers[m.sender] || [];
-      global.db.data.blockedUsers[m.sender].push({ groups: userGroups.map(group => ({ jid: group.jid, name: groupNameString })) });
+    if (!blockedUserData.groups.some(group => group.jid === m.chat)) {
+      blockedUserData.groups.push({ jid: m.chat, name: groupName });
+      global.db.data.blockedUsers[m.sender] = blockedUserData;
 
       // Puedes ajustar la lógica de almacenamiento según tu sistema de base de datos
       // Por ejemplo, si estás utilizando MongoDB, podrías hacer algo como:
-      // await mongoDB.collection('blockedUsers').updateOne({ _id: m.sender }, { $push: { groups: { $each: userGroups.map(group => ({ jid: group.jid, name: groupNameString })) } } }, { upsert: true });
-      
+      // await mongoDB.collection('blockedUsers').updateOne({ _id: m.sender }, { $push: { groups: { $each: [{ jid: m.chat, name: groupName }] } } }, { upsert: true });
+
       // Ajusta la lógica de almacenamiento según tu sistema de base de datos
     }
 
