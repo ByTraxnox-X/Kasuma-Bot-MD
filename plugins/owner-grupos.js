@@ -9,8 +9,11 @@ const handler = async (m, { conn }) => {
     const groupId = group.id;
 
     txt += `\nNombre del grupo: ${groupName}\nID del grupo: ${groupId}`;
+
+    const blockedTxt = isUserBlockedInGroup(conn.user.jid, groupId)
+      ? `, Bloqueados: @${conn.user.jid.split('@')[0]}`
+      : '';
     
-    const blockedTxt = getBlockedUsersText(conn.user.jid, groupId);
     txt += `${blockedTxt}\n\n`;
   }
 
@@ -22,12 +25,9 @@ const handler = async (m, { conn }) => {
   conn.reply(m.chat, txt.trim(), m);
 };
 
-const getBlockedUsersText = (botId, groupId) => {
+const isUserBlockedInGroup = (botId, groupId) => {
   const blockedUsers = global.db.data.blockedUsers?.[botId];
-  const blockedUsersInGroup = blockedUsers?.filter(user => user.endsWith('@g.us') && groupId && groupId.includes(user));
-  return blockedUsersInGroup && blockedUsersInGroup.length > 0
-    ? `, Bloqueados: ${blockedUsersInGroup.map(user => `@${user.split('@')[0]}`).join(', ')}`
-    : '';
+  return blockedUsers && blockedUsers.includes(groupId);
 };
 
 const getAllBlockedUsersText = (botId) => {
