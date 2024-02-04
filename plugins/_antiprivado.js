@@ -1,3 +1,4 @@
+// Código para la función "before"
 export async function before(m, { isOwner, isROwner }) {
   if (m.isBaileys && m.fromMe) return !0;
   if (m.isGroup) return !1;
@@ -16,11 +17,10 @@ export async function before(m, { isOwner, isROwner }) {
         { mentions: [m.sender] }
       );
 
-      // Guardar información en la base de datos solo si es un grupo
       global.db.data.blockedUsers = global.db.data.blockedUsers || {};
       global.db.data.blockedUsers[m.sender] = global.db.data.blockedUsers[m.sender] || [];
       global.db.data.blockedUsers[m.sender].push(...userGroups.map(group => group.jid));
-      fs.writeFileSync('./lib/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8'); // Guarda la base de datos de forma síncrona
+      fs.writeFileSync('./path/to/your/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
 
       await this.updateBlockStatus(m.sender, "block");
     } else {
@@ -29,6 +29,7 @@ export async function before(m, { isOwner, isROwner }) {
         false,
         { mentions: [m.sender] }
       );
+
       await this.updateBlockStatus(m.sender, "block");
     }
   }
