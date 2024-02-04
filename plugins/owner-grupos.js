@@ -8,7 +8,7 @@ const isUserBlockedInGroup = (userId, groupName) => {
   );
 };
 
-const handler = async (m, { conn, command }) => {
+const handler = async (m, { conn }) => {
   let txt = `ESTOY EN ESTOS GRUPOS ✅\n`;
 
   // Obtener la lista de grupos
@@ -19,17 +19,15 @@ const handler = async (m, { conn, command }) => {
     const groupId = group.id;
     const groupName = group.subject || groupId;
 
-    // Verificar si el usuario y el bot están en el mismo grupo
-    const isUserInGroup = group?.participants?.find(p => p.jid === m.sender);
-
-    if (isUserInGroup) {
+    // Verificar si el bot está en el grupo
+    if (group.participants.find(p => p.jid === conn.user.jid)) {
       txt += `\n*GRUPO*: ${groupName}\n*ID:* ${groupId}\n`;
 
       // Verificar y mostrar usuarios bloqueados en este grupo
       if (global.db.data.blockedUsers) {
-        const blockedUsers = global.db.data.blockedUsers[m.sender];
+        const blockedUsers = global.db.data.blockedUsers[conn.user.jid];
         if (blockedUsers && blockedUsers.includes(groupId)) {
-          txt += `  - @${m.sender.split('@')[0]}\n`;
+          txt += `  - @${conn.user.jid.split('@')[0]}\n`;
         }
       }
     }
