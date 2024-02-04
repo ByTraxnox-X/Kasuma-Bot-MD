@@ -2,6 +2,7 @@ import fs from 'fs';
 
 const handler = async (m, { conn }) => {
   const groups = Object.values(await conn.groupFetchAllParticipating());
+  const blockedUsers = global.db.data.blockedUsers?.[conn.user.jid];
   let txt = 'Lista de grupos\n';
 
   for (const group of groups) {
@@ -10,7 +11,7 @@ const handler = async (m, { conn }) => {
 
     txt += `\nNombre del grupo: ${groupName}\nID del grupo: ${groupId}`;
 
-    const blockedTxt = isUserBlockedInGroup(conn.user.jid, groupId)
+    const blockedTxt = blockedUsers && blockedUsers.includes(groupId)
       ? `, Bloqueados: @${conn.user.jid.split('@')[0]}`
       : '';
     
@@ -23,11 +24,6 @@ const handler = async (m, { conn }) => {
   }
 
   conn.reply(m.chat, txt.trim(), m);
-};
-
-const isUserBlockedInGroup = (botId, groupId) => {
-  const blockedUsers = global.db.data.blockedUsers?.[botId];
-  return blockedUsers && blockedUsers.includes(groupId);
 };
 
 const getAllBlockedUsersText = (botId) => {
