@@ -41,7 +41,7 @@ SI DESEA PROPAR EL BOT ANTES DE INSTALAR, CLICK ABAJO.
 
 ### ACTIVAR EN REPLIT
 
-[`TUTORIAL DE INSTALACION`](https://www.youtube.com/watch?v=_ZcfPIb11Xs) 
+[`TUTORIAL DE INSTALACION`](https://youtu.be/_ZcfPIb11Xs?si=KtlHxjVpEfUVN-fV) 
 
 <a target="_blank" href="https://replit.com/github/ByTraxnox-X/Kasuma-Bot-MD"><img alt="Run on Replit" src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg" height="45px"></a>
 
@@ -57,7 +57,7 @@ SI DESEA PROPAR EL BOT ANTES DE INSTALAR, CLICK ABAJO.
 
 ## ACTIVAR EN RENDER
 
-[`TUTORIAL DE INSTALACION`](https://www.youtube.com/watch?v=oNtBKTfK8vg&t)
+[`TUTORIAL DE INSTALACION`](https://youtu.be/oNtBKTfK8vg?si=kTigd63kLhADP97M)
 [`DASHBOARD`](https://dashboard.render.com/)
 
 ***
@@ -77,7 +77,7 @@ En BoxMine el bot estara activo 24/7, si desea instalarlo aqui, vea el tutorial 
 
 ## CODE SPACE
 
-[`TUTORIAL DE INSTALACION`](https://youtu.be/ZNZJ2tZhiM4)
+[`TUTORIAL DE INSTALACION`](https://youtu.be/mcv9ykmQUso?si=qX1Ht0-T-D652Ep-)
 [`CREAR SERVIDOR`](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=733291595&ref=main&geo=UsEast)
 ***
 
@@ -132,7 +132,7 @@ npm start
 
 ### INSTALACION EN TERMUX
 
-[`TUTORIAL DE INSTALACION`](https://youtu.be/IOzudtyN87U?si=spflnObmfSHXnVa5) 
+[`TUTORIAL DE INSTALACION`](https://youtu.be/IOzudtyN87U?si=Kuli2jp5DDnJeTa_) 
 
 1. Para prevenir algún error de comandos, ponga uno por uno.
 
