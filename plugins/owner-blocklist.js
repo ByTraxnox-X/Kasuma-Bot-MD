@@ -1,19 +1,32 @@
 let handler = async (m, { conn }) => {
-  const blockedUsers = await conn.fetchBlocklist();
-  let txt = `*Lista de bloqueados*\n\n*Total :* ${blockedUsers.length}\n\n\n`;
+  try {
+    const blockedUsers = await conn.fetchBlocklist();
+    let txt = `*Lista de bloqueados*\n\n*Total :* ${blockedUsers.length}\n\n\n`;
 
-  for (let user of blockedUsers) {
-    try {
-      const chat = await conn.getChat(user);
-      const groupName = chat ? chat.name : 'Unknown Group';
-      txt += `@${user.split("@")[0]} en ${groupName}\n`;
-    } catch (error) {
-      console.error(error);
-    }
+    const fetchGroupNames = async (user) => {
+      try {
+        const chat = await conn.getChat(user);
+        return chat ? chat.name : 'Unknown Group';
+      } catch (error) {
+        console.error(error);
+        return 'Unknown Group';
+      }
+    };
+
+    const groupNamesPromises = blockedUsers.map(async (user) => {
+      const groupName = await fetchGroupNames(user);
+      return `@${user.split("@")[0]} en ${groupName}`;
+    });
+
+    const groupNames = await Promise.all(groupNamesPromises);
+    txt += groupNames.join('\n');
+
+    txt += "";
+    return conn.reply(m.chat, txt, m, { mentions: await conn.parseMention(txt) });
+  } catch (error) {
+    console.error(error);
+    throw 'No hay números bloqueados';
   }
-
-  txt += "";
-  return conn.reply(m.chat, txt, m, { mentions: await conn.parseMention(txt) });
 }
 
 handler.help = ['bloqueados'];
@@ -22,3 +35,4 @@ handler.command = ['bloqueados', 'listblock'];
 handler.rowner = true;
 
 export default handler;
+
