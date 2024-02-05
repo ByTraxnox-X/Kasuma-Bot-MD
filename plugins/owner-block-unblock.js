@@ -24,10 +24,16 @@ const handler = async (m, {text, conn, usedPrefix, command}) => {
     case 'unblok': case 'unblock':
       if (who) {
         try {
-          const groupName = m.chat ? conn.chats.get(m.chat)?.name : 'Unknown Group';
+          const userChat = await conn.getChat(who);
+          const userGroupName = userChat ? userChat.name : 'Unknown Group';
+          
+          const group = await conn.getChat(m.chat);
+          const groupName = group ? group.name : 'Unknown Group';
+
           await conn.updateBlockStatus(who, 'unblock').then(() => {
             res.push(who);
           });
+
           conn.reply(m.chat, `*se completo la operacion (${command}) en el grupo ${groupName} con ${res ? `${res.map((v) => '@' + v.split('@')[0])}` : ''}*`, m, {mentions: res});
         } catch (error) {
           console.error(error);
