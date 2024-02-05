@@ -1,7 +1,7 @@
 const handler = async (m, { conn }) => {
   try {
     const data = await conn.fetchBlocklist();
-    let txt = `*Lista de bloqueados*\n\n*Total :* ${data.length}\n\n\n`;
+    let txt = `Lista de bloqueados*\n\nTotal :* ${data.length}\n\n\n`;
 
     for (let i of data) {
       let blockedUser = global.db.data && global.db.data.blockedUsers && global.db.data.blockedUsers[i] ? global.db.data.blockedUsers[i] : [];
