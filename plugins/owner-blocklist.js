@@ -3,9 +3,13 @@ let handler = async (m, { conn }) => {
   let txt = `*Lista de bloqueados*\n\n*Total :* ${blockedUsers.length}\n\n\n`;
 
   for (let user of blockedUsers) {
-    const group = conn.chats.get(user);
-    const groupName = group ? group.name : 'Unknown Group';
-    txt += `@${user.split("@")[0]} en ${groupName}\n`;
+    try {
+      const chat = await conn.getChat(user);
+      const groupName = chat ? chat.name : 'Unknown Group';
+      txt += `@${user.split("@")[0]} en ${groupName}\n`;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   txt += "";
