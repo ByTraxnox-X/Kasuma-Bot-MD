@@ -1,46 +1,27 @@
-const handler = async (m, {text, conn, usedPrefix, command}) => {
-  const why = `uso correcto\n${usedPrefix + command} @${m.sender.split('@')[0]}`;
-  const who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : false;
+const handler = async (m, { text, conn, usedPrefix, command }) => {
+  const why = `Uso correcto\n${usedPrefix + command} @${m.sender.split('@')[0]}`;
+  const who = m.mentionedJid[0] || (m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : false);
 
-  if (!who) conn.reply(m.chat, why, m, {mentions: [m.sender]});
-  const res = [];
+  if (!who) return conn.reply(m.chat, why, m, { mentions: [m.sender] });
 
-  switch (command) {
-    case 'blok': case 'block':
-      if (who) {
-        try {
-          const chat = await conn.getChat(who);
-          const groupName = chat ? chat.name : 'Unknown Group';
-          await conn.updateBlockStatus(who, 'block').then(() => {
-            res.push(who);
-          });
-          conn.reply(m.chat, `*se completo la operacion (${command}) en el grupo ${groupName} con ${res ? `${res.map((v) => '@' + v.split('@')[0])}` : ''}*`, m, {mentions: res});
-        } catch (error) {
-          console.error(error);
-          conn.reply(m.chat, `Error al obtener información del grupo.`, m);
-        }
-      } else conn.reply(m.chat, why, m, {mentions: [m.sender]});
-      break;
-    case 'unblok': case 'unblock':
-      if (who) {
-        try {
-          const userChat = await conn.getChat(who);
-          const userGroupName = userChat ? userChat.name : 'Unknown Group';
-          
-          const group = await conn.getChat(m.chat);
-          const groupName = group ? group.name : 'Unknown Group';
+  try {
+    const chat = await conn.getChat(who);
+    const groupName = chat ? chat.name : 'Unknown Group';
 
-          await conn.updateBlockStatus(who, 'unblock').then(() => {
-            res.push(who);
-          });
-
-          conn.reply(m.chat, `*se completo la operacion (${command}) en el grupo ${groupName} con ${res ? `${res.map((v) => '@' + v.split('@')[0])}` : ''}*`, m, {mentions: res});
-        } catch (error) {
-          console.error(error);
-          conn.reply(m.chat, `Error al obtener información del grupo.`, m);
-        }
-      } else conn.reply(m.chat, why, m, {mentions: [m.sender]});
-      break;
+    switch (command) {
+      case 'blok': case 'block':
+        await conn.updateBlockStatus(who, 'block');
+        conn.reply(m.chat, `Operación (${command}) completada en el grupo ${groupName}`, m);
+        break;
+      
+      case 'unblok': case 'unblock':
+        await conn.updateBlockStatus(who, 'unblock');
+        conn.reply(m.chat, `Operación (${command}) completada en el grupo ${groupName}`, m);
+        break;
+    }
+  } catch (error) {
+    console.error(error);
+    conn.reply(m.chat, `Error al obtener información del grupo.`, m);
   }
 };
 
