@@ -1,8 +1,9 @@
-const handler = async (m, { conn, command }) => {
+const blockHandler = async (m, { conn, command }) => {
+  const why = `Uso correcto\n.${command} @usuario`;
   const mentionedJid = m.mentionedJid[0] || (m.quoted ? m.quoted.sender : false);
 
   if (!mentionedJid) {
-    return conn.reply(m.chat, `Uso correcto\n.${command} @usuario`, m);
+    return conn.reply(m.chat, why, m);
   }
 
   try {
@@ -26,9 +27,25 @@ const handler = async (m, { conn, command }) => {
   }
 };
 
-handler.help = ['block/unblock (@usuario)'];
+const listGroupsHandler = async (m, { conn }) => {
+  let txt = '';
+  for (const [jid, chat] of Object.entries(conn.chats).filter(([jid, chat]) => jid.endsWith('@g.us') && chat.isChats)) 
+    txt += `\n${await conn.getName(jid)}\n${jid} [${chat?.metadata?.read_only ? 'No participa' : 'Participa'}]\n\n`;
+  
+  m.reply(`Lista de grupos:\n${txt}`.trim());
+};
+
+const handler = (m, { conn, command }) => {
+  if (command === 'block' || command === 'unblock') {
+    blockHandler(m, { conn, command });
+  } else if (command === 'listagrupos') {
+    listGroupsHandler(m, { conn });
+  }
+};
+
+handler.help = ['block/unblock (@usuario)', 'listagrupos'];
 handler.tags = ['owner'];
-handler.command = /^(block|unblock)$/i;
+handler.command = /^(block|unblock|listagrupos)$/i;
 handler.rowner = true;
 
 export default handler;
