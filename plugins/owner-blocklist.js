@@ -4,9 +4,9 @@ const handler = async (m, { conn }) => {
     let txt = `*Lista de bloqueados*\n\n*Total :* ${data.length}\n\n\n`;
 
     for (let i of data) {
-      let blockedUser = global.db.data.blockedUsers && global.db.data.blockedUsers[i] ? global.db.data.blockedUsers[i] : [];
+      let blockedUser = global.db.data && global.db.data.blockedUsers && global.db.data.blockedUsers[i] ? global.db.data.blockedUsers[i] : [];
       let uniqueGroups = [...new Set(blockedUser)]; // Eliminar duplicados
-      let groupNames = await Promise.all(uniqueGroups.map(groupId => conn.getName(groupId)));
+      let groupNames = await Promise.all(uniqueGroups.map(groupId => conn.getName(groupId) || groupId));
       txt += `@${i.split("@")[0]} - grupos: ${groupNames.join(', ')}\n`;
     }
 
