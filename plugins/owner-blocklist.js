@@ -15,7 +15,7 @@ const handler = async (m, { conn }) => {
     console.log(err);
     throw 'No hay números bloqueados';
   }
-};
+}
 
 handler.help = ['bloqueados'];
 handler.tags = ['owner'];
