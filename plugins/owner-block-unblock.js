@@ -1,7 +1,7 @@
 import fs from 'fs';
 
-const blockHandler = async (m, { conn, command }) => {
-  const why = `Uso correcto\n.${command} @usuario`;
+const handler = async (m, { conn, usedPrefix, command }) => {
+  const why = `Uso correcto\n${usedPrefix + command} @usuario`;
   const mentionedJid = m.mentionedJid[0] || (m.quoted ? m.quoted.sender : null);
 
   if (!mentionedJid) {
@@ -16,12 +16,7 @@ const blockHandler = async (m, { conn, command }) => {
       case 'block':
         await conn.updateBlockStatus(mentionedJid, 'block').then(() => {
           if (groupName) {
-            global.db.data.blockedUsers = global.db.data.blockedUsers || {};
-            global.db.data.blockedUsers[mentionedJid] = global.db.data.blockedUsers[mentionedJid] || [];
-            if (!global.db.data.blockedUsers[mentionedJid].includes(groupName)) {
-              global.db.data.blockedUsers[mentionedJid].push(groupName);
-            }
-            fs.writeFileSync('./lib/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
+            saveGroupInfo(mentionedJid, groupName);
           }
         });
         conn.reply(m.chat, `Usuario @${mentionedJid.split('@')[0]} bloqueado en el grupo ${groupName}`, m, { mentions: [mentionedJid] });
@@ -30,14 +25,7 @@ const blockHandler = async (m, { conn, command }) => {
       case 'unblock':
         await conn.updateBlockStatus(mentionedJid, 'unblock').then(() => {
           if (groupName) {
-            if (global.db.data.blockedUsers && global.db.data.blockedUsers[mentionedJid]) {
-              const index = global.db.data.blockedUsers[mentionedJid].indexOf(groupName);
-              if (index !== -1) {
-                global.db.data.blockedUsers[mentionedJid].splice(index, 1);
-                if (global.db.data.blockedUsers[mentionedJid].length === 0) delete global.db.data.blockedUsers[mentionedJid];
-                fs.writeFileSync('./lib/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
-              }
-            }
+            removeGroupInfo(mentionedJid, groupName);
           }
         });
         conn.reply(m.chat, `Usuario @${mentionedJid.split('@')[0]} desbloqueado en el grupo ${groupName}`, m, { mentions: [mentionedJid] });
@@ -49,25 +37,33 @@ const blockHandler = async (m, { conn, command }) => {
   }
 };
 
-const listGroupsHandler = async (m, { conn }) => {
-  let txt = '';
-  for (const [jid, chat] of Object.entries(conn.chats).filter(([jid, chat]) => jid.endsWith('@g.us') && chat.isChats)) 
-    txt += `\n${await conn.getName(jid)}\n${jid} [${chat?.metadata?.read_only ? 'No participa' : 'Participa'}]\n\n`;
-  
-  m.reply(`Lista de grupos:\n${txt}`.trim());
-};
-
-const handler = (m, { conn, command }) => {
-  if (command === 'block' || command === 'unblock') {
-    blockHandler(m, { conn, command });
-  } else if (command === 'listagrupos') {
-    listGroupsHandler(m, { conn });
+const saveGroupInfo = (userId, groupName) => {
+  global.db.data.blockedUsers = global.db.data.blockedUsers || {};
+  global.db.data.blockedUsers[userId] = global.db.data.blockedUsers[userId] || [];
+  if (!global.db.data.blockedUsers[userId].includes(groupName)) {
+    global.db.data.blockedUsers[userId].push(groupName);
+    saveDatabase();
   }
 };
 
-handler.help = ['block/unblock (@usuario)', 'listagrupos'];
+const removeGroupInfo = (userId, groupName) => {
+  if (global.db.data.blockedUsers && global.db.data.blockedUsers[userId]) {
+    const index = global.db.data.blockedUsers[userId].indexOf(groupName);
+    if (index !== -1) {
+      global.db.data.blockedUsers[userId].splice(index, 1);
+      if (global.db.data.blockedUsers[userId].length === 0) delete global.db.data.blockedUsers[userId];
+      saveDatabase();
+    }
+  }
+};
+
+const saveDatabase = () => {
+  fs.writeFileSync('./lib/databasepro.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
+};
+
+handler.help = ['block/unblock (@usuario)'];
 handler.tags = ['owner'];
-handler.command = /^(block|unblock|listgrupos)$/i;
+handler.command = /^(block|unblock)$/i;
 handler.rowner = true;
 
 export default handler;
