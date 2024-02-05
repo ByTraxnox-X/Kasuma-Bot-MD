@@ -14,20 +14,14 @@ const handler = async (m, { conn, usedPrefix, command }) => {
 
     switch (command) {
       case 'block':
-        await conn.updateBlockStatus(mentionedJid, 'block').then(() => {
-          if (groupName) {
-            saveGroupInfo(mentionedJid, groupName);
-          }
-        });
+        await conn.updateBlockStatus(mentionedJid, 'block');
+        saveGroupInfo(mentionedJid, groupName);
         conn.reply(m.chat, `Usuario @${mentionedJid.split('@')[0]} bloqueado en el grupo ${groupName}`, m, { mentions: [mentionedJid] });
         break;
 
       case 'unblock':
-        await conn.updateBlockStatus(mentionedJid, 'unblock').then(() => {
-          if (groupName) {
-            removeGroupInfo(mentionedJid, groupName);
-          }
-        });
+        await conn.updateBlockStatus(mentionedJid, 'unblock');
+        removeGroupInfo(mentionedJid, groupName);
         conn.reply(m.chat, `Usuario @${mentionedJid.split('@')[0]} desbloqueado en el grupo ${groupName}`, m, { mentions: [mentionedJid] });
         break;
     }
@@ -58,7 +52,7 @@ const removeGroupInfo = (userId, groupName) => {
 };
 
 const saveDatabase = () => {
-  fs.writeFileSync('./lib/databasepro.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
+  fs.writeFileSync('./lib/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
 };
 
 handler.help = ['block/unblock (@usuario)'];
