@@ -1,22 +1,23 @@
-const handler = async (m, { text, conn, usedPrefix, command }) => {
-  const why = `Uso correcto\n${usedPrefix + command} @${m.sender.split('@')[0]}`;
-  const who = m.mentionedJid[0] || (m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : false);
+const handler = async (m, { conn, command }) => {
+  const mentionedJid = m.mentionedJid[0] || (m.quoted ? m.quoted.sender : false);
 
-  if (!who) return conn.reply(m.chat, why, m, { mentions: [m.sender] });
+  if (!mentionedJid) {
+    return conn.reply(m.chat, `Uso correcto\n.${command} @usuario`, m);
+  }
 
   try {
-    const chat = await conn.getChat(who);
+    const chat = await conn.getChat(mentionedJid);
     const groupName = chat ? chat.name : 'Unknown Group';
 
     switch (command) {
-      case 'blok': case 'block':
-        await conn.updateBlockStatus(who, 'block');
-        conn.reply(m.chat, `Operación (${command}) completada en el grupo ${groupName}`, m);
+      case 'block':
+        await conn.updateBlockStatus(mentionedJid, 'block');
+        conn.reply(m.chat, `Usuario @${mentionedJid.split('@')[0]} bloqueado en el grupo ${groupName}`, m, { mentions: [mentionedJid] });
         break;
-      
-      case 'unblok': case 'unblock':
-        await conn.updateBlockStatus(who, 'unblock');
-        conn.reply(m.chat, `Operación (${command}) completada en el grupo ${groupName}`, m);
+
+      case 'unblock':
+        await conn.updateBlockStatus(mentionedJid, 'unblock');
+        conn.reply(m.chat, `Usuario @${mentionedJid.split('@')[0]} desbloqueado en el grupo ${groupName}`, m, { mentions: [mentionedJid] });
         break;
     }
   } catch (error) {
@@ -25,7 +26,7 @@ const handler = async (m, { text, conn, usedPrefix, command }) => {
   }
 };
 
-handler.help = ['block/unblock (@user)'];
+handler.help = ['block/unblock (@usuario)'];
 handler.tags = ['owner'];
 handler.command = /^(block|unblock)$/i;
 handler.rowner = true;
