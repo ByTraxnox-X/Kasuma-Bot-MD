@@ -56,7 +56,7 @@ global.conversiondocs = ["https://www.easymarkets.com/int/es/learn-centre/discov
 
 // Sticker WM
 global.packname = 'Kasuma-Bot'
-global.author = 'Kasuma-Bot 1.0'
+global.author = 'Kasuma-Bot 2.0'
 global.waig = 'Sígueme en Instagram\nhttps://www.instagram.com/traxnox/\n'
 global.wagp = 'https://chat.whatsapp.com/HvbqkYZlJzYLhczPhDteMt'
 global.wagit = 'https://github.com/ByTraxnox-X/KasumaBot-MD'
