@@ -24,8 +24,7 @@ const handler = async (m, {text, conn, usedPrefix, command}) => {
     case 'unblok': case 'unblock':
       if (who) {
         try {
-          const chat = await conn.getChat(who);
-          const groupName = chat ? chat.name : 'Unknown Group';
+          const groupName = m.chat ? conn.chats.get(m.chat)?.name : 'Unknown Group';
           await conn.updateBlockStatus(who, 'unblock').then(() => {
             res.push(who);
           });
