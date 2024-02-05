@@ -1,63 +1,30 @@
-import fs from 'fs';
-
-const handler = async (m, { conn, usedPrefix, command }) => {
-  const why = `Uso correcto\n${usedPrefix + command} @usuario`;
-  const mentionedJid = m.mentionedJid[0] || (m.quoted ? m.quoted.sender : null);
-
-  if (!mentionedJid) {
-    return conn.reply(m.chat, why, m, { mentions: [m.sender] });
+const handler = async (m, {text, conn, usedPrefix, command}) => {
+  const why = `uso correcto\n${usedPrefix + command} @${m.sender.split('@')[0]}`;
+  const who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : false;
+  if (!who) conn.reply(m.chat, why, m, {mentions: [m.sender]});
+  const res = [];
+  switch (command) {
+    case 'blok': case 'block':
+      if (who) {
+        await conn.updateBlockStatus(who, 'block').then(() => {
+          res.push(who);
+        });
+      } else conn.reply(m.chat, why, m, {mentions: [m.sender]});
+      break;
+    case 'unblok': case 'unblock':
+      if (who) {
+        await conn.updateBlockStatus(who, 'unblock').then(() => {
+          res.push(who);
+        });
+      } else conn.reply(m.chat, why, m, {mentions: [m.sender]});
+      break;
   }
-
-  try {
-    const chat = await conn.getChat(mentionedJid);
-    const groupName = chat ? chat.name : 'Unknown Group';
-
-    switch (command) {
-      case 'block':
-        await conn.updateBlockStatus(mentionedJid, 'block');
-        saveGroupInfo(mentionedJid, groupName);
-        conn.reply(m.chat, `Usuario @${mentionedJid.split('@')[0]} bloqueado en el grupo ${groupName}`, m, { mentions: [mentionedJid] });
-        break;
-
-      case 'unblock':
-        await conn.updateBlockStatus(mentionedJid, 'unblock');
-        removeGroupInfo(mentionedJid, groupName);
-        conn.reply(m.chat, `Usuario @${mentionedJid.split('@')[0]} desbloqueado en el grupo ${groupName}`, m, { mentions: [mentionedJid] });
-        break;
-    }
-  } catch (error) {
-    console.error(error);
-    conn.reply(m.chat, `Error al obtener información del grupo.`, m);
-  }
+  if (res[0]) conn.reply(m.chat, `*se completo la operacion (${command}) con ${res ? `${res.map((v) => '@' + v.split('@')[0])}` : ''}*`, m, {mentions: res});
 };
 
-const saveGroupInfo = (userId, groupName) => {
-  global.db.data.blockedUsers = global.db.data.blockedUsers || {};
-  global.db.data.blockedUsers[userId] = global.db.data.blockedUsers[userId] || [];
-  if (!global.db.data.blockedUsers[userId].includes(groupName)) {
-    global.db.data.blockedUsers[userId].push(groupName);
-    saveDatabase();
-  }
-};
-
-const removeGroupInfo = (userId, groupName) => {
-  if (global.db.data.blockedUsers && global.db.data.blockedUsers[userId]) {
-    const index = global.db.data.blockedUsers[userId].indexOf(groupName);
-    if (index !== -1) {
-      global.db.data.blockedUsers[userId].splice(index, 1);
-      if (global.db.data.blockedUsers[userId].length === 0) delete global.db.data.blockedUsers[userId];
-      saveDatabase();
-    }
-  }
-};
-
-const saveDatabase = () => {
-  fs.writeFileSync('./lib/database.json', JSON.stringify(global.db.data, null, 2), 'utf-8');
-};
-
-handler.help = ['block/unblock (@usuario)'];
-handler.tags = ['owner'];
+handler.help = ['block/unblock (@user)']
+handler.tags = ['owner']
 handler.command = /^(block|unblock)$/i;
-handler.rowner = true;
+handler.rowner = true
 
-export default handler;
+export default handler
