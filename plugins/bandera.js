@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const timeout = 180000;
+const timeout = 18000;
 const poin = 10000;
 
 const handler = async (m, { conn, usedPrefix }) => {
@@ -29,7 +29,7 @@ Bono: +${poin} Exp
         conn.on('text', (userAnswer, id, from) => {
             if (id === m.chat && userAnswer.toLowerCase() === correctAnswer) {
                 clearTimeout(timeoutId);
-                conn.reply(m.chat, "¡Correcto! Has ganado ${poin} Exp.", sentMessage);
+                conn.reply(m.chat, `¡Correcto! Has ganado ${poin} Exp.`, sentMessage);
             }
         });
 
@@ -43,4 +43,4 @@ handler.help = ['bandera'];
 handler.tags = ['game'];
 handler.command = /^(bandera|adivinarbandera|flag)$/i;
 
-export default handler;
+export default handler;
