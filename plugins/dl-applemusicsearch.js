@@ -6,7 +6,7 @@ const handler = async (m, { conn, text }) => {
   }
 
   try {
-    const apiUrl = `https://apikasu.onrender.com/api/search/applemusic?text=${encodeURIComponent(text)}&apikey=SebastianDevelop`;
+    const apiUrl = `${apikasu}/api/search/applemusic?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
     const response = await fetch(apiUrl);
 
     if (!response.ok) {

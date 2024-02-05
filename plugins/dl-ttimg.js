@@ -6,7 +6,7 @@ let handler = async (m, { conn, text: tiktok }) => {
     }
 
     try {
-        const apiURL = `${apikasu}/api/dowloader/tikok?url=${encodeURIComponent(tiktok)}&apikey=${apikeykasu}`;
+        const apiURL = `${apikasu}/api/dowloader/tikok?url=${tiktok}&apikey=${apikeykasu}`;
         const response = await axios.get(apiURL);
         const responseData = response.data;
 
