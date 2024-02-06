@@ -6,24 +6,17 @@ const handler = async (m, { conn, args }) => {
     }
 
     try {
-        const apiUrl = `https://api.betabotz.eu.org/api/download/threads?url=${args[0]}`;
+        const apiUrl = `${apikasu}/api/dowloader/threads?url=${args[0]}&apikey=${apikeykasu}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
 
         if (data.status) {
             m.react(rwait);
 
-            if (data.result.image_urls.length > 0) {
-                for (const imageUrl of data.result.image_urls) {
-                    m.reply('Descargando imagen...');
-                    await conn.sendFile(m.chat, imageUrl, 'imagen.jpg', '', m);
-                }
-            }
-
-            if (data.result.video_urls.length > 0) {
-                for (const videoUrl of data.result.video_urls) {
-                    m.reply('Descargando video...');
-                    await conn.sendFile(m.chat, videoUrl, 'video.mp4', '', m);
+            if (data.result.length > 0) {
+                for (const media of data.result) {
+                    m.reply(`Descargando ${media.ext === 'mp4' ? 'video' : 'imagen'}...`);
+                    await conn.sendFile(m.chat, media.link, `media.${media.ext}`, '', m);
                 }
             }
 
@@ -41,4 +34,4 @@ handler.help = ['threads'];
 handler.tags = ['dl'];
 handler.command = /^(threadsdl|threads)$/i;
 
-export default handler;
+export default handler;

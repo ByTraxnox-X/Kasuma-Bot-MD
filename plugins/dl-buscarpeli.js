@@ -6,7 +6,7 @@ const handler = async (m, { conn, text }) => {
   }
 
   try {
-    const apiUrl = `https://api.popcat.xyz/imdb?q=${encodeURIComponent(text)}`;
+    const apiUrl = `${apikasu}/api/search/movieinfo?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
@@ -17,35 +17,35 @@ const handler = async (m, { conn, text }) => {
 
     console.log('JSON response:', data);
 
-    const ratings = data.ratings.map(rating => `*${rating.source}:* ${rating.value}`).join('\n');
+    const ratings = data.result.ratings.map(rating => `*${rating.source}:* ${rating.value}`).join('\n');
 
     const movieInfo = `
-*${data.title}*\n
-*Año:* ${data.year}
-*Clasificación:* ${data.rated}
-*Fecha de lanzamiento:* ${data.released}
-*Duración:* ${data.runtime}
-*Géneros:* ${data.genres}
-*Director:* ${data.director}
-*Guionista:* ${data.writer}
-*Actores:* ${data.actors}
-*Argumento:* ${data.plot}
-*Idiomas:* ${data.languages}
-*País:* ${data.country}
-*Premios:* ${data.awards}
-*Metascore:* ${data.metascore}
-*Calificación:* ${data.rating}
-*Votos:* ${data.votes}
-*ID de IMDB:* ${data.imdbid}
-*Tipo:* ${data.type}
-*DVD:* ${data.dvd}
-*Taquilla:* ${data.boxoffice}
-*Producción:* ${data.production}
-*Sitio web:* ${data.website}
+*${data.result.title}*\n
+*Año:* ${data.result.year}
+*Clasificación:* ${data.result.rated}
+*Fecha de lanzamiento:* ${data.result.released}
+*Duración:* ${data.result.runtime}
+*Géneros:* ${data.result.genres}
+*Director:* ${data.result.director}
+*Guionista:* ${data.result.writer}
+*Actores:* ${data.result.actors}
+*Argumento:* ${data.result.plot}
+*Idiomas:* ${data.result.languages}
+*País:* ${data.result.country}
+*Premios:* ${data.result.awards}
+*Metascore:* ${data.result.metascore}
+*Calificación:* ${data.result.rating}
+*Votos:* ${data.result.votes}
+*ID de IMDB:* ${data.result.imdbid}
+*Tipo:* ${data.result.type}
+*DVD:* ${data.result.dvd}
+*Taquilla:* ${data.result.boxoffice}
+*Producción:* ${data.result.production}
+*Sitio web:* ${data.result.website}
 *Calificaciones:*${ratings}
     `;
 
-    await conn.sendFile(m.chat, data.poster, 'poster.jpg', movieInfo, m);
+    await conn.sendFile(m.chat, data.result.poster, 'poster.jpg', movieInfo, m);
   } catch (error) {
     console.error(error);
     throw `Ocurrió un error: ${error.message}`;
@@ -56,4 +56,4 @@ handler.help = ['buscarpeli'];
 handler.tags = ['dl'];
 handler.command = /^(buscarpeli|movie)$/i;
 
-export default handler;
+export default handler;
