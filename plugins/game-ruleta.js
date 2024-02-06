@@ -25,7 +25,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     conn.sendMessage(m.chat, { image: { url: pp }, caption: result }, { quoted: m })
 }
 handler.help = ['ruleta apuesta/color']
-handler.tags = ['econ']
+handler.tags = ['game']
 handler.command = ['ruleta', 'rt']
 
 

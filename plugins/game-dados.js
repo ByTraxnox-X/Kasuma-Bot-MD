@@ -35,7 +35,7 @@ let handler = async (m, { conn, args }) => {
 };
 
 handler.help = ['dados apuesta/(par/impar)'];
-handler.tags = ['econ'];
+handler.tags = ['game'];
 handler.command = ['dados', 'dado'];
 handler.group = true;
 
