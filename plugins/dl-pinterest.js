@@ -13,7 +13,6 @@ const handler = async (m, { conn, args }) => {
             const firstThreeImages = data.result.slice(0, 3);
 
             for (const imageUrl of firstThreeImages) {
-                m.reply('Enviando imagen...');
                 await conn.sendFile(m.chat, imageUrl, 'imagen.jpg', '', m);
             }
 
