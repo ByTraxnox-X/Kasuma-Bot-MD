@@ -10,7 +10,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     let colores = ['rojo', 'negro']
     let colour = colores[Math.floor(Math.random() * colores.length)];
     let user = global.db.data.users[m.sender]
-    if (isNaN(amount) || amount < 1) throw `Lo minimo para apostar son 50 dolares.`
+    if (isNaN(amount) || amount < 10) throw `Lo minimo para apostar son 50 dolares.`
     if (!colores.includes(color)) throw 'Debes especificar un color válido: rojo o negro'
     if (user.dolares < amount) throw '¡No tienes suficiente dinero!'
     if (amount > 100000) throw `No puedes apostar mas de 100000 dolares.`
