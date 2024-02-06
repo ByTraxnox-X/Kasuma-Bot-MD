@@ -27,7 +27,7 @@ async function jarak(dari, ke) {
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
     let [dari, ke] = text.split('|');
-    if (!dari || !ke) throw `Ex: ${usedPrefix + command} Colombia|Bogota`;
+    if (!dari || !ke) throw `Ex: ${usedPrefix + command} cali|Bogota`;
     
     if (dari.toLowerCase() === ke.toLowerCase()) {
         conn.reply(m.chat, "Que ciudad es?", m);
