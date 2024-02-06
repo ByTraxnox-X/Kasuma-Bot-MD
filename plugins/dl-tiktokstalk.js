@@ -6,17 +6,17 @@ const handler = async (m, { conn, args }) => {
             throw `Por favor, ingresa el username de un usuario de TikTok.`;
         }
 
-        const apiUrl = `https://api.cafirexos.com/api/tiktokstalk?username=${args[0]}`;
+        const apiUrl = `${apikasu}/api/tools/tiktokstalk?username=${encodeURIComponent(args[0])}&apikey=${apikeykasu}`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();
 
-        if (data.status && data.resultado) {
-            const user = data.resultado;
+        if (data.status && data.result) {
+            const user = data.result;
             m.react(rwait);
 
             let userInfo = `*${user.username}*\n\n` +
-                `*Nombre:* ${user.nickname || 'No proporcionado'}\n` +
+            `*Nombre:* ${user.nickname || 'No proporcionado'}\n` +
                 `*Seguidores:* ${user.followers}\n` +
                 `*Siguiendo:* ${user.following}\n` +
                 `*Descripción:* ${user.description || 'No proporcionada'}`;
@@ -35,4 +35,4 @@ handler.help = ['tiktokstalk'];
 handler.tags = ['dl'];
 handler.command = /^tiktokstalk$/i;
 
-export default handler;
+export default handler;
