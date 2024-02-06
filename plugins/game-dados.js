@@ -31,7 +31,6 @@ let handler = async (m, { conn, args }) => {
         user.dolares -= amount;
     }
 
-    await conn.sendMessage(pp, result);
     conn.sendMessage(m.chat, { image: { url: pp }, caption: result }, { quoted: m });
 };
 
