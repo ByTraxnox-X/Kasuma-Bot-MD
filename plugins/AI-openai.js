@@ -8,12 +8,12 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `${apikasu}/api/tools/chatgpt?text=${text}&apikey=${apikeykasu}`;
+    const apiUrl = `${apikasu}/api/tools/chatgpt?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    if (data.status && data.response) {
-      m.reply(data.response);
+    if (data.result) {
+      m.reply(data.result);
     } else {
       throw 'No se pudo obtener una respuesta de la API.';
     }
