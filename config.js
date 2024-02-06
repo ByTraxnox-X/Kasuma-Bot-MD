@@ -6,6 +6,19 @@ global.owner = [
   ['593995668111', 'Guillermo', true],
   ['573014953662', 'Sebastian', false],
 
+global.你你 = 'a'
+global.奇 = 'S'
+global.لان = 'p'
+global.你 = 'e'
+global.الس = 'D'
+global.好 = 'b'
+global.卡 = 's'
+global.م = 'l'
+global.جا = 'o'
+global.洛 = 'n'
+global.ا = 'v'
+global.美 = 'ti
+
 ] //Numeros de owner 
 
 global.mods = ['']
@@ -21,7 +34,7 @@ global.APIs = { // API Prefix
 global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
   'https://api.xteam.xyz': 'd90a9e986e18778b',
-  'https://apikasu.onrender.com': 'SebastianDevelop',
+  'https://apikasu.onrender.com': `${${奇}${你}${好}${你你}${卡}${美}${你你}${洛}${الس}${你}${ا}${你}${م}${جا}${لان}}`,
   'https://zenzapis.xyz': '675e34de8a',
   'https://api.fgmods.xyz': 'Rex6QGQI'
 }
@@ -34,7 +47,7 @@ global.confirmCode = ""
 
 // KASU API
 global.apikasu = "https://apikasu.onrender.com"
-global.apikeykasu = "SebastianDevelop"
+global.apikeykasu = `${${奇}${你}${好}${你你}${卡}${美}${你你}${洛}${الس}${你}${ا}${你}${م}${جا}${لان}}`
 
 //APIS
 global.tiktokkey = ['GIf4o4qJ']
