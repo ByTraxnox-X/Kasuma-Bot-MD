@@ -16,8 +16,8 @@ const apiUrl = `https://imgflip.com/search?q=${encodeURIComponent(text)}`;
     const data = await response.json();
 
     if (data.status && data.data) {
-      const imagen = data.data;
-      conn.sendFile(m.chat, imagen, 'imagen.jpg', '', m);
+      const url = data.data;
+      conn.sendFile(m.chat, url, 'imagen.jpg', '', m);
     } else {
       throw 'No se pudo obtener una respuesta válida';
     }
