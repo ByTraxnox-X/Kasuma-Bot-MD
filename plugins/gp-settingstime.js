@@ -5,7 +5,7 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix }) => {
             throw false;
         }
 
-        if (args.length !== 2) {
+        if (args.length !== 2 || !/^\d+$/.test(args[1])) {
             throw `
 *FORMATO ERRONEO!!*
 
@@ -24,7 +24,7 @@ Para abrir o cerrar el grupo por una duración específica.
         let action = args[0].toLowerCase();
         let duration = parseInt(args[1]);
 
-        if (isNaN(duration) || duration <= 0) {
+        if (duration <= 0) {
             throw 'La duración debe ser un número mayor que 0.';
         }
 
