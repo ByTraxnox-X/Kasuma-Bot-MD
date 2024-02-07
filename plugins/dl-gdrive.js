@@ -1,25 +1,37 @@
+import fetch from 'node-fetch';
 
-import fg from 'api-dylux'  
-let handler = async (m, { conn, args, usedPrefix, command }) => {
+let handler = async (m, { conn, text }) => {
+   if (!text) throw 'Ingrese el enlace del archivo';
 
-	if (!args[0]) throw `Ingrese un link de Google Drive`
-	m.react(rwait) 
-	try {
-	let res = await fg.GDriveDl(args[0])
-	 await m.reply(`*${res.fileName}*
-	 
-*Tamaño:* ${res.fileSize}
-*tipo:* ${res.mimetype}`)
+   try {
+      const apiUrl = `${apikasu}/api/dowloader/googledrive?url=${text}&apikey=${apikeykasu}`;
+      const res = await fetch(apiUrl);
 
-    m.react(done)	
-	conn.sendMessage(m.chat, { document: { url: res.downloadUrl }, fileName: res.fileName, mimetype: res.mimetype }, { quoted: m })
-	m.react(done)
-   } catch {
-	m.reply('Error: Revisa el link o intenta con otro link') 
-  }
-}
-handler.help = ['gdrive']
-handler.tags = ['dl']
-handler.command = ['gdrive']
+      if (!res.ok) {
+         throw new Error(`Error`);
+      }
+      const json = await res.json();
+      m.react(rwait);
 
-export default handler
+      if (json.status) {
+         const fileInfo = `*Nombre:* ${json.result.fileName}\n` +
+            `*Tamaño:* ${json.result.fileSize}\n` +
+			`*URL:* ${json.result.url}\n` +
+
+         m.react(done);
+         const fileBuffer = await fetch(json.result.url).then(res => res.buffer());
+         await conn.sendFile(m.chat, fileBuffer, json.result.fileName, fileInfo, m);
+      } else {
+         m.reply('No se pudo obtener el enlace del archivo');
+      }
+
+   } catch (error) {
+      console.error(error);
+   }
+};
+
+handler.help = ['googledrive'];
+handler.tags = ['dl'];
+handler.command = /^(googledrive|gdrive)$/i;
+
+export default handler;

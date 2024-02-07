@@ -8,7 +8,7 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `https://vihangayt.me/tools/blackboxv4?q=${encodeURIComponent(text)}`;
+    const apiUrl = `${apikasu}/api/tools/gemini?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
@@ -23,8 +23,8 @@ const handler = async (m, { conn, text }) => {
   }
 };
 
-handler.help = ['blackbox'];
+handler.help = ['gemini'];
 handler.tags = ['ai'];
-handler.command = /^blackbox$/i;
+handler.command = /^gemini$/i;
 
 export default handler;

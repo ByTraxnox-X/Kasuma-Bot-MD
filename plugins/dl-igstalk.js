@@ -6,16 +6,15 @@ const handler = async (m, { conn, args }) => {
     }
 
     try {
-        const apiUrl = `https://api.betabotz.eu.org/api/stalk/ig?username=${args[0]}&apikey=B29wmghC`;
+        const apiUrl = `${apikasu}/api/tools/igstalk?username=${args[0]}&apikey=${apikeykasu}`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();
 
         if (data.status && data.result) {
-            const userInfo = data.result.user_info;
+            const userInfo = data.result;
 
-            const infoMessage = `
-                *${userInfo.full_name}/@${userInfo.username}*
+            const infoMessage = `\t\t*${userInfo.username}/@${userInfo.full_name}*
 
 *Biografía:* ${userInfo.biography}
 *Enlace externo:* ${userInfo.external_url}
