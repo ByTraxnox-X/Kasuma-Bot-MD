@@ -6,25 +6,22 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
 
   let isClose = {
     'abrirgrupoen': 'not_announcement',
-    'buka': 'not_announcement',
-    'on': 'not_announcement',
-    '1': 'not_announcement',
     'cerrargrupoen': 'announcement',
-    'tutup': 'announcement',
-    'off': 'announcement',
-    '0': 'announcement',
-  }[(args[0] || '')];
+  }[(args[0] || '').toLowerCase()];
 
   if (isClose === undefined) {
     let caption = `
 *FORMATO ERRONEO!!*
 
 Uso:
-  *${usedPrefix + command} 1*
-  *${usedPrefix + command} 1*
+  *${usedPrefix}abrirgrupoen <duración_en_horas>*
+  *${usedPrefix}cerrargrupoen <duración_en_horas>*
   
-Ejemplo de uso: *${usedPrefix + command} close 1*
-Para cerrar el grupo durante una hora.
+Ejemplo de uso:
+  *${usedPrefix}abrirgrupoen 1*
+  *${usedPrefix}cerrargrupoen 1*
+  
+Para abrir o cerrar el grupo por una duración específica.
 `;
 
     m.reply(caption);
@@ -46,9 +43,9 @@ Para cerrar el grupo durante una hora.
   }
 };
 
-handler.help = ['abrirgrupoen <horas> | cerrargrupoen <horas>'];
+handler.help = ['grouptime <abrirgrupoen/cerrargrupoen> <horas>'];
 handler.tags = ['group'];
-handler.command = /^(abrirgrupoen|cerrargrupoen)$/i;
+handler.command = /^(grouptime|gctime)$/i;
 
 handler.botAdmin = true;
 handler.group = true;
