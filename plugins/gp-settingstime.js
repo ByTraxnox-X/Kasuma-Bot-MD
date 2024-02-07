@@ -5,11 +5,11 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
   }
   let isClose = {
 	  'open': 'not_announcement',
-	  'abrirgrupoen': 'not_announcement',
+	  'abrir': 'not_announcement',
       'on': 'not_announcement',
 	  '1': 'not_announcement',
 	  'close': 'announcement',
-	  'cerrargrupoen': 'announcement',
+	  'cerrar': 'announcement',
       'off': 'announcement',
       '0': 'announcement',
   }[(args[0] || '')]
@@ -17,9 +17,9 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
 	  let caption = `
 *FORMATO ERRONEO!!*
  
- ${usedPrefix + command} 1*
- ${usedPrefix + command} 1*
- *Ejemplo de uso:* *${usedPrefix + command} close 1* 
+ ${usedPrefix + command} abrir 1*
+ ${usedPrefix + command} cerrar 1*
+ *Ejemplo de uso:* *${usedPrefix + command} cerrar 1* 
  Para que el grupo este cerrado una hora.*
 
 `
@@ -40,7 +40,7 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
   }
 handler.help = ['cerrargrupoen <horas>|abrirgrupoen <horas>']
 handler.tags = ['group']
-//handler.command = /^(cerrar|abrir)$/i
+//handler.command = /^(grupohora|gptime)$/i
 
 handler.botAdmin = true
 handler.group = true 
