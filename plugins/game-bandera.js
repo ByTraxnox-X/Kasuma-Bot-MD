@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-let timeout = 120000
+let timeout = 10000
 let poin = 4999
 let handler = async (m, { conn, command, usedPrefix }) => {
     conn.tebakbendera = conn.tebakbendera ? conn.tebakbendera : {}
