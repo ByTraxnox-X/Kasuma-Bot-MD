@@ -1,12 +1,16 @@
-let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix }) => {
-    try {
-        if (!(isAdmin || isOwner)) {
-            global.dfail('admin', m, conn);
-            throw false;
-        }
+let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) => {
+  if (!(isAdmin || isOwner)) {
+    global.dfail('admin', m, conn);
+    throw false;
+  }
 
-        if (args.length !== 2 || !/^\d+$/.test(args[1])) {
-            throw `
+  let isClose = {
+    'abrirgrupoen': 'not_announcement',
+    'cerrargrupoen': 'announcement',
+  }[(args[0] || '').toLowerCase()];
+
+  if (isClose === undefined) {
+    let caption = `
 *FORMATO ERRONEO!!*
 
 Uso:
@@ -19,35 +23,41 @@ Ejemplo de uso:
   
 Para abrir o cerrar el grupo por una duración específica.
 `;
-        }
 
-        let action = args[0].toLowerCase();
-        let duration = parseInt(args[1]);
+    m.reply(caption);
+    throw false;
+  }
 
-        if (duration <= 0) {
-            throw 'La duración debe ser un número mayor que 0.';
-        }
+  let timeoutset = 86400000 * args[1] / 24;
 
-        let isClose = action === 'cerrargrupoen';
+  await conn.groupSettingUpdate(m.chat, isClose).then(async (_) => {
+    m.reply(`Grupo ${isClose == 'announcement' ? 'cerrado' : 'abierto'} ${args[1] ? `durante*${clockString(timeoutset)}*` : ''}`);
+  });
 
-        await conn.groupSettingUpdate(m.chat, isClose ? 'announcement' : 'not_announcement');
-        m.reply(`Grupo ${isClose ? 'cerrado' : 'abierto'} durante ${duration} hora(s).`);
-
-        setTimeout(async () => {
-            await conn.groupSettingUpdate(m.chat, isClose ? 'not_announcement' : 'announcement');
-            conn.reply(m.chat, `Grupo ${isClose ? 'abierto' : 'cerrado'} automáticamente después de ${duration} hora(s).`);
-        }, duration * 60 * 60 * 1000);
-    } catch (error) {
-        console.error(error);
-        m.reply('Ocurrió un error. Por favor, verifica el formato del comando.');
-    }
+  if (args[1]) {
+    setTimeout(async () => {
+      await conn.groupSettingUpdate(m.chat, `${isClose == 'announcement' ? 'not_announcement' : 'announcement'}`).then(async (_) => {
+        conn.reply(m.chat, `${isClose == 'not_announcement' ? '*El grupo ha sido cerrado, ahora solo los administradores pueden enviar mensajes!*' : '*El grupo se ha abierto, ahora todos los miembros pueden enviar mensajes!*'}!`);
+      });
+    }, timeoutset);
+  }
 };
 
-handler.help = ['abrirgrupoen <duración_en_horas>', 'cerrargrupoen <duración_en_horas>'];
+handler.help = ['grouptime <abrirgrupoen/cerrargrupoen> <horas>'];
 handler.tags = ['group'];
-handler.command = /^(abrirgrupoen|cerrargrupoen)$/i;
+handler.command = /^(grouptime|gctime)$/i;
 
 handler.botAdmin = true;
 handler.group = true;
 
 export default handler;
+
+function clockString(ms) {
+  let h = Math.floor(ms / 3600000);
+  let m = Math.floor(ms / 60000) % 60;
+  let s = Math.floor(ms / 1000) % 60;
+
+  console.log({ ms, h, m, s });
+
+  return [h, m, s].map((v) => v.toString().padStart(2, 0)).join(':');
+}
