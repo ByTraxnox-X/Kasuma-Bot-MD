@@ -5,7 +5,7 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix }) => {
             throw false;
         }
 
-        if (!args[0] || !args[1]) {
+        if (args.length !== 2) {
             throw `
 *FORMATO ERRONEO!!*
 
