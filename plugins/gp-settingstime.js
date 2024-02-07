@@ -4,45 +4,26 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
     throw false;
   }
 
-  let isClose = {
-    'open': 'not_announcement',
-    'buka': 'not_announcement',
-    'on': 'not_announcement',
-    '1': 'not_announcement',
-    'close': 'announcement',
-    'tutup': 'announcement',
-    'off': 'announcement',
-    '0': 'announcement',
-  }[(args[0] || '')];
-
-  if (isClose === undefined) {
-    let caption = `
-*FORMATO ERRONEO!!*
- 
- ${usedPrefix + command} open 1*
- ${usedPrefix + command} close 1*
- *Ejemplo de uso:* *${usedPrefix + command} close 1* 
- Para que el grupo esté cerrado una hora.*
-
-`;
-    m.reply(caption);
+  if (args.length !== 3 || args[1].toLowerCase() !== 'auto') {
+    m.reply(`Formato incorrecto. Uso: ${usedPrefix + command} auto <hora_inicio|hora_fin>`);
     throw false;
   }
 
-  let [start, end] = args[1].split('|');
+  let [start, end] = args[2].split('|');
   let [startHour, startMinute] = start.split(':').map(Number);
-  let [endHour, endMinute] = end.split(':').map(Number);
 
-  let now = new Date();
-  let startTime = new Date(now.toDateString() + ' ' + start);
-  let endTime = new Date(now.toDateString() + ' ' + end);
-  let isTimeInRange = now >= startTime && now < endTime;
+  // Configurar el grupo automáticamente en la hora especificada
+  const setGroupSettingAtTime = async (isOpen, time) => {
+    await conn.groupSettingUpdate(m.chat, isOpen ? 'not_announcement' : 'announcement');
+    m.reply(`Grupo ${isOpen ? 'abierto' : 'cerrado'} automáticamente. Próximo evento a las ${time}`);
+  };
 
-  await conn.groupSettingUpdate(m.chat, isTimeInRange ? 'not_announcement' : 'announcement');
-  m.reply(`Grupo ${isTimeInRange ? 'abierto' : 'cerrado'} automáticamente. Próximo evento de ${start} a ${end}`);
+  // Ejecutar la lógica
+  setGroupSettingAtTime(false, start);
+  setInterval(() => setGroupSettingAtTime(true, start), 24 * 60 * 60 * 1000); // Configurar para abrir todos los días a la misma hora
 };
 
-handler.help = ['grouptime <open/close> <hora_inicio|hora_fin>'];
+handler.help = ['grouptime auto <hora_inicio|hora_fin>'];
 handler.tags = ['group'];
 handler.command = /^(grouptime|gctime)$/i;
 
