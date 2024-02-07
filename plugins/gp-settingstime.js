@@ -39,7 +39,7 @@ Para abrir o cerrar el grupo por una duración específica.
         }, duration * 60 * 60 * 1000);
     } catch (error) {
         console.error(error);
-        // Manejar cualquier error aquí
+        m.reply('Ocurrió un error. Por favor, verifica el formato del comando.');
     }
 };
 
