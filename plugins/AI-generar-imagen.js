@@ -8,7 +8,10 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `https://vihangayt.me/tools/photoleap?q=${encodeURIComponent(text)}`;
+    //const apiUrl = `https://vihangayt.me/tools/photoleap?q=${encodeURIComponent(text)}`;
+
+const apiUrl = `https://imgflip.com/search?q=${encodeURIComponent(text)}`;
+
     const response = await fetch(apiUrl);
     const data = await response.json();
 
