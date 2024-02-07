@@ -30,16 +30,13 @@ Para abrir o cerrar el grupo por una duración específica.
 
         let isClose = action === 'cerrargrupoen';
 
-        let timeoutset = duration * 3600000;
-
         await conn.groupSettingUpdate(m.chat, isClose ? 'announcement' : 'not_announcement');
-
         m.reply(`Grupo ${isClose ? 'cerrado' : 'abierto'} durante ${duration} hora(s).`);
 
         setTimeout(async () => {
             await conn.groupSettingUpdate(m.chat, isClose ? 'not_announcement' : 'announcement');
             conn.reply(m.chat, `Grupo ${isClose ? 'abierto' : 'cerrado'} automáticamente después de ${duration} hora(s).`);
-        }, timeoutset);
+        }, duration * 60 * 60 * 1000);
     } catch (error) {
         console.error(error);
         // Manejar cualquier error aquí
