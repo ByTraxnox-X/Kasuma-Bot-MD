@@ -1,46 +1,78 @@
-import axios from 'axios';
+import fetch from 'node-fetch';
 
-const timeout = 18000;
-const poin = 10000;
+const timeoutDuration = 11000;
+const bonusPoints = 10000;
 
-const handler = async (m, { conn, usedPrefix }) => {
+const getApiData = async () => {
+    const apiUrl = 'https://apikasu.onrender.com/api/game/bandera?apikey=SebastianDevelop';
+    const response = await fetch(apiUrl);
+    return response.json();
+};
+
+const sendFlagImage = (conn, m, imgUrl, textos) => {
+    conn.sendFile(m.chat, imgUrl, 'bandera.jpg', textos, m);
+};
+
+const checkAnswer = async (conn, m, userAnswer, correctAnswer) => {
+    const isCorrect = userAnswer.trim().toLowerCase() === correctAnswer.toLowerCase();
+    const replyMessage = isCorrect ? `¡Correcto! Has acertado.` : `¡Se acabó el tiempo!, intenta resolver de nuevo.`;
+    await conn.reply(m.chat, replyMessage, conn.tekateki[m.chat][0]);
+
+    // Puedes realizar acciones adicionales para cuando el usuario acierta aquí si es necesario
+    if (isCorrect) {
+        // Acciones adicionales...
+    }
+
+    delete conn.tekateki[m.chat];
+};
+
+const startFlagGame = async (conn, m) => {
+    const id = m.chat;
+
+    if (id in conn.tekateki) {
+        conn.reply(m.chat, '¡Todavía hay un juego sin terminar!', conn.tekateki[id][0]);
+        throw false;
+    }
+
+    const user = global.db.data.users[m.sender] || {};
+    const userWait = user.wait || 0;
+    const timeout = userWait + 40000;
+    const textos = `*Adivina el nombre de la bandera de la foto.*
+*Nota: Pusimos 2 minutos para poder visualizar la imagen bien ya que esta borrosa, estamos mejorando eso, en muy poco tiempo estara lista con foto hd*
+
+*Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
+*Bono:* +${bonusPoints} Exp
+
+Recuerda responder con el nombre completo!`.trim();
+
+    conn.tekateki[id] = true;
+
+    const data = await getApiData();
+    sendFlagImage(conn, m, data.img, textos);
+
+    setTimeout(async () => {
+        if (conn.tekateki[id]) {
+            const userAnswer = conn.tekateki[id][0].text;
+            await checkAnswer(conn, m, userAnswer, data.name);
+
+            user.wait = new Date() * 1;
+            user.poin = (user.poin || 0) + bonusPoints;
+            global.db.data.users[m.sender] = user;
+
+        }
+    }, timeout);
+};
+
+const handler = async (m, { conn, command, usedPrefix, args }) => {
     try {
-        const res = await axios.get('https://apikasu.onrender.com/api/game/bandera?apikey=SebastianDevelop');
-        const json = res.data;
-        const correctAnswer = json.result.name.toLowerCase();
-        const imageUrl = json.result.img;
-        const caption = `
-ⷮ Bandera Mystery
-
-Adivina la bandera de qué país es esta?
-
-Tiempo: ${(timeout / 1000).toFixed(2)} segundos
-Bono: +${poin} Exp
-`.trim();
-
-        const sentMessage = await conn.sendFile(m.chat, imageUrl, 'bandera.jpg', caption, m);
-
-        const timeoutId = setTimeout(async () => {
-            await conn.reply(m.chat, "Se acabó el tiempo!, intenta adivinar la bandera de nuevo.", sentMessage);
-        }, timeout);
-
-        conn.commandAddTimeout(m.chat, usedPrefix + 'bandera', timeoutId);
-
-        conn.on('text', (userAnswer, id, from) => {
-            if (id === m.chat && userAnswer.toLowerCase() === correctAnswer) {
-                clearTimeout(timeoutId);
-                conn.reply(m.chat, `¡Correcto! Has ganado ${poin} Exp.`, sentMessage);
-            }
-        });
-
-    } catch (e) {
-        console.error(e);
-        conn.reply(m.chat, 'Ocurrió un error al cargar la bandera. Inténtalo de nuevo más tarde.', m);
+        await startFlagGame(conn, m);
+    } catch (error) {
+        console.error(error);
     }
 };
 
-handler.help = ['bandera'];
+handler.help = ['adivinabandera'];
 handler.tags = ['game'];
-handler.command = /^(bandera|adivinarbandera|flag)$/i;
+handler.command = /^(adivinabandera|bandera|banderade|banderapais)$/i;
 
 export default handler;
