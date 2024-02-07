@@ -4,16 +4,8 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
         throw false;
     }
 
-    let action = args[0].toLowerCase();
-    let duration = parseInt(args[1]) || 0;
-
-    let isClose = {
-        'abrir': 'not_announcement',
-        'cerrar': 'announcement',
-    }[action];
-
-    if (isClose === undefined) {
-        let caption = `
+    if (!args[0] || !args[1]) {
+        throw `
 *FORMATO ERRONEO!!*
 
 Uso:
@@ -26,9 +18,30 @@ Ejemplo de uso:
   
 Para abrir o cerrar el grupo por una duración específica.
 `;
+    }
 
-        m.reply(caption);
-        throw false;
+    let action = args[0].toLowerCase();
+    let duration = parseInt(args[1]) || 0;
+
+    let isClose = {
+        'abrir': 'not_announcement',
+        'cerrar': 'announcement',
+    }[action];
+
+    if (isClose === undefined) {
+        throw `
+*FORMATO ERRONEO!!*
+
+Uso:
+  *${usedPrefix}abrirgrupoen <duración_en_horas>*
+  *${usedPrefix}cerrargrupoen <duración_en_horas>*
+  
+Ejemplo de uso:
+  *${usedPrefix}abrirgrupoen 1*
+  *${usedPrefix}cerrargrupoen 1*
+  
+Para abrir o cerrar el grupo por una duración específica.
+`;
     }
 
     let timeoutset = duration * 3600000;
