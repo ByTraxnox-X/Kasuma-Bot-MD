@@ -23,7 +23,7 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
 
   // Verificar y actualizar la configuración del grupo automáticamente
   const updateGroupSetting = async (isOpen) => {
-    await conn.groupSettingUpdate(m.chat, isOpen ? 'not_announcement' : 'announcement');
+    await conn.groupSettingUpdate(m.chat, isOpen ? 'announcement' : 'not_announcement');
     m.reply(`Grupo ${isOpen ? 'abierto' : 'cerrado'} automáticamente. Próximo evento de ${start} a ${end}`);
   };
 
