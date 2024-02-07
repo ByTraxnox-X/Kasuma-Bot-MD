@@ -37,9 +37,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     }
 }
 
-handler.help = ['grouptime abrir/cerrar/auto <hora_inicio|hora_fin>'];
+handler.help = ['grupotime abrir/cerrar/auto <hora_inicio|hora_fin>'];
 handler.tags = ['group'];
-handler.command = ['group', 'grupotime'];
+handler.command = ['timegrupo', 'grupotime'];
 handler.admin = true;
 handler.botAdmin = true;
 
