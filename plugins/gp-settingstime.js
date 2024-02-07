@@ -5,12 +5,15 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
   }
 
   if (args.length !== 4 || args[1].toLowerCase() !== 'auto') {
-    m.reply(`Formato incorrecto. Uso: ${usedPrefix + command} auto <hora_inicio>\\|<hora_fin>`);
+    m.reply(`Formato incorrecto. Uso: ${usedPrefix + command} auto <hora_inicio AM/PM>|<hora_fin AM/PM>`);
     throw false;
   }
 
-  let [startHour, startMinute] = args[2].split(':').map(Number);
-  let [endHour, endMinute] = args[3].split(':').map(Number);
+  let [startHour, startMinute, startPeriod] = args[2].match(/(\d+):(\d+)([APMapm]{2})/).slice(1);
+  let [endHour, endMinute, endPeriod] = args[3].match(/(\d+):(\d+)([APMapm]{2})/).slice(1);
+
+  startHour = (startPeriod.toLowerCase() === 'pm' && startHour < 12) ? Number(startHour) + 12 : Number(startHour) % 12;
+  endHour = (endPeriod.toLowerCase() === 'pm' && endHour < 12) ? Number(endHour) + 12 : Number(endHour) % 12;
 
   let currentTime = new Date().getHours() * 60 + new Date().getMinutes();
   let startTime = startHour * 60 + startMinute;
@@ -25,7 +28,7 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
   }
 };
 
-handler.help = ['grouptime auto <hora_inicio>\\|<hora_fin>'];
+handler.help = ['grouptime auto <hora_inicio AM/PM>|<hora_fin AM/PM>'];
 handler.tags = ['group'];
 handler.command = /^(grouptime|gctime)$/i;
 
