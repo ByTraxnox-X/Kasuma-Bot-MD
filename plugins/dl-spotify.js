@@ -1,25 +1,36 @@
 import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text }) => {
- if (!text) throw `Ingrese el nombre de la canción.`;
+  if (!text) throw `Ingrese el nombre de la canción.`;
+
   try {
-    const encodedText = encodeURIComponent(text);
-    const res = await fetch(global.API(`${apikasu}`, `/api/search/spotify?text=${encodedText}&apikey=${apikeykasu}`));
-    const data = await res.json();
-    const linkDL = data.result[0].link;
-    const musics = await fetch(global.API(`${apikasu}`, `/api/dowloader/spotify?url=${linkDL}&apikey=${apikeykasu}`));
-    const music = await conn.getFile(musics.url);
-    const infos = await fetch(global.API(`${apikasu}`, `/api/search/spotifyinfo?text=${encodedText}&apikey=${apikeykasu}`));
-    const info = await infos.json();
-    const spty = info.result;
-    const img = await (await fetch(`${spty.thumbnail}`)).buffer();
-    let spotifyi = `*${spty.title}*\n\n`
-    spotifyi += `*Artista:* ${spty.artist}\n`
-    spotifyi += `*Album:* ${spty.album}\n`
-    spotifyi += `*Publicado:* ${spty.year}\n\n`
-    spotifyi += `Enviando...`
-    await conn.sendMessage(m.chat, {text: spotifyi.trim(), contextInfo: {forwardingScore: 9999999, isForwarded: true, "externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "renderLargerThumbnail": true, "title": global.titulowm2, "containsAutoReply": true, "mediaType": 1, "thumbnail": img, "thumbnailUrl": img, "mediaUrl": linkDL, "sourceUrl": linkDL}}}, {quoted: m});
-    await conn.sendMessage(m.chat, {audio: music.data, fileName: `${spty.name}.mp3`, mimetype: 'audio/mpeg'}, {quoted: m});
+    const infoRes = await fetch(`${apikasu}/api/search/spotifyinfo?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`);
+    const infoData = await infoRes.json();
+    const sptyInfo = infoData.spotify.resultado;
+    
+    let spotifyInfo = `*${sptyInfo.title}*\n\n`;
+    spotifyInfo += `*Artista:* ${sptyInfo.artist}\n`;
+    spotifyInfo += `*Album:* ${sptyInfo.album}\n`; 
+    spotifyInfo += `*Genero:* ${sptyInfo.genre}\n`;
+    spotifyInfo += `*Publicado:* ${sptyInfo.year}\n\n`;
+    spotifyInfo += `*URL:* ${sptyInfo.url}\n`;
+    spotifyInfo += `Enviando...`;
+
+    await conn.sendMessage(m.chat, { text: spotifyInfo.trim() }, { quoted: m });
+    const audioRes = await fetch(`${apikasu}/api/dowloader/spotify?url=${sptyInfo.url}&apikey=${apikeykasu}`);
+
+    if (!audioRes.ok) {
+      throw 'Error al obtener el audio de Spotify.';
+    }
+
+    const music = await conn.getFile(audioRes.url);
+
+    await conn.sendMessage(m.chat, {
+      audio: music.data,
+      fileName: `${sptyInfo.title}.mp3`,
+      mimetype: 'audio/mpeg'
+    }, { quoted: m });
+
   } catch (error) {
     console.error(error);
     throw 'Error, no hay resultados';
@@ -29,4 +40,5 @@ const handler = async (m, { conn, text }) => {
 handler.help = ['spotify'];
 handler.tags = ['dl'];
 handler.command = /^(spotify|music)$/i;
-export default handler;
+
+export default handler;

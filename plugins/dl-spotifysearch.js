@@ -1,44 +1,31 @@
-import fetch from "node-fetch"
+import fetch from 'node-fetch';
 
-let handler = async(m, {text}) => {
-    if (!text) throw 'Por favor ingrese el nombre de la cancion a buscar'
+const handler = async (m, { conn, text }) => {
+  if (!text) throw `Ingrese el nombre de la canción.`;
 
-    try {
-        let rest = await fetch(`${apikasu}/api/search/spotifyinfo?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`)
+  try {
+    const infoRes = await fetch(`${apikasu}/api/search/spotifyinfo?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`);
+    const infoData = await infoRes.json();
+    const sptyInfo = infoData.spotify.resultado;
 
-        if(!rest.ok) {
-            throw new Error (`Error`)
-        }
+    let spotifyInfo = `*${sptyInfo.title}*\n\n`;
+    spotifyInfo += `*Artista:* ${sptyInfo.artist}\n`;
+    spotifyInfo += `*Album:* ${sptyInfo.album}\n`; 
+    spotifyInfo += `*Genero:* ${sptyInfo.genre}\n`;
+    spotifyInfo += `*Publicado:* ${sptyInfo.year}\n\n`;
+    spotifyInfo += `*URL:* ${sptyInfo.url}\n`;
+    spotifyInfo += `Enviando...`;
 
-        let json = await rest.json()
+    await conn.sendMessage(m.chat, { text: spotifyInfo.trim() }, { quoted: m });
 
-        let tracks = json.result
+  } catch (error) {
+    console.error(error);
+    throw 'Error, no hay resultados';
+  }
+};
 
-       let response =  "*Resultados*\n\n"
+handler.help = ['spotifysearch'];
+handler.tags = ['dl'];
+handler.command = /^(spotifysearch|spotifybuscar)$/i;
 
-       tracks.forEach((track) => {
-
-       response += `*${track.title}*\n`
-       response += `*Artista:* ${track.artist}\n`
-       response += `*Album:* ${track.album}\n`
-       response += `*Publicado:* ${track.year}\n`
-       response += `*Genero:* ${track.genre}\n`
-       response += `*Enlace:* ${track.url}\n\n`;})
-
-       await conn.sendFile(m.chat, tracks.thumbnail, 'Thumbnail.jpg', response, m);
-
-    } catch (error) {
-    console.error(error)
-}
-}
-
-handler.help = ["spotifysearch"]
-handler.tags = ["dl"]
-handler.command = ["spotifysearch"]
-
-export default handler
-
-
-
-
-
+export default handler;
