@@ -14,10 +14,16 @@ let handler = async (m, { text }) => {
     const data = await response.json();
 
     if (data.status && data.result && data.result.length > 0) {
-      const audioUrl = data.result[0].url;
-      const audioBuffer = await fetch(audioUrl).then(res => res.buffer());
+      const audioResult = data.result[0];
+      
+      if (audioResult && audioResult.url) {
+        const audioUrl = audioResult.url;
+        const audioBuffer = await fetch(audioUrl).then(res => res.buffer());
 
-      await m.replyAudio(audioBuffer, null, { ptt: true });
+        await m.replyAudio(audioBuffer, null, { ptt: true });
+      } else {
+        throw 'No se pudo obtener la URL del audio de la API';
+      }
     } else {
       throw 'No se pudo obtener el audio de la API';
     }
@@ -25,7 +31,6 @@ let handler = async (m, { text }) => {
     throw `Ocurrió un error al generar el audio: ${error}`;
   }
 };
-
 
 handler.command = ['nombrealrevezvoz'];
 handler.help = ['nombrealrevezvoz'];
