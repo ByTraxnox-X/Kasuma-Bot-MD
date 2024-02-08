@@ -13,13 +13,13 @@ const handler = async (m, { conn, text }) => {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    if (data.status && data.result.length > 0) {
+    if (data.status && data.result && data.result.length > 0) {
       const results = data.result;
       let message = 'Resultados de la búsqueda en TikTok:\n\n';
 
       results.forEach((result, index) => {
-        const title = result.title;
-        const playUrl = result.play;
+        const title = result.title || 'Sin título';
+        const playUrl = result.play || 'Sin enlace';
         message += `Resultado ${index + 1}:\n**Título:** ${title}\n**Enlace del Video:** ${playUrl}\n\n`;
       });
 
