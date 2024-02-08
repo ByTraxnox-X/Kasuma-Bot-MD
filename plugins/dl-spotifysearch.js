@@ -4,7 +4,7 @@ let handler = async(m, {text}) => {
     if (!text) throw 'Por favor ingrese el nombre de la cancion a buscar'
 
     try {
-        let rest = await fetch(`https://api.cafirexos.com//api/spotifysearch?text=${encodeURIComponent(text)}`)
+        let rest = await fetch(`${apikasu}/api/search/spotifyinfo?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`)
 
         if(!rest.ok) {
             throw new Error (`Error`)
@@ -12,18 +12,20 @@ let handler = async(m, {text}) => {
 
         let json = await rest.json()
 
-        let tracks = json.spty.resultado.slice(0,2)
+        let tracks = json.result
 
        let response =  "*Resultados*\n\n"
 
-       tracks.forEach((track, index) => {
+       tracks.forEach((track) => {
 
        response += `*${track.title}*\n`
-       response += `*Artista:* ${track.artists}\n`
-       response += `*Duracion:* ${track.duration} Segundos\n`
-       response += `*Enlace:* ${track.link}\n\n`;})
+       response += `*Artista:* ${track.artist}\n`
+       response += `*Album:* ${track.album}\n`
+       response += `*Publicado:* ${track.year}\n`
+       response += `*Genero:* ${track.genre}\n`
+       response += `*Enlace:* ${track.url}\n\n`;})
 
-       m.reply(response)
+       await conn.sendFile(m.chat, tracks.thumbnail, 'Thumbnail.jpg', response, m);
 
     } catch (error) {
     console.error(error)

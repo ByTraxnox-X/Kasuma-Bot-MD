@@ -4,14 +4,14 @@ const handler = async (m, { conn, text }) => {
  if (!text) throw `Ingrese el nombre de la canción.`;
   try {
     const encodedText = encodeURIComponent(text);
-    const res = await fetch(global.API(`https://api.cafirexos.com`, `/api/spotifysearch?text=${encodedText}`));
+    const res = await fetch(global.API(`${apikasu}`, `/api/search/spotify?text=${encodedText}&apikey=${apikeykasu}`));
     const data = await res.json();
-    const linkDL = data.spty.resultado[0].link;
-    const musics = await fetch(global.API(`https://api.cafirexos.com`, `/api/spotifydl?text=${linkDL}`));
+    const linkDL = data.result[0].link;
+    const musics = await fetch(global.API(`${apikasu}`, `/api/dowloader/spotify?url=${linkDL}&apikey=${apikeykasu}`));
     const music = await conn.getFile(musics.url);
-    const infos = await fetch(global.API(`https://api.cafirexos.com`, `/api/spotifyinfo?text=${encodedText}`));
+    const infos = await fetch(global.API(`${apikasu}`, `/api/search/spotifyinfo?text=${encodedText}&apikey=${apikeykasu}`));
     const info = await infos.json();
-    const spty = info.spty.resultado;
+    const spty = info.result;
     const img = await (await fetch(`${spty.thumbnail}`)).buffer();
     let spotifyi = `*${spty.title}*\n\n`
     spotifyi += `*Artista:* ${spty.artist}\n`
