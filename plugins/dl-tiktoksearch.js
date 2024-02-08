@@ -1,36 +1,39 @@
-import fetch from 'node-fetch';
+import fetch from "node-fetch"
 
-const handler = async (m, { conn, text }) => {
-  if (!text) {
-    throw 'Por favor, proporciona un texto para la búsqueda en TikTok';
-  }
-
+let handler = async (m, { text, args }) => {
+  if (!args[0]) throw `Ingrese un texto para buscar en TikTok.`
   try {
-    conn.sendPresenceUpdate('composing', m.chat);
+    const res = await fetch(`${apikasu}/api/search/tiktoksearch?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`);
+    const api = await res.json();
+    const randomIndex = Math.floor(Math.random() * api.result.length);
+    let video = api.result[randomIndex];
+    let capt = `\t\t*TikTok resultados*\n\n`;
+    capt += `*Video ${randomIndex + 1}*\n`;
+    capt += `*Usuario:* ${video.author.nickname}\n`;
+    capt += `*Titulo:* ${video.title}\n`;
+    capt += `*Cover:* ${video.cover}\n`;
+    capt += `*Duracion:* ${video.duration} Segundos\n`;
+    capt += `*Enlace del video:* ${video.play}\n`;
+    capt += `*Enlace de la Musica:* ${video.music}\n`;
+    capt += `*Titulo de la musica:* ${video.music_info.title}\n`;
+    capt += `*Autor de la musica:* ${video.music_info.author}\n`;
+    capt += `*Reproducciones:* ${video.play_count}\n`;
+    capt += `*Likes:* ${video.digg_count}\n`;
+    capt += `*Descargas:* ${video.download_count}\n`;
+    capt += `\n`;
 
-    const apiUrl = `https://apikasu.onrender.com/api/search/tiktoksearch?text=${encodeURIComponent(text)}&apikey=GuillermoDevelop`;
+    const videoUrl = video.play;
+    const videoResponse = await fetch(videoUrl);
+    const fileBuffer = await videoResponse.buffer();
+    m.reply(capt)
+    conn.sendFile(m.chat, fileBuffer, null, capt, m);
 
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-
-    if (data.status && data.result.length > 0) {
-      const result = data.result[0];
-      const title = result.title;
-      const cover = result.cover;
-      const playUrl = result.play;
-
-      const message = `**Título:** ${title}\n**Enlace del Video:** ${playUrl}`;
-      conn.sendFile(m.chat, cover, 'cover.jpg', message, m);
-    } else {
-      throw 'No se encontraron resultados para la búsqueda en TikTok';
-    }
   } catch (error) {
-    throw `Ocurrió un error: ${error}`;
+    throw `Sin resultados`
   }
-};
-
-handler.help = ['tiktoksearch'];
-handler.tags = ['tiktok'];
-handler.command = /^tiktoksearch$/i;
+}
+handler.help = ['tiktoksearch']
+handler.tags = ['dl'];
+handler.command = /^(tiktoksearch|ttsearch)$/i;
 
 export default handler;
