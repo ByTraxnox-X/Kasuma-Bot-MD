@@ -14,14 +14,16 @@ const handler = async (m, { conn, text }) => {
     const data = await response.json();
 
     if (data.status && data.result.length > 0) {
-      const result = data.result[0];
-      const title = result.title;
-      const cover = result.cover;
-      const playUrl = result.play;
+      const results = data.result;
+      let message = '';
 
-      const message = `**Título:** ${title}\n**Enlace del Video:** ${playUrl}\n`;
+      results.forEach((result, index) => {
+        const title = result.title;
+        const playUrl = result.play;
+        message += `Resultado ${index + 1}:\n**Título:** ${title}\n**Enlace del Video:** ${playUrl}\n\n`;
+      });
 
-      conn.sendFile(m.chat, cover, 'cover.png', message, m);
+      conn.sendMessage(m.chat, message, m);
     } else {
       throw 'No se encontraron resultados para la búsqueda en TikTok';
     }
