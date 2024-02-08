@@ -15,7 +15,7 @@ const handler = async (m, { conn, text }) => {
 
     if (data.status && data.result.length > 0) {
       const results = data.result;
-      let message = '';
+      let message = 'Resultados de la búsqueda en TikTok:\n\n';
 
       results.forEach((result, index) => {
         const title = result.title;
