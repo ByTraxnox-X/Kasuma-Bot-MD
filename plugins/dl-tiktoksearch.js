@@ -34,5 +34,5 @@ let handler = async (m, { text, conn }) => {
   }
 };
 
-handler.command = ["stickersearch", "searchsticker", "stickerssearch", "searchstickers"];
+handler.command = ["tiktoksearch", "ttticker", "stickerssearch", "searchtt"];
 export default handler;
