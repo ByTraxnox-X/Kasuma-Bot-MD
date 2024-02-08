@@ -8,7 +8,7 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `https://apikasu.onrender.com/api/search/googleimg?text=${encodeURIComponent(text)}&apikey=SebastianDevelop`;
+    const apiUrl = `${apikasu}/api/search/googleimg?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
 
     const response = await fetch(apiUrl);
     const data = await response.json();

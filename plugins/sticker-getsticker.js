@@ -4,11 +4,7 @@ import fetch from 'node-fetch'
 import { sticker } from '../lib/sticker.js'
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     if (!args[0]) throw `ingrese lo que quiere buscar \n\n*Ejemplo:*\n${usedPrefix + command} homero`
-    
-    //Resultados de https://getstickerpack.com/
     try {
-   /*let res = await fetch(global.API('fgmods', '/api/getsticker', { q:text }, 'apikey'))
-   let json = await res.json()*/
    let json = await fg.StickerSearch(text) 
     m.reply(`
 Resultado
@@ -19,15 +15,14 @@ Resultado
     for (let i of json.sticker_url) {
         const stiker = await sticker(false, i, global.packname, global.author)
         await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
-        //await delay(1500)
     }
     } catch (e) {
 	m.reply(`Error: prueba con otro`)
 	} 
 }
-handler.help = ['getsticker']
+handler.help = ['buscarsticker']
 handler.tags = ['sticker']
-handler.command = ['getsticker', 'getstick', 'stickersearch', 'sticksearch'] 
+handler.command = ['buscarsticker', 'getstick', 'stickersearch', 'sticksearch'] 
 handler.diamond = 3
 
 export default handler
