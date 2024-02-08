@@ -11,7 +11,7 @@ const handler = async (m, { conn, text }) => {
     const apiUrl = `${apikasu}/api/tools/dalle?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
 
     const response = await fetch(apiUrl);
-    const buffer = await response.buffer(); // Buffer para la imagen
+    const buffer = await response.buffer();
 
     if (response.ok) {
       conn.sendFile(m.chat, buffer, 'imagen.jpg', '', m);

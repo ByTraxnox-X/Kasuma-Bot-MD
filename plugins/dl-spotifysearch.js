@@ -14,7 +14,6 @@ const handler = async (m, { conn, text }) => {
     spotifyInfo += `*Genero:* ${sptyInfo.genre}\n`;
     spotifyInfo += `*Publicado:* ${sptyInfo.year}\n\n`;
     spotifyInfo += `*URL:* ${sptyInfo.url}\n`;
-    spotifyInfo += `Enviando...`;
 
     await conn.sendMessage(m.chat, { text: spotifyInfo.trim() }, { quoted: m });
 

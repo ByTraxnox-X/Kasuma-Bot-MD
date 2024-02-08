@@ -7,7 +7,9 @@ const handler = async (m, { conn, text }) => {
     const infoRes = await fetch(`${apikasu}/api/search/spotifyinfo?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`);
     const infoData = await infoRes.json();
     const sptyInfo = infoData.spotify.resultado;
-    
+
+    m.reply(`${wait}`)
+
     let spotifyInfo = `*${sptyInfo.title}*\n\n`;
     spotifyInfo += `*Artista:* ${sptyInfo.artist}\n`;
     spotifyInfo += `*Album:* ${sptyInfo.album}\n`; 

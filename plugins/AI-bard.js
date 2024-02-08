@@ -8,13 +8,13 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `${apikasu}/api/tools/imagine?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
-
+    const apiUrl = `${apikasu}/api/tools/bard?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
     const response = await fetch(apiUrl);
-    const buffer = await response.buffer();
+    const data = await response.json();
 
-    if (response.ok) {
-      conn.sendFile(m.chat, buffer, 'imagen.jpg', '', m);
+    if (data.status && data.data) {
+      const respuestaApi = data.data;
+      conn.reply(m.chat, respuestaApi, m);
     } else {
       throw 'No se pudo obtener una respuesta válida';
     }
@@ -23,8 +23,8 @@ const handler = async (m, { conn, text }) => {
   }
 };
 
-handler.help = ['generaimagen'];
+handler.help = ['bard'];
 handler.tags = ['ai'];
-handler.command = /^generaimagen$/i;
+handler.command = /^bard$/i;
 
 export default handler;
