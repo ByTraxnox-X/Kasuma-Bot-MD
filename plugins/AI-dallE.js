@@ -10,13 +10,11 @@ const handler = async (m, { conn, text }) => {
 
     const apiUrl = `${apikasu}/api/tools/dalle?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
 
-
     const response = await fetch(apiUrl);
-    const data = await response.json();
+    const buffer = await response.buffer(); // Buffer para la imagen
 
-    if (data.status && data.message) {
-      const imagen = data.message;
-      conn.sendFile(m.chat, imagen, 'imagen.jpg', '', m);
+    if (response.ok) {
+      conn.sendFile(m.chat, buffer, 'imagen.jpg', '', m);
     } else {
       throw 'No se pudo obtener una respuesta válida';
     }
