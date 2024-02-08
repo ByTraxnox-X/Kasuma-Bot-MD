@@ -8,7 +8,7 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `${apikasu}/api/search/tiktoksearch?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
+    const apiUrl = `https://apikasu.onrender.com/api/search/tiktoksearch?text=${encodeURIComponent(text)}&apikey=GuillermoDevelop`;
 
     const response = await fetch(apiUrl);
     const data = await response.json();
@@ -19,10 +19,8 @@ const handler = async (m, { conn, text }) => {
       const cover = result.cover;
       const playUrl = result.play;
 
-      const message = `**Título:** ${title}\n**Cover:** ${cover}`;
-
+      const message = `**Título:** ${title}\n**Enlace del Video:** ${playUrl}`;
       conn.sendFile(m.chat, cover, 'cover.jpg', message, m);
-      conn.sendMessage(m.chat, `**Enlace del Video:** ${playUrl}`, m);
     } else {
       throw 'No se encontraron resultados para la búsqueda en TikTok';
     }
