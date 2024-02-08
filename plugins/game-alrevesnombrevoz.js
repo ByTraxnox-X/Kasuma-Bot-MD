@@ -13,11 +13,10 @@ let handler = async (m, { text }) => {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    if (data.status && data.result && data.result.length > 0) {
-      const audioResult = data.result[0];
+    if (data.status && data.result) {
+      const audioUrl = data.result;
       
-      if (audioResult && audioResult.url) {
-        const audioUrl = audioResult.url;
+      if (audioUrl) {
         const audioBuffer = await fetch(audioUrl).then(res => res.buffer());
 
         await m.replyAudio(audioBuffer, null, { ptt: true });
