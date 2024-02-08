@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text }) => {
   if (!text) {
-    throw 'Por favor, proporciona un texto para enviar a ChatGPT.';
+    throw 'Por favor, proporciona un texto para enviar a Bard.';
   }
 
   try {

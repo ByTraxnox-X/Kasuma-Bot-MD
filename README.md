@@ -23,7 +23,7 @@
 ***
 
 ### API FREE
--  [`VISIONARY API`](https://visionaryapi.boxmine.xyz/)
+-  [`KASU API`](https://apikasu.onrender.com/)
 
 ***
 
