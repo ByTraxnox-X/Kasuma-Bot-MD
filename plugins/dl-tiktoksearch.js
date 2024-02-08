@@ -20,12 +20,10 @@ const handler = async (m, { conn, text }) => {
       results.forEach((result, index) => {
         const title = result.title || 'Sin título';
         const duration = result.duration || 'Desconocida';
-        const playUrl = result.play || 'Sin enlace';
 
         message += `Resultado ${index + 1}:\n`;
         message += `**Nombre video:** ${title}\n`;
-        message += `**Duración:** ${duration} segundos\n`;
-        message += `**Enlace del Video:** ${playUrl}\n\n`;
+        message += `**Duración:** ${duration} segundos\n\n`;
       });
 
       conn.sendMessage(m.chat, message, m);
