@@ -19,8 +19,9 @@ const handler = async (m, { conn, text }) => {
       const cover = result.cover;
       const playUrl = result.play;
 
-      const message = `**Título:** ${title}\n**Enlace del Video:** ${playUrl}`;
-      conn.sendFile(m.chat, cover, 'cover.jpg', message, m);
+      const message = `**Título:** ${title}\n**Enlace del Video:** ${playUrl}\n`;
+
+      conn.sendFile(m.chat, cover, 'cover.png', message, m);
     } else {
       throw 'No se encontraron resultados para la búsqueda en TikTok';
     }
