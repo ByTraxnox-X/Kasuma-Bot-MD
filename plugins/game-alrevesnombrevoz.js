@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-let handler = async (m, { text }) => {
+let handler = async (m, { text, conn }) => {
   if (!text) {
     throw 'Por favor, escribe tu nombre para jugar';
   }
@@ -15,11 +15,14 @@ let handler = async (m, { text }) => {
 
     if (data.status && data.result) {
       const audioUrl = data.result;
-      
+
       if (audioUrl) {
         const audioBuffer = await fetch(audioUrl).then(res => res.buffer());
-
-        await m.replyAudio(audioBuffer, null, { ptt: true });
+        
+        await conn.sendFile(m.chat, audioBuffer, 'audio.mp3', null, m, true, {
+          type: 'audioMessage',
+          ptt: true,
+        });
       } else {
         throw 'No se pudo obtener la URL del audio de la API';
       }
