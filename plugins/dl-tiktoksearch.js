@@ -1,10 +1,7 @@
-import fetch from 'node-fetch';
+import fetch from "node-fetch";
 
-const handler = async (m, { conn, text }) => {
-  if (!text) {
-    throw 'Por favor, proporciona un texto para la búsqueda en TikTok';
-  }
-
+let handler = async (m, { text, conn }) => {
+  if (!text) throw `*[❗] Ingresa el nombre del video que quieres buscar*`;
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
@@ -20,23 +17,22 @@ const handler = async (m, { conn, text }) => {
       results.forEach((result, index) => {
         const title = result.title || 'Sin título';
         const duration = result.duration || 'Desconocida';
+        const playUrl = result.play || 'Sin enlace';
 
         message += `Resultado ${index + 1}:\n`;
         message += `**Nombre video:** ${title}\n`;
-        message += `**Duración:** ${duration} segundos\n\n`;
+        message += `**Duración:** ${duration} segundos\n`;
+        message += `**Enlace del Video:** ${playUrl}\n\n`;
       });
 
-      conn.sendMessage(m.chat, message, m);
+      await conn.sendMessage(m.chat, message, m);
     } else {
-      throw 'No se encontraron resultados para la búsqueda en TikTok';
+      throw '*[❗] No se encontraron resultados para la búsqueda en TikTok*';
     }
-  } catch (error) {
-    throw `Ocurrió un error: ${error}`;
+  } catch {
+    await m.reply("*[❗] Ocurrió un error al realizar la búsqueda en TikTok*");
   }
 };
 
-handler.help = ['tiktoksearch'];
-handler.tags = ['tiktok'];
-handler.command = /^tiktoksearch$/i;
-
+handler.command = ["stickersearch", "searchsticker", "stickerssearch", "searchstickers"];
 export default handler;
