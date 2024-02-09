@@ -6,7 +6,7 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
 
   let duration = args[0]?.match(/(\d+)([mh])/);
   if (!duration) {
-    m.reply('*FORMATO ERRONEO!!*\n\n*Ejemplo de uso:* *' + usedPrefix + command + ' m30*\n*Para cerrar el grupo durante 30 minutos.*');
+    m.reply('*FORMATO ERRONEO!!*\n\n*Ejemplo de uso:* *' + usedPrefix + command + ' 30*\n*Para cerrar el grupo durante 30 minutos.*');
     throw false;
   }
 
@@ -20,7 +20,7 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
   }, timeoutset);
 };
 
-handler.help = ['cerrargrupoen <m/h>'];
+handler.help = ['cerrargrupoen <minutos>'];
 handler.tags = ['group'];
 handler.command = /^(cerrargrupoen)$/i;
 handler.botAdmin = true;
