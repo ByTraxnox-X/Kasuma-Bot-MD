@@ -15,7 +15,7 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
   }[(args[0] || '')]
   if (isClose === undefined) {
 	  let caption = `
-*FORMATO ERRONEO!!*
+FORMATO ERRONEO
  
  ${usedPrefix + command} abrir 1*
  ${usedPrefix + command} cerrar 1*
@@ -40,7 +40,7 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
   }
 handler.help = ['grupohora abrir <horas>|grupohora cerrar <horas>']
 handler.tags = ['group']
-//handler.command = /^(grupohora|gptime)$/i
+handler.command = /^(grupohora|gptime)$/i
 
 handler.botAdmin = true
 handler.group = true 

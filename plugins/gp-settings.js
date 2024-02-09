@@ -1,5 +1,5 @@
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-    let isClose = { // Switch Case Like :v
+    let isClose = { 
         'abrir': 'not_announcement',
         'cerrar': 'announcement',
     }[(args[0] || '')]
