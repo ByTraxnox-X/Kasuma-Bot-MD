@@ -12,7 +12,7 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
 
   let timeoutset = duration[2] === 'h' ? 3600000 * duration[1] : 60000 * duration[1];
   await conn.groupSettingUpdate(m.chat, 'announcement').catch(() => {});
-  m.reply(`*Grupo cerrado durante ${duration[1]} ${duration[2] === 'h' ? 'hora(s)' : 'minuto(s)'}*`);
+  m.reply(`*Grupo cerrado durante ${duration[1]} ${duration[2] === 'h' ? 'hora(s)' : 'minuto(s)')}*`);
 
   setTimeout(async () => {
     await conn.groupSettingUpdate(m.chat, 'not_announcement').catch(() => {});
