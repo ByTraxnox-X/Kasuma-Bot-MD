@@ -4,14 +4,15 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
     throw false;
   }
 
-  if (args[0] === undefined || isNaN(args[0])) {
-    m.reply('*FORMATO ERRONEO!!*\n\n*Ejemplo de uso:* *' + usedPrefix + command + ' 1*\n*Para cerrar el grupo durante una hora.*');
+  let duration = args[0].match(/(\d+)([mh])/);
+  if (!duration) {
+    m.reply('*FORMATO ERRONEO!!*\n\n*Ejemplo de uso:* *' + usedPrefix + command + ' m30*\n*Para abrir el grupo durante 30 minutos.*');
     throw false;
   }
 
-  let timeoutset = 86400000 * args[0] / 24;
+  let timeoutset = duration[2] === 'h' ? 3600000 * duration[1] : 60000 * duration[1];
   await conn.groupSettingUpdate(m.chat, 'not_announcement').catch(() => {});
-  m.reply(`*Grupo abierto durante ${args[0]} horas*`);
+  m.reply(`*Grupo abierto durante ${duration[1]} ${duration[2] === 'h' ? 'hora(s)' : 'minuto(s)'}*`);
 
   setTimeout(async () => {
     await conn.groupSettingUpdate(m.chat, 'announcement').catch(() => {});
@@ -19,7 +20,7 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
   }, timeoutset);
 };
 
-handler.help = ['abrirgrupoen <horas>'];
+handler.help = ['abrirgrupoen <m/h>'];
 handler.tags = ['group'];
 handler.command = /^(abrirgrupoen)$/i;
 handler.botAdmin = true;
