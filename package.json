@@ -92,6 +92,7 @@
         "sagiri": "^3.4.0",
         "sharp": "latest",
         "emoji-flags": "latest",
+        "node-summary": "latest",
         "@xct007/frieren-scraper": "github:xct007/frieren-scraper#main",
         "ytdl-core": "github:khlevon/node-ytdl-core#v4.11.4-patch.2"
     },
