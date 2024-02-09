@@ -4,7 +4,7 @@ let handler = async (m, { conn, isAdmin, isOwner, args, usedPrefix, command }) =
     throw false;
   }
 
-  let duration = args[0].match(/(\d+)([mh])/);
+  let duration = args[0]?.match(/(\d+)([mh])/);
   if (!duration) {
     m.reply('*FORMATO ERRONEO!!*\n\n*Ejemplo de uso:* *' + usedPrefix + command + ' m30*\n*Para abrir el grupo durante 30 minutos.*');
     throw false;
