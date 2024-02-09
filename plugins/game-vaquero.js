@@ -6,6 +6,8 @@ const handler = async (m, { conn, text }) => {
   const opponentName = await getOpponentName();
 
   let resultMessage = '';
+  let earnedMoney = 0;
+  let imageURL = '';
 
   if (duelOutcome === 'victoria') {
     const victoryMessages = [
@@ -22,6 +24,13 @@ const handler = async (m, { conn, text }) => {
     ];
 
     resultMessage = victoryMessages[Math.floor(Math.random() * victoryMessages.length)];
+
+    // Ganar dinero aleatorio entre 1 y 50
+    earnedMoney = Math.floor(Math.random() * 50) + 1;
+    global.db.data.users[playerId].dolares += earnedMoney;
+
+    // URL de la imagen de ganador
+    imageURL = 'https://telegra.ph/file/7b9479c318cbf61ec671d.jpg';
   } else {
     const defeatMessages = [
       `Lamentablemente, ${playerName}, el duelo te ha llevado a la derrota frente a ${opponentName}. 🤠 ¡Prepárate para la revancha!`,
@@ -37,13 +46,17 @@ const handler = async (m, { conn, text }) => {
     ];
 
     resultMessage = defeatMessages[Math.floor(Math.random() * defeatMessages.length)];
+
+    // URL de la imagen de perdedor
+    imageURL = 'https://telegra.ph/file/f3b98ff2330302cfcd46e.jpg';
   }
 
-  const additionalInfo = `Gracias por participar en este emocionante enfrentamiento vaquero. 🌵 Si deseas más desafíos, simplemente solicítalos.`;
+  const additionalInfo = `\n\n\nGracias por participar 🌵 Si deseas más desafíos, simplemente solicítalos. ${earnedMoney > 0 ? `\n\nHas ganado ${earnedMoney} dólares. 💰` : ''}`;
 
   const finalMessage = `${resultMessage}\n\n${additionalInfo}`;
 
-  conn.reply(m.chat, finalMessage, m);
+  // Enviar mensaje con imagen
+  conn.sendFile(m.chat, imageURL, 'result.jpg', finalMessage, m);
 }
 
 const getPlayerName = async (playerId) => {
