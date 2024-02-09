@@ -4,7 +4,7 @@ let handler = async (m, { conn, isGroup, isCmd }) => {
   }
 }
 
-handler.command = /^(.*)$/i
+//handler.command = /^(.*)$/i
 handler.group = true
 
 export default handler
