@@ -93,7 +93,6 @@
         "sharp": "latest",
         "emoji-flags": "latest",
         "validator": "latest",
-        "spell-checker-js": "latest",
         "@xct007/frieren-scraper": "github:xct007/frieren-scraper#main",
         "ytdl-core": "github:khlevon/node-ytdl-core#v4.11.4-patch.2"
     },
