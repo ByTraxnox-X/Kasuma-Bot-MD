@@ -5,12 +5,12 @@ const handler = async (m, { conn, text }) => {
   const mazeResult = Math.random() < 0.5 ? 'victoria' : 'derrota';
 
   let resultMessage = '';
-  let earnedPoints = 0;
+  let earnedMoney = 0;
   let imageURL = '';
 
   if (mazeResult === 'victoria') {
     const victoryMessages = [
-      `¡Increíble, ${playerName}! Has completado el laberinto. 🌟🎉`,
+      `¡Increíble, ${playerName}! Has completado el LaberintoBot. 🌟🎉`,
       `La astucia de ${playerName} prevalece. ¡Victoria en el LaberintoBot! 🧠💪`,
       `Con ingenio y determinación, ${playerName} ha superado el laberinto. ¡Felicidades! 🌐🔓`,
       `¡Triunfo para ${playerName} en el desafiante LaberintoBot! 🏆🔍`,
@@ -20,10 +20,10 @@ const handler = async (m, { conn, text }) => {
 
     resultMessage = victoryMessages[Math.floor(Math.random() * victoryMessages.length)];
 
-    // Ganar puntos aleatorios entre 1 y 10
-    earnedPoints = Math.floor(Math.random() * 10) + 1;
-    // Agregar puntos al jugador en la base de datos
-    global.db.data.users[playerId].puntos += earnedPoints;
+    // Ganar dinero aleatorio entre 1 y 15
+    earnedMoney = Math.floor(Math.random() * 15) + 1;
+    // Agregar dinero al jugador en la base de datos
+    global.db.data.users[playerId].dolares += earnedMoney;
 
     // URL de la imagen de ganador (puedes proporcionar una imagen personalizada)
     imageURL = 'https://telegra.ph/file/98f1dce5ee45e63813eff.jpg';
@@ -43,7 +43,7 @@ const handler = async (m, { conn, text }) => {
     imageURL = 'https://telegra.ph/file/08a35808ab47dfb4ed2ec.jpg';
   }
 
-  const additionalInfo = `Gracias por participar en el LaberintoBot. 🤖 Si deseas más desafíos, simplemente solicítalos. ${earnedPoints > 0 ? `\n\nHas ganado ${earnedPoints} puntos. 🌟` : ''}`;
+  const additionalInfo = `Gracias por participar en el LaberintoBot. 🤖 Si deseas más desafíos, simplemente solicítalos. ${earnedMoney > 0 ? `\n\nHas ganado ${earnedMoney} dólares. 💰` : ''}`;
 
   const finalMessage = `${resultMessage}\n\n${additionalInfo}`;
 
