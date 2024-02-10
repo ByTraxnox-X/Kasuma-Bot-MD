@@ -44,7 +44,7 @@ let prem = global.prems.includes(who.split`@`[0])
 let sn = createHash('md5').update(who).digest('hex')
 
 let str = `
-\t\t *PERFIL* 
+\t\t *PERFIL*
 
 *Nombres:* 
 ${username} ${registered ? '\n   ' + name + ' ': ''}

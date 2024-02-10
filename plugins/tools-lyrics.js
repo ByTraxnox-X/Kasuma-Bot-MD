@@ -8,14 +8,14 @@ const handler = async (m, { conn, text }) => {
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `${apivisionary}/api/lyrics?text=${text}`;
+    const apiUrl = `${apikasu}/api/search/lyrics?text=${text}&apikey=${apikeykasu}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
     if (data.status && data.resultado) {
-      const { titulo, artista, imagen, letra } = data.resultado;
-      const mensaje = `*${titulo} - ${artista}*\n${letra}`;
-      conn.sendFile(m.chat, imagen, 'imagen.png', mensaje, m);
+      const { title, artist, image, lyrics } = data.resultado;
+      const mensaje = `*${title} - ${artist}*\n${lyrics}`;
+      conn.sendFile(m.chat, image, 'image.png', mensaje, m);
     } else {
       throw 'No se pudo obtener una respuesta de la API.';
     }

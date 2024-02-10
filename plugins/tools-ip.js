@@ -2,59 +2,46 @@ import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text }) => {
   if (!text) {
-    throw 'Por favor, proporciona un texto para enviar a la API.';
+    throw 'Por favor, proporciona una IP.';
   }
 
   try {
     conn.sendPresenceUpdate('composing', m.chat);
 
-    const apiUrl = `https://vihangayt.me/stalk/ip?q=${encodeURIComponent(text)}`;
+    const apiUrl = `${apikasu}/api/tools/ip?ip=${text}&apikey=${apikeykasu}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    if (data.status && data.data) {
+    if (data.status && data.result) {
       const {
-        continent,
         country,
+        countryCode,
+        region,
         regionName,
         city,
         zip,
         lat,
         lon,
         timezone,
-        currency,
         isp,
         org,
         as,
-        reverse,
-        mobile,
-        proxy,
-        hosting,
-        ip,
-        cached,
-        cacheTimestamp,
-      } = data.data;
+        query
+      } = data.result;
 
-      const mensaje = `\t\t*${text}*\n\n` +
-        `*Continente:* ${continent}\n\n` +
+      const mensaje = `\t\t*${query}*\n\n` +
         `*País:* ${country}\n` +
-        `*Región:* ${regionName}\n` +
+        `*Codigo de pais:* ${countryCode}\n` +
+        `*Codigo de la region:* ${region}\n` +
+        `*Nombre de la Region:* ${regionName}\n` +
         `*Ciudad:* ${city}\n` +
-        `*Código Postal:* ${zip}\n` +
+        `*zip:* ${zip}\n` +
         `*Latitud:* ${lat}\n` +
         `*Longitud:* ${lon}\n` +
         `*Zona Horaria:* ${timezone}\n` +
-        `*Moneda:* ${currency}\n` +
         `*ISP:* ${isp}\n` +
         `*Organización:* ${org}\n` +
         `*AS:* ${as}\n` +
-        `*Reverse DNS:* ${reverse}\n` +
-        `*Móvil:* ${mobile}\n` +
-        `*Proxy:* ${proxy}\n` +
-        `*Hosting:* ${hosting}\n` +
-        `*Dirección IP:* ${ip}\n` +
-        `*En caché:* ${cached}\n` +
-        `*Marca de tiempo de caché:* ${cacheTimestamp}`;
 
       conn.reply(m.chat, mensaje, m);
     } else {
