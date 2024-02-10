@@ -15,10 +15,8 @@ let user = global.db.data.users[who]
 let { name, exp, diamond, registered, banned, regTime, age, level, role, warn } = global.db.data.users[who]
 let { min, xp, max } = xpRange(user.level, global.multiplier)
 
-let num = m.quoted?.sender || m.mentionedJid?.[0]
-
-let business = await conn.getBusinessProfile(num)
-let bio = await conn.fetchStatus(num).catch(_ => {})
+let business = await conn.getBusinessProfile(who)
+let bio = await conn.fetchStatus(who).catch(_ => {})
 let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
 let format = PhoneNum(`+${who.split('@')[0]}`);
 let countryCode = format.getRegionCode('international')
