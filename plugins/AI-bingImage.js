@@ -15,7 +15,7 @@ const handler = async (m, { conn, text }) => {
     const imageResponse = await fetch(firstImageUrl);
     const buffer = await imageResponse.buffer();
 
-    const fileName = bingcreator_first_image.png;
+    const fileName = "bingcreator_first_image.png";
     await conn.sendFile(m.chat, buffer, fileName, "", m);
 
     if (!response.ok) {

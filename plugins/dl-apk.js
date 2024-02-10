@@ -1,4 +1,5 @@
 import axios from 'axios';
+import fetch from 'node-fetch';
 
 const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
   if (!text) throw 'Ingrese el nombre del APK';
@@ -16,11 +17,10 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
 
     await conn.sendMessage(m.chat, { image: { url: data.apk_icon }, caption: responseText }, { quoted: m });
 
+    const apkResponse = await fetch(data.apk_link);
+    const apkBuffer = await apkResponse.buffer();
 
-    const apkresponse = await fetch(apiUrl.apk_link);
-    const apk = await apkresponse.buffer();
-
-    await conn.sendFile(m.chat, apk, `${data.apk_name}.apk`, null, m);
+    await conn.sendFile(m.chat, apkBuffer, `${data.apk_name}`.apk, null, m);
 
   } catch (error) {
     console.error(error);
@@ -32,4 +32,4 @@ handler.help = ['apk aplicacion'];
 handler.tags = ['dl'];
 handler.command = /^(apk|descargarapp|descargarapk)$/i;
 
-export default handler;
+export default handler;
