@@ -29,7 +29,7 @@ const handler = async (m, { conn, text }) => {
         query
       } = data.result;
 
-      const msg = `\t\t*${query}*\n\n` +
+      let msg = `\t\t*${query}*\n\n` +
         `*País:* ${country}\n` +
         `*Codigo de pais:* ${countryCode}\n` +
         `*Codigo de la region:* ${region}\n` +

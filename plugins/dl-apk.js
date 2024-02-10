@@ -11,14 +11,16 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     const data = response.data.result;
 
     let responseText = `\n\n*${data.apk_name}*\n\n`;
-    responseText += `*Package:* ${data.package}\n`;
     responseText += `*Version:* ${data.apk_version}\n`;
     responseText += `*Autor:* ${data.apk_author}\n`;
 
     await conn.sendMessage(m.chat, { image: { url: data.apk_icon }, caption: responseText }, { quoted: m });
 
-    const apkBuffer = await axios.get(data.apk_link, { responseType: 'arraybuffer' });
-    await conn.sendFile(m.chat, apkBuffer, `${data.apk_name}.apk`, null, m);
+
+    const apkresponse = await fetch(apiUrl.apk_link);
+    const apk = await apkresponse.buffer();
+
+    await conn.sendFile(m.chat, apk, `${data.apk_name}.apk`, null, m);
 
   } catch (error) {
     console.error(error);

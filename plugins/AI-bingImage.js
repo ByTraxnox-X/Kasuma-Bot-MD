@@ -10,9 +10,14 @@ const handler = async (m, { conn, text }) => {
 
     const apiUrl = `${apikasu}/api/tools/bingimg?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
 
-    const response = await fetch(apiUrl);
-    const filebuffer = await fetch(response.data.result[0])
-    const buffer = await filebuffer.buffer();
+
+    for (let i = 0; i < filebuffer.length; i++) {
+      const videoResponse = await fetch(fileBuffer[i]);
+      const buffer = await videoResponse.buffer();
+
+      const fileName = `bingcreator_${i + 1}.png`;
+      await conn.sendFile(m.chat, buffer, fileName, "", m);
+  }
 
     if (response.ok) {
       conn.sendFile(m.chat, buffer, 'imagen.jpg', '', m);
