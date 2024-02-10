@@ -29,7 +29,7 @@ const handler = async (m, { conn, text }) => {
         query
       } = data.result;
 
-      const mensaje = `\t\t*${query}*\n\n` +
+      const msg = `\t\t*${query}*\n\n` +
         `*País:* ${country}\n` +
         `*Codigo de pais:* ${countryCode}\n` +
         `*Codigo de la region:* ${region}\n` +
@@ -43,7 +43,7 @@ const handler = async (m, { conn, text }) => {
         `*Organización:* ${org}\n` +
         `*AS:* ${as}\n` +
 
-      conn.reply(m.chat, mensaje, m);
+      m.reply(msg)
     } else {
       throw 'No se pudo obtener una respuesta válida de la API.';
     }

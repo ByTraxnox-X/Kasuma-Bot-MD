@@ -6,23 +6,19 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
   try {
     m.react(rwait);
 
-    const apiUrl = `https://vihangayt.me/api/apk?id=${text}`;
+    const apiUrl = `${apikasu}/api/dowloader/apk?apk=${text}&apikey=${apikeykasu}`;
     const response = await axios.get(apiUrl);
-    const data = response.data.data;
+    const data = response.data.result;
 
-    let responseText = `\n\n*${data.name}*\n\n`;
+    let responseText = `\n\n*${data.apk_name}*\n\n`;
     responseText += `*Package:* ${data.package}\n`;
-    responseText += `*Ultima Actualizacion:* ${data.lastup}\n`;
-    responseText += `*Tamaño:* ${data.size}`;
+    responseText += `*Version:* ${data.apk_version}\n`;
+    responseText += `*Autor:* ${data.apk_author}\n`;
 
-    await conn.sendMessage(m.chat, { image: { url: data.icon }, caption: responseText }, { quoted: m });
+    await conn.sendMessage(m.chat, { image: { url: data.apk_icon }, caption: responseText }, { quoted: m });
 
-    if (data.size.includes('GB') || parseFloat(data.size.replace(' MB', '')) > 999) {
-      return await conn.sendMessage(m.chat, { text: 'El APK es demasiado pesado para ser enviado.' }, { quoted: m });
-    }
-
-    const apkBuffer = await axios.get(data.dllink, { responseType: 'arraybuffer' });
-    await conn.sendFile(m.chat, apkBuffer.data, `${data.name}.apk`, null, m);
+    const apkBuffer = await axios.get(data.apk_link, { responseType: 'arraybuffer' });
+    await conn.sendFile(m.chat, apkBuffer, `${data.apk_name}.apk`, null, m);
 
   } catch (error) {
     console.error(error);
