@@ -11,14 +11,15 @@ const handler = async (m, { conn, args }) => {
             m.react('⌛');
 
             const data = await response.json();
-            const videoUrl = data.result;
+            const videoUrls = data.result;
 
-            const fileName = "igstory.mp4";
+            for (let i = 0; i < videoUrls.length; i++) {
+                const videoResponse = await fetch(videoUrls[i]);
+                const fileBuffer = await videoResponse.buffer();
 
-            const videoResponse = await fetch(videoUrl);
-            const fileBuffer = await videoResponse.buffer();
-
-            conn.sendFile(m.chat, fileBuffer, fileName, "", m);
+                const fileName = `igstory_${i + 1}.mp4`;
+                await conn.sendFile(m.chat, fileBuffer, fileName, "", m);
+            }
 
             m.react('✅');
         } else {
@@ -34,4 +35,4 @@ handler.help = ['igstory'];
 handler.tags = ['dl'];
 handler.command = ['igstory', 'instgramhistoria'];
 
-export default handler;
+export default handler;

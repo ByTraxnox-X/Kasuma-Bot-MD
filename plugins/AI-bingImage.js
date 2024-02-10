@@ -11,7 +11,7 @@ const handler = async (m, { conn, text }) => {
     const apiUrl = `${apikasu}/api/tools/bingimg?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
 
     const response = await fetch(apiUrl);
-    const filebuffer = await response.data.result
+    const filebuffer = await fetch(response.data.result[0])
     const buffer = await filebuffer.buffer();
 
     if (response.ok) {
