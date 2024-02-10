@@ -41,9 +41,9 @@ const handler = async (m, { conn, text }) => {
         `*Zona Horaria:* ${timezone}\n` +
         `*ISP:* ${isp}\n` +
         `*Organización:* ${org}\n` +
-        `*AS:* ${as}\n` +
+        `*AS:* ${as}\n`;
 
-      m.reply(msg)
+      m.reply(msg);
     } else {
       throw 'No se pudo obtener una respuesta válida de la API.';
     }
@@ -56,4 +56,4 @@ handler.help = ['ipinfo'];
 handler.tags = ['tools'];
 handler.command = /^ipinfo$/i;
 
-export default handler;
+export default handler;

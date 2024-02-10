@@ -9,22 +9,16 @@ const handler = async (m, { conn, text }) => {
     conn.sendPresenceUpdate('composing', m.chat);
 
     const apiUrl = `${apikasu}/api/tools/bingimg?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
-    
     const response = await fetch(apiUrl);
     const data = await response.json();
-    const fileBuffer = data.result;
+    const firstImageUrl = data.result[0];
+    const imageResponse = await fetch(firstImageUrl);
+    const buffer = await imageResponse.buffer();
 
-    for (let i = 0; i < filebuffer.length; i++) {
-      const videoResponse = await fetch(fileBuffer[i]);
-      const buffer = await videoResponse.buffer();
+    const fileName = bingcreator_first_image.png;
+    await conn.sendFile(m.chat, buffer, fileName, "", m);
 
-      const fileName = `bingcreator_${i + 1}.png`;
-      await conn.sendFile(m.chat, buffer, fileName, "", m);
-  }
-
-    if (response.ok) {
-      conn.sendFile(m.chat, buffer, 'imagen.jpg', '', m);
-    } else {
+    if (!response.ok) {
       throw 'No se pudo obtener una respuesta válida';
     }
   } catch (error) {
@@ -36,4 +30,4 @@ handler.help = ['bingcreator'];
 handler.tags = ['ai'];
 handler.command = /^bingcreator$/i;
 
-export default handler;
+export default handler;
