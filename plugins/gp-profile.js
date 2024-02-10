@@ -42,10 +42,10 @@ let prem = global.prems.includes(who.split`@`[0])
 let sn = createHash('md5').update(who).digest('hex')
 
 let str = `
-*PERFIL* 
+\t\t *PERFIL* 
 *Nombres:* 
-${username} ${registered ? '\n   • ' + name + ' ': ''}
-@${who.replace(/@.+/, '')}
+${username} ${registered ? '\n   ' + name + ' ': ''}
+*Mencion:* @${who.replace(/@.+/, '')}
 *Pais:* ${countryName} ${flag}
 *Numero:* ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
 *Link:* wa.me/${who.split`@`[0]}${registered ? '\n*Edad*: ' + age + ' años' : ''}
@@ -60,6 +60,20 @@ ${username} ${registered ? '\n   • ' + name + ' ': ''}
 *Registrado:* ${registered ? 'Si': 'No'}
 *Tiempo registrado:* ${years > 0 ? `${years} año${years !== 1 ? 's' : ''} ` : ''}${days > 0 ? `${days} día${days !== 1 ? 's' : ''} ` : ''}${hours > 0 ? `${hours} hora${hours !== 1 ? 's' : ''} ` : ''}${minutes > 0 ? `${minutes} minuto${minutes !== 1 ? 's' : ''} ` : ''}${seconds > 0 ? `${seconds} segundo${seconds !== 1 ? 's' : ''}` : ''}
 
+\t\t *Informacion adicional*
+
+*Biografia:* ${bio?.status || 'Sin informacion'}
+*Fecha de Biografia:* ${bio?.setAt ? moment(bio.setAt).locale('id').format('LL') : 'No disponible'}
+
+\t\t *Informacion Empresarial*
+
+*BusinessId:* ${business.wid}
+*Website:* ${business.website ? business.website : 'Sin informacion'}
+*Email:* ${business.email ? business.email : 'Sin informacion'}
+*Categoría:* ${business.category}
+*Dirección:* ${business.address ? business.address : 'Sin informacion'}
+*Horario:* ${business.business_hours.timezone ? business.business_hours.timezone : 'Sin informacion'}
+*Descripción:* ${business.description ? business.description : 'Sin informacion'} : 'Cuenta Estándar de WhatsApp'
 `
     conn.sendFile(m.chat, pp, 'perfil.jpg', str, m, false, { mentions: [who] })
     m.react(done)

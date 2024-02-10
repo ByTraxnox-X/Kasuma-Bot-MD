@@ -23,18 +23,18 @@ let handler = async (m, { conn, text }) => {
 *Formato del Número:* ${format.getNumber('international')}
 *URL:* wa.me/${num.split('@')[0]}
 *Mención:* @${num.split('@')[0]}
-*Estado:* ${bio?.status || 'No visible o disponible'}
-*Fecha de Información:* ${bio?.setAt ? moment(bio.setAt).locale('id').format('LL') : 'No disponible'}`
+*Biografia:* ${bio?.status || 'Sin informacion'}
+*Fecha de Biografia:* ${bio?.setAt ? moment(bio.setAt).locale('id').format('LL') : 'No disponible'}`
 
   if (business) {
     wea += `
 *BusinessId:* ${business.wid}
-*Website:* ${business.website ? business.website : '-'}
-*Email:* ${business.email ? business.email : '-'}
+*Website:* ${business.website ? business.website : 'Sin informacion'}
+*Email:* ${business.email ? business.email : 'Sin informacion'}
 *Categoría:* ${business.category}
-*Dirección:* ${business.address ? business.address : '-'}
-*Horario:* ${business.business_hours.timezone ? business.business_hours.timezone : '-'}
-*Descripción:* ${business.description ? business.description : '-'} : 'Cuenta Estándar de WhatsApp'`
+*Dirección:* ${business.address ? business.address : 'Sin informacion'}
+*Horario:* ${business.business_hours.timezone ? business.business_hours.timezone : 'Sin informacion'}
+*Descripción:* ${business.description ? business.description : 'Sin informacion'} : 'Cuenta Estándar de WhatsApp'`
   }
 
   img ? await conn.sendMessage(m.chat, { image: { url: img }, caption: wea, mentions: [num] }, { quoted: m }) : m.reply(wea)
