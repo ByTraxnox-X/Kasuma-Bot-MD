@@ -45,6 +45,7 @@ let sn = createHash('md5').update(who).digest('hex')
 
 let str = `
 \t\t *PERFIL* 
+
 *Nombres:* 
 ${username} ${registered ? '\n   ' + name + ' ': ''}
 *Mencion:* @${who.replace(/@.+/, '')}
@@ -62,12 +63,12 @@ ${username} ${registered ? '\n   ' + name + ' ': ''}
 *Registrado:* ${registered ? 'Si': 'No'}
 *Tiempo registrado:* ${years > 0 ? `${years} año${years !== 1 ? 's' : ''} ` : ''}${days > 0 ? `${days} día${days !== 1 ? 's' : ''} ` : ''}${hours > 0 ? `${hours} hora${hours !== 1 ? 's' : ''} ` : ''}${minutes > 0 ? `${minutes} minuto${minutes !== 1 ? 's' : ''} ` : ''}${seconds > 0 ? `${seconds} segundo${seconds !== 1 ? 's' : ''}` : ''}
 
-\t\t *Informacion adicional*
+*Informacion adicional*
 
 *Biografia:* ${bio?.status || 'Sin informacion'}
 *Fecha de Biografia:* ${bio?.setAt ? moment(bio.setAt).locale('id').format('LL') : 'No disponible'}
 
-\t\t *Informacion Empresarial*
+*Informacion Empresarial*
 
 *BusinessId:* ${business.wid}
 *Website:* ${business.website ? business.website : 'Sin informacion'}
