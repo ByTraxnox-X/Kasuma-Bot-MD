@@ -3,6 +3,7 @@ import PhoneNumber from 'awesome-phonenumber'
 import moment from 'moment-timezone'
 import PhoneNum from 'awesome-phonenumber'
 import emojiFlags from 'emoji-flags'
+
 import { canLevelUp, xpRange } from '../lib/levelling.js'
 
 let handler = async (m, { conn, usedPrefix, command}) => {
@@ -14,7 +15,8 @@ let user = global.db.data.users[who]
 let { name, exp, diamond, registered, banned, regTime, age, level, role, warn } = global.db.data.users[who]
 let { min, xp, max } = xpRange(user.level, global.multiplier)
 
-
+let business = await conn.getBusinessProfile(num)
+let bio = await conn.fetchStatus(num).catch(_ => {})
 let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
 let format = PhoneNum(`+${who.split('@')[0]}`);
 let countryCode = format.getRegionCode('international')
