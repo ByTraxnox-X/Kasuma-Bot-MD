@@ -9,7 +9,10 @@ const handler = async (m, { conn, text }) => {
     conn.sendPresenceUpdate('composing', m.chat);
 
     const apiUrl = `${apikasu}/api/tools/bingimg?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
-
+    
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    const fileBuffer = data.result;
 
     for (let i = 0; i < filebuffer.length; i++) {
       const videoResponse = await fetch(fileBuffer[i]);
