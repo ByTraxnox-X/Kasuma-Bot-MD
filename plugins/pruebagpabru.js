@@ -9,8 +9,8 @@ const handler = async (m, { conn, text }) => {
   const hours = params[1].toUpperCase();
   const dayOfWeek = parseInt(params[2]);
 
-  if (!['abrir', 'cerrar'].includes(action) || !/^([1-9]|1[0-2])PM$/.test(hours) || isNaN(dayOfWeek) || dayOfWeek < 1 || dayOfWeek > 7) {
-    return conn.reply(m.chat, 'Formato de comando incorrecto. Ejemplo válido: ".programar abrir/cerrar 2PM|3PM|1".', m);
+  if (!['abrir', 'cerrar'].includes(action) || !/^([1-9]|1[0-2]PM)$/.test(hours) || isNaN(dayOfWeek) || dayOfWeek < 1 || dayOfWeek > 7) {
+    return conn.reply(m.chat, 'Formato de comando incorrecto. Ejemplo válido: ".programar abrir 2PM|3PM|1".', m);
   }
 
   const hour = parseInt(hours);
@@ -33,6 +33,7 @@ const handler = async (m, { conn, text }) => {
 
   await conn.reply(m.chat, `Grupo programado para ${action === 'abrir' ? 'abrir' : 'cerrar'} a las ${hours} los días ${dayOfWeek}.`, m);
 };
+
 
 // Función para calcular el tiempo hasta el próximo evento programado
 const calculateMillisUntilNextEvent = (desiredDay, desiredHour, isPM, currentDay) => {
