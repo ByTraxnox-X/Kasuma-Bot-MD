@@ -27,7 +27,9 @@ if (enviando) return;
 
     if (!data.result || !data.result.url) {
       enviando = false;
-      throw `> Sin respuesta\nError, intentelo de nuevo.`;
+      throw `
+> Sin respuesta
+Error, intentelo de nuevo.`;
     } else {
       try {
         if (command === 'youtubeaudio') {
@@ -61,7 +63,12 @@ if (enviando) return;
        }
     }
 
-    const dataMessage = `> Informacion\n*Título:* ${data.result.title}\n\n*Publicado:* ${data.result.publicDate}\n\n*Canal:* ${data.result.channel}\n\n*URL:* ${data.result.url}`;
+    const dataMessage = `
+> Informacion
+*Título:* ${data.result.title}
+*Publicado:* ${data.result.publicDate}
+*Canal:* ${data.result.channel}
+*URL:* ${data.result.url}`;
     await conn.sendMessage(m.chat, { text: dataMessage }, { quoted: m });
 
     if (buff) {
@@ -69,11 +76,15 @@ if (enviando) return;
       enviando = false;
     } else {
       enviando = false;
-      throw `> Sin respuesta\nError, intentelo de nuevo.`;
+      throw `
+> Sin respuesta
+Error, intentelo de nuevo.`;
     }
   } catch (error) {
     enviando = false;
-    throw `> Sin respuesta\nError, intentelo de nuevo.`;
+    throw `
+> Sin respuesta
+Error, intentelo de nuevo.`;
   }
 };
 

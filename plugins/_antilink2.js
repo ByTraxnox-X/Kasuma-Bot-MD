@@ -41,11 +41,12 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
         }
 
         if (isGroupLinkWhatsApp || isGroupLinkYouTube || isGroupLinkTikTok || isGroupLinkInstagram || isGroupLinkGoogle || isGroupLinkTwitter || isGroupLinkDiscord || isGroupLinkTelegram) {
-            await conn.reply(m.chat, `> Enlace Detectado
+            await conn.reply(m.chat, `
+> Enlace Detectado
             
-            No permitimos enlaces de plataformas exteriores a WhatsApp
+No permitimos enlaces de plataformas exteriores a WhatsApp
 
-            Lo siento *@${m.sender.split('@')[0]}*, serás expulsado del grupo${isBotAdmin ? '' : '\n\nDebo ser administrador para eliminar el usuario.'}`, null, { mentions: [m.sender] });
+Lo siento *@${m.sender.split('@')[0]}*, serás expulsado del grupo${isBotAdmin ? '' : '\n\nDebo ser administrador para eliminar el usuario.'}`, null, { mentions: [m.sender] });
 
             if (isBotAdmin && chat.antiLink2) {
                 await conn.sendMessage(m.chat, { delete: m.key });

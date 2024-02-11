@@ -17,16 +17,16 @@ const handler = async (m, { conn, text }) => {
 
     m.react(rwait);
 
-    const songInfo =
-      `> Informacion\n*${json.result.name}*\n\n` +
-      `*Nombre:* ${json.result.name}\n` +
-      `*Artista:* ${json.result.artist}\n` +
-      `*Álbum:* ${json.result.album}\n` +
-      `*Fecha de lanzamiento:* ${json.result.release_date}\n` +
-      `*Precio:* ${json.result.price}\n` +
-      `*Duración:* ${json.result.length}\n` +
-      `*Género:* ${json.result.genre}\n` +
-      `*Enlace:* ${json.result.url}`;
+    const songInfo =`
+> Informacion
+*Nombre:* ${json.result.name}\n
+*Artista:* ${json.result.artist}\n
+*Álbum:* ${json.result.album}\n
+*Fecha de lanzamiento:* ${json.result.release_date}\n
+*Precio:* ${json.result.price}\n
+*Duración:* ${json.result.length}\n
+*Género:* ${json.result.genre}\n
+*Enlace:* ${json.result.url}`
 
     if (json.result.thumbnail) {
       m.react(done);
@@ -37,7 +37,9 @@ const handler = async (m, { conn, text }) => {
 
   } catch (error) {
     console.error(error);
-    throw `> Sin respuesta\nOcurrió un error al procesar la solicitud: ${error.message}`;
+    throw `
+> Sin respuesta
+Ocurrió un error al procesar la solicitud: ${error.message}`;
   }
 };
 

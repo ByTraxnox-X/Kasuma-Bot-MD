@@ -13,7 +13,10 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
         const downloadingMessage = `Descargando Archivo...`;
         m.reply(downloadingMessage);
 
-        const caption = `> Informacion\nArchivo: ${file.name}\nPeso: ${formatBytes(file.size)}`;
+        const caption = `
+> Informacion
+Archivo: ${file.name}
+Peso: ${formatBytes(file.size)}`;
 
         const data = await file.downloadBuffer();
 

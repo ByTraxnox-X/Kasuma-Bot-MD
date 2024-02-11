@@ -16,7 +16,8 @@ img = 'https://elcomercio.pe/resizer/RJM30xnujgfmaODGytH1rRVOrAA=/400x0/smart/fi
 }    
 if (aaaa == '') throw '*error, no se encontro la pelicula*' 
 
-let res = await aaaa.map((v) => `> Informacion
+let res = await aaaa.map((v) => `
+> Informacion
 
 *Titulo:* ${v.title}
 *Url:* ${v.link}`).join`\n`

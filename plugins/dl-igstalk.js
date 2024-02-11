@@ -14,7 +14,8 @@ const handler = async (m, { conn, args }) => {
         if (data.status && data.result) {
             const userInfo = data.result;
 
-            const infoMessage = `> Informacion
+            const infoMessage = `
+> Informacion
 *Username:* ${userInfo.username}
 *Nombre:* ${userInfo.full_name}
 *Biografía:* ${userInfo.biography}
@@ -31,11 +32,15 @@ ${userInfo.external_url}
 
             await conn.sendFile(m.chat, userInfo.profile_pic_url, 'profile_pic.jpg', infoMessage, m);
         } else {
-            throw '> Sin respuesta\nNo se pudo obtener la información de Instagram.';
+            throw `
+> Sin respuesta
+No se pudo obtener la información de Instagram.`
         }
     } catch (error) {
         console.error(error);
-        throw '> Sin respuesta\nOcurrió un error al procesar la solicitud';
+        throw `
+> Sin respuesta
+Ocurrió un error al procesar la solicitud`
     }
 };
 

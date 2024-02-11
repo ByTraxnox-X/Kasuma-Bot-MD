@@ -16,10 +16,12 @@ const handler = async (m, { conn, text }) => {
 
         const img = await (await fetch(musicInfo.image)).buffer();
 
-        let appleMusicInfo = `> Informacion\n*${musicInfo.name}*\n\n`;
-        appleMusicInfo += `*Artistas:* ${musicInfo.artists}\n`;
-        appleMusicInfo += `*Duración:* ${musicInfo.duration_ms} ms\n\n`;
-        appleMusicInfo += `Enviando...`;
+        let appleMusicInfo = `
+> Informacion
+*Titulo:* ${musicInfo.name}*\n\n
+*Artistas:* ${musicInfo.artists}\n
+*Duración:* ${musicInfo.duration_ms} ms\n\n
+Enviando...`
 
         await conn.sendMessage(m.chat, {
             text: appleMusicInfo.trim(),
@@ -49,7 +51,9 @@ const handler = async (m, { conn, text }) => {
         }, { quoted: m });
     } catch (error) {
         console.error(error);
-        throw '> Sin respuesta\nError, no hay resultados';
+        throw `
+> Sin respuesta
+Error, no hay resultados`
     }
 };
 

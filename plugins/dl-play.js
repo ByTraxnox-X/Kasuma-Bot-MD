@@ -13,7 +13,8 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
       additionalText = 'audio';
     } 
     m.react(rwait)
-    const texto1 = `> Informacion
+    const texto1 = `
+> Informacion
 
 *Titulo:* ${yt_play[0].title}
 *Publicado:* ${yt_play[0].ago}
@@ -72,7 +73,9 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
       }
     }
   } catch {
-    throw '> Sin respuesta\nError';
+    throw `
+> Sin respuesta
+Error`;
   }
 };
 handler.help = ['play']

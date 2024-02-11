@@ -4,7 +4,9 @@ let handler = async (m, { conn}) => {
 let name = conn.getName(m.sender)
 
 
-m.reply(`> Estoy aqui para ayudarte!\nHola *${name}*\nNecesitas ayuda?\nusa *!menu* para conocer mis funciones!
+m.reply(`
+> Estoy aqui para ayudarte!
+Hola *${name}*\nNecesitas ayuda?\nusa *!menu* para conocer mis funciones!
 
 Si quieres un poco de informacion sobre mi visita el siguiente canal ${canal}`)
 

@@ -15,20 +15,25 @@ const handler = async (m, { conn, args }) => {
             const user = data.result;
             m.react(rwait);
 
-            let userInfo = `> Informacion\n` +
-            `*Username:* ${user.username || 'No proporcionado'}\n` +
-            `*Nombre:* ${user.nickname || 'No proporcionado'}\n` +
-                `*Seguidores:* ${user.followers}\n` +
-                `*Siguiendo:* ${user.following}\n` +
-                `*Descripción:* ${user.description || 'No proporcionada'}`;
+            let userInfo = `
+> Informacion
+*Username:* ${user.username || 'No proporcionado'}
+*Nombre:* ${user.nickname || 'No proporcionado'}\n
+*Seguidores:* ${user.followers}\n
+*Siguiendo:* ${user.following}\n
+*Descripción:* ${user.description || 'No proporcionada'}`;
 
             m.react(done);
             await conn.sendFile(m.chat, user.pp_thumbnail, 'profile.jpg', userInfo, m);
         } else {
-            throw '> Sin respuesta\nNo se pudo obtener la información del usuario de TikTok.';
+            throw `
+> Sin respuesta
+No se pudo obtener la información del usuario de TikTok.`;
         }
     } catch (error) {
-        throw `> Sin respuesta\nOcurrió un error al procesar la solicitud: ${error}`;
+        throw `
+> Sin respuesta
+Ocurrió un error al procesar la solicitud: ${error}`;
     }
 };
 

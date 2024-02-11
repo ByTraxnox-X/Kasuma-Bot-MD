@@ -15,12 +15,11 @@ const handler = async (m, { conn, text }) => {
 
     const data = await response.json();
 
-    console.log('JSON response:', data);
-
     const ratings = data.result.ratings.map(rating => `*${rating.source}:* ${rating.value}`).join('\n');
 
     const movieInfo = `
-*> Informacion\n${data.result.title}*\n
+> Informacion
+*Titulo:* ${data.result.title}\n
 *Año:* ${data.result.year}
 *Clasificación:* ${data.result.rated}
 *Fecha de lanzamiento:* ${data.result.released}
@@ -48,7 +47,9 @@ const handler = async (m, { conn, text }) => {
     await conn.sendFile(m.chat, data.result.poster, 'poster.jpg', movieInfo, m);
   } catch (error) {
     console.error(error);
-    throw `> Sin respuesta\nOcurrió un error: ${error.message}`;
+    throw `
+> Sin respuesta
+Ocurrió un error: ${error.message}`;
   }
 };
 

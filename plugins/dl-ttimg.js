@@ -22,11 +22,15 @@ let handler = async (m, { conn, text: tiktok }) => {
 
             m.react('✅');
         } else {
-            throw '> Sin respuesta\nNo se encontraron imágenes para este TikTok.';
+            throw `
+> Sin respuesta
+No se encontraron imágenes para este TikTok.`;
         }
     } catch (error) {
         console.error(error);
-        throw `> Sin respuesta\nError al obtener imágenes del TikTok: ${error.message}`;
+        throw `
+> Sin respuesta
+Error al obtener imágenes del TikTok: ${error.message}`;
     }
 };
 

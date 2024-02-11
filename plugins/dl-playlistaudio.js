@@ -21,7 +21,9 @@ const handler = async (m, {text, conn, args, usedPrefix, command}) => {
           if (index < matchingItem.urls.length) {
             youtubeLink = matchingItem.urls[index];
           } else {
-            throw `> Sin respuesta\nNo se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.length}`;
+            throw `
+> Sin respuesta
+No se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.length}`;
           }
         } else {
           throw `Use el comando de la siguiente manera ${usedPrefix + command} <numero>, y para buscar una playlist con ${usedPrefix}playlist <texto>`;
@@ -45,15 +47,19 @@ const handler = async (m, {text, conn, args, usedPrefix, command}) => {
     const roundedFileSizeInMB = fileSizeInMB.toFixed(2);
    if (fileSizeInMB > 50) {
     m.react(done)
-    await conn.sendMessage(m.chat, {document: buff, caption: `*${ttl_1}*
-
+    await conn.sendMessage(m.chat, {document: buff, caption: `
+> Informacion
+*Titulo:* ${ttl_1}
 *Peso:* ${roundedFileSizeInMB} MB`, fileName: ttl_1 + '.mp3', mimetype: 'audio/mpeg'}, {quoted: m});
-    await conn.sendMessage(m.chat, {text: `Si se envio en formato de documento es porque el audio supera el limite establecido por WhatsApp
-    *Titulo:* ${ttl_1}`, edit: key}, {quoted: m});
+    await conn.sendMessage(m.chat, {text: `
+> Informacion
+Si se envio en formato de documento es porque el audio supera el limite establecido por WhatsApp
+*Titulo:* ${ttl_1}`, edit: key}, {quoted: m});
     enviando = false
    } else {
-    await conn.sendMessage(m.chat, {audio: buff, caption: `\t\t *${ttl_1}*
-    
+    await conn.sendMessage(m.chat, {audio: buff, caption: `
+> Informacion
+*Titulo:* ${ttl_1}
 *Peso:* ${roundedFileSizeInMB} MB`, fileName: ttl_1 + '.mp3', mimetype: 'audio/mpeg'}, {quoted: m});
     m.react(done)
     await conn.sendMessage(m.chat, {text: `Enviado`, edit: key}, {quoted: m});
@@ -89,7 +95,9 @@ const handler = async (m, {text, conn, args, usedPrefix, command}) => {
         conn.sendMessage(m.chat, {audio: {url: ress.url}, fileName: __res[0].title + '.mp3', mimetype: 'audio/mpeg'}, {quoted: m});
         await conn.sendMessage(m.chat, {text: 'Enviado', edit: key}, {quoted: m});
       } catch {
-        await conn.sendMessage(m.chat, {text: `> Sin respuesta\nError`, edit: key}, {quoted: m});
+        await conn.sendMessage(m.chat, {text: `
+> Sin respuesta
+Error`, edit: key}, {quoted: m});
         throw 'Error';
       }
     }

@@ -4,13 +4,17 @@ const handler = async (m, {conn}) => {
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || q.mediaType || ""
   if (!mime) throw `Responda a una imagen`
-  if (!/image\/(jpe?g|png)/.test(mime)) throw `> Formato no compatible\nEl formato no es compatible, intente con otro formato.`
+  if (!/image\/(jpe?g|png)/.test(mime)) throw `
+> Formato no compatible
+El formato no es compatible, intente con otro formato.`
   m.reply(`${wait}`)
   let img = await q.download?.()
   let pr = await remini(img, "enhance")
   conn.sendMessage(m.chat, {image: pr}, {quoted: m})
  } catch {
-  throw "Error";
+  throw `
+> Sin respuesta
+Error`;
  }
 };
 handler.help = ["convertirhd"]

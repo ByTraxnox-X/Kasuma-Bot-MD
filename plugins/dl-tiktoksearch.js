@@ -7,20 +7,20 @@ let handler = async (m, { text, args }) => {
     const api = await res.json();
     const randomIndex = Math.floor(Math.random() * api.result.length);
     let video = api.result[randomIndex];
-    let capt = `> Informacion\n`;
-    capt += `*Video ${randomIndex + 1}*\n`;
-    capt += `*Usuario:* ${video.author.nickname}\n`;
-    capt += `*Titulo:* ${video.title}\n`;
-    capt += `*Cover:* ${video.cover}\n`;
-    capt += `*Duracion:* ${video.duration} Segundos\n`;
-    capt += `*Enlace del video:* ${video.play}\n`;
-    capt += `*Enlace de la Musica:* ${video.music}\n`;
-    capt += `*Titulo de la musica:* ${video.music_info.title}\n`;
-    capt += `*Autor de la musica:* ${video.music_info.author}\n`;
-    capt += `*Reproducciones:* ${video.play_count}\n`;
-    capt += `*Likes:* ${video.digg_count}\n`;
-    capt += `*Descargas:* ${video.download_count}\n`;
-    capt += `\n`;
+    let capt = `
+> Informacion
+*Video ${randomIndex + 1}*\n
+*Usuario:* ${video.author.nickname}\n
+*Titulo:* ${video.title}\n
+*Cover:* ${video.cover}\n
+*Duracion:* ${video.duration} Segundos\n
+*Enlace del video:* ${video.play}\n
+*Enlace de la Musica:* ${video.music}\n
+*Titulo de la musica:* ${video.music_info.title}\n
+*Autor de la musica:* ${video.music_info.author}\n
+*Reproducciones:* ${video.play_count}\n
+*Likes:* ${video.digg_count}\n
+*Descargas:* ${video.download_count}\n`
 
     const videoUrl = video.play;
     const videoResponse = await fetch(videoUrl);
@@ -29,7 +29,9 @@ let handler = async (m, { text, args }) => {
     conn.sendFile(m.chat, fileBuffer, null, capt, m);
 
   } catch (error) {
-    throw `> Sin respuesta\nSin resultados`
+    throw `
+> Sin respuesta
+Sin resultados`
   }
 }
 handler.help = ['tiktoksearch']

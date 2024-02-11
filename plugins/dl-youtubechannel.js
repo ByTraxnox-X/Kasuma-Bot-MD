@@ -15,17 +15,23 @@ const handler = async (m, { conn, text }) => {
     if (data.status && data.result && data.result.length > 0) {
       const channel = data.result[0];
 
-      let msg = `> Informacion\n*Nombre del Canal:* ${channel.channel_name}\n`;
-      msg += `*ID del Canal:* ${channel.channel_id}\n`;
-      msg += `*Descripción:* ${channel.channel_about}\n`;
-      msg += `*Fecha de Creación:* ${channel.channel_created}\n`;
+      let msg = `
+> Informacion
+*Nombre del Canal:* ${channel.channel_name}\n
+*ID del Canal:* ${channel.channel_id}\n
+*Descripción:* ${channel.channel_about}\n
+*Fecha de Creación:* ${channel.channel_created}\n`
 
       await conn.sendFile(m.chat, channel.channel_picture.medium.url, 'channel_image.jpg', msg, m);
     } else {
-      throw '> Sin respuesta\nNo se encontraron resultados para el canal de YouTube proporcionado.';
+      throw `
+> Sin respuesta
+No se encontraron resultados para el canal de YouTube proporcionado.`;
     }
   } catch (error) {
-    throw `> Sin respuesta\nOcurrió un error: ${error}`;
+    throw `
+> Sin respuesta
+Ocurrió un error: ${error}`;
   }
 };
 

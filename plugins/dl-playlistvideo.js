@@ -22,7 +22,9 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
             youtubeLink = matchingItem.urls[index];
           } else {
             enviando = false  
-            throw `> Sin respuesta\nNo se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.length}*`;
+            throw `
+> Sin respuesta
+No se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.length}*`;
           }
         } else {
           enviando = false  
@@ -46,17 +48,21 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
     const fileSizeInMB = fileSizeInKB / 1024;
     const roundedFileSizeInMB = fileSizeInMB.toFixed(2);
    if (fileSizeInMB > 100) {
-    await conn.sendMessage(m.chat, {document: buff, caption: `*${ttl_1}*
-    
+    await conn.sendMessage(m.chat, {document: buff, caption: `
+> Informacion
+*Titulo:* ${ttl_1}
 *Peso:* ${roundedFileSizeInMB} MB`, fileName: ttl_1 + '.mp4', mimetype: 'video/mp4'}, {quoted: m});
      m.react(done)
-    await conn.sendMessage(m.chat, {text: `Si se envio en formato de documento es porque el audio supera el limite establecido por WhatsApp
-    *Titulo:* ${ttl_1}`, edit: key}, {quoted: m});
+    await conn.sendMessage(m.chat, {text: `
+> Informacion
+Si se envio en formato de documento es porque el audio supera el limite establecido por WhatsApp
+*Titulo:* ${ttl_1}`, edit: key}, {quoted: m});
     enviando = false
    } else {
     m.react(done)
-    await conn.sendMessage(m.chat, {video: buff, caption: `\t\t*${ttl_1}*
-
+    await conn.sendMessage(m.chat, {video: buff, caption: `
+> Informacion
+*Titulo:* ${ttl_1}
 *Peso:* ${roundedFileSizeInMB} MB`, fileName: ttl_1 + '.mp4', mimetype: 'video/mp4'}, {quoted: m});
      m.react(done)
     await conn.sendMessage(m.chat, {text: `Enviado`, edit: key}, {quoted: m});
@@ -72,8 +78,9 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
     const dl_url = yt.video[q].download();
     const ttl = yt.title;
     const size = yt.video[q].fileSizeH;
-    await conn.sendMessage(m.chat, {video: {url: dl_url}, fileName: `${ttl}.mp4`, mimetype: 'video/mp4', caption: `\t\t*${ttl}*
-
+    await conn.sendMessage(m.chat, {video: {url: dl_url}, fileName: `${ttl}.mp4`, mimetype: 'video/mp4', caption: `
+> Informacion
+*Titulo:* ${ttl}
 *Peso:* ${size}`, thumbnail: await fetch(yt.thumbnail)}, {quoted: m});
      m.react(done)
     await conn.sendMessage(m.chat, {text: '', edit: key}, {quoted: m});
@@ -102,7 +109,9 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
         await conn.sendMessage(m.chat, {text: 'Enviado', edit: key}, {quoted: m});
         enviando = false
       } catch {
-        await conn.sendMessage(m.chat, {text: `> Sin respuesta\nError`, edit: key}, {quoted: m});
+        await conn.sendMessage(m.chat, {text: `
+> Sin respuesta
+Error`, edit: key}, {quoted: m});
         throw 'Error';
       }
     }

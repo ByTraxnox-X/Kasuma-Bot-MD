@@ -16,7 +16,9 @@ const handler = async (m, { conn, text }) => {
     if (response.ok) {
       conn.sendFile(m.chat, buffer, 'imagen.jpg', '', m);
     } else {
-      throw '> Sin respuesta\nNo se pudo obtener una respuesta válida';
+      throw `
+> Sin respuesta
+No se pudo obtener una respuesta válida`;
     }
   } catch (error) {
     throw `Ocurrió un error: ${error}`;

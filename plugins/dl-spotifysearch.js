@@ -8,8 +8,9 @@ const handler = async (m, { conn, text }) => {
     const infoData = await infoRes.json();
     const sptyInfo = infoData.spotify.resultado;
 
-    let spotifyInfo = `> Informacion\n
-    
+    let spotifyInfo = `
+> Informacion
+
 *Titulo:*${sptyInfo.title}\n
 *Artista:* ${sptyInfo.artist}\n
 *Album:* ${sptyInfo.album}\n

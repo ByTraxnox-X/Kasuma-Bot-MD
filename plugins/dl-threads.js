@@ -22,11 +22,15 @@ const handler = async (m, { conn, args }) => {
 
             m.react(done);
         } else {
-            throw '> Sin respuesta\nNo se pudo obtener el contenido de Threads.';
+            throw `
+> Sin respuesta
+No se pudo obtener el contenido de Threads.`;
         }
     } catch (error) {
         console.error(error);
-        throw `> Sin respuesta\nOcurrió un error al procesar la solicitud: ${error.message}`;
+        throw `
+> Sin respuesta
+Ocurrió un error al procesar la solicitud: ${error.message}`;
     }
 };
 

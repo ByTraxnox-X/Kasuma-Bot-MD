@@ -13,12 +13,18 @@ const handler = async (m, { conn, text }) => {
     const data = await response.json();
 
     if (data.result) {
-      m.reply(`> ChatGPT AI\n${data.result}`);
+      m.reply(`
+> ChatGPT AI
+${data.result}`);
     } else {
-      throw '> Sin respuesta\nNo se pudo obtener una respuesta de la API.';
+      throw `
+> Sin respuesta
+No se pudo obtener una respuesta de la API.`;
     }
   } catch (error) {
-    throw `Ocurrió un error: ${error}`;
+    throw `
+> Sin respuesta
+Ocurrió un error: ${error}`;
   }
 };
 

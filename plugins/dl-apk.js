@@ -11,9 +11,11 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     const response = await axios.get(apiUrl);
     const data = response.data.result;
 
-    let responseText = `> Informacion\n\n*${data.apk_name}*\n\n`;
-    responseText += `*Version:* ${data.apk_version}\n`;
-    responseText += `*Autor:* ${data.apk_author}\n`;
+    let responseText = `
+> Informacion
+*Nombre:* ${data.apk_name}\n\n
+*Version:* ${data.apk_version}\n
+*Autor:* ${data.apk_author}\n`
 
     await conn.sendMessage(m.chat, { image: { url: data.apk_icon }, caption: responseText }, { quoted: m });
 
@@ -24,7 +26,9 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
 
   } catch (error) {
     console.error(error);
-    throw '> Sin respuesta\nOcurrió un error al procesar la solicitud';
+    throw `
+> Sin respuesta
+Ocurrió un error al procesar la solicitud`;
   }
 };
 

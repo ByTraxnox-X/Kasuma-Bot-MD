@@ -14,7 +14,8 @@ export async function before(m, {conn, isAdmin, isBotAdmin }) {
             const linkThisGroup = `https://chat.whatsapp.com/${await this.groupInviteCode(m.chat)}`
             if (m.text.includes(linkThisGroup)) return !0
         }
-        await conn.reply(m.chat, `> Hemos detectado un enlace de otro grupo
+        await conn.reply(m.chat, `
+> Hemos detectado un enlace de otro grupo
             
 lo siento *@${m.sender.split('@')[0]}*  serás expulsado del grupo ${isBotAdmin ? '' : '\n\nDebo ser administrador para eliminar el usuario.'}`, null, { mentions: [m.sender] } )
         if (isBotAdmin && chat.antiLink) {

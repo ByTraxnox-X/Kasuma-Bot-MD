@@ -27,10 +27,15 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     } else {
         try {
             let res = await fg.xnxxSearch(text)
-            let ff = res.result.map((v, i) => `${i + 1} > Informacion\n *Titulo:* ${v.title}\n*Link:* ${v.link}\n`).join('\n') 
+            let ff = res.result.map((v, i) => `${i + 1} 
+> Informacion
+*Titulo:* ${v.title}
+*Link:* ${v.link}\n`).join('\n') 
               if (res.status) m.reply(ff)
             } catch (e) {
-              m.reply(`> Sin respuesta\nError: intenta mas tarde`)
+              m.reply(`
+> Sin respuesta
+Error: intenta mas tarde`)
                }
     }
 }

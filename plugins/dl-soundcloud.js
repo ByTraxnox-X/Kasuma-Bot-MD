@@ -18,14 +18,17 @@ const handler = async (m, {conn, text}) => {
     const json = await res2.json();
     const { title, download, thumbnail } = json.result;
     const shortUrl = await (await fetch(`${tunyurl}/api-create.php?url=${download}`)).text();
-    const soundcloudt = `> Informacion
+    const soundcloudt = `
+> Informacion
 *Titulo:* ${title}
 *URL:* ${shortUrl}`;
     await conn.sendFile(m.chat, thumbnail, '', soundcloudt, m);
     m.react(done)
     await conn.sendMessage(m.chat, {audio: {url: download}, fileName: `${title}.mp3`, mimetype: 'audio/mpeg'}, {quoted: m});
   } catch {
-    throw '> Sin respuesta\nError';
+    throw `
+> Sin respuesta
+Error`;
   }
 };
 

@@ -10,20 +10,23 @@ const handler = async (m, { conn, text }) => {
 
     m.reply(`${wait}`)
 
-    let spotifyInfo = `> Informacion`;
-    spotifyInfo += `*Titulo:* ${sptyInfo.title}\n`;
-    spotifyInfo += `*Artista:* ${sptyInfo.artist}\n`;
-    spotifyInfo += `*Album:* ${sptyInfo.album}\n`; 
-    spotifyInfo += `*Genero:* ${sptyInfo.genre}\n`;
-    spotifyInfo += `*Publicado:* ${sptyInfo.year}\n\n`;
-    spotifyInfo += `*URL:* ${sptyInfo.url}\n`;
-    spotifyInfo += `Enviando...`;
+    let spotifyInfo = `
+> Informacion
+ *Titulo:* ${sptyInfo.title}\n
+ *Artista:* ${sptyInfo.artist}\n
+ *Album:* ${sptyInfo.album}\n 
+ *Genero:* ${sptyInfo.genre}\n
+ *Publicado:* ${sptyInfo.year}\n\n
+ *URL:* ${sptyInfo.url}\n
+ Enviando...`;
 
     await conn.sendMessage(m.chat, { text: spotifyInfo.trim() }, { quoted: m });
     const audioRes = await fetch(`${apikasu}/api/dowloader/spotify?url=${sptyInfo.url}&apikey=${apikeykasu}`);
 
     if (!audioRes.ok) {
-      throw '> Informacion\nError al obtener el audio de Spotify.';
+      throw `
+> Sin respuesta\nError al obtener el audio de Spotify.`
+
     }
 
     const music = await conn.getFile(audioRes.url);
@@ -36,7 +39,9 @@ const handler = async (m, { conn, text }) => {
 
   } catch (error) {
     console.error(error);
-    throw '> Sin respuesta\n\nError, no hay resultados';
+    throw `
+> Sin respuesta
+Error, no hay resultados`;
   }
 };
 
