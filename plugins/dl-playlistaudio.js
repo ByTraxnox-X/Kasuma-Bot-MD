@@ -21,7 +21,7 @@ const handler = async (m, {text, conn, args, usedPrefix, command}) => {
           if (index < matchingItem.urls.length) {
             youtubeLink = matchingItem.urls[index];
           } else {
-            throw `No se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.length}`;
+            throw `> Sin respuesta\nNo se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.length}`;
           }
         } else {
           throw `Use el comando de la siguiente manera ${usedPrefix + command} <numero>, y para buscar una playlist con ${usedPrefix}playlist <texto>`;
@@ -89,7 +89,7 @@ const handler = async (m, {text, conn, args, usedPrefix, command}) => {
         conn.sendMessage(m.chat, {audio: {url: ress.url}, fileName: __res[0].title + '.mp3', mimetype: 'audio/mpeg'}, {quoted: m});
         await conn.sendMessage(m.chat, {text: 'Enviado', edit: key}, {quoted: m});
       } catch {
-        await conn.sendMessage(m.chat, {text: `Error`, edit: key}, {quoted: m});
+        await conn.sendMessage(m.chat, {text: `> Sin respuesta\nError`, edit: key}, {quoted: m});
         throw 'Error';
       }
     }

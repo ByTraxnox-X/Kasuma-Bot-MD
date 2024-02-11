@@ -18,11 +18,11 @@ const handler = async (m, { conn, args }) => {
                 await conn.sendFile(m.chat, media.link, media.ext === 'mp4' ? 'video.mp4' : 'imagen.jpg', '', m);
             }
         } else {
-            throw 'No se pudo obtener el contenido de Instagram.';
+            throw '> Sin respuesta\nNo se pudo obtener el contenido de Instagram.';
         }
     } catch (error) {
         console.error(error);
-        throw `Ocurrió un error al procesar la solicitud: ${error.message};`
+        throw `> Sin respuesta\nOcurrió un error al procesar la solicitud: ${error.message};`
     }
 };
 

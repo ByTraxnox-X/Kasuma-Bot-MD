@@ -22,11 +22,11 @@ const handler = async (m, { conn, args }) => {
 
             m.react('✅');
         } else {
-            throw 'No se pudo obtener el contenido de Facebook.';
+            throw '> Sin respuesta\nNo se pudo obtener el contenido de Facebook.';
         }
     } catch (error) {
         console.error(error);
-        throw `Ocurrió un error al descargar el video de Facebook: ${error.message}`;
+        throw `> Sin respuesta\nOcurrió un error al descargar el video de Facebook: ${error.message}`;
     }
 };
 

@@ -22,11 +22,11 @@ const handler = async (m, { conn, args }) => {
 
             m.react(done);
         } else {
-            throw 'No se pudo obtener el contenido de Twitter.';
+            throw '> Sin respuesta\nNo se pudo obtener el contenido de Twitter.';
         }
     } catch (error) {
         console.error(error);
-        throw `Ocurrió un error al descargar el video de Twitter: ${error.message}`;
+        throw `> Sin respuesta\nOcurrió un error al descargar el video de Twitter: ${error.message}`;
     }
 };
 

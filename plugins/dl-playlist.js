@@ -14,7 +14,7 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
       global.videoList.splice(0, global.videoList.length);
     }
     const results = await yts(text);
-    const textoInfo = `*Como descargarla*
+    const textoInfo = `> Informacion\n*Como descargarla*
 
 ${usedPrefix}audio <numero>
 ${usedPrefix}video <numero> 
@@ -35,7 +35,7 @@ ${usedPrefix}video 8`.trim();
     conn.sendFile(m.chat, results.all[0].thumbnail, 'yts.jpeg', textoInfo + '\n\n' + teks, m);
     global.videoList.push(vids_);
   } catch {
-    await m.reply('Error');
+    await m.reply('> Sin respuesta\nError');
   }
 };
 handler.help = ['playlist <texto>'];

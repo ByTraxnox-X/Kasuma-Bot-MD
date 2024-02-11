@@ -13,9 +13,9 @@ const handler = async (m, { conn, text }) => {
     const data = await response.json();
 
     if (data.result) {
-      m.reply(`> CHATGPT 4\n${data.result}`);
+      m.reply(`> ChatGPT 4\n${data.result}`);
     } else {
-      throw 'No se pudo obtener una respuesta de la API.';
+      throw '> Sin respuesta\nNo se pudo obtener una respuesta de la API.';
     }
   } catch (error) {
     throw `Ocurrió un error: ${error}`;

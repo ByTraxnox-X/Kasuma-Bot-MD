@@ -34,7 +34,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     }
   }
 
-  throw 'No se pudo obtener una respuesta de ninguna API.';
+  throw '> Sin respuesta\nNo se pudo obtener una respuesta de ninguna API.';
 };
 
 handler.help = ['chatgptvoz'];

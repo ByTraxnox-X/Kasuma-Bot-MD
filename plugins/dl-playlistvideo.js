@@ -22,7 +22,7 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
             youtubeLink = matchingItem.urls[index];
           } else {
             enviando = false  
-            throw `No se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.length}*`;
+            throw `> Sin respuesta\nNo se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.length}*`;
           }
         } else {
           enviando = false  
@@ -90,19 +90,19 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
       try {
         const lolhuman = await fetch(`${lolhuman}/api/ytvideo2?apikey=${spotifykey}&url=${youtubeLink}`);
         const lolh = await lolhuman.json();
-        const n = lolh.result.title || 'error';
+        const n = lolh.result.title || '> Sin respuesta\nerror';
         const n2 = lolh.result.link;
         const n3 = lolh.result.size;
         const n4 = lolh.result.thumbnail;
         m.react(done)
         await conn.sendMessage(m.chat, {video: {url: n2}, fileName: `${n}.mp4`, mimetype: 'video/mp4', caption: `\t\t*${n}*
-
+> Informacion
 *Peso:* ${n3}`, thumbnail: await fetch(n4)}, {quoted: m});
         m.react(done)
         await conn.sendMessage(m.chat, {text: 'Enviado', edit: key}, {quoted: m});
         enviando = false
       } catch {
-        await conn.sendMessage(m.chat, {text: `Error`, edit: key}, {quoted: m});
+        await conn.sendMessage(m.chat, {text: `> Sin respuesta\nError`, edit: key}, {quoted: m});
         throw 'Error';
       }
     }

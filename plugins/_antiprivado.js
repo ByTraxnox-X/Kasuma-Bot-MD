@@ -6,7 +6,7 @@ export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner }
   let chat = global.db.data.chats[m.chat]
   let bot = global.db.data.settings[this.user.jid] || {}
   if (bot.antiPrivate && !isOwner && !isROwner) {
-  await m.reply(`> ANTIPRIVADO\n*hola @${m.sender.split`@`[0]}, hablar con el bot en el privado es ilegal por tanto seras bloqueado. Si desea usar el bot entre en este grupo:* 
+  await m.reply(`> Anti privado\n*hola @${m.sender.split`@`[0]}, hablar con el bot en el privado es ilegal por tanto seras bloqueado. Si desea usar el bot entre en este grupo:* 
   ${wagp}`, false, { mentions: [m.sender] })
   await this.updateBlockStatus(m.chat, 'block')}
   return !1

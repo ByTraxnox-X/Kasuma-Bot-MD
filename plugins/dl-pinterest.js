@@ -18,10 +18,10 @@ const handler = async (m, { conn, args }) => {
 
             m.react(done);
         } else {
-            throw 'No se pudo obtener imágenes de Pinterest.';
+            throw '> Sin respuesta\nNo se pudo obtener imágenes de Pinterest.';
         }
     } catch (error) {
-        throw `Ocurrió un error al procesar la solicitud: ${error}`;
+        throw `> Sin respuesta\nOcurrió un error al procesar la solicitud: ${error}`;
     }
 };
 

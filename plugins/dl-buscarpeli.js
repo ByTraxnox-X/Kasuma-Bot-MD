@@ -20,7 +20,7 @@ const handler = async (m, { conn, text }) => {
     const ratings = data.result.ratings.map(rating => `*${rating.source}:* ${rating.value}`).join('\n');
 
     const movieInfo = `
-*${data.result.title}*\n
+*> Informacion\n${data.result.title}*\n
 *Año:* ${data.result.year}
 *Clasificación:* ${data.result.rated}
 *Fecha de lanzamiento:* ${data.result.released}
@@ -48,7 +48,7 @@ const handler = async (m, { conn, text }) => {
     await conn.sendFile(m.chat, data.result.poster, 'poster.jpg', movieInfo, m);
   } catch (error) {
     console.error(error);
-    throw `Ocurrió un error: ${error.message}`;
+    throw `> Sin respuesta\nOcurrió un error: ${error.message}`;
   }
 };
 

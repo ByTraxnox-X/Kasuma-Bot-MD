@@ -7,7 +7,7 @@ let handler = async (m, { text, args }) => {
     const api = await res.json();
     const randomIndex = Math.floor(Math.random() * api.result.length);
     let video = api.result[randomIndex];
-    let capt = `\t\t*TikTok resultados*\n\n`;
+    let capt = `> Informacion\n`;
     capt += `*Video ${randomIndex + 1}*\n`;
     capt += `*Usuario:* ${video.author.nickname}\n`;
     capt += `*Titulo:* ${video.title}\n`;
@@ -29,7 +29,7 @@ let handler = async (m, { text, args }) => {
     conn.sendFile(m.chat, fileBuffer, null, capt, m);
 
   } catch (error) {
-    throw `Sin resultados`
+    throw `> Sin respuesta\nSin resultados`
   }
 }
 handler.help = ['tiktoksearch']

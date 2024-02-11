@@ -14,7 +14,7 @@ let handler = async (m, { conn, text }) => {
       m.react(rwait);
 
       if (json.status) {
-         const fileInfo = `*Nombre:* ${json.result.filename}\n` +
+         const fileInfo = `> Informacion\n*Nombre:* ${json.result.filename}\n` +
             `*Tamaño:* ${json.result.filesizeH}\n` +
             `*Fecha:* ${json.result.upload_date}\n` +
             `*Tipo:* ${json.result.filetype}\n`;
@@ -23,7 +23,7 @@ let handler = async (m, { conn, text }) => {
          const fileBuffer = await fetch(json.result.url).then(res => res.buffer());
          await conn.sendFile(m.chat, fileBuffer, json.result.filename, fileInfo, m);
       } else {
-         m.reply('No se pudo obtener el enlace del archivo');
+         m.reply('> Sin respuesta\nNo se pudo obtener el enlace del archivo');
       }
 
    } catch (error) {

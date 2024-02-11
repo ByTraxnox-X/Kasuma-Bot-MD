@@ -10,7 +10,8 @@ const handler = async (m, { conn, text }) => {
 
     m.reply(`${wait}`)
 
-    let spotifyInfo = `*${sptyInfo.title}*\n\n`;
+    let spotifyInfo = `> Informacion`;
+    spotifyInfo += `*Titulo:* ${sptyInfo.title}\n`;
     spotifyInfo += `*Artista:* ${sptyInfo.artist}\n`;
     spotifyInfo += `*Album:* ${sptyInfo.album}\n`; 
     spotifyInfo += `*Genero:* ${sptyInfo.genre}\n`;
@@ -22,7 +23,7 @@ const handler = async (m, { conn, text }) => {
     const audioRes = await fetch(`${apikasu}/api/dowloader/spotify?url=${sptyInfo.url}&apikey=${apikeykasu}`);
 
     if (!audioRes.ok) {
-      throw 'Error al obtener el audio de Spotify.';
+      throw '> Informacion\nError al obtener el audio de Spotify.';
     }
 
     const music = await conn.getFile(audioRes.url);
@@ -35,7 +36,7 @@ const handler = async (m, { conn, text }) => {
 
   } catch (error) {
     console.error(error);
-    throw 'Error, no hay resultados';
+    throw '> Sin respuesta\n\nError, no hay resultados';
   }
 };
 

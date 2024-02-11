@@ -11,7 +11,7 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     const response = await axios.get(apiUrl);
     const data = response.data.result;
 
-    let responseText = `\n\n*${data.apk_name}*\n\n`;
+    let responseText = `> Informacion\n\n*${data.apk_name}*\n\n`;
     responseText += `*Version:* ${data.apk_version}\n`;
     responseText += `*Autor:* ${data.apk_author}\n`;
 
@@ -24,7 +24,7 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
 
   } catch (error) {
     console.error(error);
-    throw 'Ocurrió un error al procesar la solicitud';
+    throw '> Sin respuesta\nOcurrió un error al procesar la solicitud';
   }
 };
 

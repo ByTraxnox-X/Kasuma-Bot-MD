@@ -16,7 +16,7 @@ const handler = async (m, { conn, text }) => {
 
         const img = await (await fetch(musicInfo.image)).buffer();
 
-        let appleMusicInfo = `*${musicInfo.name}*\n\n`;
+        let appleMusicInfo = `> Informacion\n*${musicInfo.name}*\n\n`;
         appleMusicInfo += `*Artistas:* ${musicInfo.artists}\n`;
         appleMusicInfo += `*Duración:* ${musicInfo.duration_ms} ms\n\n`;
         appleMusicInfo += `Enviando...`;
@@ -49,7 +49,7 @@ const handler = async (m, { conn, text }) => {
         }, { quoted: m });
     } catch (error) {
         console.error(error);
-        throw 'Error, no hay resultados';
+        throw '> Sin respuesta\nError, no hay resultados';
     }
 };
 

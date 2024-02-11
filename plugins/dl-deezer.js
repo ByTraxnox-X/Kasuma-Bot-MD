@@ -10,7 +10,7 @@ const handler = async (m, { conn, text }) => {
 
     m.reply(`${wait}`);
 
-    let deezerInfoText = `*${deezerInfo.title}*\n\n`;
+    let deezerInfoText = `> Informacion\n*${deezerInfo.title}*\n\n`;
     deezerInfoText += `*Artista:* ${deezerInfo.artist.name}\n`;
     deezerInfoText += `*Album:* ${deezerInfo.album.title}\n`;
     deezerInfoText += `*Duración:* ${deezerInfo.duration} segundos\n`;
@@ -22,7 +22,7 @@ const handler = async (m, { conn, text }) => {
     const audioRes = await fetch(deezerInfo.preview);
 
     if (!audioRes.ok) {
-      throw 'Error al obtener el audio de Deezer.';
+      throw '> Sin respuesta\nError al obtener el audio de Deezer.';
     }
 
     const music = await conn.getFile(audioRes.url);
@@ -35,7 +35,7 @@ const handler = async (m, { conn, text }) => {
 
   } catch (error) {
     console.error(error);
-    throw 'Error, no hay resultados';
+    throw '> Sin respuesta\nError, no hay resultados';
   }
 };
 

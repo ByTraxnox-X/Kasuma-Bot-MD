@@ -18,7 +18,7 @@ const handler = async (m, { conn, text }) => {
     m.react(rwait);
 
     const songInfo =
-      `*${json.result.name}*\n\n` +
+      `> Informacion\n*${json.result.name}*\n\n` +
       `*Nombre:* ${json.result.name}\n` +
       `*Artista:* ${json.result.artist}\n` +
       `*Álbum:* ${json.result.album}\n` +
@@ -37,7 +37,7 @@ const handler = async (m, { conn, text }) => {
 
   } catch (error) {
     console.error(error);
-    throw `Ocurrió un error al procesar la solicitud: ${error.message}`;
+    throw `> Sin respuesta\nOcurrió un error al procesar la solicitud: ${error.message}`;
   }
 };
 

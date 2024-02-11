@@ -4,7 +4,7 @@ let handler = async (m, { text, conn }) => {
     let user = global.db.data.users[m.sender]
     user.afk = + new Date
     user.afkReason = text
-    m.reply(`> INACTIVO
+    m.reply(`> Inactivo
 
 Ahora estas *inactivo* hasta que envies un mensaje 
 

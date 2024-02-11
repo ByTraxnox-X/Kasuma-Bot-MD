@@ -13,9 +13,9 @@ const handler = async (m, { conn, text }) => {
     const data = await response.json();
 
     if (data.result) {
-      m.reply(`> BARD AI\n${data.result}`);
+      m.reply(`> Bard AI\n${data.result}`);
     } else {
-      throw 'No se pudo obtener una respuesta de la API.';
+      throw '> Sin respuesta\nNo se pudo obtener una respuesta de la API.';
     }
   } catch (error) {
     throw `Ocurrió un error: ${error}`;

@@ -8,7 +8,8 @@ const handler = async (m, { conn, text }) => {
     const infoData = await infoRes.json();
     const sptyInfo = infoData.spotify.resultado;
 
-    let spotifyInfo = `*${sptyInfo.title}*\n\n`;
+    let spotifyInfo = `> Informacion\n`;
+    spotifyInfo += `*Titulo:*${sptyInfo.title}\n`;
     spotifyInfo += `*Artista:* ${sptyInfo.artist}\n`;
     spotifyInfo += `*Album:* ${sptyInfo.album}\n`; 
     spotifyInfo += `*Genero:* ${sptyInfo.genre}\n`;
@@ -19,7 +20,7 @@ const handler = async (m, { conn, text }) => {
 
   } catch (error) {
     console.error(error);
-    throw 'Error, no hay resultados';
+    throw '> Sin respuesta\nError, no hay resultados';
   }
 };
 
