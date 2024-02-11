@@ -2,6 +2,10 @@
 const linkRegex = /chat.whatsapp.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
 
 export async function before(m, {conn, isAdmin, isBotAdmin }) {
+    if (global.maintenance_mode) {
+        return m.reply('El bot está actualmente en modo mantenimiento. Vuelve a intentarlo más tarde.');
+      }
+      
     if (m.isBaileys && m.fromMe)
         return !0
     if (!m.isGroup) return !1

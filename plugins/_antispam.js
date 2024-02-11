@@ -1,6 +1,9 @@
 const userSpamData = {}
 let handler = m => m
 handler.before = async function (m, {conn, isAdmin, isBotAdmin, isOwner, isROwner, isPrems}) {
+    if (global.maintenance_mode) {
+        return m.reply('El bot está actualmente en modo mantenimiento. Vuelve a intentarlo más tarde.');
+      }
 const chat = global.db.data.chats[m.chat]
 if (!m.isGroup) return
 if (chat.modoadmin) return  
