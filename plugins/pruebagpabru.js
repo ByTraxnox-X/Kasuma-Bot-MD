@@ -5,24 +5,34 @@ const handler = async (m, { conn, text }) => {
     return conn.reply(m.chat, 'Por favor, proporciona un número par de acciones.', m);
   }
 
-  for (let i = 0; i < actions.length; i += 2) {
-    const action = actions[i].toLowerCase();
-    const time = actions[i + 1].toUpperCase();
+  try {
+    for (let i = 0; i < actions.length; i += 2) {
+      const action = actions[i].toLowerCase();
+      const time = actions[i + 1].toUpperCase();
 
-    if (!['abrir', 'cerrar'].includes(action)) {
-      return conn.reply(m.chat, `Acción no válida: ${action}. Las acciones permitidas son "abrir" o "cerrar".`, m);
+      if (!['abrir', 'cerrar'].includes(action)) {
+        return conn.reply(m.chat, `Acción no válida: ${action}. Las acciones permitidas son "abrir" o "cerrar".`, m);
+      }
+
+      await performAction(conn, m, action);
+      await conn.reply(m.chat, `Grupo ${action === 'abrir' ? 'abierto' : 'cerrado'} automáticamente.`, m);
     }
-
-    await performAction(conn, m, action);
-    await conn.reply(m.chat, `Grupo ${action === 'abrir' ? 'abierto' : 'cerrado'} automáticamente.`, m);
+  } catch (error) {
+    console.error(error);
+    return conn.reply(m.chat, 'Ocurrió un error al ejecutar la acción.', m);
   }
 };
 
 const performAction = async (conn, m, action) => {
-  if (action === 'abrir') {
-    await conn.groupSettingChange(m.chat, conn.groupSettingChange.messageSend, true);
-  } else if (action === 'cerrar') {
-    await conn.groupSettingChange(m.chat, conn.groupSettingChange.messageSend, false);
+  try {
+    if (action === 'abrir') {
+      await conn.groupSettingChange(m.chat, conn.groupSettingChange.messageSend, true);
+    } else if (action === 'cerrar') {
+      await conn.groupSettingChange(m.chat, conn.groupSettingChange.messageSend, false);
+    }
+  } catch (error) {
+    console.error(error);
+    throw new Error('Error al realizar la acción en el grupo.');
   }
 };
 
