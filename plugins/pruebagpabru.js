@@ -1,15 +1,99 @@
-import fs = from 'fs';
+const handler = async (m, { conn, text }) => {
+  const params = text.split('|').map(param => param.trim());
+  
+  if (params.length !== 3) {
+    return conn.reply(m.chat, 'Por favor, proporciona los parámetros correctos.', m);
+  }
 
-let isOpen=true, openHour='08:00', closeHour='18:00';
+  const action = params[0].toLowerCase();
+  const hours = params[1].toUpperCase();
+  const dayOfWeek = parseInt(params[2]);
 
-const toggleGroup=async(m,a,h,d)=>{const s={abrirauto:'not_announcement',cerrarauto:'announcement'};isOpen=a==='abrirauto';conn.groupSettingUpdate(m.chat,s[a]);m.reply(`Grupo ${isOpen?'abierto':'cerrado'} a las ${h} los días ${d}.`);};
+  if (!['abrir', 'cerrar'].includes(action) || !/^([1-9]|1[0-2])PM$/.test(hours) || isNaN(dayOfWeek) || dayOfWeek < 1 || dayOfWeek > 7) {
+    return conn.reply(m.chat, 'Formato de comando incorrecto. Ejemplo válido: ".programar abrir/cerrar 2PM|3PM|1".', m);
+  }
 
-const handler=async(m,{args,isAdmin,isOwner,usedPrefix,command})=>{if(!isAdmin&&!isOwner)return m.reply('Este comando es solo para administradores y propietarios.');if(args.length<3)return m.reply(`Uso correcto: ${usedPrefix}${command} abrirauto/cerrarauto|hora|días`);const[a,h,d]=args.join(' ').split('|').map(arg=>arg.trim());if(['apertura','cierre'].includes(a.toLowerCase())){if(args.length!==3)return m.reply(`Uso correcto: ${usedPrefix}${command} apertura/cierre|hora`);const t=args[2];if(!/^([01]\d|2[0-3]):([0-5]\d)$/.test(t))return m.reply('Formato de hora no válido. Utiliza HH:mm (por ejemplo, 08:00).');if(a.toLowerCase()==='apertura')openHour=t;else closeHour=t;return m.reply(`Hora de ${a.toLowerCase()} configurada a las ${t}.`);}toggleGroup(m,a,h,d);fs.writeFileSync('informacion_grupo.json',JSON.stringify({a,h,d}));};
+  const hour = parseInt(hours);
+  const isPM = hour === 12 || (hour >= 1 && hour <= 11);
+  const currentDay = new Date().getDay();
 
-setInterval(()=>{const n=new Date(),h=n.getHours(),m=n.getMinutes();if(!isOpen&&h===parseInt(openHour.split(':')[0])&&m===parseInt(openHour.split(':')[1]))toggleGroup(null,'abrirauto',openHour,'todos los días');else if(isOpen&&h===parseInt(closeHour.split(':')[0])&&m===parseInt(closeHour.split(':')[1]))toggleGroup(null,'cerrarauto',closeHour,'todos los días');},60000);
+  // Calcular el tiempo en milisegundos hasta el próximo evento programado
+  const millisUntilNextEvent = calculateMillisUntilNextEvent(dayOfWeek, hour, isPM, currentDay);
 
-handler.help=['name','configurarhora'];
-handler.tags=['name','configurarhora'];
-handler.command=['abrirauto','cerrarauto','configurarhora','confhora'];
+  // Programar la ejecución de la acción en el tiempo calculado
+  setTimeout(async () => {
+    if (action === 'abrir') {
+      await conn.groupSettingChange(m.chat, conn.groupSettingChange.messageSend, true);
+      await conn.reply(m.chat, 'Grupo abierto automáticamente.', m);
+    } else if (action === 'cerrar') {
+      await conn.groupSettingChange(m.chat, conn.groupSettingChange.messageSend, false);
+      await conn.reply(m.chat, 'Grupo cerrado automáticamente.', m);
+    }
+  }, millisUntilNextEvent);
+
+  await conn.reply(m.chat, `Grupo programado para ${action === 'abrir' ? 'abrir' : 'cerrar'} a las ${hours} los días ${dayOfWeek}.`, m);
+};
+
+// Función para calcular el tiempo hasta el próximo evento programado
+const calculateMillisUntilNextEvent = (desiredDay, desiredHour, isPM, currentDay) => {
+  let millisUntilNextEvent = 0;
+  const daysInWeek = 7;
+  const millisecondsInHour = 3600000;
+
+  if (currentDay === desiredDay && isCurrentTimeBefore(desiredHour, isPM)) {
+    // El evento está programado para el mismo día y antes de la hora actual
+    millisUntilNextEvent = calculateMillisUntilNextHour(desiredHour, isPM);
+  } else {
+    // Calcular días restantes hasta el próximo evento
+    let daysUntilNextEvent = (desiredDay - currentDay + daysInWeek) % daysInWeek;
+    if (daysUntilNextEvent === 0 && isCurrentTimeAfter(desiredHour, isPM)) {
+      daysUntilNextEvent = daysInWeek; // Si es el mismo día pero después de la hora deseada, programar para la próxima semana
+    }
+
+    millisUntilNextEvent = daysUntilNextEvent * millisecondsInHour * 24 + calculateMillisUntilNextHour(desiredHour, isPM);
+  }
+
+  return millisUntilNextEvent;
+};
+
+// Función para calcular el tiempo hasta la próxima hora deseada en milisegundos
+const calculateMillisUntilNextHour = (desiredHour, isPM) => {
+  const currentHour = new Date().getHours();
+  const currentMinute = new Date().getMinutes();
+  const desiredTime = (desiredHour + (isPM ? 12 : 0)) * 60; // Convertir a minutos
+
+  let millisUntilNextHour = 0;
+
+  if (currentTimeInMinutes() < desiredTime) {
+    millisUntilNextHour = (desiredTime - currentTimeInMinutes()) * 60000 - currentMinute * 60000;
+  } else {
+    millisUntilNextHour = (24 * 60 - currentTimeInMinutes() + desiredTime) * 60000 - currentMinute * 60000;
+  }
+
+  return millisUntilNextHour;
+};
+
+// Función para verificar si la hora actual es antes de la hora deseada
+const isCurrentTimeBefore = (desiredHour, isPM) => {
+  const currentHour = new Date().getHours();
+  return currentTimeInMinutes() < (desiredHour + (isPM ? 12 : 0)) * 60;
+};
+
+// Función para verificar si la hora actual es después de la hora deseada
+const isCurrentTimeAfter = (desiredHour, isPM) => {
+  const currentHour = new Date().getHours();
+  return currentTimeInMinutes() >= (desiredHour + (isPM ? 12 : 0)) * 60;
+};
+
+// Función para obtener la hora actual en minutos
+const currentTimeInMinutes = () => {
+  const currentHour = new Date().getHours();
+  const currentMinute = new Date().getMinutes();
+  return currentHour * 60 + currentMinute;
+};
+
+handler.help = ['programar'];
+handler.tags = ['ai'];
+handler.command = /^programar$/i;
 
 export default handler;
