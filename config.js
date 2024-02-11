@@ -30,6 +30,8 @@ global.APIKeys = { // APIKey Here
 global.KasumaCode = "" 
 global.confirmCode = ""
 
+global.maintenance_mode = true
+
 
 // KASU API
 global.apikasu = "https://apikasu.onrender.com"
