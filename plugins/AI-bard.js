@@ -1,6 +1,9 @@
 import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text }) => {
+  if (global.maintenance_mode) {
+    return m.reply('El bot está actualmente en modo mantenimiento. Vuelve a intentarlo más tarde.');
+  }
   if (!text) {
     throw 'Por favor, proporciona un texto para enviar a Bard.';
   }
