@@ -1,26 +1,48 @@
 const handler = async (m, { conn, text }) => {
-  const actions = text.split('|').map(action => action.trim());
+  const times = text.split('|').map(time => time.trim());
 
-  if (actions.length % 2 !== 0) {
-    return conn.reply(m.chat, 'Por favor, proporciona un número par de acciones.', m);
+  if (times.length !== 2) {
+    return conn.reply(m.chat, 'Por favor, proporciona dos horas separadas por "|".', m);
   }
 
   try {
-    for (let i = 0; i < actions.length; i += 2) {
-      const action = actions[i].toLowerCase();
-      const time = actions[i + 1].toUpperCase();
+    const openTime = parseTime(times[0]);
+    const closeTime = parseTime(times[1]);
 
-      if (!['abrir', 'cerrar'].includes(action)) {
-        return conn.reply(m.chat, `Acción no válida: ${action}. Las acciones permitidas son "abrir" o "cerrar".`, m);
-      }
+    scheduleAction(conn, m, 'abrir', openTime);
+    scheduleAction(conn, m, 'cerrar', closeTime);
 
-      await performAction(conn, m, action);
-      await conn.reply(m.chat, `Grupo ${action === 'abrir' ? 'abierto' : 'cerrado'} automáticamente.`, m);
-    }
+    return conn.reply(m.chat, `Grupo programado para abrir a las ${openTime} y cerrar a las ${closeTime}.`, m);
   } catch (error) {
     console.error(error);
-    return conn.reply(m.chat, 'Ocurrió un error al ejecutar la acción.', m);
+    return conn.reply(m.chat, 'Ocurrió un error al programar las acciones.', m);
   }
+};
+
+const parseTime = (timeStr) => {
+  const [hours, minutes] = timeStr.split(':').map(part => parseInt(part));
+  if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+    throw new Error('Formato de hora incorrecto.');
+  }
+  return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+};
+
+const scheduleAction = (conn, m, action, time) => {
+  const [hours, minutes] = time.split(':').map(part => parseInt(part));
+  const now = new Date();
+  const scheduleTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+
+  if (scheduleTime < now) {
+    scheduleTime.setDate(now.getDate() + 1);
+  }
+
+  const millisUntilNextEvent = scheduleTime - now;
+
+  setTimeout(async () => {
+    await performAction(conn, m, action);
+    await conn.reply(m.chat, `Grupo ${action === 'abrir' ? 'abierto' : 'cerrado'} automáticamente.`, m);
+    scheduleAction(conn, m, action, time); // Programar la próxima acción
+  }, millisUntilNextEvent);
 };
 
 const performAction = async (conn, m, action) => {
@@ -38,6 +60,6 @@ const performAction = async (conn, m, action) => {
 
 handler.help = ['programar'];
 handler.tags = ['ai'];
-handler.command = /^programar$/i;
+handler.command = /^programar auto/i;
 
 export default handler;
