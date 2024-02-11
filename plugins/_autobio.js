@@ -1,9 +1,6 @@
 
 let handler = m => m
 handler.all = async function (m) {
-  if (global.maintenance_mode) {
-    return m.reply('El bot está actualmente en modo mantenimiento. Vuelve a intentarlo más tarde.');
-  }
   let setting = global.db.data.settings[this.user.jid]
 
   let _muptime

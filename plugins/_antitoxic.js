@@ -1,9 +1,6 @@
 const toxicRegex = /puto|putas|putos|jotos|gays|maricones|vrgs|gay|marica|idiota|huevon|vtalv|sapo|sapa|verga|mlp|huérfano|gey|negra|negro|perro|perra|hpt|hdp|huerfano|mierda|comemierda|comamonda|hijueputa|hijo|mariconada|puta|rata|malparidos|pendejos|Estúpidos|imbecil|rctmre|mrd|verga|vrga|maricon/i;
 
 export async function before(m, {isAdmin, isBotAdmin, isOwner}) {
-  if (global.maintenance_mode) {
-    return m.reply('El bot está actualmente en modo mantenimiento. Vuelve a intentarlo más tarde.');
-  }
   if (m.isBaileys && m.fromMe) {
     return !0;
   }

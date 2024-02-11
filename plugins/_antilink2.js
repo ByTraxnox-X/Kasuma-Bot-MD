@@ -8,9 +8,6 @@ const linkRegexDiscord = /https:\/\/discord\.com\/\S+/i;
 const linkRegexTelegram = /https:\/\/t\.me\/\S+/i;
 
 export async function before(m, { conn, isAdmin, isBotAdmin }) {
-    if (global.maintenance_mode) {
-        return m.reply('El bot está actualmente en modo mantenimiento. Vuelve a intentarlo más tarde.');
-      }
     if (m.isBaileys && m.fromMe) return !0;
     if (!m.isGroup) return !1;
 
