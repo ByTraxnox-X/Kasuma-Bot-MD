@@ -8,13 +8,14 @@ const handler = async (m, { conn, text }) => {
     const infoData = await infoRes.json();
     const sptyInfo = infoData.spotify.resultado;
 
-    let spotifyInfo = `> Informacion\n`;
-    spotifyInfo += `*Titulo:*${sptyInfo.title}\n`;
-    spotifyInfo += `*Artista:* ${sptyInfo.artist}\n`;
-    spotifyInfo += `*Album:* ${sptyInfo.album}\n`; 
-    spotifyInfo += `*Genero:* ${sptyInfo.genre}\n`;
-    spotifyInfo += `*Publicado:* ${sptyInfo.year}\n\n`;
-    spotifyInfo += `*URL:* ${sptyInfo.url}\n`;
+    let spotifyInfo = `> Informacion\n
+    
+*Titulo:*${sptyInfo.title}\n
+*Artista:* ${sptyInfo.artist}\n
+*Album:* ${sptyInfo.album}\n
+*Genero:* ${sptyInfo.genre}\n
+*Publicado:* ${sptyInfo.year}\n\n
+*URL:* ${sptyInfo.url}\n`
 
     await conn.sendMessage(m.chat, { text: spotifyInfo.trim() }, { quoted: m });
 
