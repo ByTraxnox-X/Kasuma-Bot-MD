@@ -14,12 +14,13 @@ const handler = async (m, { conn, text }) => {
 
     if (data.status && data.result && data.result.length > 0) {
       const channel = data.result[0];
+
       let msg = `*Nombre del Canal:* ${channel.channel_name}\n`;
       msg += `*ID del Canal:* ${channel.channel_id}\n`;
       msg += `*Descripción:* ${channel.channel_about}\n`;
       msg += `*Fecha de Creación:* ${channel.channel_created}\n`;
-      msg += `*Imagen del Canal:* ${channel.channel_picture.medium.url}`;
 
+      await conn.sendFile(m.chat, channel.channel_picture.medium.url, 'channel_image.jpg', '', m);
       await conn.sendMessage(m.chat, { text: msg }, { quoted: m });
     } else {
       throw 'No se encontraron resultados para el canal de YouTube proporcionado.';
@@ -30,7 +31,7 @@ const handler = async (m, { conn, text }) => {
 };
 
 handler.help = ['youtubechannel'];
-handler.tags = ['dl'];
+handler.tags = ['search', 'youtube'];
 handler.command = /^youtubechannel$/i;
 
 export default handler;
