@@ -10,7 +10,10 @@ const handler = async (m, { conn, text }) => {
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
-      throw new Error(`Error al buscar la canción en Apple Music`);
+      throw new Error(`
+> Sin respuesta
+
+Error al buscar la canción en Apple Music`);
     }
 
     const json = await response.json();
@@ -19,6 +22,7 @@ const handler = async (m, { conn, text }) => {
 
     const songInfo =`
 > Informacion
+
 *Nombre:* ${json.result.name}\n
 *Artista:* ${json.result.artist}\n
 *Álbum:* ${json.result.album}\n
@@ -39,6 +43,7 @@ const handler = async (m, { conn, text }) => {
     console.error(error);
     throw `
 > Sin respuesta
+
 Ocurrió un error al procesar la solicitud: ${error.message}`;
   }
 };

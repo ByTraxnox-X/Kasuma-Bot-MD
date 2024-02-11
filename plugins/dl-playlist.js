@@ -16,6 +16,7 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
     const results = await yts(text);
     const textoInfo = `
 > Informacion
+
 *Como descargarla*
 
 ${usedPrefix}audio <numero>
@@ -39,6 +40,7 @@ ${usedPrefix}video 8`.trim();
   } catch {
     await m.reply(`
 > Sin respuesta
+
 Error`);
   }
 };

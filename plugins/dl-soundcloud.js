@@ -20,6 +20,7 @@ const handler = async (m, {conn, text}) => {
     const shortUrl = await (await fetch(`${tunyurl}/api-create.php?url=${download}`)).text();
     const soundcloudt = `
 > Informacion
+
 *Titulo:* ${title}
 *URL:* ${shortUrl}`;
     await conn.sendFile(m.chat, thumbnail, '', soundcloudt, m);
@@ -28,6 +29,7 @@ const handler = async (m, {conn, text}) => {
   } catch {
     throw `
 > Sin respuesta
+
 Error`;
   }
 };

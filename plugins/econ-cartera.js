@@ -7,7 +7,8 @@ let handler = async (m, {conn, usedPrefix}) => {
 
     m.react(rwait)
 
-    conn.reply(m.chat, `\t\t*Cartera*
+    conn.reply(m.chat, ` 
+> Cartera
 
  *Usuario* : @${who.split('@')[0]}
  *Dolares en el Banco central*: ${user.bank}

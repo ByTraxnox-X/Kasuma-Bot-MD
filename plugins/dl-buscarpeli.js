@@ -10,7 +10,9 @@ const handler = async (m, { conn, text }) => {
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
-      throw new Error('Conexión fallida');
+      throw new Error(`
+> Sin respuesta
+Conexión fallida`);
     }
 
     const data = await response.json();
@@ -19,6 +21,7 @@ const handler = async (m, { conn, text }) => {
 
     const movieInfo = `
 > Informacion
+
 *Titulo:* ${data.result.title}\n
 *Año:* ${data.result.year}
 *Clasificación:* ${data.result.rated}
@@ -49,6 +52,7 @@ const handler = async (m, { conn, text }) => {
     console.error(error);
     throw `
 > Sin respuesta
+
 Ocurrió un error: ${error.message}`;
   }
 };

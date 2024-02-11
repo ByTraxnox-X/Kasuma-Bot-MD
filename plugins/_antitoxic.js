@@ -16,6 +16,7 @@ export async function before(m, {isAdmin, isBotAdmin, isOwner}) {
     user.warn += 1;
     if (!(user.warn >= 5)) await m.reply('' + `${user.warn == 1 ? `
 > Anti Toxic
+
 Hola *@${m.sender.split`@`[0]}*` : `@${m.sender.split`@`[0]}`}, decir la palabra *"${isToxic}"* está prohibido en este grupo. *Advertencia:* ${user.warn}/5.` + '', false, {mentions: [m.sender]});
   }
 
@@ -23,6 +24,7 @@ Hola *@${m.sender.split`@`[0]}*` : `@${m.sender.split`@`[0]}`}, decir la palabra
     user.warn = 0;
     await m.reply(`
 > Anti Toxic
+
 Hola *@${m.sender.split`@`[0]}*, superaste las 5 advertencias por lo que cerrare este grupo para evitar peleas (se abrira automaticamente dentro de 5 minutos).`, false, {mentions: [m.sender]});
     user.banned = true;
     await conn.groupSettingUpdate(m.chat, Close);

@@ -17,6 +17,7 @@ const handler = async (m, { conn, text }) => {
 
       let msg = `
 > Informacion
+
 *Nombre del Canal:* ${channel.channel_name}\n
 *ID del Canal:* ${channel.channel_id}\n
 *Descripción:* ${channel.channel_about}\n
@@ -26,11 +27,13 @@ const handler = async (m, { conn, text }) => {
     } else {
       throw `
 > Sin respuesta
+
 No se encontraron resultados para el canal de YouTube proporcionado.`;
     }
   } catch (error) {
     throw `
 > Sin respuesta
+
 Ocurrió un error: ${error}`;
   }
 };

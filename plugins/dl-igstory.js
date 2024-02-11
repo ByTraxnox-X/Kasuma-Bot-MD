@@ -25,12 +25,14 @@ const handler = async (m, { conn, args }) => {
         } else {
             throw `
 > Sin respuesta
+
 No se pudo obtener el contenido de Instagram Story.`;
         }
     } catch (error) {
         console.error(error);
         throw `
 > Sin respuesta
+
 Ocurrió un error al descargar el video de Instagram Story: ${error.message}`;
     }
 };

@@ -24,12 +24,14 @@ const handler = async (m, { conn, args }) => {
         } else {
             throw `
 > Sin respuesta
+
 No se pudo obtener el contenido de Threads.`;
         }
     } catch (error) {
         console.error(error);
         throw `
 > Sin respuesta
+
 Ocurrió un error al procesar la solicitud: ${error.message}`;
     }
 };

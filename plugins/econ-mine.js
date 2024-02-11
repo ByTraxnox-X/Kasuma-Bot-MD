@@ -7,6 +7,8 @@ let handler = async (m, { conn }) => {
   if (new Date - global.db.data.users[m.sender].lastmiming < 14400000) throw ` Espera *${msToTime(time - new Date())}* para regresar a la mina`
   global.db.data.users[m.sender].exp += hasil
   m.reply(`
+> Has minado!
+
 Genial! minaste *${hasil} XP*`)
   global.db.data.users[m.sender].lastmiming = new Date * 1
 }

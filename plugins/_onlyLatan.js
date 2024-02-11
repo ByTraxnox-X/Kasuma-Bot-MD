@@ -12,6 +12,7 @@ handler.before = async function (m, {conn, isAdmin, isBotAdmin, isOwner} ) {
       if (m.sender.startsWith(prefix)) {
         m.reply(`
 > Solo latinos
+
 En este grupo no se admiten personas no latinas, por lo tanto te expulsare`, m.sender)
         await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
         return false;

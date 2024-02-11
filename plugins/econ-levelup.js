@@ -7,7 +7,8 @@ let handler = async (m, { conn }) => {
     if (!canLevelUp(user.level, user.exp, global.multiplier)) {
         let { min, xp, max } = xpRange(user.level, global.multiplier)
         let txt = `
- *NIVEL*
+> Nivel 
+
 Nombre: *${name}*
 Nivel: *${user.level}*
 XP: *${user.exp - min}/${xp}*
@@ -22,7 +23,7 @@ try {
     username: name,
     level: user.level,
     xp: user.exp - min,
-    apikey: "SebastianDevelop"
+    apikey: `${apikeykasu}`
 })
 
     conn.sendFile(m.chat, imgg, 'level.jpg', txt, m)
@@ -36,7 +37,8 @@ try {
     	user.role = global.rpg.role(user.level).name
 
         let str = `
-*LEVEL UP*
+> LevelUp
+
 Nivel anterior: *${before}*
  Nivel actual: *${user.level}*
 Rango: *${user.role}*
@@ -49,7 +51,7 @@ Cuanto más interactúes con los bots, mayor será tu nivel`.trim()
                 username: name,
                 level: user.level,
                 xp: user.exp - min,
-                apikey: "SebastianDevelop"
+                apikey: `${apikeykasu}`
              })
       conn.sendFile(m.chat, img, 'levelup.jpg', str, m)
         } catch (e) {

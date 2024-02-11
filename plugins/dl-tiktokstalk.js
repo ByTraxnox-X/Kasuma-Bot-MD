@@ -17,6 +17,7 @@ const handler = async (m, { conn, args }) => {
 
             let userInfo = `
 > Informacion
+
 *Username:* ${user.username || 'No proporcionado'}
 *Nombre:* ${user.nickname || 'No proporcionado'}\n
 *Seguidores:* ${user.followers}\n
@@ -28,11 +29,13 @@ const handler = async (m, { conn, args }) => {
         } else {
             throw `
 > Sin respuesta
+
 No se pudo obtener la información del usuario de TikTok.`;
         }
     } catch (error) {
         throw `
 > Sin respuesta
+
 Ocurrió un error al procesar la solicitud: ${error}`;
     }
 };

@@ -9,6 +9,7 @@ let handler = async (m, { text, args }) => {
     let video = api.result[randomIndex];
     let capt = `
 > Informacion
+
 *Video ${randomIndex + 1}*\n
 *Usuario:* ${video.author.nickname}\n
 *Titulo:* ${video.title}\n
@@ -31,6 +32,7 @@ let handler = async (m, { text, args }) => {
   } catch (error) {
     throw `
 > Sin respuesta
+
 Sin resultados`
   }
 }

@@ -9,7 +9,10 @@ const handler = async (m, { conn, text }) => {
         const data = await res.json();
 
         if (!data.status) {
-            throw 'Error, no hay resultados';
+            throw `
+> Sin respuesta
+
+Error, no hay resultados`;
         }
 
         const musicInfo = data.result;
@@ -18,6 +21,7 @@ const handler = async (m, { conn, text }) => {
 
         let appleMusicInfo = `
 > Informacion
+
 *Titulo:* ${musicInfo.name}*\n\n
 *Artistas:* ${musicInfo.artists}\n
 *Duración:* ${musicInfo.duration_ms} ms\n\n
@@ -53,6 +57,7 @@ Enviando...`
         console.error(error);
         throw `
 > Sin respuesta
+
 Error, no hay resultados`
     }
 };

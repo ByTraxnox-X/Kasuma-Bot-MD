@@ -16,6 +16,7 @@ const handler = async (m, { conn, args }) => {
 
             const infoMessage = `
 > Informacion
+
 *Username:* ${userInfo.username}
 *Nombre:* ${userInfo.full_name}
 *Biografía:* ${userInfo.biography}
@@ -34,12 +35,14 @@ ${userInfo.external_url}
         } else {
             throw `
 > Sin respuesta
+
 No se pudo obtener la información de Instagram.`
         }
     } catch (error) {
         console.error(error);
         throw `
 > Sin respuesta
+
 Ocurrió un error al procesar la solicitud`
     }
 };

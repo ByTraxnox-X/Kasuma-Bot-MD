@@ -12,6 +12,7 @@ const handler = async (m, { conn, text }) => {
 
     let deezerInfoText = `
 > Informacion
+
 *Titulo:* ${deezerInfo.title}*\n\n
 *Artista:* ${deezerInfo.artist.name}\n
 *Album:* ${deezerInfo.album.title}\n
@@ -26,6 +27,7 @@ Enviando...`;
     if (!audioRes.ok) {
       throw `
 > Sin respuesta
+
 Error al obtener el audio de Deezer.`;
     }
 
@@ -40,7 +42,9 @@ Error al obtener el audio de Deezer.`;
   } catch (error) {
     console.error(error);
     throw `
-> Sin respuesta\nError, no hay resultados`;
+> Sin respuesta
+
+Error, no hay resultados`;
   }
 };
 

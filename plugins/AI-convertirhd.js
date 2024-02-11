@@ -6,6 +6,7 @@ const handler = async (m, {conn}) => {
   if (!mime) throw `Responda a una imagen`
   if (!/image\/(jpe?g|png)/.test(mime)) throw `
 > Formato no compatible
+
 El formato no es compatible, intente con otro formato.`
   m.reply(`${wait}`)
   let img = await q.download?.()
@@ -14,6 +15,7 @@ El formato no es compatible, intente con otro formato.`
  } catch {
   throw `
 > Sin respuesta
+
 Error`;
  }
 };

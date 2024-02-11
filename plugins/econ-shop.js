@@ -8,8 +8,9 @@ let handler = async (m, { conn, command, args }) => {
   if (global.db.data.users[m.sender].exp >= xpperdiamond * count) {
     global.db.data.users[m.sender].exp -= xpperdiamond * count
     global.db.data.users[m.sender].diamond += count
-    conn.reply(m.chat, `\t\t*NOTA DE PAGO*
-    
+    conn.reply(m.chat, `
+> Recibo de pago
+
 *Compra nominal*: + ${count}
 *Gastado*: -${xpperdiamond * count} XP
 `, m)

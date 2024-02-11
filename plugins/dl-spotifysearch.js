@@ -22,7 +22,10 @@ const handler = async (m, { conn, text }) => {
 
   } catch (error) {
     console.error(error);
-    throw '> Sin respuesta\nError, no hay resultados';
+    throw `
+> Sin respuesta
+
+Error, no hay resultados`;
   }
 };
 

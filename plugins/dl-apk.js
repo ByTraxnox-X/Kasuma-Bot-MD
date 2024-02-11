@@ -13,6 +13,7 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
 
     let responseText = `
 > Informacion
+
 *Nombre:* ${data.apk_name}\n\n
 *Version:* ${data.apk_version}\n
 *Autor:* ${data.apk_author}\n`
@@ -28,6 +29,7 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     console.error(error);
     throw `
 > Sin respuesta
+
 Ocurrió un error al procesar la solicitud`;
   }
 };

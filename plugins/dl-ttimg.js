@@ -24,12 +24,14 @@ let handler = async (m, { conn, text: tiktok }) => {
         } else {
             throw `
 > Sin respuesta
+
 No se encontraron imágenes para este TikTok.`;
         }
     } catch (error) {
         console.error(error);
         throw `
 > Sin respuesta
+
 Error al obtener imágenes del TikTok: ${error.message}`;
     }
 };

@@ -19,7 +19,10 @@ let handler = async (m, { args }) => {
 
    m.react(rwait)
 
-   await m.reply(`Retiraste $${count} Dolares del Banco.`)
+   await m.reply(`
+> Deposito
+
+Retiraste $${count} Dolares del Banco.`)
 
    m.react('🏧') 
 

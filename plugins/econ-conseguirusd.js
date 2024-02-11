@@ -7,7 +7,7 @@ let handler = async (m, { conn }) => {
   if (new Date - global.db.data.users[m.sender].lastdolares < 3600000) throw ` Espera *${msToTime(time - new Date())}* para regresar a tu trabajo`
   global.db.data.users[m.sender].dolares += hasil
   m.reply(`
-  ${pickRandom(global.robar)} *${hasil} Dolares*`)
+${pickRandom(global.robar)} *${hasil} Dolares*`)
   global.db.data.users[m.sender].lastdolares = new Date * 1
 }
 handler.help = ['usd']

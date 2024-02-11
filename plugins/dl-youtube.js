@@ -29,6 +29,7 @@ if (enviando) return;
       enviando = false;
       throw `
 > Sin respuesta
+
 Error, intentelo de nuevo.`;
     } else {
       try {
@@ -58,13 +59,17 @@ Error, intentelo de nuevo.`;
             }
           } catch {
             enviando = false;
-            throw `> Sin respuesta\nError, intentelo de nuevo.`;
+            throw `
+> Sin respuesta
+
+Error, intentelo de nuevo.`;
           }
        }
     }
 
     const dataMessage = `
 > Informacion
+
 *Título:* ${data.result.title}
 *Publicado:* ${data.result.publicDate}
 *Canal:* ${data.result.channel}
@@ -78,12 +83,14 @@ Error, intentelo de nuevo.`;
       enviando = false;
       throw `
 > Sin respuesta
+
 Error, intentelo de nuevo.`;
     }
   } catch (error) {
     enviando = false;
     throw `
 > Sin respuesta
+
 Error, intentelo de nuevo.`;
   }
 };

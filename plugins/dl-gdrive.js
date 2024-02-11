@@ -16,6 +16,7 @@ let handler = async (m, { conn, text }) => {
       if (json.status) {
          const fileInfo = `
 > Informacion
+
 *Nombre:* ${json.result.fileName}\n
 *Tamaño:* ${json.result.fileSize}\n
 *URL:* ${json.result.url}\n` +
@@ -26,6 +27,7 @@ let handler = async (m, { conn, text }) => {
       } else {
          m.reply(`
 > Sin respuesta
+
 No se pudo obtener el enlace del archivo`);
       }
 

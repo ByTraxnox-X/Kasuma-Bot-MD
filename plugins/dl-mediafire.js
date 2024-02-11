@@ -8,7 +8,10 @@ let handler = async (m, { conn, text }) => {
       const res = await fetch(apiUrl);
 
       if (!res.ok) {
-         throw new Error(`Error`);
+         throw new Error(`
+> Sin respuesta
+
+Error`);
       }
       const json = await res.json();
       m.react(rwait);
@@ -16,6 +19,7 @@ let handler = async (m, { conn, text }) => {
       if (json.status) {
          const fileInfo = `
 > Informacion
+
 *Nombre:* ${json.result.filename}\n
 *Tamaño:* ${json.result.filesizeH}\n
 *Fecha:* ${json.result.upload_date}\n
@@ -27,6 +31,7 @@ let handler = async (m, { conn, text }) => {
       } else {
          m.reply(`
 > Sin respuesta
+
 No se pudo obtener el enlace del archivo`);
       }
 

@@ -4,6 +4,7 @@ let totalf = Object.values(global.plugins).filter(
   ).length;
 conn.reply(m.chat, `
 > Informacion
+
 Total de Plugins: ${totalf}`,m)
 }
 

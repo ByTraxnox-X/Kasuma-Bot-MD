@@ -36,12 +36,13 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
   throw `
 > Sin respuesta
+
 No se pudo obtener una respuesta de ninguna API.`;
 };
 
 handler.help = ['chatgptvoz'];
 handler.tags = ['ai'];
-handler.command = /^(openaivoz|chatgptvoz|iavoz|robotvoz|openai2voz|chatgpt2voz|ia2voz|robot2voz|wavoz|wavoz|wavos|ai_voz|ai_voce)$/i;
+handler.command = /^(openaivoz|chatgptvoz|iavoz|robotvoz|openai2voz|ai_voz|ai_voce)$/i;
 export default handler;
 
 async function getApiResponse(api, text) {

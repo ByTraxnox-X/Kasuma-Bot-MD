@@ -23,6 +23,7 @@ const handler = async (m, {text, conn, args, usedPrefix, command}) => {
           } else {
             throw `
 > Sin respuesta
+
 No se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.length}`;
           }
         } else {
@@ -49,16 +50,19 @@ No se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.leng
     m.react(done)
     await conn.sendMessage(m.chat, {document: buff, caption: `
 > Informacion
+
 *Titulo:* ${ttl_1}
 *Peso:* ${roundedFileSizeInMB} MB`, fileName: ttl_1 + '.mp3', mimetype: 'audio/mpeg'}, {quoted: m});
     await conn.sendMessage(m.chat, {text: `
 > Informacion
+
 Si se envio en formato de documento es porque el audio supera el limite establecido por WhatsApp
 *Titulo:* ${ttl_1}`, edit: key}, {quoted: m});
     enviando = false
    } else {
     await conn.sendMessage(m.chat, {audio: buff, caption: `
 > Informacion
+
 *Titulo:* ${ttl_1}
 *Peso:* ${roundedFileSizeInMB} MB`, fileName: ttl_1 + '.mp3', mimetype: 'audio/mpeg'}, {quoted: m});
     m.react(done)
@@ -97,6 +101,7 @@ Si se envio en formato de documento es porque el audio supera el limite establec
       } catch {
         await conn.sendMessage(m.chat, {text: `
 > Sin respuesta
+
 Error`, edit: key}, {quoted: m});
         throw 'Error';
       }

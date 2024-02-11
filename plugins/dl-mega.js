@@ -15,6 +15,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
 
         const caption = `
 > Informacion
+
 Archivo: ${file.name}
 Peso: ${formatBytes(file.size)}`;
 
@@ -37,7 +38,10 @@ Peso: ${formatBytes(file.size)}`;
         await conn.sendFile(m.chat, data, file.name, caption, m, null, { mimetype, asDocument: true });
 
     } catch (error) {
-        return m.reply(`Error: ${error.message}`);
+        return m.reply(`
+> Sin respuesta
+
+Error: ${error.message}`);
     }
 }
 

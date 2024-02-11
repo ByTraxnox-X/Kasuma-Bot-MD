@@ -5,6 +5,7 @@ let handler = async (m, {conn, usedPrefix}) => {
     let user = global.db.data.users[who]
     if (!(who in global.db.data.users)) throw `El usuario no se encuentra en mi base de datos`
     conn.reply(m.chat, `
+> Informacion
  *BALANCE* 
  *Nombre:* @${who.split('@')[0]}
  *Diamantes*: ${user.diamond}
@@ -12,7 +13,7 @@ let handler = async (m, {conn, usedPrefix}) => {
  *XP:* Total ${user.exp}
 
 
-*NOTA:* 
+ > Nota
 Puedes comprar diamantes usando los comandos
  *${usedPrefix}comprar <cantidad>*
  *${usedPrefix}buyall*`, m, { mentions: [who] })

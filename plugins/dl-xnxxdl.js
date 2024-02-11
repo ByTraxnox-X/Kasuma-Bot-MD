@@ -16,6 +16,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
             let xn = await fg.xnxxdl(text)
             conn.sendFile(m.chat, xn.result.files.high, xn.result.title + '.mp4', `
 > Informacion  
+
 *Título*: ${xn.result.title}
 *Duración:* ${xn.result.duration}
 *Calidad:* ${xn.result.quality}
@@ -29,12 +30,14 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
             let res = await fg.xnxxSearch(text)
             let ff = res.result.map((v, i) => `${i + 1} 
 > Informacion
+
 *Titulo:* ${v.title}
 *Link:* ${v.link}\n`).join('\n') 
               if (res.status) m.reply(ff)
             } catch (e) {
               m.reply(`
 > Sin respuesta
+
 Error: intenta mas tarde`)
                }
     }

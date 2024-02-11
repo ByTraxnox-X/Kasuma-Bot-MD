@@ -24,6 +24,7 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
             enviando = false  
             throw `
 > Sin respuesta
+
 No se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.length}*`;
           }
         } else {
@@ -50,11 +51,13 @@ No se encontro enlace para ese numero, intente del 1 al ${matchingItem.urls.leng
    if (fileSizeInMB > 100) {
     await conn.sendMessage(m.chat, {document: buff, caption: `
 > Informacion
+
 *Titulo:* ${ttl_1}
 *Peso:* ${roundedFileSizeInMB} MB`, fileName: ttl_1 + '.mp4', mimetype: 'video/mp4'}, {quoted: m});
      m.react(done)
     await conn.sendMessage(m.chat, {text: `
 > Informacion
+
 Si se envio en formato de documento es porque el audio supera el limite establecido por WhatsApp
 *Titulo:* ${ttl_1}`, edit: key}, {quoted: m});
     enviando = false
@@ -62,6 +65,7 @@ Si se envio en formato de documento es porque el audio supera el limite establec
     m.react(done)
     await conn.sendMessage(m.chat, {video: buff, caption: `
 > Informacion
+
 *Titulo:* ${ttl_1}
 *Peso:* ${roundedFileSizeInMB} MB`, fileName: ttl_1 + '.mp4', mimetype: 'video/mp4'}, {quoted: m});
      m.react(done)
@@ -80,6 +84,7 @@ Si se envio en formato de documento es porque el audio supera el limite establec
     const size = yt.video[q].fileSizeH;
     await conn.sendMessage(m.chat, {video: {url: dl_url}, fileName: `${ttl}.mp4`, mimetype: 'video/mp4', caption: `
 > Informacion
+
 *Titulo:* ${ttl}
 *Peso:* ${size}`, thumbnail: await fetch(yt.thumbnail)}, {quoted: m});
      m.react(done)
@@ -97,13 +102,17 @@ Si se envio en formato de documento es porque el audio supera el limite establec
       try {
         const lolhuman = await fetch(`${lolhuman}/api/ytvideo2?apikey=${spotifykey}&url=${youtubeLink}`);
         const lolh = await lolhuman.json();
-        const n = lolh.result.title || '> Sin respuesta\nerror';
+        const n = lolh.result.title || `
+> Sin respuesta
+
+error`;
         const n2 = lolh.result.link;
         const n3 = lolh.result.size;
         const n4 = lolh.result.thumbnail;
         m.react(done)
         await conn.sendMessage(m.chat, {video: {url: n2}, fileName: `${n}.mp4`, mimetype: 'video/mp4', caption: `\t\t*${n}*
 > Informacion
+
 *Peso:* ${n3}`, thumbnail: await fetch(n4)}, {quoted: m});
         m.react(done)
         await conn.sendMessage(m.chat, {text: 'Enviado', edit: key}, {quoted: m});
@@ -111,6 +120,7 @@ Si se envio en formato de documento es porque el audio supera el limite establec
       } catch {
         await conn.sendMessage(m.chat, {text: `
 > Sin respuesta
+
 Error`, edit: key}, {quoted: m});
         throw 'Error';
       }

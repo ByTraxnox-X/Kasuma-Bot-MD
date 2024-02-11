@@ -8,6 +8,7 @@ export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner }
   if (bot.antiPrivate && !isOwner && !isROwner) {
   await m.reply(`
 > Anti privado
+
 *hola @${m.sender.split`@`[0]}, hablar con el bot en el privado es ilegal por tanto seras bloqueado. Si desea usar el bot entre en este grupo:* 
   ${wagp}`, false, { mentions: [m.sender] })
   await this.updateBlockStatus(m.chat, 'block')}

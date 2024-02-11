@@ -23,6 +23,7 @@ Inactivo Durante: ${(new Date - user.afk).toTimeString()}
         let reason = user.afkReason || ''
         m.reply(`
 > Usuario inactivo
+
 El usuario que mencionas está Inactivo 
 
 ${reason ? 'Razón: ' + reason : 'Razón: Sin razón'}

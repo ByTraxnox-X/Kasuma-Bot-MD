@@ -12,6 +12,7 @@ const handler = async (m, { conn, text }) => {
 
     let spotifyInfo = `
 > Informacion
+
  *Titulo:* ${sptyInfo.title}\n
  *Artista:* ${sptyInfo.artist}\n
  *Album:* ${sptyInfo.album}\n 
@@ -25,7 +26,9 @@ const handler = async (m, { conn, text }) => {
 
     if (!audioRes.ok) {
       throw `
-> Sin respuesta\nError al obtener el audio de Spotify.`
+> Sin respuesta
+
+Error al obtener el audio de Spotify.`
 
     }
 
@@ -41,6 +44,7 @@ const handler = async (m, { conn, text }) => {
     console.error(error);
     throw `
 > Sin respuesta
+
 Error, no hay resultados`;
   }
 };
