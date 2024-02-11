@@ -6,7 +6,7 @@ export async function all(m) {
     if (!chats.expired)
         return !0
     if (+new Date() > chats.expired) {
-        await this.reply(m.chat, `Finalizo su alquiler, para seguir usando mis servicios contacte a ${numero}`)
+        await this.reply(m.chat, `> ALQUIER VENCIDO\ninalizo su alquiler, para seguir usando mis servicios contacte a ${numero}`)
         await this.groupLeave(m.chat)
         chats.expired = null
     }

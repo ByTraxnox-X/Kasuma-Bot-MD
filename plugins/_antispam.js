@@ -34,14 +34,14 @@ if (userData.antiBan === 1) {
 if (userData.message < 1) {
 userData.message++  
 motive = 'SPAM LEVE'
-mensaje = `@${m.sender.split`@`[0]} no puedes usar el bot durante *2 MINUTOS*\n\n*Razon:* ${motive}`  
+mensaje = `> ANTI SPAM\n@${m.sender.split`@`[0]} no puedes usar el bot durante *2 MINUTOS*\n\n*Razon:* ${motive}`  
 await conn.reply(m.chat, mensaje, m, { mentions: [m.sender] })  
 user.messageSpam = motive
 }} else if (userData.antiBan === 2) {
 if (userData.message2 < 1) {
 userData.message2++  
 motive = 'SPAM MODERADO'
-mensaje = `@${m.sender.split`@`[0]} no puedes usar el bot durante *5 MINUTOS*\n\n*Razon:* ${motive}`
+mensaje = `> ANTI SPAM\n@${m.sender.split`@`[0]} no puedes usar el bot durante *5 MINUTOS*\n\n*Razon:* ${motive}`
 await conn.reply(m.chat, mensaje, m, { mentions: [m.sender] })  
 user.messageSpam = motive
 }} else if (userData.antiBan === 3) {
@@ -56,7 +56,7 @@ await conn.groupSettingUpdate(m.chat, isOpen);
 }, 900000); //(15 minutos)
 
 motive = 'SPAM GRAVE'
-mensaje = `@${m.sender.split`@`[0]} no puedes usar el bot durante *10 MINUTOS*\n\n*Razon:* ${motive}`
+mensaje = `> ANTI SPAM\n@${m.sender.split`@`[0]} no puedes usar el bot durante *10 MINUTOS*\n\n*Razon:* ${motive}`
 await conn.reply(m.chat, mensaje, m, { mentions: [m.sender] }) 
 user.messageSpam = motive
 }}
@@ -66,7 +66,7 @@ userData.messageCount += 1
 
 if (userData.messageCount >= messageLimit) {
 const mention = `@${sender.split("@")[0]}`
-const warningMessage = `*${mention}* no puedes hacer spam! `
+const warningMessage = `> ANTI SPAM\n*${mention}* no puedes hacer spam! `
 if (userData.antiBan > 2) return
 await conn.reply(m.chat, warningMessage, m, { mentions: [m.sender] })  
 user.banned = true

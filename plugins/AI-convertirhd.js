@@ -4,7 +4,7 @@ const handler = async (m, {conn}) => {
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || q.mediaType || ""
   if (!mime) throw `Responda a una imagen`
-  if (!/image\/(jpe?g|png)/.test(mime)) throw `El formato no es compatible, intente con otro formato.`
+  if (!/image\/(jpe?g|png)/.test(mime)) throw `> FORMATO NO COMPATIBLE\nEl formato no es compatible, intente con otro formato.`
   m.reply(`${wait}`)
   let img = await q.download?.()
   let pr = await remini(img, "enhance")

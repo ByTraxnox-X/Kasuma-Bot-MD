@@ -13,7 +13,7 @@ const handler = async (m, { conn, text }) => {
     const data = await response.json();
 
     if (data.result) {
-      m.reply(data.result);
+      m.reply(`> BARD AI\n${data.result}`);
     } else {
       throw 'No se pudo obtener una respuesta de la API.';
     }

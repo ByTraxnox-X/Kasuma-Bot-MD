@@ -41,7 +41,7 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
         }
 
         if (isGroupLinkWhatsApp || isGroupLinkYouTube || isGroupLinkTikTok || isGroupLinkInstagram || isGroupLinkGoogle || isGroupLinkTwitter || isGroupLinkDiscord || isGroupLinkTelegram) {
-            await conn.reply(m.chat, `Enlace Detectado
+            await conn.reply(m.chat, `> Enlace Detectado
             
             No permitimos enlaces de plataformas exteriores a WhatsApp
 
