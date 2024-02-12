@@ -39,7 +39,7 @@ Ocurrió un error: ${error}`;
 };
 
 handler.help = ['youtubechannel'];
-handler.tags = ['search', 'youtube'];
+handler.tags = ['dl'];
 handler.command = /^youtubechannel$/i;
 
 export default handler;
