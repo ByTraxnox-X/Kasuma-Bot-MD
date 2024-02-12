@@ -2,11 +2,10 @@ let handler = async (m, {
     conn,
     text,
     args,
-    usedPrefix,
     command
 }) => {
     // Obtener la pregunta de la encuesta
-    let question = text.trim().split("quieren")[1].trim()
+    let question = text.toLowerCase().includes("quieren") ? text.split("quieren")[1].trim() : text.trim()
     if (!question) {
         throw "Por favor, haz una pregunta para la encuesta"
     }
@@ -24,10 +23,3 @@ let handler = async (m, {
         poll: pollMessage
     })
 }
-
-handler.help = ['encuesta <pregunta>']
-handler.tags = ['group'] 
-handler.command = ['poll', 'encuesta', 'polling'] 
-handler.group = true
-
-export default handler
