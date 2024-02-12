@@ -1,16 +1,15 @@
+
 let handler = async (m, {
     conn,
     text,
     args,
     command
 }) => {
-    // Obtener la pregunta de la encuesta
-    let question = text.toLowerCase().includes("quieren") ? text.split("quieren")[1].trim() : text.trim()
+    let question = text.replace(/:.*/,'').trim()
     if (!question) {
         throw "Por favor, haz una pregunta para la encuesta"
     }
 
-    // Crear el mensaje de la encuesta
     const pollMessage = {
         name: question,
         values: ["Sí", "No"],
@@ -18,7 +17,6 @@ let handler = async (m, {
         selectableCount: 1
     }
 
-    // Enviar el mensaje de la encuesta al chat
     await conn.sendMessage(m.chat, {
         poll: pollMessage
     })
