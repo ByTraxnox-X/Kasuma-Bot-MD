@@ -23,3 +23,10 @@ let handler = async (m, {
         poll: pollMessage
     })
 }
+
+handler.help = ['encuesta <pregunta>']
+handler.tags = ['group'] 
+handler.command = ['poll', 'encuesta', 'polling'] 
+handler.group = true
+
+export default handler
