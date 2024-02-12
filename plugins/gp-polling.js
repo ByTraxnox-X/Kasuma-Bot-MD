@@ -1,9 +1,9 @@
-
 let handler = async (m, {
     conn,
     text,
     args,
-    command
+    command,
+    sender
 }) => {
     let question = text.replace(/:.*/,'').trim()
     if (!question) {
@@ -11,7 +11,7 @@ let handler = async (m, {
     }
 
     const pollMessage = {
-        name: question,
+        name: `Encuesta Realizada Por ${sender}:\n\n *${question}*`,
         values: ["Sí", "No"],
         multiselect: false,
         selectableCount: 1
