@@ -1,20 +1,40 @@
+let handler = async (m, {
+    conn,
+    text,
+    args,
+    usedPrefix,
+    command
+}) => {
+    // Split the message text using the '|' character and slice the array to remove the first element.
+    let a = text.split("|").slice(1)
+    if (!a[1]) throw "Ejemplo de uso\n" + usedPrefix + command + " Como estan|bien|mal"
+    if (a[12]) throw "Ejemplo de uso\n" + usedPrefix + command + " Como estan|bien|mal"
+    // Check for duplicate options in the poll.
+    if (checkDuplicate(a)) throw "¡Opciones duplicadas en el mensaje!"
+    let cap = "*Encuesta hecha por:* " + m.name + "\n*Mensaje:* " + text.split("|")[0]
 
-let handler = async (m, { conn, text, args, usedPrefix, command }) => {
-	
-if (!args[0]) throw `Falta texto para encuesta \n\nEjemplo: \n*${usedPrefix + command}* Mensaje  |como|xd`
-if (!text.includes('|')) throw  `Separe las encuestas con *|* \n\nEjemplo: \n*${usedPrefix + command}* mi encuesta|n  |como|xd|vale`
-
-let name = await conn.getName(m.sender)
-let a = []
-let b = text.split('|')
-for (let c = 1 || 0; c < b.length; c++) {
-a.push([b[c]])
-			}
-			return conn.sendPoll(m.chat, `*Encuesta solicitado por:* ${name}\n\n*Mensaje:* ${text.split('|')[0]}`, a, m)
+   
+    const pollMessage = {
+        name: cap,
+        values: a,
+        multiselect: false,
+        selectableCount: 1
+    }
+  
+    await conn.sendMessage(m.chat, {
+        poll: pollMessage
+    })
 }
+
 handler.help = ['encuesta <hola|como|xd>']
 handler.tags = ['group'] 
 handler.command = ['poll', 'encuesta', 'polling'] 
 handler.group = true
 
 export default handler
+
+// Function to check for duplicate elements in an array.
+function checkDuplicate(arr) {
+    return new Set(arr).size !== arr.length
+}
+
