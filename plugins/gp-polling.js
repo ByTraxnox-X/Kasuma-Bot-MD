@@ -11,7 +11,7 @@ let handler = async (m, {
         throw "Por favor, haz una pregunta para la encuesta"
     }
 let who = m.quoted ? m.quoted.sender : m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let cap = `*Encuesta hecha por:* @${who.split('@')[0]}*\n*Mensaje:* ${text}`
+let cap = `*Encuesta hecha por:* ${m.name}*\n*Mensaje:* ${text}`
     const pollMessage = {
         name: cap,
         values: ["Sí", "No"],
