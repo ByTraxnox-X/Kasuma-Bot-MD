@@ -4,10 +4,11 @@ let handler = async (m, {
   command,
   sender
 }) => {
+  let user = global.db.data.users[m.sender]
   text = text ? text.trim() : ''
   if (!text) return conn.reply(m.chat, 'Por favor, haz una pregunta para la encuesta', m)
   const pollMessage = {
-    name: `Encuesta Realizada Por @${m.sender.split("@")[0]}:\n\n *${text}*`,
+    name: `Encuesta Realizada Por @${user("@")[0]}:\n\n *${text}*`,
     min: 1,
     max: 1
   }
