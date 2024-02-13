@@ -5,14 +5,14 @@ let handler = async (m, {
     command,
     sender
 }) => {
-    let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+    
     let question = text.replace(/:.*/,'').trim()
     if (!question) {
         throw "Por favor, haz una pregunta para la encuesta"
     }
 
     const pollMessage = {
-        name: `Encuesta Realizada Por ${users}:\n\n *${question}*`,
+        name: `Encuesta Realizada Por @${sender.split("@")[0]}:\n\n *${question}*`,
         values: ["Sí", "No"],
         multiselect: false,
         selectableCount: 1
