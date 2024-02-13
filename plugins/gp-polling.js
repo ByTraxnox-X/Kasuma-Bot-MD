@@ -7,8 +7,9 @@ let handler = async (m, {
   let who = m.quoted ? m.quoted.sender : m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
   text = text ? text.trim() : ''
   if (!text) return conn.reply(m.chat, 'Por favor, haz una pregunta para la encuesta', m)
+let cap = "*Encuesta hecha por:* " + who.split + "\n*Mensaje:* " + text
   const pollMessage = {
-    name: `Encuesta Realizada Por @${who.split('@')[0]}:\n\n *${text}*`,
+    name: cap,
     min: 1,
     max: 1
   }
