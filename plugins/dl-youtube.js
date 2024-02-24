@@ -1,102 +1,67 @@
 import fetch from 'node-fetch';
-let data;
-let buff;
-let mimeType;
-let fileName;
-let apiUrl;
+
 let enviando = false;
-const handler = async (m, { command, usedPrefix, conn, text }) => {
-  if (!text) throw `Ingrese el nombre o el enlace`;
-if (enviando) return;
-    enviando = true
+
+const handler = async (m, { command, conn, text }) => {
+  if (!text) throw `Ingrese el enlace o texto para continuar.`;
+  if (enviando) return;
+  enviando = true;
+
   try {
-    const apiUrls = [
-      `${apikasu}/api/search/youtube?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`,
-      `${apikasu}/api/search/youtube?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`
-    ];
+    let apiUrl;
+    let mimeType;
+    let fileName;
 
-    for (const url of apiUrls) {
-      try {
-        const res = await fetch(url);
-        data = await res.json();
-        if (data.result && data.result.url) {
-          break;
-        }
-      } catch {}
+    if (command === 'youtubeaudio') {
+      apiUrl = `${apikasu}/api/dowloader/youtubemp3?url=${text}&apikey=${apikeykasu}`;
+      mimeType = 'audio/mpeg';
+      fileName = 'error.mp3';
+    } else if (command === 'youtubevideo') {
+      apiUrl = `${apikasu}/api/dowloader/youtubemp4?url=${text}&apikey=${apikeykasu}`;
+      mimeType = 'video/mp4';
+      fileName = 'error.mp4';
     }
 
-    if (!data.result || !data.result.url) {
-      enviando = false;
-      throw `
-> Sin respuesta
+    try {
+      const res = await fetch(apiUrl);
+      const data = await res.json();
 
-Error, intentelo de nuevo.`;
-    } else {
-      try {
-        if (command === 'youtubeaudio') {
-              apiUrl = `${apikasu}/api/dowloader/youtubemp3?url=${data.result.url}&apikey=${apikeykasu}`;
-              mimeType = 'audio/mpeg';
-              fileName = 'error.mp3';
-              buff = await conn.getFile(apiUrl);
-            } else if (command === 'youtubevideo') {
-              apiUrl = `${apikasu}/api/dowloader/youtubemp4?url=${data.result.url}&apikey=${apikeykasu}`;
-              mimeType = 'video/mp4';
-              fileName = 'error.mp4';
-              buff = await conn.getFile(apiUrl);
-        }
-      } catch {
-          try {
-            if (command === 'youtubeaudio') {
-              apiUrl = `${apikasu}/api/dowloader/youtubemp3?url=${data.result.url}&apikey=${apikeykasu}`;
-              mimeType = 'audio/mpeg';
-              fileName = 'error.mp3';
-              buff = await conn.getFile(apiUrl);
-            } else if (command === 'youtubevideo') {
-              apiUrl = `${apikasu}/api/dowloader/youtubemp4?url=${data.result.url}&apikey=${apikeykasu}`;
-              mimeType = 'video/mp4';
-              fileName = 'error.mp4';
-              buff = await conn.getFile(apiUrl);
-            }
-          } catch {
-            enviando = false;
-            throw `
-> Sin respuesta
+      if (data.status && data.result) {
+        const dataMessage = `
+> Información
 
-Error, intentelo de nuevo.`;
-          }
-       }
-    }
-
-    const dataMessage = `
-> Informacion
-
+*ID:* ${data.result.id}
 *Título:* ${data.result.title}
-*Publicado:* ${data.result.publicDate}
-*Canal:* ${data.result.channel}
-*URL:* ${data.result.url}`;
-    await conn.sendMessage(m.chat, { text: dataMessage }, { quoted: m });
+*Thumbnail:* ${data.result.thumbnail}
+*URL:* ${text}`;
 
-    if (buff) {
-      await conn.sendMessage(m.chat, {[mimeType.startsWith('audio') ? 'audio' : 'video']: buff.data, mimetype: mimeType, fileName: fileName}, {quoted: m});
-      enviando = false;
-    } else {
+        await conn.sendMessage(m.chat, { text: dataMessage }, { quoted: m });
+
+        const buff = await conn.getFile(mimeType === 'audio/mpeg' ? data.result.audio : data.result.video);
+
+        await conn.sendMessage(m.chat, { [mimeType.startsWith('audio') ? 'audio' : 'video']: buff.data, mimetype: mimeType, fileName: fileName }, { quoted: m });
+        enviando = false;
+      } else {
+        throw new Error('Sin respuesta válida');
+      }
+    } catch {
       enviando = false;
       throw `
 > Sin respuesta
 
-Error, intentelo de nuevo.`;
+Error, inténtelo de nuevo.`;
     }
   } catch (error) {
     enviando = false;
     throw `
 > Sin respuesta
 
-Error, intentelo de nuevo.`;
+Error, inténtelo de nuevo.`;
   }
 };
 
 handler.help = ['youtubeaudio', 'youtubevideo'];
-handler.tags = ['dl']
+handler.tags = ['dl'];
 handler.command = ['youtubeaudio', 'youtubevideo'];
 
 export default handler;
