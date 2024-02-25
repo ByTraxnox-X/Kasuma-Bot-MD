@@ -1,11 +1,9 @@
 import fetch from 'node-fetch';
 
 const handler = async (m, { conn, args }) => {
-    const apikasu = 'https://apikasu.onrender.com';
-    const apikeykasu = 'SebastianDevelop';
-
+    
     if (!args[0]) {
-        throw `Por favor, ingresa un enlace de Instagram.`;
+        throw `Por favor, ingresa un enlace de Instagram para descargar el archivo.`;
     }
 
     try {
