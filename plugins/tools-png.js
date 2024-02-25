@@ -1,28 +1,37 @@
 import { webp2png } from '../lib/webp2mp4.js';
 
-let handler = async (m, { conn, command }) => {
-    const notImageMessage = `Envía una imagen y responde con:\n\n*.png*`;
-
-    if (!m.quoted && (!m.mentionedJidList || m.mentionedJidList.length === 0)) throw notImageMessage;
+let handler = async (m, { conn, text }) => {
+    if (!text && (!m.quoted || m.quoted.mimetype.startsWith('image/'))) throw 'Envía una imagen y responde con:\n\n*.png*';
 
     let media;
-    if (m.quoted) {
-        media = await m.quoted.download();
+    if (text) {
+        const res = await conn.download({ url: text });
+        if (!res) throw 'No se pudo obtener la imagen correctamente.';
+        media = await res.buffer();
     } else {
-        const mentionedJid = m.mentionedJidList[0];
-        const profilePic = await conn.getProfilePicture(mentionedJid);
-        if (!profilePic) throw notImageMessage;
-        media = await conn.downloadMediaMessage({ url: profilePic });
+        media = await m.quoted.download();
     }
 
     if (!media.length) throw 'No se pudo obtener la imagen correctamente.';
 
     let out = await webp2png(media).catch(_ => null) || Buffer.alloc(0);
 
-    await conn.sendFile(m.chat, out, 'out.png', '*Aquí tienes*', m);
+    if (!out.length) throw 'Error al convertir la imagen a PNG.';
+
+    let fileType = 'image/png';
+    let fileName = 'out.png';
+
+    const fileBuffer = Buffer.from(out);
+
+    if (m.text.toLowerCase().includes('doc')) {
+        fileType = 'document';
+        fileName = 'out.png';
+    }
+
+    await conn.send2Button(m.chat, `*Aquí tienes*`, '¿Enviarlo como Documento o Imagen?', 'Documento', `.pngdoc ${text || m.quoted ? 'enlace' : 'respuesta'}`, 'Imagen', `.pngimg ${text || m.quoted ? 'enlace' : 'respuesta'}`, m, { file: fileBuffer, type: fileType, mimetype: fileType, filename: fileName });
 };
 
-handler.help = ['png <imagen>', 'png <mención>'];
+handler.help = ['png <imagen>', 'png <enlace>'];
 handler.tags = ['tools'];
 handler.command = ['png'];
 
