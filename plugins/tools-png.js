@@ -18,6 +18,12 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         let fileName = 'out.png';
         const fileBuffer = Buffer.from(out);
 
+        // Obtener la URL de la imagen original
+        let imgUrl = '';
+        if (q.msg) {
+            imgUrl = q.msg.url || '';
+        }
+
         await conn.sendFile(m.chat, fileBuffer, fileName, '*Aquí tienes*', m);
     } catch (error) {
         throw `Error: ${error.message}`;
