@@ -1,12 +1,13 @@
 import fetch from 'node-fetch';
 
 const handler = async (m, { conn, args }) => {
+    
     if (!args[0]) {
-        throw `Por favor, ingresa un enlace de Instagram.`;
+        throw `Por favor, ingresa un enlace de Instagram para descargar el archivo.`;
     }
 
     try {
-        const apiUrl = `${apikasu}/api/dowloader/instagram?url=${args[0]}&apikey=${apikeykasu}`
+        const apiUrl = `${apikasu}/api/dowloader/instagram?url=${args[0]}&apikey=${apikeykasu}`;
         const response = await fetch(apiUrl);
         const responseData = await response.json();
 
@@ -15,7 +16,7 @@ const handler = async (m, { conn, args }) => {
         if (responseData.status && responseData.result.length > 0) {
             for (const media of responseData.result) {
                 m.react(done);
-                await conn.sendFile(m.chat, media.link, media.ext === 'mp4' ? 'video.mp4' : 'imagen.jpg', '', m);
+                await conn.sendFile(m.chat, media, media.includes('.mp4') ? 'video.mp4' : 'imagen.jpg', '', m);
             }
         } else {
             throw `
@@ -28,7 +29,7 @@ No se pudo obtener el contenido de Instagram.`;
         throw `
 > Sin respuesta
 
-Ocurrió un error al procesar la solicitud: ${error.message};`
+Ocurrió un error al procesar la solicitud: ${error.message}`;
     }
 };
 
@@ -36,4 +37,4 @@ handler.help = ['instagram'];
 handler.tags = ['dl'];
 handler.command = /^(instagramdl|instagram|igdl|ig)$/i;
 
-export default handler;
+export default handler;
