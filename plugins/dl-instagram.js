@@ -6,16 +6,15 @@ const handler = async (m, { conn, args }) => {
     }
 
     try {
-
-        const apiUrl = `${apikasu}/api/dowloader/instagram?url=${args[0]}&apikey=${apikeykasu}`;
+        const apiUrl = `${apikasu}/api/dowloader/instagram?url=${args[0]}&apikey=${apikeykasu}`
         const response = await fetch(apiUrl);
         const responseData = await response.json();
 
-        m.react('rwait');
+        m.react(rwait);
 
         if (responseData.status && responseData.result.length > 0) {
             for (const media of responseData.result) {
-                m.react('done');
+                m.react(done);
                 await conn.sendFile(m.chat, media.link, media.ext === 'mp4' ? 'video.mp4' : 'imagen.jpg', '', m);
             }
         } else {
@@ -29,7 +28,7 @@ No se pudo obtener el contenido de Instagram.`;
         throw `
 > Sin respuesta
 
-Ocurrió un error al procesar la solicitud: ${error.message}`;
+Ocurrió un error al procesar la solicitud: ${error.message};`
     }
 };
 
@@ -37,4 +36,4 @@ handler.help = ['instagram'];
 handler.tags = ['dl'];
 handler.command = /^(instagramdl|instagram|igdl|ig)$/i;
 
-export default handler;
+export default handler;
