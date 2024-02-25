@@ -1,20 +1,38 @@
 import fetch from 'node-fetch';
 
 const handler = async (m, { conn, args }) => {
-  try {
-    const apiUrl = `${apikasu}/api/dowloader/instagram?url=${args[0]}&apikey=${apikeykasu}`;
+    const apikasu = 'https://apikasu.onrender.com';
+    const apikeykasu = 'SebastianDevelop';
 
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-
-    if (data.success) {
-      conn.sendFile(m.chat, data.url, 'arc_do', 'Descripción');
-    } else {
-      conn.reply(m.chat, 'Error al descargar el archivo de Instagram', m);
+    if (!args[0]) {
+        throw `Por favor, ingresa un enlace de Instagram.`;
     }
-  } catch (error) {
-    conn.reply(m.chat, 'Ocurrió un error al procesar la solicitud', m);
-  }
+
+    try {
+        const apiUrl = `${apikasu}/api/dowloader/instagram?url=${args[0]}&apikey=${apikeykasu}`;
+        const response = await fetch(apiUrl);
+        const responseData = await response.json();
+
+        m.react(rwait);
+
+        if (responseData.status && responseData.result.length > 0) {
+            for (const media of responseData.result) {
+                m.react(done);
+                await conn.sendFile(m.chat, media, media.includes('.mp4') ? 'video.mp4' : 'imagen.jpg', '', m);
+            }
+        } else {
+            throw `
+> Sin respuesta
+
+No se pudo obtener el contenido de Instagram.`;
+        }
+    } catch (error) {
+        console.error(error);
+        throw `
+> Sin respuesta
+
+Ocurrió un error al procesar la solicitud: ${error.message}`;
+    }
 };
 
 handler.help = ['instagram'];
