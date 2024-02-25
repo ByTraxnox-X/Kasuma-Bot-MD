@@ -524,7 +524,6 @@ export async function participantsUpdate({ id, participants, action }) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                 for (let user of participants) {
                     let pp = 'https://i.imgur.com/nHHUm1a.png'
-                    let bg = 'https://cdn.discordapp.com/attachments/850808002545319957/859359637106065408/bg.png'
 
                     try {
                         pp = await this.profilePictureUrl(user, 'image')
@@ -532,20 +531,16 @@ export async function participantsUpdate({ id, participants, action }) {
                             text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Bienvenido, @user').replace('@group', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'Desconocido') :
                             (chat.sBye || this.bye || conn.bye || 'Adiós, @user')).replace('@user', '@' + user.split('@')[0])
 
-                            let wel = API(`https://api.popcat.xyz`, '/welcomecard', {
-                                background: bg,
-                                text1: "WELCOME",
-                                text2: +groupMetadata.participants.length,
-                                text3: " ",
-                                avatar: pp,
+                            let wel = API(`${apikasu}`, '/api/maker/welcomecard', {
+                                users: groupMetadata.participants.length,
+                                profile: pp,
+                                apikey: `${apikeykasu}`
                             })
 
-                            let lea = API(`https://api.popcat.xyz`, '/welcomecard', {
-                                background: bg,
-                                text1: "GOOD BYE",
-                                text2: ` `,
-                                text3: " ",
-                                avatar: pp,
+                            let lea = API(`${apikasu}`, '/api/maker/goodbyecard', {
+                                users: groupMetadata.participants.length,
+                                profile: pp,
+                                apikey: `${apikeykasu}`
                             })
                         this.sendFile(id, action === 'add' ? wel : lea, 'pp.jpg', text, null, false, { mentions: [user] })
                     }
