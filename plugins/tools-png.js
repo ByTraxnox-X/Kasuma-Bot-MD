@@ -12,7 +12,7 @@ let handler = async (m, { conn, command }) => {
         const mentionedJid = m.mentionedJidList[0];
         const profilePic = await conn.getProfilePicture(mentionedJid);
         if (!profilePic) throw notImageMessage;
-        media = await conn.getFile(profilePic);
+        media = await conn.downloadMediaMessage({ url: profilePic });
     }
 
     if (!media.length) throw 'No se pudo obtener la imagen correctamente.';
