@@ -1,10 +1,17 @@
 let handler = async (m, { conn, usedPrefix, command }) => {
     const notImageMessage = `Envía una imagen y responde con:\n\n*${usedPrefix + command}*`;
 
-    if (!m.quoted && !m.mentionedJidList.length) throw notImageMessage;
+    if (!m.quoted && (!m.mentionedJidList || m.mentionedJidList.length === 0)) throw notImageMessage;
 
-    let media = m.quoted ? await m.quoted.download() : await conn.getProfilePicture(m.mentionedJidList[0]);
-    if (!media) throw notImageMessage;
+    let media;
+    if (m.quoted) {
+        media = await m.quoted.download();
+    } else {
+        const mentionedJid = m.mentionedJidList[0];
+        const profilePic = await conn.getProfilePicture(mentionedJid);
+        if (!profilePic) throw notImageMessage;
+        media = await conn.getFile(profilePic);
+    }
 
     let out = await webp2png(media).catch(_ => null) || Buffer.alloc(0);
 
