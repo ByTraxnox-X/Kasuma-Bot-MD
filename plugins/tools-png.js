@@ -15,6 +15,8 @@ let handler = async (m, { conn, command }) => {
         media = await conn.getFile(profilePic);
     }
 
+    if (!media.length) throw 'No se pudo obtener la imagen correctamente.';
+
     let out = await webp2png(media).catch(_ => null) || Buffer.alloc(0);
 
     await conn.sendFile(m.chat, out, 'out.png', '*Aquí tienes*', m);
