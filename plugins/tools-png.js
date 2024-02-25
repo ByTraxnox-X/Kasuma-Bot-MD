@@ -8,16 +8,20 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let mime = q.mimetype || '';
     if (!mime.startsWith('image/')) throw notImageMessage;
 
-    let media = await q.download();
-    let out = await webp2png(media).catch(_ => null) || Buffer.alloc(0);
+    try {
+        let media = await q.download();
+        let out = await webp2png(media);
+        
+        if (!out.length) throw 'Error al convertir la imagen a PNG.';
 
-    if (!out.length) throw 'Error al convertir la imagen a PNG.';
+        let fileType = 'document';
+        let fileName = 'out.png';
+        const fileBuffer = Buffer.from(out);
 
-    let fileType = 'document';
-    let fileName = 'out.png';
-    const fileBuffer = Buffer.from(out);
-
-    await conn.sendFile(m.chat, fileBuffer, fileName, '*Aquí tienes*', m);
+        await conn.sendFile(m.chat, fileBuffer, fileName, '*Aquí tienes*', m);
+    } catch (error) {
+        throw `Error: ${error.message}`;
+    }
 };
 
 handler.help = ['png <imagen>'];
