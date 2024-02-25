@@ -1,37 +1,24 @@
-import { webp2png } from '../lib/webp2mp4.js';
+let handler = async (m, { conn, text }) => {
+    const q = m.quoted || m
 
-let handler = async (m, { conn, usedPrefix, command }) => {
-    const notImageMessage = `Envía una imagen y responde con:\n\n*${usedPrefix + command}*`;
-    if (!m.quoted) throw notImageMessage;
+    let mime = (q.msg || q).mimetype || ''
 
-    const q = m.quoted || m;
-    let mime = q.mimetype || '';
-    if (!mime.startsWith('image/')) throw notImageMessage;
+    if (!m.quoted || !/image/.test(mime))
+        throw `Menciona una foto para convertir a documento PNG.`
 
-    try {
-        let media = await q.download();
-        let out = await webp2png(media);
-        
-        if (!out.length) throw 'Error al convertir la imagen a PNG.';
+    if (!text) throw `Ingrese el nombre que desea colocar al documento`
 
-        let fileType = 'document';
-        let fileName = 'out.png';
-        const fileBuffer = Buffer.from(out);
+    let media = await q.download?.()
 
-        // Obtener la URL de la imagen original
-        let imgUrl = '';
-        if (q.msg) {
-            imgUrl = q.msg.url || '';
-        }
+    if (!media) throw 'Error al descargar medio'
 
-        await conn.sendFile(m.chat, fileBuffer, fileName, '*Aquí tienes*', m);
-    } catch (error) {
-        throw `Error: ${error.message}`;
-    }
-};
+    m.reply(`Convirtiendo a PNG, espera un momento...`)
 
-handler.help = ['png <imagen>'];
-handler.tags = ['tools'];
-handler.command = ['pngimg', 'convpng', 'png'];
+    return conn.sendMessage(m.chat, { document: media, mimetype: 'image/png', fileName: `${text}.png` }, { quoted: m })
+}
 
-export default handler;
+handler.help = ['png <nombre>']
+handler.tags = ['tools']
+handler.command = ['png']
+
+export default handler
