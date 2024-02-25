@@ -7,7 +7,7 @@ const handler = async (m, { conn, args }) => {
 
     try {
 
-        const apiUrl = `${apikasu}/api/downloader/instagram?url=${args[0]}&apikey=${apikeykasu}`;
+        const apiUrl = `${apikasu}/api/dowloader/instagram?url=${args[0]}&apikey=${apikeykasu}`;
         const response = await fetch(apiUrl);
         const responseData = await response.json();
 
