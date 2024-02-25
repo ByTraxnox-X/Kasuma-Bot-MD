@@ -1,7 +1,7 @@
 import { webp2png } from '../lib/webp2mp4.js';
 
-let handler = async (m, { conn, usedPrefix, command }) => {
-    const notImageMessage = `Envía una imagen y responde con:\n\n*${usedPrefix + command}*`;
+let handler = async (m, { conn, command }) => {
+    const notImageMessage = `Envía una imagen y responde con:\n\n*.png*`;
 
     if (!m.quoted && (!m.mentionedJidList || m.mentionedJidList.length === 0)) throw notImageMessage;
 
@@ -17,18 +17,11 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
     let out = await webp2png(media).catch(_ => null) || Buffer.alloc(0);
 
-    const options = ['pngdoc', 'pngimg'];
-    const selectedOption = options.includes(command) ? command : 'pngdoc';
-
-    if (selectedOption === 'pngdoc') {
-        await conn.sendFile(m.chat, out, 'out.png', '*Aquí tienes*', m);
-    } else if (selectedOption === 'pngimg') {
-        await conn.sendImage(m.chat, out, 'out.png', '*Aquí tienes*');
-    }
+    await conn.sendFile(m.chat, out, 'out.png', '*Aquí tienes*', m);
 };
 
-handler.help = ['png <imagen>', 'png <mención>', 'pngdoc <imagen>', 'pngimg <imagen>'];
+handler.help = ['png <imagen>', 'png <mención>'];
 handler.tags = ['tools'];
-handler.command = ['pngg', 'convpng', 'png', 'pngdoc', 'pngimg'];
+handler.command = ['png'];
 
 export default handler;
