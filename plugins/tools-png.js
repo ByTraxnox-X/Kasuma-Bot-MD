@@ -1,3 +1,5 @@
+import { webp2png } from '../lib/webp2mp4.js';
+
 let handler = async (m, { conn, usedPrefix, command }) => {
     const notImageMessage = `Envía una imagen y responde con:\n\n*${usedPrefix + command}*`;
 
