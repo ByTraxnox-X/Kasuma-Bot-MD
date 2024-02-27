@@ -27,7 +27,7 @@ global.APIKeys = { // APIKey Here
 
 // CONEXION CON CODIGO DE 8 DIGITOS
 
-global.KasumaCode = "" 
+global.KasumaCode = "+1 315 309 8083" 
 global.confirmCode = ""
 
 
