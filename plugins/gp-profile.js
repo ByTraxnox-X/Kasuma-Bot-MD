@@ -70,13 +70,13 @@ ${username} ${registered ? '\n   ' + name + ' ': ''}
 
 > Informacion Empresarial
 
-
-*Website:* ${business.website ? business.website : 'Sin informacion'}
-*Email:* ${business.email ? business.email : 'Sin informacion'}
-*Categoría:* ${business.category ? business.category : 'Sin informacion'}
-*Dirección:* ${business.address ? business.address : 'Sin informacion'}
-*Horario:* ${business.business_hours.timezone ? business.business_hours.timezone : 'Sin informacion'}
-*Descripción:* ${business.description ? business.description : 'Sin informacion'} : 'Cuenta Estándar de WhatsApp'
+*BusinessId:* ${business?.wid || 'Sin informacion'}
+*Website:* ${business?.website || 'Sin informacion'}
+*Email:* ${business?.email || 'Sin informacion'}
+*Categoría:* ${business?.category || 'Sin informacion'}
+*Dirección:* ${business?.address || 'Sin informacion'}
+*Horario:* ${business?.business_hours.timezone || 'Sin informacion'}
+*Descripción:* ${business?.description || 'Sin informacion'}
 `
     conn.sendFile(m.chat, pp, 'perfil.jpg', str, m, false, { mentions: [who] })
     m.react(done)
