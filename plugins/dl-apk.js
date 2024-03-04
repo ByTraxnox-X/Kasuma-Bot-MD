@@ -24,7 +24,7 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     const apkResponse = await fetch(data.dllink);
     const apkBuffer = await apkResponse.buffer();
 
-    await conn.sendFile(m.chat, apkBuffer, `${data.apk_name}.apk`, null, m);
+    await conn.sendFile(m.chat, apkBuffer, `${data.name}.apk`, null, m);
 
   } catch (error) {
     console.error(error);
