@@ -27,7 +27,7 @@ say(`'${name}' By Traxnox, Sebastian`, {
   gradient: ['red', 'magenta']
 })
 
-var isRunning = false
+let isRunning = false
 /**
  * Start a js file
  * @param {String} file `path/to/file`
@@ -35,7 +35,7 @@ var isRunning = false
 function start(file) {
   if (isRunning) return
   isRunning = true
-  let args = [join(__dirname, file), ...process.argv.slice(2)]
+  const args = [join(__dirname, file), ...process.argv.slice(2)]
   say([process.argv[0], ...args].join(' '), {
     font: 'console',
     align: 'center',
@@ -60,15 +60,14 @@ function start(file) {
     }
   })
   //---
- p.on('exit', (_, code) => {
+  p.on('exit', (_, code) => {
     isRunning = false
     console.error('Ocurrió un error inesperado:', code)
     if (code === 0) return
-    watchFile(args[0], () => {
-      unwatchFile(args[0])
-      start(file)
-    })
-  })
+    console.log('Reiniciando el servidor...')
+    start(file)
+})
+
   //----
   let opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
   if (!opts['test'])
