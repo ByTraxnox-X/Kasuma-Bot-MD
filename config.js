@@ -20,7 +20,7 @@ global.APIs = { // API Prefix
 global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
   'https://api.xteam.xyz': 'd90a9e986e18778b',
-  'https://apikasu.onrender.com': 'SebastianDevelop',
+  'https://apikasu.onrender.com': 'ApiKey',
   'https://zenzapis.xyz': '675e34de8a',
   'https://api.fgmods.xyz': 'Rex6QGQI'
 }
@@ -33,7 +33,7 @@ global.confirmCode = ""
 
 // KASU API
 global.apikasu = "https://apikasu.onrender.com"
-global.apikeykasu = "SebastianDevelop"
+global.apikeykasu = "ApiKey"
 
 //APIS
 global.tiktokkey = ['GIf4o4qJ']
