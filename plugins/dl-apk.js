@@ -14,13 +14,14 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     let responseText = `
 > Informacion
 
-*Nombre:* ${data.apk_name}\n\n
-*Version:* ${data.apk_version}\n
-*Autor:* ${data.apk_author}\n`
+*Nombre:* ${data.name}\n\n
+*Ultima Actualizacion:* ${data.lastup}\n
+*Peso:* ${data.size}\n
+*Paquete:* ${data.package}\n`
 
-    await conn.sendMessage(m.chat, { image: { url: data.apk_icon }, caption: responseText }, { quoted: m });
+    await conn.sendMessage(m.chat, { image: { url: data.icon }, caption: responseText }, { quoted: m });
 
-    const apkResponse = await fetch(data.apk_link);
+    const apkResponse = await fetch(data.dllink);
     const apkBuffer = await apkResponse.buffer();
 
     await conn.sendFile(m.chat, apkBuffer, `${data.apk_name}.apk`, null, m);

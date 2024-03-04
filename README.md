@@ -12,6 +12,7 @@
 | CONTENIDO | DESCRIPCIÓN | LINK |
 |------|-------------|-------|
 | **VERSION DE TERMUX** | ***DONWLOAD TERMUX*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#version-de-termux) |
+| **API KASU** | ***COMO SACAR EL TOKEN, COMO REGISTRARSE Y VERIFICARSE*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#api-kasu) |
 | **INSTALACION EN TERMUX** | ***INSTALACION MANUAL*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#instalacion-en-termux) |
 | **INSTALACION EN REPLIT** | ***INSTALACIÓN AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-replit) |
 | **INSTALACION EN RENDER** | ***INSTALACION AUTOMATICA*** |[VER](https://github.com/ByTraxnox-X/Kasuma-Bot-MD?tab=readme-ov-file#activar-en-render) |
@@ -22,8 +23,9 @@
 
 ***
 
-### API FREE
+### API KASU
 -  [`KASU API`](https://apikasu.onrender.com/)
+-  [`TUTORIAL`](https://www.youtube.com/watch?v=erII5dExtmM)
 
 ***
 
