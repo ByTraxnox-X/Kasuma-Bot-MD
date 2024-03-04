@@ -9,7 +9,7 @@ m.reply(`
 
 Hola *${name}*\nNecesitas ayuda?\nusa *!menu* para conocer mis funciones!
 
-Si quieres un poco de informacion sobre mi visita el siguiente canal ${canal}`)
+Si quieres un poco de informacion sobre mi visita el siguiente canal ${wagp}`)
 
 m.react('📢') 
 
