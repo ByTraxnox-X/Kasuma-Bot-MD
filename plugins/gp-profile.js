@@ -70,7 +70,7 @@ ${username} ${registered ? '\n   ' + name + ' ': ''}
 
 > Informacion Empresarial
 
-*BusinessId:* ${business.wid ? business.wid : 'Sin informacion'}
+
 *Website:* ${business.website ? business.website : 'Sin informacion'}
 *Email:* ${business.email ? business.email : 'Sin informacion'}
 *Categoría:* ${business.category ? business.category : 'Sin informacion'}
