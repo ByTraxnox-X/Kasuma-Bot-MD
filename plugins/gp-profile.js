@@ -70,10 +70,10 @@ ${username} ${registered ? '\n   ' + name + ' ': ''}
 
 > Informacion Empresarial
 
-*BusinessId:* ${business.wid}
+*BusinessId:* ${business.wid ? business.wid : 'Sin informacion'}
 *Website:* ${business.website ? business.website : 'Sin informacion'}
 *Email:* ${business.email ? business.email : 'Sin informacion'}
-*Categoría:* ${business.category}
+*Categoría:* ${business.category ? business.category : 'Sin informacion'}
 *Dirección:* ${business.address ? business.address : 'Sin informacion'}
 *Horario:* ${business.business_hours.timezone ? business.business_hours.timezone : 'Sin informacion'}
 *Descripción:* ${business.description ? business.description : 'Sin informacion'} : 'Cuenta Estándar de WhatsApp'
