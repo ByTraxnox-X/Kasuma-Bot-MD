@@ -36,6 +36,7 @@ export async function handler(chatUpdate) {
         m.exp = 0
         m.diamond = false
         m.dolares = false
+        m.ticket = 10,
         m.bank = 0
         try {
             // TODO: use loop to insert data instead of this
@@ -89,6 +90,7 @@ export async function handler(chatUpdate) {
                     diamond: 10,
                     dolares: 40,
                     bank: 0,
+                    ticket: 10,
                     lastclaim: 0,
                     registered: false,
                     name: m.name,

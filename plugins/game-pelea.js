@@ -1,0 +1,76 @@
+let handler = async (m, {
+    conn, usedPrefix, participants
+  }) => {
+    conn.level = global.db.data.users[m.sender]
+    conn.fight = conn.fight ? conn.fight: {}
+    const delay = time => new Promise(res => setTimeout(res, time));
+  
+    if (typeof conn.fight[m.sender] != "undefined" && conn.fight[m.sender] == true) return m.reply(`*No puedes pelear de nuevo porque ya estás en una pelea.*`)
+  
+    let users = participants.map(u => u.id)
+    var oponente
+    oponente = users[Math.floor(users.length * Math.random())]
+    while (typeof global.db.data.users[oponente] == "undefined" || oponente == m.sender) {
+      oponente = users[Math.floor(users.length * Math.random())]
+    }
+  
+    let duracionPelea = getRandom(1, 1)
+  
+    m.reply(`*Tú* (nivel ${global.db.data.users[m.sender].level}) desafías a *${conn.getName(oponente)}* (nivel ${global.db.data.users[oponente].level}) y están en medio de una pelea intensa.\n\nEspera ${duracionPelea} minutos más y veremos quién gana.`)
+  
+    conn.fight[m.sender] = true
+  
+    await delay(1000 * 60 * duracionPelea)
+  
+    let razonesPerder = ['Novato',
+      'Débil',
+      'Menos habilidoso',
+      'Perdiste por ser débil',
+      'Derrota humillante']
+    let razonesGanar = ['Fuerte',
+      'Pro',
+      'Maestro del juego',
+      'Leyenda del juego',
+      'Extremadamente Pro',
+      'Peleador dedicado']
+  
+      let oportunidades = []
+      for (let i = 0; i < global.db.data.users[m.sender].level; i++) oportunidades.push(m.sender)
+      for (let i = 0; i < global.db.data.users[oponente].level; i++) oportunidades.push(oponente)
+      
+      let puntosJugador = 0
+      let puntosOponente = 0
+      for (let i = 0; i < 10; i++) {
+        let ventaja = getRandom(0, oportunidades.length-1)
+        if (oportunidades[ventaja] == m.sender) puntosJugador += 1
+        else puntosOponente += 1
+      }
+  
+    if (puntosJugador > puntosOponente) {
+      let premio = (puntosJugador - puntosOponente) * 10000
+      global.db.data.users[m.sender].dolares += premio
+      global.db.data.users[m.sender].ticket += 1
+      m.reply(`*${conn.getName(m.sender)}* [${puntosJugador * 10}] - [${puntosOponente * 10}] *${conn.getName(oponente)}*\n\n*Tú* (nivel ${global.db.data.users[m.sender].level}) GANASTE contra *${conn.getName(oponente)}* (nivel ${global.db.data.users[oponente].level}) porque eres ${razonesGanar[getRandom(0, razonesGanar.length-1)]}\n\nPremio: $${premio.toLocaleString()}\n+1 dolares`)
+    } else if (puntosJugador < puntosOponente) {
+      let multa = (puntosOponente - puntosJugador) * 100000
+      global.db.data.users[m.sender].dolares -= multa
+      global.db.data.users[m.sender].ticket += 1
+      m.reply(`*${conn.getName(m.sender)}* [${puntosJugador * 10}] - [${puntosOponente * 10}] *${conn.getName(oponente)}*\n\n*Tú* (nivel ${global.db.data.users[m.sender].level}) PERDISTE contra *${conn.getName(oponente)}* (nivel ${global.db.data.users[oponente].level}) porque eres ${razonesPerder[getRandom(0, razonesPerder.length-1)]}\n\nTu dinero disminuyó en $${multa.toLocaleString()}\n+1 dolares`)
+    } else {
+      m.reply(`*${conn.getName(m.sender)}* [${puntosJugador * 10}] - [${puntosOponente * 10}] *${conn.getName(oponente)}*\n\nLa pelea terminó en empate, ¡no recibes nada! 😂`)
+    }
+  
+    delete conn.fight[m.sender]
+  }
+  handler.help = ['pelear']
+  handler.tags = ['game']
+  handler.command = ['pelea', 'pelear']
+
+  export default handler;
+  
+  function getRandom(min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random()*(max-min+1)) + min
+  }
+  
