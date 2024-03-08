@@ -52,6 +52,8 @@ export async function handler(chatUpdate) {
                     user.diamond = 10
                 if (!isNumber(user.lastclaim))
                     user.lastclaim = 0
+                    if (!isNumber(user.ultimaJugada))
+                    user.ultimaJugada = 0
                 if (!isNumber(user.antispam)) 
                     user.antispam = 0
                 if (!isNumber(user.antispamlastclaim)) 
@@ -92,6 +94,7 @@ export async function handler(chatUpdate) {
                     bank: 0,
                     ticket: 10,
                     lastclaim: 0,
+                    ultimaJugada: 0,
                     registered: false,
                     name: m.name,
                     age: -1,
