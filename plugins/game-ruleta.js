@@ -1,8 +1,6 @@
-
-
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 
-    const pp = "https://i.imgur.com/qUEIDMN.jpg"
+    const ruletaresultado = "https://i.ibb.co/Bq57njn/OIG4.jpg"
 
     let amount = parseInt(args[0])
     let color = args[1]?.toLowerCase()
@@ -22,7 +20,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
         result = `${colour == 'rojo' ? 'La pelota paro en el color: 🔴' : 'La pelota paro en el color: ⚫'} \n\nPerdiste ${amount} Dolares`
         user.dolares -= amount
     }
-    conn.sendMessage(m.chat, { image: { url: pp }, caption: result }, { quoted: m })
+    conn.sendMessage(m.chat, { image: { url: ruletaresultado }, caption: result }, { quoted: m })
 }
 handler.help = ['ruleta apuesta/color']
 handler.tags = ['game']
