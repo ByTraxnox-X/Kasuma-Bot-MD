@@ -132,10 +132,11 @@ let jid = jidNormalizedUser(clave.remoteJid)
 let msg = await store.loadMessage(jid, clave.id)
 return msg?.message || ""
 },
+conversation: 'Kasuma-Bot',
 msgRetryCounterCache,
-msgRetryCounterMap,
-defaultQueryTimeoutMs: undefined,   
-version
+defaultQueryTimeoutMs: undefined,
+msgRetry,
+version,
 }
 
 //--
