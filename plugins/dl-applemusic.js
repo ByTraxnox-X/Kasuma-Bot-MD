@@ -22,7 +22,7 @@ Error, no hay resultados`;
         let appleMusicInfo = `
 > Informacion
 
-*Titulo:* ${musicInfo.name}*\n\n
+*Titulo:* ${musicInfo.name}\n\n
 *Artistas:* ${musicInfo.artists}\n
 *Duración:* ${musicInfo.duration_ms} ms\n\n
 Enviando...`
@@ -36,7 +36,7 @@ Enviando...`
                     "showAdAttribution": true,
                     "containsAutoReply": true,
                     "renderLargerThumbnail": true,
-                    "title": global.titulowm2,
+                    "title": global.name,
                     "containsAutoReply": true,
                     "mediaType": 1,
                     "thumbnail": img,
