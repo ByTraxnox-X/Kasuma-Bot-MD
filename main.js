@@ -135,7 +135,6 @@ return msg?.message || ""
 conversation: 'Kasuma-Bot',
 msgRetryCounterCache,
 defaultQueryTimeoutMs: undefined,
-msgRetry,
 version,
 }
 
