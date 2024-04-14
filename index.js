@@ -5,7 +5,6 @@ import { createRequire } from 'module';
 import { fileURLToPath } from 'url'
 import { setupMaster, fork } from 'cluster'
 import { watchFile, unwatchFile } from 'fs'
-const { spawn } = require('child_process');
 import cfonts from 'cfonts';
 import { createInterface } from 'readline'
 import yargs from 'yargs'
@@ -60,20 +59,14 @@ function start(file) {
         break
     }
   })
-
-  p.on('exit', (code) => {
-    isRunning = false;
-    console.error('Ocurrió un error inesperado:', code);
-    if (!isRunning) {
-        console.log('Reiniciando...');
-        startProcess();
-    }
-});
-
-  function startProcess() {
-    const started = spawn('node', ['index.js']);
-    isRunning = true;
-}
+  
+  p.on('exit', (_, code) => {
+    isRunning = false
+    console.error('Ocurrió un error inesperado:', code)
+    if (code === 0) return
+    console.log('Reiniciando el servidor...')
+    start(file)
+})
 
   //----
   let opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
