@@ -1,7 +1,3 @@
-import fetch from 'node-fetch';
-
-let enviando = false;
-
 const handler = async (m, { command, conn, text }) => {
   if (!text) throw `Ingrese el enlace o texto para continuar.`;
   if (enviando) return;
@@ -37,9 +33,9 @@ const handler = async (m, { command, conn, text }) => {
 
         await conn.sendMessage(m.chat, { text: dataMessage }, { quoted: m });
 
-        const buff = await conn.getFile(mimeType === 'audio/mpeg' ? data.result.audio : data.result.video);
+        const buff = await fetch(data.result); // Fetching the audio directly from the new API URL
 
-        await conn.sendMessage(m.chat, { [mimeType.startsWith('audio') ? 'audio' : 'video']: buff.data, mimetype: mimeType, fileName: fileName }, { quoted: m });
+        await conn.sendMessage(m.chat, { audio: buff.buffer(), mimetype: mimeType, fileName: fileName }, { quoted: m });
         enviando = false;
       } else {
         throw new Error('Sin respuesta válida');
@@ -59,6 +55,7 @@ Error, inténtelo de nuevo.`;
 Error, inténtelo de nuevo.`;
   }
 };
+
 
 handler.help = ['youtubeaudio', 'youtubevideo'];
 handler.tags = ['dl'];
