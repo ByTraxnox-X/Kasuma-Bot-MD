@@ -15,11 +15,13 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     let responseText = `
 > Información
 
-*Nombre:* ${data.name}\n\n
+*Nombre:* ${data.name}\n
 *Última Actualización:* ${data.lastup}\n
 *Tamaño:* ${data.size}\n
 *Paquete:* ${data.package}\n`;
     await conn.sendMessage(m.chat, { image: { url: data.icon }, caption: responseText }, { quoted: m });
+
+    // Descarga y envío del archivo APK
     const apkResponse = await fetch(data.dllink);
     const apkBuffer = await apkResponse.buffer();
     await conn.sendFile(m.chat, apkBuffer, `${data.name}.apk`, null, m);
