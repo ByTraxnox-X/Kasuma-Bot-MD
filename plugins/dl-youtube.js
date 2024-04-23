@@ -33,9 +33,8 @@ const handler = async (m, { command, conn, text }) => {
 
         await conn.sendMessage(m.chat, { text: dataMessage }, { quoted: m });
 
-        const buff = await fetch(data.result); // Fetching the audio directly from the new API URL
-
-        await conn.sendMessage(m.chat, { audio: buff.buffer(), mimetype: mimeType, fileName: fileName }, { quoted: m });
+        // Envío directo del video sin necesidad de descargarlo
+        await conn.sendMessage(m.chat, { video: data.result.vid_360p, mimetype: mimeType, fileName: fileName }, { quoted: m });
         enviando = false;
       } else {
         throw new Error('Sin respuesta válida');
@@ -55,7 +54,6 @@ Error, inténtelo de nuevo.`;
 Error, inténtelo de nuevo.`;
   }
 };
-
 
 handler.help = ['youtubeaudio', 'youtubevideo'];
 handler.tags = ['dl'];
