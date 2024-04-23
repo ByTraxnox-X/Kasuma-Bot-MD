@@ -9,6 +9,7 @@ const handler = async (m, { conn, text }) => {
     conn.sendPresenceUpdate('composing', m.chat);
 
     const apiUrl = `${apikasu}/api/tools/bard?text=${encodeURIComponent(text)}&apikey=${apikeykasu}`;
+    
     const response = await fetch(apiUrl);
     const data = await response.json();
 
