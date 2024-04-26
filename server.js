@@ -5,6 +5,12 @@ import { Socket } from 'socket.io'
 import { toBuffer } from 'qrcode'
 import fetch from 'node-fetch'
 
+/* 
+!! QUERIDO PROGRAMADOR, CUANDO INICIE ESTE PROYECTO, LO HICE CON AYUDA DE UN AMIGO Y DIOSITO.
+!! TODO SALIO MUY BIEN Y FUNCIONANDO, HOY EN DIA, MAS DE 1 AÑO DESPUES DE HABER SIDO CREADO, NI YO, NI MI AMIGO SABEMOS COMO FUNCIONA.
+!! Y LE HEMOS PREGUNTADO A DIOS, Y EL TAMPOCO LO SABE, ASI QUE POR SU BIEN NO MODIFIQUE NADA, PORQUE NI CON LAS ESFERAS DEL DRAGON REVIVE ESTE CODIGO.
+*/
+
 function connect(conn, PORT) {
     let app = global.app = express()
     console.log(app)
